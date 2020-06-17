@@ -1,0 +1,73 @@
+{
+  "status": 200,
+  "statusText": "success",
+  "data": {
+    "pageNum": 1,
+    "pageSize": 2,
+    "totalCount": 22,
+    "totalPageCount": 11,
+    "data": [
+      {
+        "orderId": 1,
+        "orderNo": "GXS20160831T002",
+        "enterUser":"杜旭升" ,
+        "createDate": 1472562026000,
+        "updateDate": 1472562026000,
+        "userId": null,
+        "status": 0,
+        "orderPrice":500 ,
+        "orderType": 0,
+        "goodsName": "中石化加油卡100元",
+        "buyName": null,
+        "addressInfo": 0,
+        "enterUserId": 0,
+        "logisticsNo": "0",
+        "orderRemark": null,
+        "has_bill":0,
+        "orderCard":"查看"
+
+      },
+      {
+        "orderId": 2,
+        "orderNo": "GXS20160831T003",
+        "enterUser":"刘平" ,
+        "createDate": 1472562203000,
+        "updateDate": 1472562205000,
+        "userId": null,
+        "goodsName": "中石化加油卡200元",
+        "status": 0,
+        "orderPrice":500 ,
+        "orderType": 0,
+        "channelCode": "test",
+        "buyName": null,
+        "addressInfo": 0,
+        "enterUserId": 0,
+        "logisticsNo": "0",
+        "orderRemark": null,
+        "has_bill":0,
+        "orderCard":"查看"
+
+      },
+      {
+        "orderId": 2,
+        "orderNo": "GXS20160831T003",
+        "enterUser":"王双肖",
+        "createDate": 1472562203000,
+        "updateDate": 1472562205000,
+        "goodsName": "中石化加油卡300元",
+        "userId": null,
+        "status": 0,
+        "orderPrice":500 ,
+        "orderType": 0,
+        "channelCode": "test",
+        "buyName": null,
+        "addressInfo": 0,
+        "enterUserId": 0,
+        "logisticsNo": "0",
+        "orderRemark": null,
+        "has_bill":0,
+        "orderCard":"查看"
+      }
+    ]
+  }
+}

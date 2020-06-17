@@ -1,0 +1,122 @@
+<div ng-controller="userIndexController">
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li class="active">用户主页</li>
+    </ol>
+
+    <div>
+        <div class="sorting">
+            <span><a class="active" href="">个人信息</a></span>
+        </div>
+        <div class="row content-block">
+            <div class="col-xs-2 img">
+                <img class="avatar" src="{{userInfo.avatar_url?userInfo.avatar_url:'../../images/icon/icon-user.png'}}">
+                <!--<img class="avatar" src="../../images/icon/icon-user.png">-->
+            </div>
+            <div class="col-xs-10 user-content">
+                <div class="userid clearfix">
+                    <p class="pull-left">用户ID：{{userInfo.user_id}}</p>
+                    <p class="authentication">{{userInfo.status==1?"已认证":"未认证"}}</p>
+                </div>
+                <!--<p>用户名：{{userInfo.actual_name}}</p>-->
+                <p>姓名：{{userInfo.nickname}}</p>
+                <p>简介：{{userInfo.signature}}</p>
+            </div>
+        </div>
+    </div>
+
+    <!--<div>-->
+        <!--<div class="sorting">-->
+            <!--<span><a class="active" href="#" ng-click="checkSample()">我发布的样本</a></span>-->
+        <!--</div>-->
+        <!--<div class="row content-block">-->
+            <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in orderSampleList">-->
+                <!--<a  href="/sample/sampleDetail?sampleId={{item.id}}">-->
+                    <!--<img  src="{{baseImgUrl+item.cover_url}}">-->
+                <!--</a>-->
+                <!--<div class="clearfix content-row">-->
+                    <!--<a href="/sample/sampleDetail?sampleId={{item.id}}">-->
+                        <!--<h1 >{{item.title}}</h1>-->
+                    <!--</a>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <div>
+        <div class="sorting">
+            <span><a  href="#" >我发布的算法</a></span>
+        </div>
+        <div class="row content-block" ng-if="userArithmeticList">
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in userArithmeticList">
+                <!--<img src="{{baseImgUrl+item.cover_url}}" href="/sample/algorithmDetail?algorithmId={{item.id}}">-->
+                <a  href="/sample/algorithmDetail?algorithmId={{item.id}}">
+                    <img  src="{{baseImgUrl+item.cover_url}}">
+                </a>
+                <div class="clearfix content-row">
+                    <a  href="/sample/algorithmDetail?algorithmId={{item.id}}">
+                        <h1>{{item.title}}</h1>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="sorting">
+            <span><a >我发布的插件</a></span>
+        </div>
+
+        <div class="row content-block" ng-if="userPluginsList" >
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat=" item in userPluginsList" >
+                <a href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                    <img src="{{item.cover_url}}" href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                    <div class="clearfix content-row" href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                        <h1 class="title">{{item.title}}</h1>
+                        <p class="describe">
+                            {{item.about}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+    <div>
+        <div class="sorting">
+            <span><a >我发布的应用</a></span>
+        </div>
+        <div class="row content-block" >
+            <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in userApplicationsList">
+                <a href="application/applicationDetail?applicationId={{item.id}}">
+
+                    <img src="{{item.cover_url}}">
+                    <div class="clearfix content-row">
+                        <h1 class="title">{{item.title}}</h1>
+                        <p class="describe">
+                            {{item.about}}
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!--<div>-->
+        <!--<div class="sorting">-->
+            <!--<span><a >我发布的需求</a></span>-->
+        <!--</div>-->
+        <!--<div class="row content-block" ng-if="userDemandList">-->
+            <!--<div ng-if="demandstate==1" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in userDemandList">-->
+                <!--<a href="demand/demandDetail?demandId={{demand.id}}">-->
+                    <!--<img src="{{item.cover_url}}">-->
+                    <!--<div class="clearfix content-row">-->
+                        <!--<h1 class="title">{{item.title}}</h1>-->
+                        <!--<p class="describe">-->
+                            <!--{{item.about}}-->
+                        <!--</p>-->
+                    <!--</div>-->
+                <!--</a>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

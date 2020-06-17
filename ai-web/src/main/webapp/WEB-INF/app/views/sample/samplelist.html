@@ -1,0 +1,153 @@
+
+<div class="sampleList">
+
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li class="active">列表页</li>
+    </ol>
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="classify-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x_2.png"> 样本分类
+                </h1>
+                <ul class="clearfix">
+                    <li><a ng-class="{active:''==classificationId}" ng-click="clickClass('')" href="">所有样本</a></li>
+                    <li ng-repeat="item in classificationList" ><a ng-class="{active:item.id==classificationId}" href="" ng-click="clickClass(item.id)">{{item.title}}</a></li>
+                </ul>
+            </div>
+            <div class="user-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x_1.png"> 热门样本发布者
+                </h1>
+                <ul class="clearfix">
+                    <li  ng-repeat="item in hotSampleList">
+                        <div class="pull-left">
+                            <a href="/usercenter/account/userIndex?userId={{item.user_id}}">
+                                <img class="avatar" src="{{item.avatar_url?item.avatar_url:'../../images/icon/icon-user'}}"> {{item.nickname}}
+                            </a>
+                        </div>
+                        <div class="pull-right">
+                            发布样本{{item.count}}个
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x_1.png"> 热门算法发布者
+                </h1>
+                <ul class="clearfix">
+                    <li ng-repeat="item in hotArithmeticList">
+                        <div class="pull-left">
+                            <a href="/usercenter/account/userIndex?userId={{item.user_id}}">
+                                <img class="avatar" src="{{item.avatar_url?item.avatar_url:'../../images/icon/icon-user'}}"> {{item.nickname}}
+                            </a>
+                        </div>
+                        <div class="pull-right">
+                            发布算法{{item.count}}个
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+            <ul class="inquire">
+                <li>
+                    <span>来源方式</span>
+                    <!--<span ng-repeat="item in source_type" ng-click="typeClick(item,1)" class="active">{{item}}</span>-->
+                    <span ng-repeat="item in source_type" ng-click="typeClick(item,1)" ><a ng-class="{active:item==source_type_select}" href="#">{{item}}</a></span>
+                </li>
+                <li>
+                    <span>数据来源</span>
+                    <span ng-repeat="item in data_source" ng-click="typeClick(item,2)" ><a ng-class="{active:item==data_source_select}" href="#">{{item}}</a></span>
+                </li>
+                <li>
+                    <span>成像类型</span>
+                    <span ng-repeat="item in imaging_type" ng-click="typeClick(item,3)" ><a ng-class="{active:item==imaging_type_select}" href="#">{{item}}</a></span>
+                </li>
+                <li>
+                    <span>分辨率</span>
+                    <span ng-repeat="item in resolution" ng-click="typeClick(item,4)" ><a ng-class="{active:item==resolution_select}" href="#">{{item}}</a></span>
+                </li>
+                <li>
+                    <span>像素大小</span>
+                    <span ng-repeat="item in size" ng-click="typeClick(item,5)" ><a ng-class="{active:item==size_select}" href="#">{{item}}</a></span>
+                </li>
+                <li>
+                    <span>坐标信息</span>
+                    <span ng-repeat="item in coordinate" ng-click="typeClick(item,6)" ><a ng-class="{active:item==coordinate_select}" href="#">{{item}}</a></span>
+                </li>
+                <li>
+                    <span>生产时间</span>
+                    <span ng-repeat="item in production_time" ng-click="typeClick(item,7)" ><a ng-class="{active:item==production_time_select}" href="#">{{item}}</a></span>
+                </li>
+            </ul>
+            <div class="sorting">
+                <span><a ng-class="{active:order_by=='buy_count'}" href=""  ng-click="orderClick('buy_count')">最多购买</a></span>
+                <span><a ng-class="{active:order_by=='created_at'}" href="" ng-click="orderClick('created_at')">最新发布</a></span>
+                <span><a ng-class="{active:order_by=='comment_count'}" href="" ng-click="orderClick('comment_count')">评论最多</a></span>
+                <span><a ng-class="{active:order_by=='star_rating'}" href="" ng-click="orderClick('star_rating')">评分最高</a></span>
+                <span><a ng-class="{active:order_by=='algorithms_count'}" href="" ng-click="orderClick('algorithms_count')">模型最多</a></span>
+            </div>
+            <div class="row content-block">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in sampleList">
+                    <a href="sample/sampleDetail?sampleId={{item.id}}">
+                        <img src="{{item.cover_url}}" style="width: 210px; height: 150px">
+                    </a>
+                    <div class="clearfix content-row">
+                        <div class="pull-left price">
+                            {{item.price!='0'?'￥'+item.price:'免费'}}
+                        </div>
+                        <div class="pull-right number">
+                            {{item.buy_count}}人购买
+                        </div>
+                    </div>
+                    <a href="sample/sampleDetail?sampleId={{item.id}}">
+                        <h1>{{item.title}}</h1>
+                    </a>
+                    <div class="clearfix content-row">
+                        <div class="pull-left starts">
+                            <span class="glyphicon {{item.comment_count<1?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{item.comment_count<2?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{item.comment_count<3?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{item.comment_count<4?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{item.comment_count<5?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        </div>
+                        <div class="pull-right comments">
+                            {{item.comment_count}}条评论
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页开始 -->
+            <div class="page-blcok center-block">
+
+                <uib-pagination
+                        force-ellipses="true"
+                        boundary-links="true"
+                        boundary-link-numbers="true"
+                        total-items="total"
+                        ng-model="current"
+                        max-size="maxSize"
+                        ng-change="search(true)"
+                        items-per-page="pageTotal||10"
+                        class="pagination-sm"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        first-text="&laquo;"
+                        last-text="&raquo;"
+                ></uib-pagination>
+                &nbsp;&nbsp;
+                <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+                &nbsp;&nbsp;
+                <div class="pagination-info">
+                    <span class="ng-binding">共有{{total}}条</span>
+                </div>
+
+            </div>
+            <!-- 分页结束 -->
+        </div>
+    </div>
+</div>

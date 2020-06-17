@@ -1,0 +1,52 @@
+
+.search-block{
+    margin: 15px auto;
+}
+
+.search-zone{
+    margin: 20px auto;
+}
+
+.search-btn{
+    padding-top: 2px;
+    display: inline-block;
+}
+
+.search-menu{
+    margin: 20px auto;
+}
+
+.search-menu ul{
+    background: #f6f6f6;
+    border: 1px solid #c2c2c2;
+    padding: 0;
+}
+
+.search-menu ul li{
+    float: left;
+}
+
+.search-menu ul li a{
+    display: inline-block;
+    padding: 12px 42px;
+    font-size: 16px;
+    color: #6b6b6b;
+    border: 1px solid #f6f6f6;
+}
+
+.search-menu ul li a:hover, .search-menu ul li a:active, .search-menu ul li .active{
+    color: #b70912;
+    background: #ffffff;
+    border-left: 1px solid #c2c2c2;
+    border-right: 1px solid #c2c2c2;
+}
+
+.search-other .starts{
+    display: block;
+    margin-top: 8px;
+}
+
+.search-other .comments{
+    display: block;
+    margin-top: 6px;
+}

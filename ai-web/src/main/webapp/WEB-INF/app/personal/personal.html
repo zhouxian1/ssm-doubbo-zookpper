@@ -1,0 +1,100 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>个人信息</a>
+    </p>
+    <!--end 标题头-->
+    <!--用户资料-->
+    <div class="page-content-wrap" style="min-height:1316px;">
+        <div class="row">
+            <div class="col-md-12 row">
+                <form class="form-horizontal">
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <h3 class="goods-count" style="padding-left:0">个人资料</h3>
+                        </div>
+                        <div class="panel-body form-group-separated">
+                            <!--用户头像-->
+                            <!--<div class="form-group row">-->
+                                <!--<label class="col-md-3 col-xs-12 control-label">用户头像:</label>-->
+                                <!--<div class="col-md-6 col-xs-6">-->
+                                    <!--<img class="user-logo" src="common/img/logo.png" alt="">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--用户信息 左-->
+                            <div class="col-sm-12 col-xs-12">
+                                <!--用户头像-->
+                                <div class="form-group row" >
+                                    <label class="col-md-3 col-xs-12 control-label" style="height:110px;line-height: 110px">用户头像:</label>
+                                    <div class="col-md-6 col-xs-6">
+                                        <img class="user-logo" src="common/img/logo.png" alt="" style="width:100px;height:100px;">
+                                    </div>
+                                </div>
+                                <!--用户id-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">员工姓名:</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{personalList.name}}</span>
+                                    </div>
+                                </div>
+                                <!--用户名称-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{personalList.email}}</span>
+                                    </div>
+                                </div>
+                                <!--用户性别-->
+                                <!--<div class="form-group">-->
+                                <!--<label class="col-md-3 col-xs-12 control-label"> 部门: </label>-->
+                                <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<span>技术部</span>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--前端职位-----------暂时注释------------->
+                                <!--<div class="form-group">-->
+                                <!--<label class="col-md-3 col-xs-12 control-label">职&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;位: </label>-->
+                                <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<span>前端工程师</span>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--&lt;!&ndash;用户备注&ndash;&gt;-->
+                                <!--<div class="form-group">-->
+                                <!--<label class="col-md-3 col-xs-12 control-label">用户备注 : </label>-->
+                                <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<span>无</span>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--<div class="col-sm-12 col-xs-12">-->
+                                <!--用户余额-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">员工电话 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{personalList.mobile}}</span>
+                                    </div>
+                                </div>
+                                <!--累计消费-->
+                                <!--<div class="form-group">-->
+                                <!--<label class="col-md-3 col-xs-12 control-label">入职时间: </label>-->
+                                <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<span>2016/03/12</span>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                                <!--注册时间-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">出生日期 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{personalList.createDate | date:"yyyy/MM/dd"}}</span>
+                                    </div>
+                                </div>
+                                <!--重置密码-->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

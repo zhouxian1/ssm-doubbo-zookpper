@@ -1,0 +1,81 @@
+<div class="knowledgeList" ng-controller="knowledgeListController">
+
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li class="active">列表页</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="classify-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x47.png"> 知识分类
+                </h1>
+                <ul class="clearfix">
+                    <li><a href="" ng-class="{active:classification_id==0}" ng-click="list(0)" >所有知识</a></li>
+                    <!--<li><a class="active" href="">通用</a></li>-->
+                    <li ng-repeat="classification in classificationList"><a href="" ng-click="list(classification.id)" ng-class="{active:classification_id==classification.id}">{{classification.title}}</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+            <ul class="content-list">
+                <li class="row"  ng-repeat="knowledge in knowledgesList">
+
+                    <div ng-if="knowledge.img">
+                        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">
+                            <img src={{knowledge.img}} alt="">
+                        </div>
+                        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+                            <a href="/knowledge/knowledgedetail?knowledgeId={{knowledge.id}}">
+                                <h1>{{knowledge.title}}</h1>
+                            </a>
+                            <p ng-bind-html="knowledge.about + '...' | to_trusted">{{knowledge.about}}</p>
+                        </div>
+                    </div>
+
+                    <div ng-if="!knowledge.img">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 column-clear-left">
+                            <a href="/knowledge/knowledgedetail?knowledgeId={{knowledge.id}}">
+                                <h1>{{knowledge.title}}</h1>
+                            </a>
+                            <p>{{knowledge.about}}</p>
+                        </div>
+                    </div>
+
+                </li>
+            </ul>
+
+            <!-- 分页开始 -->
+            <div class="page-blcok center-block">
+
+                <uib-pagination
+                        force-ellipses="true"
+                        boundary-links="true"
+                        boundary-link-numbers="true"
+                        total-items="total"
+                        ng-model="current"
+                        max-size="maxSize"
+                        ng-change="search(true)"
+                        items-per-page="pageTotal||10"
+                        class="pagination-sm"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        first-text="&laquo;"
+                        last-text="&raquo;"
+                ></uib-pagination>
+                &nbsp;&nbsp;
+                <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="current" ng-keyup="jumpPage($event)" />页</div>
+                &nbsp;&nbsp;
+                <div class="pagination-info">
+                    <span class="ng-binding">共有{{total}}条</span>
+                </div>
+
+            </div>
+            <!-- 分页结束 -->
+
+
+        </div>
+    </div>
+</div>

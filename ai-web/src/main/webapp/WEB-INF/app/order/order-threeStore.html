@@ -1,0 +1,246 @@
+<!--订单管理模块-->
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>第三方店铺管理
+    </p>
+    <!--订单查询-->
+    <div class="page-content-wrap">
+        <div class="block row">
+            <div style="margin-bottom:30px;">
+                <span style="font-size:13px;">店铺订单出库 </span>
+            </div>
+            <!--第三方店铺-->
+            <div class="form-horizontal" role="form">
+                <div class="col-xs-5">
+                    <!--订单状态-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">第三方店铺:</label>
+                        <div class="col-md-8">
+                            <select id="test" class="form-control"
+                                    style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                    ng-click="threeStore()">
+                                <option ng-repeat="store in threeStoreList" value={{store.code}}>{{store.name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <!--订单号-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">订单号:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="param_shopOrderNo" placeholder="请输入店铺订单号"
+                                   required/>
+                        </div>
+                    </div>
+                </div>
+                <!--确定-->
+                <div class="form-horizontal-footer">
+                    <div>
+                        <button class="btn btn-primary pull-right" ng-click="outStock()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--店铺订单批量出库-->
+    <div class="page-content-wrap">
+        <div class="block row">
+            <div style="margin-bottom:30px;">
+                <span style="font-size:13px;">店铺订单批量出库 </span>
+                <a style="color:blue;float: right;text-decoration: underline" href="http://img.gxcards.com/pro/批量出库模版.xlsx">下载模版(填充数据后另存为csv格式上传) </a>
+            </div>
+            <!--第三方店铺-->
+            <div class="form-horizontal" role="form">
+                <div class="col-xs-5">
+                    <!--订单状态-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">第三方店铺:</label>
+                        <div class="col-md-8">
+                            <select id="bitch_shop_select" class="form-control" ng-change="load_shop_time_info()"
+                                    ng-options="value.code as value.name for value in threeStoreList"
+                                    ng-model="bitch_shop_select"
+                                    style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                                <option value="">请选择店铺</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <!--订单号-->
+                    <div class="form-group" data-toggle="tooltip" data-placement="top" title=""  data-original-title="请选择csv或者txt文件,注意设置单元格格式为文本类型">
+                        <label class="col-md-3 control-label">选择文件:</label>
+                        <div class="col-md-8">
+                            <input type="file" custom-on-change="changeFile" class="form-control" required/>
+                        </div>
+                    </div>
+                </div>
+                <!--确定-->
+                <div class="form-horizontal-footer">
+                    <div>
+                        <button class="btn btn-primary pull-right" ng-click="bitchOutStock()">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content-wrap" style="margin-top:3px;">
+        <div class="block row">
+            <div style="margin-bottom:30px;">
+                <span style="font-size:13px;">设置店铺营业时间 </span>
+            </div>
+            <!--设置店铺营运时间-->
+            <div class="form-horizontal" role="form">
+                <div class="col-xs-4">
+                    <!--订单状态-->
+                    <div class="form-group">
+                        <label class="col-md-6 control-label">选择店铺:</label>
+                        <div class="col-md-6">
+                            <select id="shop_time_select" class="form-control" ng-change="load_shop_time_info()"
+                                    ng-options="value.code as value.name for value in threeStoreList"
+                                    ng-model="time_shop_select"
+                                    style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                                <option value="">请选择店铺</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-8">
+                    <!--订单状态-->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-6 control-label">运营开关:</label>
+                        <div class="col-md-6">
+                            <label class="switch col-md-6">
+                                <input id="openClose" value="0" type="checkbox">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                    <!--订单状态-->
+                    <div class="form-group col-md-6">
+                        <label class="col-md-6 control-label" data-toggle="tooltip" data-placement="top" title="" data-original-title="周六日系统是否处理订单">周六日接单:</label>
+                        <div class="col-md-6">
+                            <label class="switch col-md-6">
+                                <input id="weekDayWork" checked value="0" type="checkbox">
+                                <span></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="form-horizontal" role="form" style="margin-top: 20px">
+                <div class="col-xs-4">
+                    <!--订单号-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"  data-toggle="tooltip" data-placement="top" title="" data-original-title="工作日系统处理订单时间段">营业时间段:</label>
+                        <div class="col-md-9 row">
+                            <div class="input-group col-xs-5" style="float:left">
+                                <input type="datetime" ng-model="shop_time_start" class="form-control "
+                                       readonly="readonly"
+                                       id="timePicker1"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <span class="col-xs-2 zhi left" style=" margin-bottom:0;">至</span>
+                            <div class="input-group col-xs-5" style="float:left">
+                                <input ng-model="shop_time_end" type="datetime" class="form-control" readonly="readonly"
+                                       id="timePicker2"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-8">
+                    <!--订单号-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label"  data-toggle="tooltip" data-placement="top" title="" data-original-title="以下时间段不营业">非营业时间段:</label>
+                        <div class="col-md-8 row">
+                            <div class="input-group col-xs-5" style="float:left">
+                                <input type="datetime" ng-model="shop_not_open_time_start" class="form-control "
+                                       readonly="readonly"
+                                       id="shop_time_not_open_time_start_date"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <span class="col-xs-2 zhi left" style=" margin-bottom:0;">至</span>
+                            <div class="input-group col-xs-5" style="float:left">
+                                <input ng-model="shop_not_open_time_end" type="datetime" class="form-control"
+                                       readonly="readonly"
+                                       id="shop_time_not_open_time_end_date"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $("#shop_time_not_open_time_start_date").datetimepicker({
+                    format: 'yyyy/mm/dd hh:ii', autoclose: true, language: 'zh-CN', startDate: new Date()
+                }).on("changeDate", function (env) {
+                    $('#shop_time_not_open_time_end_date').datetimepicker('setStartDate', $("#shop_time_not_open_time_start_date").val());
+                    $("#shop_time_not_open_time_end_date").focus()
+                });
+
+                $("#shop_time_not_open_time_end_date").datetimepicker({
+                    format: 'yyyy/mm/dd hh:ii', autoclose: true, language: 'zh-CN', startDate: new Date()
+                }).on("changeDate", function (env) {
+
+                    $('#shop_time_not_open_time_start_date').datetimepicker('setEndDate', $("#shop_time_not_open_time_end_date").val());
+                });
+
+                $("#timePicker1").datetimepicker({
+                    format: 'hh:ii', autoclose: true, language: 'zh-CN', startView: 1, maxView: 1
+                }).on("changeDate", function (env) {
+                    $('#timePicker2').datetimepicker('setStartDate', new Date().format("yyyy-MM-dd ") + $("#timePicker1").val());
+                    $("#timePicker2").focus()
+                });
+
+                $("#timePicker2").datetimepicker({
+                    format: 'hh:ii', autoclose: true, language: 'zh-CN', startView: 1, maxView: 1
+                }).on("changeDate", function (env) {
+                    $('#timePicker1').datetimepicker('setEndDate', new Date().format("yyyy-MM-dd ") + $("#timePicker2").val());
+                });
+            </script>
+
+            <!--确定-->
+            <div class="form-horizontal-footer">
+                <div>
+                    <button class="btn btn-primary pull-right" ng-click="set_shop_time()">保存</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:auto;" class="delete_or_not_instockRecord_warning_box">
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete"
+           style="margin-left:120px;margin-right:10px;color:#2e8ded;cursor:pointer;margin-bottom:10px;"
+           ng-click="know()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box">
+        <p class="delete_or_not_title" style="margin-top:46px;">请求接口成功</p>
+        <p class="delete_or_not_delete"
+           style="margin-left:120px;margin-right:10px;color:#2e8ded;cursor:pointer;margin-bottom:10px;"
+           ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+
+
+
+
+
+

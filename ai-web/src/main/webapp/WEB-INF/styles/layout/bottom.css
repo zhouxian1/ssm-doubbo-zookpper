@@ -1,0 +1,23 @@
+
+/* bottom */
+
+.bottom-container {
+    width: 100%;
+    background-color: #343f41;
+}
+
+.bottom-container > .bottom-main {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.bottom-container > p, .bottom-container > a {
+    color: #fff;
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+}
+
+.bottom-container a {
+    color: #fff;
+}

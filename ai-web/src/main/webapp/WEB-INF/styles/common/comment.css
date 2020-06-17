@@ -1,0 +1,71 @@
+
+.page-blcok{
+    margin: 25px auto 35px;
+}
+
+.content-comment{
+    margin: 15px auto;
+}
+
+.content-comment .title{
+    color: #bd2124;
+    padding: 8px 0;
+    font-size: 18px;
+    font-weight: 600;
+    border-bottom: 2px solid #bd2124;
+}
+
+.content-comment .title span{
+    color: #555555;
+    font-size: 14px;
+}
+
+.content-comment .release{
+    color: #bd2124;
+    margin: 30px auto;
+    position: relative;
+}
+
+.content-comment .list{
+    margin: 15px 0;
+    padding: 0;
+}
+
+.content-comment .list li{
+    margin: 20px 0;
+}
+
+.content-comment textarea{
+    width: 100%;
+    resize: none;
+}
+
+.content-comment .comment-btn{
+    position: absolute;
+    right: 20px;
+    bottom: 4px;
+}
+
+.content-comment .comment-star{
+    position: absolute;
+    right: 120px;
+    bottom: 8px;
+}
+
+.content-comment .nickname{
+    color: #bd2124;
+    font-weight: 600;
+}
+
+.content-comment .avatar-block{
+    width: 62px;
+    height: 62px;
+    border-radius: 31px;
+    padding: 0;
+    overflow: hidden;
+}
+
+.content-comment .avatar-block img{
+    width: 100%;
+    min-height: 62px;
+}

@@ -1,0 +1,130 @@
+<div class="article-detail" ng-controller="articleDetailController">
+
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li><a ui-sref="article">列表页</a></li>
+        <li class="active">详情页</li>
+    </ol>
+
+    <div class="main-content">
+        <h1>{{articleDetail.title}}</h1>
+        <div class="clearfix title">
+            <div class="pull-left">
+                <span>{{articleDetail.user_name}}</span>
+                <span>{{articleDetail.created_at}}发布</span>
+            </div>
+            <div class="pull-right">
+                <!--<span ng-click="shareFriend()">分享到：</span>-->
+                <!--<a href="">-->
+                    <!--<img src="../../../images/icon/img@1x48.jpg" alt="">-->
+                <!--</a>-->
+                <!--<a href="">-->
+                    <!--<img src="../../../images/icon/img@1x49.jpg" alt="">-->
+                <!--</a>-->
+                <!--<a href="">-->
+                    <!--<img src="../../../images/icon/img@1x50.jpg" alt="">-->
+                <!-- JiaThis Button BEGIN -->
+                <div class="jiathis_style_32x32">
+                    <span class="jiathis_txt">分享到：</span>
+                    <a class="jiathis_button_weixin"></a>
+                    <a class="jiathis_button_tsina"></a>
+                </div>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                <!-- JiaThis Button END -->
+                </a>
+            </div>
+            <!--<div id="ckepop" class='feixiangjias'>-->
+                <!--<a href="javascript:" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank">分享到：</a>-->
+                <!--<a class="jiathis_button_qzone">QQ空间</a>-->
+                <!--<a class="jiathis_button_tsina">新浪微博</a>-->
+                <!--<a class="jiathis_button_kaixin001">开心网</a>-->
+                <!--<a class="jiathis_button_renren">人人网</a>-->
+                <!--<a class="jiathis_button_baidu">百度收藏</a>-->
+                <!--<a class="jiathis_button_douban">豆瓣</a>-->
+                <!--<a class="jiathis_button_tqq">腾讯微博</a>-->
+            <!--</div>-->
+            <!--<script type="text/javascript" src="http://www.139cai.com/public/share.js" charset="utf-8"></script>-->
+            <!--<div style="LINE-HEIGHT: 12px" id="bdshare" class="bdshare_b"><img src="http://bdimg.share.baidu.com/static/images/type-button-1.jpg"> </div>-->
+            <!--<script id="bdshare_js" type="text/javascript" data="type=button&uid=664845" src="http://bdimg.share.baidu.com/static/js/bds_s_v2.js?cdnversion=381133"></script>-->
+            <!--<script type="text/javascript">-->
+                <!--document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + new Date().getHours();-->
+            <!--</script>-->
+        </div>
+        <div class="content">
+            <!--<div class="img">-->
+                <!--<img src=src={{article.img}} alt="" style="margin-bottom: 15px">-->
+            <!--</div>-->
+            <p class="text" id="content">{{content}}</p>
+            <!--<p class="text" ng-bind-html="content | trust2Html"></p>-->
+        </div>
+    </div>
+
+    <div class="content-comment">
+        <div class="title">评论&nbsp;<span>({{commentListInfo.total}}条)</span></div>
+        <div class="clearfix release">
+            <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 avatar-block">
+                <img class="center-block" src="{{userAvatar_url?userAvatar_url:'../../images/icon/icon-user.png'}}" alt="">
+            </div>
+            <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                <!--<textarea class="form-control" rows="10" placeholder="请输入评论" ng-model="comments_content"></textarea>-->
+                <textarea class="form-control" rows="10" placeholder="请输入评论" ng-model="mod_text"></textarea>
+                <div class="comment-star">
+                    <span class="glyphicon {{myStar_rating<1?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(1)"></span>
+                    <span class="glyphicon  {{myStar_rating<2?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(2)"></span>
+                    <span class="glyphicon  {{myStar_rating<3?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(3)"></span>
+                    <span class="glyphicon  {{myStar_rating<4?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(4)"></span>
+                    <span class="glyphicon  {{myStar_rating<5?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(5)"></span>
+                </div>
+                <a class="btn btn-primary comment-btn" href="#" ng-click="faBiao()">发表评论</a>
+            </div>
+        </div>
+        <ul class="list">
+            <li class="clearfix" ng-repeat="comment in commentList">
+                <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 avatar-block">
+                    <img class="center-block" src="{{comment.user.avatar_url?comment.user.avatar_url:'../../images/icon/icon-user.png'}}" alt="">
+                </div>
+                <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                    <p>
+                        <span class="nickname">{{comment.user.nickname}}</span>
+                        <span class="glyphicon {{comment.star_rating<1?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{comment.star_rating<2?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{comment.star_rating<3?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{comment.star_rating<4?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{comment.star_rating<5?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="pull-right text-time">{{comment.created_at}}</span>
+                    </p>
+                    <p>{{comment.content}}</p>
+                </div>
+            </li>
+        </ul>
+        <div class="page-blcok center-block">
+
+            <uib-pagination
+                    force-ellipses="true"
+                    boundary-links="true"
+                    boundary-link-numbers="true"
+                    total-items="total"
+                    ng-model="current"
+                    max-size="maxSize"
+                    ng-change="search(true)"
+                    items-per-page="pageTotal||10"
+                    class="pagination-sm"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    first-text="&laquo;"
+                    last-text="&raquo;"
+            ></uib-pagination>
+            &nbsp;&nbsp;
+            <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+            &nbsp;&nbsp;
+            <div class="pagination-info">
+                <span class="ng-binding">共有{{total}}条</span>
+            </div>
+
+        </div>
+        <!-- 分页结束 -->
+    </div>
+    </div>
+
+</div>

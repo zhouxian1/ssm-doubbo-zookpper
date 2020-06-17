@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="gxCmsApp">
+<head>
+    <!-- META SECTION -->
+    <title>GEOVIS-ADMIN</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="icon" href="app/common/img/favicon.ico" type="image/x-icon"/>  <!--小图标-->
+    <link rel="stylesheet" href="component/css/fontawesome/font-awesome.min.css">
+    <!--ueditor 配置样式文件-->
+    <link rel="stylesheet" href="component/js/ueditor-1.4.3.3/themes/default/_css/ueditor.css">
+    <link rel="stylesheet" href="component/js/ueditor-1.4.3.3/themes/iframe.css">
+    <link rel="stylesheet" href="component/js/ueditor-1.4.3.3/themes/default/dialogbase.css">
+    <!--end ueditor 配置样式-->
+    <!-- 引入模块相应的样式表 -->
+    <link rel="stylesheet" href="component/css/bootstrap/bootstrap.min.css">
+    <link rel="stylesheet" href="component/css/bootstrap/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="component/css/jquery/jquery-ui.min.css">
+    <link rel="stylesheet" href="app/common/public.css">
+    <link rel="stylesheet" href="app/channel/channel-channelManage.css">
+    <link rel="stylesheet" href="app/order/order-orderManage.css">
+    <link rel="stylesheet" href="app/order/order-orderDetailed.css">
+    <link rel="stylesheet" href="app/order/order-cardNumber.css">
+    <link rel="stylesheet" href="app/goods/goods-goodsDetailed.css">
+    <link rel="stylesheet" href="app/goods/goods-addGoods.css">
+    <link rel="stylesheet" href="app/goods/goods-addClassify.css">
+    <link rel="stylesheet" href="app/user/user-userManage.css">
+    <link rel="stylesheet" href="app/stock/stock-queryStock.css">
+    <link rel="stylesheet" href="app/web/web-webManageCategories.css">
+    <link rel="stylesheet" href="app/offlineDelivery/offlineDelivery.css">
+    <link rel="stylesheet" href="app/user/user-userDetailed.css">
+    <!-- 轮播图管理样式 -->
+    <link rel="stylesheet" href="app/web/web-webFloor.css">
+    <link rel="stylesheet" href="app/web/web-webBannerImg.css">
+    <!-- 公用的样式 -->
+    <link rel="stylesheet" href="app/common/theme-default.css">
+    <link rel="stylesheet" href="app/common/dropzone.css">
+    <link rel="stylesheet" href="app/common/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="app/stock/stock-addBatch.css">
+    <link rel="stylesheet" href="app/stock/stock-recyclingConfig.css">
+    <base href="/">
+</head>
+<body ng-controller="mainCtrl" style="font-size:12px;">
+<!--登录界面-->
+<!-- START PAGE CONTAINER -->
+<div  class="page-container">
+    <!--START X-NAVIGATION Y导航条! -->
+    <div class="page-sidebar">
+        <!--导航详情-->
+        <ul class="x-navigation">
+            <!--nav-bar 交叉-->
+            <li class="xn-profile">
+                <a href="index.html">GEOVIS-ADMIN</a>
+                <a href="#" class="x-navigation-control">
+                    <span class="glyphicon glyphicon-list"></span>
+                </a>
+            </li>
+            <!--X-nav logo下-->
+            <!--<li class="xn-profile">-->
+                <!--<a href="#" class="profile-mini">-->
+                    <!--&lt;!&ndash;<img ng-src="common/img/logo.png" alt="欢迎加入"/>&ndash;&gt;-->
+                <!--</a>-->
+                <!--<div class="profile">-->
+                    <!--<div class="profile-image">-->
+                        <!--&lt;!&ndash;<img ng-src="common/img/logo.png" alt="John Doe"/>&ndash;&gt;-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+            <!--后台管理-->
+            <li class="xn-title">后台管理</li>
+            <!--销售统计-->
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-suitcase"></span> <span class="xn-text">应用管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/recycling"><span class="fa fa-bars"></span>应用列表</a></li>
+                </ul>
+            </li>
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-suitcase"></span> <span class="xn-text">插件管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/plugManage"><span class="fa fa-bars"></span>插件列表</a></li>
+                </ul>
+            </li>
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-suitcase"></span> <span class="xn-text">资讯管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/consultManage"><span class="fa fa-bars"></span>资讯列表</a></li>
+                    <li class="xn-navActive"><a href="#/addConsult"><span class="fa fa-bars"></span>添加资讯</a></li>
+                </ul>
+            </li>
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-suitcase"></span> <span class="xn-text">需求管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/demand"><span class="fa fa-bars"></span>需求列表</a></li>
+                </ul>
+            </li>
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-suitcase"></span> <span class="xn-text">评论管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/comments"><span class="fa fa-bars"></span>评论列表</a></li>
+                </ul>
+            </li>
+            <!--订单管理-->
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-suitcase"></span> <span class="xn-text">知识管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/orderManage"><span class="fa fa-suitcase"></span>知识列表</a></li>
+                    <li class="xn-navActive"><a href="#/addOrder"><span class="fa fa-sitemap"></span>添加知识</a></li>
+                    <!--<li class="xn-navActive"><a href="#/mylogin"><span class="fa fa-sitemap"></span>登录</a></li><li class="xn-navActive"><a href="#/threeStore"><span class="fa fa-sitemap"></span>第三方店铺</a></li>-->
+                </ul>
+            </li>
+            <!--商品管理-->
+            <!--<li class="xn-openable">-->
+                <!--<a href="">-->
+                    <!--<span class="fa fa-qrcode">-->
+                    <!--</span> <span class="xn-text">文档管理</span>-->
+                    <!--<span class="fa fa-chevron-down" style="float:right"></span>-->
+                <!--</a>-->
+                <!--<ul>-->
+                    <!--<li class="xn-navActive"><a href="#/goodsManage"><span class="fa fa-qrcode"></span> 文档列表</a></li>-->
+                    <!--&lt;!&ndash;<li class="xn-navActive"><a href="#/addClassify"><span class="fa fa-gears"></span> 添加分类</a></li>&ndash;&gt;-->
+                    <!--<li class="xn-navActive"><a href="#/addGoods"><span class="fa fa-level-up"></span> 添加文档</a></li>-->
+                    <!--&lt;!&ndash;<li class="xn-navActive"><a href="#/comeOnCardConfig"><span class="fa fa-users"></span>配置充值商品</a></li>&ndash;&gt;-->
+
+                <!--</ul>-->
+            <!--</li>-->
+            <!--入库管理-->
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-truck"></span> <span class="xn-text">分类管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <!--<li class="xn-navActive"><a href="#/inStock"><span class="fa fa-truck"></span>卡片查询</a></li>-->
+                    <li class="xn-navActive"><a href="#/addBatch"><span class="fa fa-plus-square"></span>分类管理</a></li>
+                    <li class="xn-navActive"><a href="#/addClassify"><span class="fa fa-gears"></span> 添加分类</a></li>
+                    <!--<li class="xn-navActive"><a href="#/comeOnCardReported"><span class="fa fa-apple"></span>报损表</a></li>-->
+                    <!--<li class="xn-navActive"><a href="#/exportExcel"><span class="fa fa-car"></span>导出excel列表</a></li>-->
+                    <!--<li class="xn-navActive"><a href="#/recycling"><span class="fa fa-bars"></span>回收日志</a></li>-->
+                    <!--<li class="xn-navActive"><a href="#/recyclingConfig"><span class="fa fa-ambulance"></span>回收入库日志</a></li>-->
+                    <!--<li class="xn-navActive"><a href="#/recyclingOut"><span class="fa fa-archive"></span>回收出库日志</a></li>-->
+                </ul>
+            </li>
+            <!--渠道管理-->
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-inbox"></span> <span class="xn-text">标签管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/channelManage"><span class="fa fa-inbox"></span>标签管理</a></li>
+                    <!--<li class="xn-navActive"><a href="#/associatedPhone"><span class="fa fa-adn"></span>添加关联手机号</a></li>-->
+
+                    <li class="xn-navActive"><a href="#/addChannel"><span class="fa fa-thumb-tack"></span>添加标签</a></li>
+                    <!--<li class="xn-navActive"><a href="#/addIssuer"><span class="fa fa-ticket"></span>添加发行商</a></li>-->
+                    <!--<li class="xn-navActive"><a href="#/addConfig"><span class="fa fa-group"></span>添加配置</a></li>-->
+                </ul>
+            </li>
+            <!--前台管理 -->
+            <!--<li class="xn-title">前台管理</li>-->
+            <!--用户管理-->
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-user"></span>
+                    <span class="xn-text">用户管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/userManage"><span class="fa fa-user"></span> 用户管理</a></li>
+                    <!--<li class="xn-navActive"><a href="#/addUserDetail"><span class="fa fa-users"></span> 用户详情</a></li>-->
+                </ul>
+            </li>
+            <!--权限管理-->
+            <!--<li class="xn-openable">-->
+                <!--<a href="#">-->
+                    <!--<span class="fa fa-unlock-alt"></span>-->
+                    <!--<span class="xn-text">权限管理</span>-->
+                    <!--<span class="fa fa-chevron-down" style="float:right"></span>-->
+                <!--</a>-->
+                <!--<ul>-->
+                    <!--<li class="xn-navActive"><a href="#/powerManage"><span class="fa fa-unlock-alt"></span> 权限管理</a>-->
+                    <!--</li>-->
+                    <!--<li class="xn-navActive"><a href="#/addPower"><span class="fa fa-unlock"></span> 添加管理</a></li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--财务管理-->
+            <!--<li class="xn-openable">-->
+                <!--<a href="#/">-->
+                    <!--<span class="fa fa-money"></span>-->
+                    <!--<span class="xn-text">财务管理</span>-->
+                    <!--<span class="fa fa-chevron-down" style="float:right"></span>-->
+                <!--</a>-->
+                <!--<ul>-->
+                    <!--<li class="xn-navActive"><a href="#/financeManage"><span class="fa fa-money"></span> 财务管理</a></li>-->
+                    <!--<li class="xn-navActive"><a href="#/withdrawRecord"><span class="fa fa-star-half-empty"></span>提现记录</a>-->
+                    <!--</li>-->
+                <!--</ul>-->
+            <!--</li>-->
+            <!--网站管理-->
+            <li class="xn-openable">
+                <a href="#">
+                    <span class="fa fa-tachometer"></span>
+                    <span class="xn-text">轮播管理</span>
+                    <span class="fa fa-chevron-down" style="float:right"></span>
+                </a>
+                <ul>
+                    <li class="xn-navActive"><a href="#/webBanner"><span class="fa fa-tachometer"></span><span
+                            class="xn-text">轮播管理</span></a></li>
+                    <li class="xn-navActive"><a href="#/addBanner"><span class="fa fa-tag"></span><span class="xn-text">添加轮播图</span></a>
+                    </li>
+                </ul>
+            </li>
+            <!--个人信息-->
+            <!--<li class="xn-navActive">-->
+                <!--<a href="#/personal">-->
+                    <!--<span class="fa fa-comment"></span>-->
+                    <!--<span class="xn-text">个人信息</span>-->
+
+                <!--</a>-->
+            <!--</li>-->
+            <!--提交打款-->
+            <!--<li class="xn-navActive">-->
+                <!--<a href="#/submitPaid">-->
+                    <!--<span class="fa fa-heart"></span>-->
+                    <!--<span class="xn-text">提交打款</span>-->
+                <!--</a>-->
+            <!--</li>-->
+            <!--线下发货管理-->
+            <!--<li class="xn-navActive">-->
+                <!--<a href="#/offlineDelivery">-->
+                    <!--<span class="fa fa-heart"></span>-->
+                    <!--<span class="xn-text">短信管理</span>-->
+                <!--</a>-->
+            <!--</li>-->
+        </ul>
+        <!-- END X-NAVIGATION -->
+    </div>
+    <div class="page-content" style="min-height:1500px;">
+        <!-- START X-NAVIGATION VERTICAL 开始X轴导航条-->
+        <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+            <!-- TOGGLE NAVIGATION -->
+            <li class="xn-icon-button">
+                <a href="#" class="x-navigation-minimize">
+                    <span class="glyphicon glyphicon-th-list"></span>
+                </a>
+            </li>
+            <!-- END TOGGLE NAVIGATION -->
+            <!-- SEARCH -->
+            <!-- END SEARCH -->
+            <!-- 退出 -->
+            <li class="xn-icon-button pull-right">
+                <a class="mb-control" data-box="#mb-signout">
+                    <span class="glyphicon glyphicon-off"></span>
+                </a>
+            </li>
+            <!-- END 退出 -->
+            <!--管理员登录 -->
+            <!--<li class="xn-icon-button pull-right">-->
+                <!--<a>-->
+                    <!--<span class="glyphicon glyphicon-user"></span>-->
+                <!--</a>-->
+                <!--<div class="informer informer-warning">改</div>-->
+
+                <!--<div class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">-->
+                    <!--<div class="panel-heading">-->
+                        <!--<h3 class="panel-title"><span class="fa fa-tasks"></span> 密码</h3>-->
+                        <!--<div class="pull-right">-->
+                            <!--<a href="#/personal" class="label label-warning">个人中心</a>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="panel-body list-group" style="height: 200px;">-->
+                        <!--<a class="list-group-item">-->
+                            <!--<strong>原密码</strong>-->
+                            <!--<div>-->
+                                <!--<input type="text" name="password" ng-model="mod_OldPwd" class="form-control"-->
+                                       <!--style="width: 98%;background-color:#fff;color:black;outline:none;">-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<small class="text-muted">原密码</small>&ndash;&gt;-->
+                        <!--</a>-->
+                        <!--<a class="list-group-item" href="#">-->
+                            <!--<strong>新密码</strong>-->
+                            <!--<div>-->
+                                <!--<input type="password" ng-model="mod_newPWd" class="form-control"-->
+                                       <!--style="width: 98%;background-color:#fff;color:black;outline:none;">-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<small class="text-muted">新密码</small>&ndash;&gt;-->
+                        <!--</a>-->
+                        <!--<a class="list-group-item" href="#">-->
+                            <!--<strong>确认密码</strong>-->
+                            <!--<div>-->
+                                <!--<input ng-blur="confirmPwd(mod_newPWdFirm)" type="password" ng-model="mod_newPWdFirm"-->
+                                       <!--class="form-control"-->
+                                       <!--style="width: 98%;background-color:#fff;color:black;outline:none;">-->
+                            <!--</div>-->
+                            <!--&lt;!&ndash;<small class="text-muted">确认密码</small>&ndash;&gt;-->
+                        <!--</a>-->
+                    <!--</div>-->
+                    <!--<div class="panel-footer text-center" style="padding-top:10px;">-->
+                        <!--<a class="btn btn-default" ng-click="changePwd()">修改密码</a>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</li>-->
+
+            <!-- END 管理员 -->
+            <!-- 退出 -->
+        </ul>
+        <div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box_password">
+            <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box">
+                <p class="delete_or_not_title" style="margin-top:20px;">两次密码不一致</p>
+                <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer"
+                   ng-click="sure_delete_or_not()">知道啦</p>
+                <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+            </div>
+        </div>
+        <div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box_modify">
+            <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box">
+                <p class="delete_or_not_title" style="margin-top:46px;">修改密码成功</p>
+                <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer"
+                   ng-click="sure_delete_or_not_modify()">知道啦</p>
+                <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+            </div>
+        </div>
+        <div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box_can">
+            <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box">
+                <p class="delete_or_not_title" style="margin-top:46px;">参数不能为空</p>
+                <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer"
+                   ng-click="sure_delete_or_not_can()">知道啦</p>
+                <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+            </div>
+        </div>
+        <div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box_error">
+            <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box">
+                <p class="delete_or_not_title" style="margin-top:20px;">{{text}}</p>
+                <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer"
+                   ng-click="sure_delete_or_error()">知道啦</p>
+                <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+            </div>
+        </div>
+
+        <!--使用ng-view指令引入路由模块-->
+        <div ng-view=""></div>
+    </div>
+    <!-- END PAGE CONTAINER -->
+
+
+    <!-- MESSAGE BOX 信息弹出框-->
+    <div class="message-box animated fadeIn" data-sound="alert" id="mb-signout">
+        <div class="mb-container">
+            <div class="mb-middle">
+                <div class="mb-title">
+                    <span class="fa fa-sign-out"></span>
+                    是否<strong>退出</strong> ?
+                </div>
+                <div class="mb-content">
+                    <p>确定要退出吗?</p>
+                    <p>退出后,尚未保存的内容将被取消</p>
+                </div>
+                <div class="mb-footer">
+                    <div class="pull-right">
+                        <a class="btn btn-success btn-lg mb-control-close" ng-click="nologout()">反悔退出了</a>
+                        <button class="btn btn-default btn-lg mb-control-close" ng-click="logout()">仍决然退出</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 引入JS文件 -->
+<script type="text/javascript" src="component/js/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="component/js/jquery/jquery-ui.min.js"></script>
+<script type="text/javascript" src="component/js/bootstrap/bootstrap.min.js"></script>
+<script type="text/javascript" src="component/js/angular/angular.js"></script>
+<script type="text/javascript" src="component/js/angular/angular-route.js"></script>
+<script type="text/javascript" src="component/js/angular/angular-cookies.js"></script>
+<script type="text/javascript" src="component/js/pagination.js"></script>
+<script type="text/javascript" src="component/js/ueditor-1.4.3.3/ueditor.config.js"></script><!-- ueditor 配置文件 -->
+<script type="text/javascript" src="component/js/ueditor-1.4.3.3/ueditor.all.min.js"></script>
+<script type="text/javascript" src="component/js/bootstrap-paginator.js"></script>
+<!-- ueditor 编辑器源码文件 -->
+<script type="text/javascript" src="component/js/ueditor-1.4.3.3/_parse/parse.js"></script>
+<!--引入模块对应脚本文件-->
+<!--公用-->
+<script type="text/javascript" src="app/common/public.js"></script>
+<!--星图登录-->
+<script type="text/javascript" src="app/mylogin/mylogin.js"></script>
+<!--权限管理-->
+<script type="text/javascript" src="app/power/power-powerManage.js"></script>
+<!--添加权限-->
+<script type="text/javascript" src="app/power/power-addPower.js"></script>
+<!--权限详情-->
+<script type="text/javascript" src="app/power/power-powerDetailed.js"></script>
+<!--订单管理-->
+<script type="text/javascript" src="app/order/order-orderManage.js"></script>
+<!--订单详情-->
+<script type="text/javascript" src="app/order/order-orderDetailed.js"></script>
+<!--新增订单-->
+<script type="text/javascript" src="app/order/order-addOrder.js"></script>
+<!--订单的卡片数量-->
+<script type="text/javascript" src="app/order/order-cardNumber.js"></script>
+<!--个人信息-->
+<script type="text/javascript" src="app/personal/personal.js"></script>
+<!--提交打款-->
+<script type="text/javascript" src="app/personalPaid/personal-submitPaid.js"></script>
+<!--商品管理-->
+<script type="text/javascript" src="app/goods/goods-goodsManage.js"></script>
+<!--添加分类-->
+<script type="text/javascript" src="app/goods/goods-addClassify.js"></script>
+<!--添加商品-->
+<script type="text/javascript" src="app/goods/goods-addGoods.js"></script>
+<!--商品详情-->
+<script type="text/javascript" src="app/goods/goods-goodsDetailed.js"></script>
+<!--入库管理-->
+<script type="text/javascript" src="app/stock/stock-inStock.js"></script>
+<!--批量导入-->
+<script type="text/javascript" src="app/stock/stock-addBatch.js"></script>
+<script type="text/javascript" src="app/stock/stock-queryStock.js"></script>
+<!--渠道管理-->
+<script type="text/javascript" src="app/channel/channel-channelManage.js"></script>
+<!--添加渠道-->
+<script type="text/javascript" src="app/channel/channel-addChannel.js"></script>
+<!--添加发行商-->
+<script type="text/javascript" src="app/channel/channel-addIssuer.js"></script>
+<!--渠道详情-->
+<script type="text/javascript" src="app/channel/channel-channelDetailed.js"></script>
+<script type="text/javascript" src="app/channel/channel-addconfig.html"></script>
+<!--用户管理-->
+<script type="text/javascript" src="app/user/user-userManage.js"></script>
+<!--批量上传-->
+<script type="text/javascript" src="app/user/user-addUser.js"></script>
+<!--用户详情-->
+<script type="text/javascript" src="app/user/user-userDetailed.js"></script>
+<!--财务管理-->
+<script type="text/javascript" src="app/finance/finance-financeManage.js"></script>
+<!--提现记录-->
+<script type="text/javascript" src="app/finance/finance-withdrawRecord.js"></script>
+<!--提现详情-->
+<script type="text/javascript" src="app/finance/finance-withdrawDetailed.js"></script>
+<!--网站管理-->
+<script type="text/javascript" src="app/web/web-webManage.js"></script>
+<!--页面分类-->
+<script type="text/javascript" src="app/web/web-webClassify.js"></script>
+<!-- 更改页面分类 -->
+<script type="text/javascript" src="app/web/web-webManageCategories.js"></script>
+
+<!-- 轮播图管理 20161220 -->
+<script type="text/javascript" src="app/web/web-webFloor.js"></script>
+<script type="text/javascript" src="app/web/web-webBannerImg.js"></script>
+
+<script type="text/javascript" src="app/channel/channel-addconfig.js"></script>
+<script type="text/javascript" src="app/channel/channel-suppGoods.js"></script>
+<!--添加关联手机号-->
+<script type="text/javascript" src="app/channel/associatedPhone.js"></script>
+<!--第三方店铺-->
+<script type="text/javascript" src="app/order/order-threeStore.js"></script>
+<!-- 线下发货管理 -->
+<script type="text/javascript" src="app/offlineDelivery/offlineDelivery.js"></script>
+<!--加油卡订单-->
+<script type="text/javascript" src="app/order/order-comeOnCard.js"></script>
+<!--加油卡详情-->
+<script type="text/javascript" src="app/order/order-comeOnCardDetail.js"></script>
+
+<!--卡片详情-->
+<script type="text/javascript" src="app/order/order-comeOnCardList.js"></script>
+<!--报损表-->
+<script type="text/javascript" src="app/order/order-comeOnCardReported.js"></script>
+<!--配置加油卡-->
+<script type="text/javascript" src="app/order/order-comeOnCardConfig.js"></script>
+<!--导出excel列表-->
+<script type="text/javascript" src="app/stock/stock-exportExcel.js"></script>
+<!--回收管理-->
+<script type="text/javascript" src="app/stock/stock-recyclingManage.js"></script>
+<!--回收查询详情-->
+<script type="text/javascript" src="app/stock/stock-recyclingQuery.js"></script>
+<!--回收系统-->
+<script type="text/javascript" src="app/stock/stock-recyclingConfig.js"></script>
+<script type="text/javascript" src="app/stock/stock-recyclingOut.js"></script>
+<script type="text/javascript" src="app/demand/demandManage.js"></script>
+<script type="text/javascript" src="app/comments/commentsManage.js"></script>
+<script type="text/javascript" src="app/web/addBanner.js"></script>
+<script type="text/javascript" src="app/consultManage/consultManage.js"></script>
+<script type="text/javascript" src="app/plugManage/plugManage.js"></script>
+<script type="text/javascript" src="app/consultManage/addConsultManage.js"></script>
+<!-- 页面相关的插件和功能 -->
+<script type='text/javascript' src='component/js/icheck/icheck.min.js'></script>
+<script type="text/javascript" src="component/js/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+
+<script type="text/javascript" src="component/js/blueimp/jquery.blueimp-gallery.min.js"></script>
+<script type="text/javascript" src="component/js/dropzone/dropzone.min.js"></script>
+<script type="text/javascript" src="component/js/scrolltotop/scrolltopcontrol.js"></script>
+<script type="text/javascript" src="component/js/angular/angular-file-uploader.js"></script>
+
+<script type="text/javascript" src="component/js/bootstrap/bootstrap-select.js"></script>  <!--下拉框插件-->
+<script type="text/javascript" src="component/js/datatables/jquery.dataTables.min.js"></script>  <!--表格插件-->
+
+<script type="text/javascript" src="component/js/bootstrap/bootstrap-datepicker.js"></script> <!--日期插件-->
+<script type="text/javascript" src="component/js/bootstrap/bootstrap-datetimepicker.min.js"></script> <!--日期插件-->
+<script type="text/javascript" src="component/js/bootstrap/bootstrap-datetimepicker.zh-CN.js"></script> <!--日期插件-->
+<script type="text/javascript" src="component/js/moment.min.js"></script>
+<!--<script type="text/javascript" src="../component/js/daterangepicker/daterangepicker.js"></script>-->
+<!--<script type="text/javascript" src="../component/js/scrolltotop/scrolltopcontrol.js"></script>-->
+<script type="text/javascript" src="component/js/angular/angular-file-upload.directives.js"></script>
+<!--<script type="text/javascript" src="common/js/settings.js"></script>-->
+<script type="text/javascript" src="app/common/js/plugins.js"></script>
+<script type="text/javascript" src="app/common/js/actions.js"></script>
+<script type="text/javascript" src="app/common/layui/layui.js"></script>
+
+<!--sweetAlert-->
+<script src="app/common/sweetAlert/sweetalert.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="app/common/sweetAlert/sweetalert.css"/>
+</body>
+</html>
+
+
+
+
+
+

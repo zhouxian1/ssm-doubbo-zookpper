@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html ng-app="myApp" ng-controller="title">
+<head>
+    <meta charset="UTF-8">
+    <title>{{jquery}}</title>
+    <script src="../../component/js/angular/angular.min.js"></script>
+    <link rel="stylesheet" href="../../component/css/bootstrap/bootstrap.min.css">
+
+</head>
+<body ng-controller="PhoneListCtrl">
+  <ul>
+      <li ng-repeat="phone in phones">
+          {{phone.name}}
+          <p>{{phone.snippet}}</p>
+          <h2>{{phone.title}}</h2>
+          <p>Total number of phones:{{phones.length}}</p>
+      </li>
+  </ul>
+  <table>
+      <tr>
+          <th>row number</th>
+      </tr>
+      <tr ng-repeat="i in [0,1,2,3,4,5,6,7]">
+          <td>{{i}}</td>
+      </tr>
+  </table>
+  <table>
+      <tbody>
+      <tr ng-repeat="i in [0,1,2,3,4,5,6,7]">
+          <td>{{i+1}}</td>
+      </tr>
+      </tbody>
+  </table>
+  <input type="text" ng-model="jquery">
+  <select ng-model="orderProp">
+      <option value="name">me</option>
+      <option value="age">24</option>
+  </select>
+  <table class="table table-bordered">
+      <tr ng-repeat="li in lis | orderBy:orderProp">
+          <td>{{li.names}}</td>
+          <td>{{li.sex}}</td>
+          <td>{{li.age}}</td>
+
+      </tr>
+  </table>
+  <p>{{jquery}}hh</p>
+  <div>
+      <input type="text" ng-model="person.name" placeholder="Your name">
+      <h2>hello {{person.name}}</h2>
+  </div>
+  <p>{{clock}}时间</p>
+  <script>
+      angular.module('myApp',[])
+              .controller('PhoneListCtrl',function($scope){
+          $scope.phones=[
+              {name:"Nexus S",snippet:"Fast just got faster with Nexus S.",title:"hello1",age:'20'},
+              {name:"Nexus S",snippet:"Fast just got faster with Nexus S.",title:"hello world2",age:'22'},
+              {name:"Nexus S",snippet:"Fast just got faster with Nexus S.",title:"hello world3",age:'24'},
+              {name:"Nexus S",snippet:"Fast just got faster with Nexus S.",title:"hello world4",age:'23'}
+          ];
+           $scope.lis=[
+               {names:"杨",sex:'男',age:'30'},
+               {names:"李",sex:'女',age:'20'},
+               {names:"钟",sex:'男',age:'10'},
+               {names:"型",sex:'女',age:'35'}
+           ]
+         $scope.hello="Hello World!"
+          $scope.orderProp="age";
+                  $scope.clock="2116"
+                 function PhoneListCtrl($scope,$timeout){
+                      var updateClock=function(){
+                          $scope.clock=new Date();
+                          console.log($scope.clock);
+                          $timeout(function(){
+                              updateClock();
+                          },1000)
+                      };
+                      updateClock();
+
+                 }
+
+   })
+              .controller("title",function($scope){
+                $scope.jquery="欢迎光临本店"
+              })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,307 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>网站管理</a>&gt;分类管理
+    </p>
+    <!--end 标题头-->
+
+    <!--访客量-->
+    <div class="page-content-wrap" style="margin-top:5px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日访客</div>
+                        <div class="widget-title">1.22w</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">访客转化率</div>
+                        <div class="widget-title">72%</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon" >
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日PV</div>
+                        <div class="widget-title">19992</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日UA</div>
+                        <div class="widget-title">8866</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--end 访客量-->
+    <style>
+        .modal_modal{
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background:rgba(0,0,0,.5);
+            z-index:999;
+
+        }
+        .modal_modal .modal-dialog {
+            width: 400px;
+            margin: 200px auto 0px auto;
+        }
+        .modal-content{
+            background:#fff;
+            border:1px solid #aaa;
+            border-radius:4px;
+            box-shadow:0 0 6px #aaa;
+            padding:20px;
+            height:300px;
+
+        }
+        .modal_modal form input{
+            box-sizing:border-box;
+            display:block;
+            /*width:100%;*/
+            border:1px solid #aaa;
+            border-radius:4px;
+            padding:6px;
+            margin-bottom:12px;
+        }
+
+        .modal_modal form .submit{
+            background:#333;
+            color:#fff;
+            outline:none;
+            cursor: pointer;
+            border-radius:4px;
+        }
+        .modal_modal form .submit:active{
+            background:#d03030;
+        }
+        .half-mask {
+            background-color: rgba(0, 0, 0, 0.7);
+            height: 100%;
+            width: 7.5%;
+            position: absolute;
+            top: 1%;
+            left: 0px;
+            padding: 15px;
+            margin: 0 auto;
+        }
+        .half-mask a {
+            color: #90D6F0;
+        }
+        /*.half-mask:hover {*/
+            /*top: 0;*/
+            /*transition: top 200ms;*/
+        /*}*/
+
+    </style>
+    <div class="page-content-wrap">
+          <div>
+                <div style="position:relative;margin:46px auto 0 auto;width:1000px;height:auto;" ng-repeat="imgPlay in upGroundList" ng-show="imgPlay.isGrounding == 1">
+                    <p style="margin-bottom:10px;vertical-align:middle;float:left;font-size:20px;color:#FF3c00;padding:0px;overflow:hidden;">{{imgPlay.showFloorId}}F</p>
+                    <p style="margin-bottom:10px;vertical-align:middle;float:left;font-size:20px;color:#3c3c3c;margin-left:12px;">{{imgPlay.classifi}}</p>
+                    <p style="display:inline;float:right;height:1px;width:100%;background-color:#e5e5e5;margin-bottom:20px;"></p>
+                    <ul style="list-style:none;position:relative;width:1000px;float:left;margin-left:20px;">
+                        <li style="list-style:none;margin-bottom:50px;">
+                            <div style="position:relative;">
+                                <img ng-src="http://img.gxcards.com/{{imgPlay.imgUrl}}"  style="width:75px;height:125px;border:1px dotted #ddd">&nbsp;&nbsp;<br/><br/>
+                                <div style="position:absolute;left:15px;top:45px;">
+                                    <div style="background-color:#fff;color:#fff;">
+                                       <span class="glyphicon glyphicon-plus" style="background-color:#fff;" ng-click="showImg(imgPlay.websiteId)" ></span>
+                                   </div>
+                                </div>
+                            </div>
+                            <!--<span style="display:none"> {{mgPlay.eventUrl}}</span>-->
+                            <!--<span style="display:none;">分类id:{{imgPlay.websiteId}}</span>-->
+                            <!--<span style="display:none;">产品名称:{{imgPlay.classifi}}</span>-->
+                            <a  class="btn btn-default" style="background:gray;color:#fff;" ng-click="shelf(imgPlay.websiteId)">下架</a>
+                        </li>
+                    </ul>
+                </div>
+          </div>
+          <div style="clear:both;"></div>
+        <div>
+            <div style="font-size:16px;background-color:#f5f5f5;height:100px;text-align:center;">
+                <h3 style="padding-top:35px;">下架楼层列表</h3>
+                <button class="btn btn-default btn-success pull-right" ng-click="addCell()" style="margin-right:20px;">新增楼层</button>
+            </div>
+            <div style="position:relative;margin:46px auto 0 auto;width:1000px;height:auto;" ng-repeat="imgPlay in downGroundList" ng-show="imgPlay.isGrounding == null || imgPlay.isGrounding == 0">
+                <div>
+                <!--<p style="margin-bottom:10px;vertical-align:middle;float:left;font-size:20px;color:#FF3c00;padding:0px;overflow:hidden;">F</p>-->
+                <p style="margin-bottom:10px;vertical-align:middle;float:left;font-size:20px;color:#3c3c3c;margin-left:12px;">{{imgPlay.classifi}}</p>
+                <p style="display:inline;float:right;height:1px;width:100%;background-color:#e5e5e5;margin-bottom:20px;"></p>
+                </div>
+                <ul style="list-style:none;position:relative;width:1000px;float:left;margin-left:20px;">
+                    <li style="list-style:none;margin-bottom:50px;">
+                        <div style="position:relative;overflow:hidden;">
+                            <div style="width:75px;height:125px;">
+                                    <img ng-src="http://img.gxcards.com/{{imgPlay.imgUrl}}" class="img-responseive"  style="width:75px;height:125px;border:1px dotted #ddd">&nbsp;&nbsp;<br/><br/>
+                                    <div class="half-mask">
+                                        <button type="button" ng-click="addGoodsAll(imgPlay.floorId)" style="width:75%;background-color:#ac2925;color:#fff;">添加商品</button>
+                                    </div>
+                                    <div style="position:absolute;left:15px;top:95px;">
+                                        <button class="btn btn-default" style="background-color:gray;color:#fff;">
+                                            <span class="glyphicon glyphicon-plus" ng-click="showImg(imgPlay.websiteId)" ></span>
+                                        </button>
+                                    </div>
+                            </div>
+                        </div>
+                        <span> {{imgPlay.eventUrl}}</span>
+                        <br/>
+                        <br/>
+                        <span>分类id:{{imgPlay.websiteId}}</span>
+                        <br/>
+                        <br/>
+                        <span>楼层id:{{imgPlay.floorId}}</span>
+                        <br/>
+                        <br/>
+                        <span class="editOk">产品名称:{{imgPlay.classifi}}<button  class="btn btn-default" style="background:#e1edf7;margin-left:20px;" ng-click="editClass($index)"><span class="glyphicon glyphicon-edit"></span></button></span>
+                        <span class="editShow" style="display:none;">产品名称:<input type="text" ng-model="parmFloor.classifi">&nbsp;<button  class="btn btn-default" style="background:#e1edf7"><span class="glyphicon glyphicon-edit"></span></button><button class="btn btn-default btn-success" style="color:#fff;" ng-click="newShop(imgPlay.websiteId)">完成</button></span>
+                        <br/>
+                        <br/>
+                        <a href="" class="btn btn-default" style="background:#e4393c;color:#fff;" ng-click="shelfAdd(imgPlay.websiteId)">上架</a>
+                        <button class="btn btn-default btn-danger"><span class="glyphicon glyphicon-remove" ng-click="deleteCellAll($index)"></span>
+                        </button>
+                        <!--<button class="btn btn-default btn-danger" ng-click="addGoodsAll()">添加商品</button>-->
+                    </li>
+                </ul>
+            </div>
+     </div>
+
+        <script>
+            $(".down_down").sortable();
+        </script>
+
+
+        <!----------------添加商品---上架--------------->
+        <!--修改图片-->
+        <div class="modal_modal"  id="showImg" style="display:none;">
+            <div class="modal-dialog">
+                <div class="modal-content" style="position:relative;">
+                    <h2 style="margin-bottom:20px;font-size:16px;">修改图片</h2>
+                    <!--<form id="login-form">-->
+                    <div class="form-group" style="margin-top:50px;">
+                        <label class="col-md-3" style="font-size:14px;">修改图片</label>
+                        <input type="file" class="col-md-8" style="border:none;" custom-on-change="uploadFile">
+                    </div>
+                    <div style="position:absolute;left:390px;top:-8px;color:#fff;border:1px solid #ddd;font-size:20px;border-radius:50%;background-color:lightpink;">
+                        <span class="glyphicon glyphicon-remove" ng-click="fade()"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-4"></div>
+                        <input type="submit" style="margin-top:40px;margin-right:70px;" class="btn btn-default" value="确认上传" ng-click="fireImg( downGroundList.websiteId )" placeholder="确认上传">
+                    </div>
+
+                    <!--</form>-->
+                </div>
+            </div>
+        </div>
+        <!-----------------添加商品---------------------------->
+        <div class="modal_modal"  id="show" style="display:none;">
+            <div class="modal-dialog">
+                <div class="modal-content" style="position:relative;">
+                    <div style="position:absolute;left:390px;top:-8px;color:#fff;border:1px solid #ddd;font-size:20px;border-radius:50%;background-color:lightpink;">
+                        <span class="glyphicon glyphicon-remove" ng-click="fadeShop()"></span>
+                    </div>
+                    <h2 style="margin-bottom:20px;font-size:16px;">商品信息</h2>
+                    <form id="login-form">
+                        <div class="form-group">
+                            <label class="col-md-3">商品Id</label>
+                            <input type="text" class="col-md-8" ng-model="addGoodsId" placeholder="商品id">
+                        </div>
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-md-3">楼层编号</label>-->
+                            <!--<input type="text" class="col-md-8" ng-model="pramGoods.floorId" placeholder="楼层编号">-->
+                        <!--</div>-->
+                        <div class="form-group">
+                            <div class="col-md-5"></div>
+                            <input type="submit" style="margin-top:20px;" class="btn btn-default col-md-4" value="点击添加" ng-click="addGoodsShop()" placeholder="确认上传">
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+   <!--添加楼层-->
+    <div class="modal_modal" id="showCell" style="display:none;">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <h2 style="margin-bottom:20px;font-size:16px;">商品信息</h2>
+                <div style="position:absolute;left:390px;top:-8px;color:#fff;border:1px solid #ddd;font-size:20px;border-radius:50%;background-color:lightpink;">
+                    <span class="glyphicon glyphicon-remove" ng-click="fadeMessage()"></span>
+                </div>
+                <form>
+                    <div class="form-group">
+                        <label class="col-md-3">商品分类</label>
+                        <input type="text" class="col-md-8" ng-model="parmAddCell.classifi" placeholder="商品分类">
+                    </div>
+                    <!--<div class="form-group">-->
+                        <!--<label class="col-md-3">活动地址</label>-->
+                        <!--<input type="text" class="col-md-8" ng-model="parmAddCell.eventUrl" placeholder="http://gxcards.com">-->
+                    <!--</div>-->
+                    <div class="form-group">
+                        <label class="col-md-3">楼层编号</label>
+                        <input type="text" class="col-md-8" ng-model="parmAddCell.floorId" placeholder="楼层编号">
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-3" >是否上架</label>
+                        <div  class="col-md-8">
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="parmAddCell.isGrounding"  value="1"> 是
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" ng-model="parmAddCell.isGrounding"  value="0"> 否
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <div class="col-md-5"></div>
+                        <input type="submit" style="margin-top:20px;margin-left:50px;" class="submit col-md-4" value="添加楼层" ng-click="addCellCell(query.floorId)" placeholder="确认上传">
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box" style="display:block;">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;">下架成功!</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+
+
+

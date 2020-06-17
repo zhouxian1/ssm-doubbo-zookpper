@@ -1,0 +1,44 @@
+/*模态框*/
+.modal_a{
+    position:fixed;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:0px;
+    z-index:999;
+    background-color:rgba(0,0,0,0.1);
+    display:none;
+
+}
+.modal_dialog{
+
+    margin:200px auto 0px auto;
+}
+.modal_content{
+
+    width:500px;
+    min-height:200px;
+    /*max-height:400px;*/
+    overflow:hidden;
+    background-color:#fff;
+    border:2px solid #656d78;
+    border-radius:8px;
+    margin:0 auto;
+    position:relative;
+    padding:20px;
+
+}
+.right{
+    float:right;
+}
+.left{
+    float:left;
+}
+.modal_a .block{
+
+    background-color:#656d78;
+}
+.modal_a .block h3{
+    color:#fff;
+
+}

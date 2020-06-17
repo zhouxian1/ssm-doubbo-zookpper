@@ -1,0 +1,215 @@
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>网站管理</a>&gt;分类管理
+    </p>
+
+    <div class="page-content-wrap" style="margin-top:5px;">
+        <div class="row">
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日访客</div>
+                        <div class="widget-title">1.22w</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">访客转化率</div>
+                        <div class="widget-title">72%</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon" >
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日PV</div>
+                        <div class="widget-title">19992</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日UA</div>
+                        <div class="widget-title">8866</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="page-content-wrap">
+        <div class="down-floor-list">
+            <div class="col-md=12" style="background-color:#656d78;color:#fff;text-align:center;font-size:16px;height:50px;line-height:50px;">上架楼层列表</div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>楼层顺序</th>
+                        <th>楼层名称</th>
+                        <th colspan="5">楼层商品</th>
+                        <th colspan="2">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="mod_upGround_item in mod_upGroundList">
+                    <td style="padding:0px;vertical-align:middle;" class="col-md-1">{{mod_upGround_item.showFloorId}}</td>
+                    <td style="padding:0px;vertical-align:middle;" class="col-md-2">
+                        <p>{{mod_upGround_item.classifi}}</p>
+                        <!--<button type="button" class="btn btn-default">修改</button>-->
+                    </td>
+                    <td colspan="5" style="padding:0px;" class="col-md-7">
+                        <div style="float:left;width:100px;height:100px;padding-top:5px;" ng-repeat="good in mod_upGround_item.goods">
+                            <img ng-src="http://img.gxcards.com/{{good.fistPicUrl}}" style="width:50px;height:50px;">
+                            <p style="padding:0px;margin:0px;">{{good.goodsName}}</p>
+                        </div>
+                    </td>
+                    <td style="padding:0px;vertical-align:middle;" class="col-md-2">
+                        <button type="button" class="btn btn-default" ng-click="down_this_ground(mod_upGround_item.websiteId)">下架楼层</button>
+                    </td>
+                    <!--<td style="padding:0px;vertical-align:middle;" class="col-md-1">-->
+                        <!--<button type="button" class="btn btn-default">置顶楼层</button>-->
+                    <!--</td>-->
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="up-floor-list">
+            <div class="col-md=12" style="background-color:#656d78;color:#fff;text-align:center;font-size:16px;height:50px;line-height:50px;">
+                下架楼层列表
+                <button type="button" class="btn btn-default pull-right" style="margin-top:10px;margin-right:10px;" ng-click="add_classify()">添加楼层</button>
+            </div>
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                    <th>楼层顺序</th>
+                    <th>楼层名称</th>
+                    <th colspan="5">楼层商品</th>
+                    <th colspan="2">操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="mod_downGround_item in mod_downGroundList" style="min-height:200px;">
+                        <td style="padding:0px;vertical-align:middle;" class="col-md-1">{{mod_downGround_item.showFloorId}}</td>
+                        <td style="padding:0px;vertical-align:middle;" class="col-md-2">
+                            <p>{{mod_downGround_item.classifi}}</p>
+                            <button type="button" class="btn btn-default" ng-click="change_floorName(mod_downGround_item.websiteId, mod_downGround_item.classifi)">修改</button>
+                        </td>
+                        <td colspan="5" style="padding:0px;" class="col-md-7">
+                            <div style="float:left;width:100px;height:100px;padding-top:5px;position:relative"  ng-repeat="good in mod_downGround_item.goods">
+                                <img ng-src="http://img.gxcards.com/{{good.fistPicUrl}}" style="width:50px;height:50px;border:1px solid #000;">
+                                <p style="padding:0px;margin:0px;">{{good.goodsName}}</p>
+                                <div class="delete_x delete_x{{mod_downGround_item.showFloorId}}" ng-click="delete_this_good(good.id,good.goodsName)">X</div>
+                            </div>
+                        </td>
+                        <td style="padding:0px;vertical-align:middle;" class="col-md-1">
+                            <button type="button" class="btn btn-default" ng-click="up_this_ground(mod_downGround_item.websiteId)">上架楼层</button>
+                            <button type="button" class="btn btn-default" style="margin-top:5px;" ng-click="add_new_goods(mod_downGround_item.websiteId)">添加商品</button>
+                        </td>
+                        <td style="padding:0px;vertical-align:middle;" class="col-md-1">
+                            <button type="button" class="btn btn-default" ng-click="delete_this_ground(mod_downGround_item.websiteId,mod_downGround_item.classifi)">删除楼层</button>
+                            <button type="button" class="btn btn-default delete_these{{mod_downGround_item.showFloorId}}" style="margin-top:5px;" ng-click="delete_these_goods(mod_downGround_item.showFloorId)">删除商品</button>
+                            <button type="button" class="btn btn-default cancel_delete_these{{mod_downGround_item.showFloorId}} cancel_delete_these" style="margin-top:5px;" ng-click="cancel_delete_these_goods(mod_downGround_item.showFloorId)">取消删除</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <div class="add_classify_bg" id="add_classify">
+        <div class="add_classify_box">
+            <div class="add_classify_box_div">楼层名称 : <input type="text" placeholder="请输入楼层名称" class="add_classify_box_div_input" ng-model="mod_classifi"></div>
+            <!--<div class="add_classify_box_div">楼层&nbsp;ID&nbsp;&nbsp;&nbsp;: <input type="text" placeholder="请输入楼层ID" class="add_classify_box_div_input" ng-model="mod_floorId"></div>-->
+            <!--<div class="add_classify_box_div">是否上架 :-->
+                <!--<input type="radio" name="shangjia" id="shangjia" style="margin-left:30px;" value="1" ng-model="mod_isGrounding">-->
+                <!--<label for="shangjia">是</label>-->
+                <!--<input type="radio" name="shangjia" id="xiajia" style="margin-left:20px;" value="0" ng-model="mod_isGrounding">-->
+                <!--<label for="xiajia">否</label>-->
+            <!--</div>-->
+            <div class="add_classify_box_div">
+                <button type="button" class="btn btn-default" style="margin-left:60px;" ng-click="cancel_add_classify()">取消</button>
+                <button type="button" class="btn btn-success" style="margin-left:40px;" ng-click="sure_add_new_floor()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="add_classify_bg" id="add_floor_goods">
+        <div class="add_classify_box">
+            <div class="add_goodsId_box_div">商品ID : <input type="text" placeholder="请输入商品ID" class="add_classify_box_div_input" ng-model="mod_goodsId"></div>
+            <div class="add_goodsId_box_div">
+                <button type="button" class="btn btn-default" style="margin-left:60px;" ng-click="cancel_add_new_goods()">取消</button>
+                <button type="button" class="btn btn-success" style="margin-left:40px;" ng-click="sure_add_new_goods()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="add_classify_bg" id="delete_good">
+        <div class="add_classify_box">
+            <div class="delete_good_box_div">
+                确定删除商品  {{mod_goodsName}}  ?
+            </div>
+            <div class="delete_good_box_div">
+                <button type="button" class="btn btn-default" ng-click="cancel_delete_this_good()">取消</button>
+                <button type="button" class="btn btn-success" style="margin-left:40px;" ng-click="sure_delete_this_good()">确定</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="add_classify_bg" id="delete_floor">
+        <div class="add_classify_box">
+            <div class="delete_good_box_div">
+                确定删除楼层  {{mod_floorName}}  ?
+                <div class="delete_good_box_div">
+                    <button type="button" class="btn btn-default" ng-click="cancel_delete_this_ground()">取消</button>
+                    <button type="button" class="btn btn-success" style="margin-left:40px;" ng-click="sure_delete_this_ground()">确定</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="add_classify_bg" id="change_floorName">
+        <div class="add_classify_box">
+            <div class="add_classify_box_div">楼层&nbsp;&nbsp;ID&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; : &nbsp;&nbsp;{{mod_changeName_websiteId}}</div>
+            <div class="add_classify_box_div">原楼层名称 : &nbsp;&nbsp;{{mod_changeName_oldName}}</div>
+            <div class="add_classify_box_div">新楼层名称 : <input type="text" placeholder="请输入新楼层名称" class="add_classify_box_div_input" ng-model="mod_changeName_newName"></div>
+
+            <div class="add_classify_box_div">
+                <button type="button" class="btn btn-default" style="margin-left:60px;" ng-click="cancel_change_floorName()">取消</button>
+                <button type="button" class="btn btn-success" style="margin-left:40px;" ng-click="sure_change_floorName()">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+<div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+    <p class="delete_or_not_title" style="margin-top:46px;">添加商品成功!</p>
+    <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+    <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+</div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box_add">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_add()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>

@@ -1,0 +1,82 @@
+<div class="usercenter">
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li><a ui-sref="usercenter.home">用户中心</a></li>
+    </ol>
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="classify-more-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x_26.png"> 个人中心
+                </h1>
+                <ul class="first">
+                    <li>
+                        <a ui-sref-active="active" ui-sref="usercenter.home" style="padding:0;">
+                        <h2>首页<span class="fa fa-chevron-down pull-right"></span></h2>
+                        </a>
+                    </li>
+                    <li>
+                        <h2>样本 <span class="fa fa-chevron-down pull-right"></span></h2>
+                        <ul class="second">
+                            <li><a ui-sref-active="active" ui-sref="usercenter.samplemanage">样本管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>算法 <span class="fa fa-chevron-down pull-right"></span></h2>
+                        <ul class="second">
+                            <!--<li><a ui-sref-active="active" ui-sref="usercenter.releasealgorithm">发布算法</a></li>-->
+                            <li><a ui-sref-active="active" ui-sref="usercenter.algorithmmanage">算法管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>插件 <span class="fa fa-chevron-down pull-right"></span></h2>
+                        <ul class="second">
+                            <li><a ui-sref-active="active" ui-sref="releasePluginunit">上传插件</a></li>
+                            <!--<li><a ui-sref-active="active" ui-sref="releaseFirstPluginunit">第一步插件</a></li>-->
+                            <!--<li><a ui-sref-active="active" ui-sref="releaseSecondPluginunit">第二步插件</a></li>-->
+                            <li><a ui-sref-active="active" ui-sref="usercenter.pluginunitmanage" ng-click="">插件管理</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>应用 <span class="fa fa-chevron-down pull-right"></span></h2>
+                        <ul class="second">
+                            <li><a ui-sref-active="active" ui-sref="releaseApplication">发布应用</a></li>
+                            <!--<li><a ui-sref-active="active" ui-sref="releaseFirstApplication">第一步应用</a></li>-->
+                            <!--<li><a ui-sref-active="active" ui-sref="releaseSecondApplication">第二步应用</a></li>-->
+                            <li><a ui-sref-active="active" ui-sref="usercenter.applicationmanage">应用管理</a></li>
+                        </ul>
+                    </li>
+                    <!--<li>-->
+                        <!--<h2>数据 <span class="fa fa-chevron-down pull-right"></span></h2>-->
+                        <!--<ul class="second">-->
+                            <!--<li><a ui-sref-active="active" ui-sref="usercenter.datamanage">数据管理</a></li>-->
+                        <!--</ul>-->
+                    <!--</li>-->
+                    <li>
+                        <h2>需求 <span class="fa fa-chevron-down pull-right"></span></h2>
+                        <ul class="second">
+                            <li><a ui-sref-active="active" ui-sref="releasedemand">发布需求</a></li>
+                            <!--<li><a ui-sref-active="active" ui-sref="deliverdemand">提交成果</a></li>-->
+                            <li><a ui-sref-active="active" ui-sref="usercenter.demandmanage">需求管理</a></li>
+                            <!--<li><a ui-sref-active="active" ui-sref="applyManage">报名管理</a></li>-->
+                            <!--<li><a ui-sref-active="active" ui-sref="usercenter.tenderManage">投标管理</a></li>-->
+                            <!--<li><a ui-sref-active="active" ui-sref="usercenter.winBidManage">中标管理</a></li>-->
+                        </ul>
+                    </li>
+                    <li>
+                        <h2>账户 <span class="fa fa-chevron-down pull-right"></span></h2>
+                        <ul class="second">
+                            <li><a ui-sref-active="active" ui-sref="usercenter.baseinfo">基本信息</a></li>
+                            <!--<li><a ui-sref-active="active" ui-sref="usercenter.modifyinfo">修改密码</a></li>-->
+                            <!--<li><a ui-sref-active="active" ui-sref="accountAuthentication">账户认证</a></li>-->
+                            <li><a ui-sref-active="active" ui-sref="usercenter.integralmanage">积分管理</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+            <ui-view></ui-view>
+        </div>
+    </div>
+</div>

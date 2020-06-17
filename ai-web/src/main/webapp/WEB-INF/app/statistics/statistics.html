@@ -1,0 +1,392 @@
+
+
+
+
+        <div id="content-main">
+            <!--标题头-->
+            <p class="page-title" style="font-size:13px;background:#e8e8e8;display:none">
+                <!--<a>销售统计</a>-->
+            </p>
+            <!--end 标题头-->
+
+            <!--销售额统计-->
+            <div class="page-content-wrap" style="margin-top:5px;display:none">
+                <div class="row">
+                    <!-- START 上周商品销售额 -->
+                    <div class="col-md-3">
+                        <div class="widget widget-default widget-item-icon" >
+                            <div class="widget-item-left">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                            </div>
+                            <div class="widget-data">
+                                <div class="widget-int num-count">总交易额</div>
+                                <div class="widget-title">199.23</div>
+                                <div class="widget-subtitle">总交易额(万元)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END 总交易额 -->
+
+                    <!-- START 餐饮美食 -->
+                    <div class="col-md-3">
+                        <div class="widget widget-default widget-item-icon">
+                            <div class="widget-item-left">
+                                <span class="glyphicon glyphicon-list-alt"></span>
+                            </div>
+                            <div class="widget-data">
+                                <div class="widget-int num-count">总单数</div>
+                                <div class="widget-title">20000</div>
+                                <div class="widget-subtitle">总订单数(个)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END 订单数 -->
+
+                    <!-- START 出游旅行 -->
+                    <div class="col-md-3">
+                        <div class="widget widget-default widget-item-icon">
+                            <div class="widget-item-left">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </div>
+                            <div class="widget-data">
+                                <div class="widget-int num-count">总个数</div>
+                                <div class="widget-title">15230</div>
+                                <div class="widget-subtitle">总用户个数(个)</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="widget widget-default widget-item-icon">
+                            <div class="widget-item-left">
+                                <span class="glyphicon glyphicon-user"></span>
+                            </div>
+                            <div class="widget-data">
+                                <div class="widget-int num-count">总访客</div>
+                                <div class="widget-title">1.88W</div>
+                                <div class="widget-subtitle">今日访客</div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- END 总用户个数 -->
+                </div>
+            </div>
+            <!--end 销售额统计-->
+
+            <!--商品查询-->
+            <div class="page-content-wrap" style="min-height:1500px;display:none;">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel">
+                            <div class="panel-heading">
+                                <h4>交易曲线图</h4>
+                            </div>
+                            <div class="panel-body">
+                                <div class="form-group" style="margin-bottom:50px;">
+                                    <label class="col-md-2 col-xs-12 control-label" style="font-size:16px;"> 交易曲线图</label>
+                                    <div class="col-md-4 col-xs-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            <input type="datetime"  class="form-control " id="datepicker">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-1">
+                                        <span style="font-size:14px;">----到----</span>
+                                    </div>
+                                    <div class="col-md-4 col-xs-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                            <input type="datetime"  class="form-control" id="datepicker1">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--<div class="chart-holder padding-0" id="dashboard-line-1" style="height:200px;">-->
+
+                                <script>
+                                    $("#datepicker").datepicker({
+                                        inline:true
+                                    });
+                                    $("#datepicker1").datepicker({
+                                        inline:true
+                                    });
+                                </script>
+                                <div style="clear:both"></div>
+                                <div id="modalWrapper" style="margin-top:20px;display:none;">
+                                    <div id="modal" class="modal">
+                                        <div id="modal-video" class="clearboth">
+                                            <div id="video-header" style="background-color:#fff;">
+                                                <div id="video-title" class="pull-left">
+                                                    <h3>FreshForks Collaboration Dashboard</h3>
+                                                </div>
+                                                <div class="close-modal icon pull-right" id="video-close"></div>
+
+                                            </div>
+                                            <div id="video-body" class="clearboth">
+                                                <div id="video-text">Introducing the FreshForks collaboration dashboard - a dashboard to unify analysis and discussion. Team members can share and comment directly on charts within the dashboard and can even add charts within comments. To learn more, checkout the video below:</div>
+                                                <!--<iframe width="960" height="540" src="//www.youtube.com/embed/N789nwEyMNM?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen="" class="clearboth" id="youtube-frame"></iframe>-->
+                                            </div>
+                                        </div>
+                                        <div id="modal-comments">
+                                            <div id="chart-component" class="pull-left">
+                                                <div id="modal-title">
+                                                    <h3>Monthly Sales Analysis</h3>
+                                                </div>
+                                                <div id="current-chart-stats">
+                                                    <p><span id="modal-chart-title">Sales</span> on <span id="current-chart-month">July</span> 2014</p>
+                                                    <p id="current-chart-value">$140000</p>
+                                                </div>
+                                                <div id="modal-chart-container"></div>
+                                            </div>
+                                            <div id="comments-container">
+                                                <div id="comments-title">
+                                                    <div id="comments-title-text" class="pull-left">June 2014</div>
+                                                    <div id="close-modal" class="close-modal icon pull-right">
+                                                        <a href="javascript:void(0)"></a>
+                                                    </div>
+                                                </div>
+                                                <div id="comments-body">
+                                                </div>
+                                                <div id="input-holder" class="clearboth">
+                                                    <div class="profile-pic pull-left">
+                                                        <div id="commentbox-img"></div>
+                                                    </div>
+                                                    <input id="comment-textbox" type="text" placeholder="Enter your comments">
+                                                    <div id="mini-chart-container" class="hide">
+                                                        <div id="mini-chart-title">Top 5 categories</div>
+                                                        <div id="mini-chart-hover-product-container">
+                                                            <p id="mini-chart-hover-product-title">Product</p>
+                                                            <p id="mini-chart-hover-product">Beverages</p>
+                                                        </div>
+                                                        <div id="mini-chart-hover-value-container">
+                                                            <p>Sales</p>
+                                                            <p id="mini-chart-hover-value">$1250</p>
+                                                        </div>
+                                                        <div id="copied-chart" class="clearboth"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <!-- Modal Window ends -->
+                                <!-- The top level wrapper for markup begins -->
+                                <div id="wrapper">
+                                    <div id="no-support-message">Looks like you're using an old browser.
+                                        Some of the features in this dashboard application may not function properly.
+                                        Please update to a newer browser.</div>
+                                    <div id="header" style="display:none;">
+                                        <div  class="pull-left">
+                                            <div>
+                                            </div>
+                                        </div>
+                                        <div id="menu-container" class="pull-right">
+                                            <ul id="menu">
+                                                <li id="help-link"><span class="pull-left" id="help-icon"></span><a href="javascript:void(0)"></a>
+                                                </li>
+                                                <li id="notification-link"><span class="pull-left" id="notification-icon"></span><a href="javascript:void(0)"></a><span id="notification-bubble">2</span>
+                                                </li>
+                                                <li><span class="pull-left" id="profile-icon"></span><a href="javascript:void(0)"></a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div id="notifications" style="display:none;">
+                                            <div class="notification-unit" id="sales-Aug-2">
+                                                <div class="notify-profile-img-holder pull-left">
+                                                    <div class="notify-profile-img notify-profile-david"></div>
+                                                </div>
+                                                <div class="notify-comment"><span>David</span> left a comment on August's Sales in Sales Analysis Chart</div>
+                                                <div class="notify-time">2 days ago</div>
+                                            </div>
+                                            <div class="notification-unit" id="unitsSold-Apr-2">
+                                                <div class="notify-profile-img-holder pull-left">
+                                                    <div class="notify-profile-img notify-profile-david"></div>
+                                                </div>
+                                                <div class="notify-comment"><span>David</span> left a comment on Aprils's Units Sold in Sales Analysis Chart</div>
+                                                <div class="notify-time">2 days ago</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="main-container" class="clearboth">
+                                        <div id="sales-container">
+                                            <h2 class="pull-left chart-title">MONTHLY SALES ANALYSIS</h2>
+                                            <span class="pull-left year-label">2014</span>
+                                            <div id="sales-chart" class="clearboth">
+                                            </div>
+                                            <div id="kpi-container">
+                                                <div class="stats">
+                                                    <p class="category">Total sales this year</p>
+                                                    <p class="value">$89,360,000</p>
+                                                </div>
+                                                <div class="stats">
+                                                    <p class="category">Maximum sales this year</p>
+                                                    <p class="value">
+                                                        <span>$390,000</span>
+                                                        <span class="kpi-month">December</span>
+                                                    </p>
+                                                </div>
+                                                <div class="stats">
+                                                    <p class="category">Total units sold this year</p>
+                                                    <p class="value">8,448,000</p>
+                                                </div>
+                                                <div class="stats">
+                                                    <p class="category">Maximum units sold this year</p>
+                                                    <p class="value">
+                                                        <span>48,000</span>
+                                                        <span class="kpi-month max-units">December</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div id="top-categories-container" class="pull-left" style="visibility:hidden;">
+                                            <h2 class="pull-left chart-title" id="category-chart-title">TOP 5 CATEGORIES BY SALES</h2>
+                                            <span class="pull-left year-label">2014</span>
+                                            <div class="pull-right" id="copy-chart">
+                                                <div id="copy-icon" class="pull-left"></div>
+                                                <div id="copy-text">Copy chart</div>
+                                            </div>
+                                            <span id="chart-subcaption" class="chart-subcaption clearboth">Click on a column to view details</span>
+                                            <a href="javascript:void(0)" class="clearboth hide" id="back-link"><span id="back-arrow">&#767;</span>
+                                                <span>&nbsp;Back</span>
+                                            </a>
+                                            <div id="top-categories-chart" class="clearboth">
+                                            </div>
+                                        </div>
+                                        <div id="top-countries-container" class="pull-left" style="visibility:hidden;">
+                                            <h2 class="pull-left chart-title">TOP 5 COUNTRIES BY SALES</h2>
+                                            <span class="pull-left year-label">2014</span>
+                                            <div class="pull-right" id="copy-country-chart">
+                                                <div id="copy-icon" class="pull-left"></div>
+                                                <div id="copy-country-text">Copy chart</div>
+                                            </div>
+                                            <div id="top-countries-chart" class="clearboth">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--<<div class="footer"><p>This dashboard application uses <a href="http://www.fusioncharts.com/download">FusionCharts Suite XT</a></p><p>&copy; 2015, FusionCharts. All rights reserved.</p></div>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!---------不要的------->
+                    <div class="col-md-4" style="display:none;">
+
+                        <!-- START USERS ACTIVITY BLOCK -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title-box">
+                                    <h3>Users Activity</h3>
+                                    <span>Users vs returning</span>
+                                </div>
+                                <ul class="panel-controls" style="margin-top: 2px;">
+                                    <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+                                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+                                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-body padding-0">
+                                <div class="chart-holder" id="dashboard-bar-1" style="height: 200px;"></div>
+                            </div>
+                        </div>
+                        <!-- END USERS ACTIVITY BLOCK -->
+
+                    </div>
+                    <!----------不要的-------------->
+                </div>
+
+            </div>
+            <!------交易图多的隐藏-------->
+            <div class="page-content-wrap" style="display:none;">
+
+                <!-- START WIDGETS -->
+
+                <div class="row">
+                    <div class="col-md-4">
+
+                        <!-- START USERS ACTIVITY BLOCK -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title-box">
+                                    <h3>Users Activity</h3>
+                                    <span>Users vs returning</span>
+                                </div>
+                                <ul class="panel-controls" style="margin-top: 2px;">
+                                    <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+                                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+                                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-body padding-0">
+                                <div class="chart-holder" style="height: 200px;"></div>
+                            </div>
+                        </div>
+                        <!-- END USERS ACTIVITY BLOCK -->
+
+                    </div>
+                    <div class="col-md-4" style="display:none;">
+
+                        <!-- START VISITORS BLOCK -->
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <div class="panel-title-box">
+                                    <h3>Visitors</h3>
+                                    <span>Visitors (last month)</span>
+                                </div>
+                                <ul class="panel-controls" style="margin-top: 2px;">
+                                    <li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>
+                                    <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                    <li class="dropdown">
+                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>
+                                        <ul class="dropdown-menu">
+                                            <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>
+                                            <li><a href="#" class="panel-remove"><span class="fa fa-times"></span> Remove</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="panel-body padding-0">
+                                <div class="chart-holder" id="dashboard-donut-1" style="height: 200px;"></div>
+                            </div>
+                        </div>
+                        <!-- END VISITORS BLOCK -->
+
+                    </div>
+                </div>
+
+                <!-- START DASHBOARD CHART -->
+                <div class="block-full-width" style="display:none;">
+                    <div id="dashboard-chart" style="height: 250px; width: 100%; float: left;"></div>
+                    <div class="chart-legend">
+                        <div id="dashboard-legend"></div>
+                    </div>
+                </div>
+                <!-- END DASHBOARD CHART -->
+
+            </div>
+            <!-----------结束不适用交易图------>
+
+        </div>
+
+
+
+
+
+
+
+
+
+    <!--<p>{{testText}}</p>-->
+
+
+

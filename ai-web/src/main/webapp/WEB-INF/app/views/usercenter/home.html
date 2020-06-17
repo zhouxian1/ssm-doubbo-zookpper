@@ -1,0 +1,230 @@
+<div>
+    <div class="sorting">
+        <span><a class="active" href="">个人信息</a></span>
+        <span><a class="pull-right" ui-sref="usercenter.baseinfo">详情 >></a></span>
+    </div>
+    <div class="row content-block">
+        <div class="col-xs-2 img">
+            <img class="avatar" src="{{userInfo.avatar_url?userInfo.avatar_url:'../../images/icon/icon-user.png'}}">
+            <!--<img class="avatar" src="../../images/icon/icon-user.png">-->
+        </div>
+        <div class="col-xs-10 user-content">
+            <div class="userid clearfix">
+                <p class="pull-left">用户ID：{{userInfo.user_id}}</p>
+                <p class="authentication">{{userInfo.status==1?"已认证":"未认证"}}</p>
+                <p class="edite"><a ui-sref="usercenter.baseinfo">编辑信息</a></p>
+            </div>
+            <!--<p>用户名：{{userInfo.actual_name}}</p>-->
+            <p>昵称：{{userInfo.nickname}}</p>
+            <p>签名：{{userInfo.signature}}</p>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="sorting">
+        <span><a class="active" href="#" ng-click="checkSample()">我购买的样本</a></span>
+        <span><a class="pull-right" href="/usercenter/samplemanage">更多 >></a></span>
+    </div>
+    <div class="row content-block">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in orderSampleList">
+            <a  href="/sample/sampleDetail?sampleId={{item.id}}">
+                <img  src="{{baseImgUrl+item.cover_url}}">
+            </a>
+            <div class="clearfix content-row">
+                <a href="/sample/sampleDetail?sampleId={{item.id}}">
+                    <h1 >{{item.title}}</h1>
+                </a>
+                <!--<p class="describe">-->
+                   <!--{{item.introduction}}-->
+                <!--</p>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="sorting">
+        <span><a ng-class="{active:ArithmeticType==1}" href="#" ng-click="checkArithmetic(1)">我购买的算法</a></span>
+        <!--<span><a class="" href="javescript:void(0)" ng-click="checkArithmetic(2)">我训练的算法</a></span>-->
+        <span><a ng-class="{active:ArithmeticType==3}" href="#" ng-click="checkArithmetic(3)">我发布的算法</a></span>
+        <span><a class="pull-right" href="/usercenter/algorithmmanage">更多 >></a></span>
+    </div>
+    <div class="row content-block">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in arithmeticList">
+            <!--<img src="{{baseImgUrl+item.cover_url}}" href="/sample/algorithmDetail?algorithmId={{item.id}}">-->
+            <a  href="/sample/algorithmDetail?algorithmId={{item.id}}">
+                <img  src="{{baseImgUrl+item.cover_url}}">
+            </a>
+            <div class="clearfix content-row">
+                <a  href="/sample/algorithmDetail?algorithmId={{item.id}}">
+                    <h1>{{item.title}}</h1>
+                </a>
+                <!--<p class="describe">-->
+                    <!--{{item.introduction}}-->
+                <!--</p>-->
+            </div>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="sorting">
+        <span><a ng-class="{active:plugstate==1}" ng-click="clickPlug(1)">我购买的插件</a></span>
+        <span><a ng-class="{active:plugstate==2}" ng-click="clickPlug(2)">我发布的插件</a></span>
+        <span><a class="pull-right" href="/usercenter/pluginunitmanage">更多 >></a></span>
+    </div>
+
+    <div class="row content-block" ng-if="plugstate==1">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat=" item in pluginunitList" >
+            <a href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+            <img src="{{item.plugins_detail.cover_url}}" href="/pluginunit/pluginunitDetail?pluginunitId={{item.plugins_detail.id}}">
+            <div class="clearfix content-row" href="/pluginunit/pluginunitDetail?pluginunitId={{item.plugins_detail.id}}">
+                <h1 class="title">{{item.plugins_detail.title}}</h1>
+                <p class="describe">
+                    {{item.plugins_detail.about}}
+                </p>
+            </div>
+            </a>
+        </div>
+    </div>
+
+    <div class="row content-block" ng-if="plugstate==2">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat=" item in pluginunitList" >
+            <a href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                <img src="{{item.cover_url}}" href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                <div class="clearfix content-row" href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                    <h1 class="title">{{item.title}}</h1>
+                    <p class="describe">
+                        {{item.about}}
+                    </p>
+                </div>
+            </a>
+
+        </div>
+    </div>
+</div>
+<div>
+    <div class="sorting">
+        <!--<span><a class="active" href="javescript:void(0)">我购买的应用</a></span>-->
+        <!--<span><a class="" href="javescript:void(0)">我发布的应用</a></span>-->
+
+        <span><a ng-class="{active:appState==1}" ng-click="clickapp(1)">我购买的应用</a></span>
+        <span><a ng-class="{active:appState==2}" ng-click="clickapp(2)">我发布的应用</a></span>
+        <span><a class="pull-right" href="/usercenter/applicationmanage">更多 >></a></span>
+    </div>
+    <div class="row content-block" ng-if="appState==1">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in applicationList">
+            <a href="application/applicationDetail?applicationId={{item.applications_detail.id}}">
+
+            <img src="{{item.applications_detail.cover_url}}">
+            <div class="clearfix content-row">
+                <h1 class="title">{{item.applications_detail.title}}</h1>
+                <p class="describe">
+                    {{item.applications_detail.about}}
+                </p>
+            </div>
+            </a>
+        </div>
+    </div>
+    <div class="row content-block" ng-if="appState==2">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in applicationList">
+            <a href="application/applicationDetail?applicationId={{item.id}}">
+
+                <img src="{{item.cover_url}}">
+                <div class="clearfix content-row">
+                    <h1 class="title">{{item.title}}</h1>
+                    <p class="describe">
+                        {{item.about}}
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+
+</div>
+<!--<div>-->
+    <!--<div class="sorting">-->
+        <!--<span><a class="active" href="javescript:void(0)">我购买的数据</a></span>-->
+        <!--<span><a class="pull-right" href="/data/datalist">更多 >></a></span>-->
+    <!--</div>-->
+    <!--<div class="row content-block">-->
+        <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">-->
+            <!--<img src="../../../images/1.png">-->
+            <!--<div class="clearfix content-row">-->
+                <!--<h1 class="title">名称</h1>-->
+                <!--<p class="describe">-->
+                    <!--描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">-->
+            <!--<img src="../../../images/1.png">-->
+            <!--<div class="clearfix content-row">-->
+                <!--<h1 class="title">名称</h1>-->
+                <!--<p class="describe">-->
+                    <!--描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">-->
+            <!--<img src="../../../images/1.png">-->
+            <!--<div class="clearfix content-row">-->
+                <!--<h1 class="title">名称</h1>-->
+                <!--<p class="describe">-->
+                    <!--描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述描述-->
+                <!--</p>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+<!--</div>-->
+<div>
+    <div class="sorting">
+        <!--<span><a class="active" href="javescript:void(0)">我发布的需求</a></span>-->
+        <!--<span><a class="" href="javescript:void(0)">我投标的需求</a></span>-->
+        <!--<span><a class="" href="javescript:void(0)">我中标的需求</a></span>-->
+
+        <span><a ng-class="{active:demandstate==1}" ng-click="clickdemand(1)">我发布的需求</a></span>
+        <span><a ng-class="{active:demandstate==2}" ng-click="clickdemand(2)">我投标的需求</a></span>
+        <span><a ng-class="{active:demandstate==3}" ng-click="clickdemand(3)">我中标的需求</a></span>
+
+        <span><a class="pull-right" href="/usercenter/demandmanage">更多 >></a></span>
+    </div>
+    <div class="row content-block">
+        <div ng-if="demandstate==1" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in demandList">
+            <a href="demand/demandDetail?demandId={{demand.id}}">
+            <img src="{{item.cover_url}}">
+            <div class="clearfix content-row">
+                <h1 class="title">{{item.title}}</h1>
+                <p class="describe">
+                    {{item.about}}
+                </p>
+            </div>
+            </a>
+        </div>
+        <div ng-if="demandstate==2" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in demandList">
+            <a href="demand/demandDetail?demandId={{demand.demand_detail.id}}">
+                <img src="{{item.demand_detail.cover_url}}">
+                <div class="clearfix content-row">
+                    <h1 class="title">{{item.demand_detail.title}}</h1>
+                    <p class="describe">
+                        {{item.demand_detail.about}}
+                    </p>
+                </div>
+            </a>
+        </div>
+
+        <div ng-if="demandstate==3" class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="item in demandList">
+            <a href="demand/demandDetail?demandId={{demand.demand_detail.id}}">
+                <img src="{{item.demand_detail.cover_url}}">
+                <div class="clearfix content-row">
+                    <h1 class="title">{{item.demand_detail.title}}</h1>
+                    <p class="describe">
+                        {{item.demand_detail.about}}
+                    </p>
+                </div>
+            </a>
+        </div>
+    </div>
+</div>
+
+
+
+

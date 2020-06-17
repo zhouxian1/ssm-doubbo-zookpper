@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登录</title>
+</head>
+<body>
+<!--<button class="btn-login">-->
+    <!--登录-->
+<!--</button>-->
+<div>
+    <a onclick="login()">
+        <img src="/admin.jpg" class="background">
+    </a>
+</div>
+</body>
+<script>
+    login=function () {
+//        console.log("http://"+window.location.host+"/api/v1/authorize?redirect_uri="+window.location.host);
+        window.location.href="http://"+window.location.host+"/api/v1/authorize?redirect_uri=http://"+window.location.host+"/recycling";
+    }
+</script>
+<style>
+</style>
+</html>

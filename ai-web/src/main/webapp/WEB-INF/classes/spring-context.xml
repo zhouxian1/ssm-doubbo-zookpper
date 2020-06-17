@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:task="http://www.springframework.org/schema/task"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+            http://www.springframework.org/schema/beans/spring-beans.xsd  
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop.xsd  
+           http://www.springframework.org/schema/tx  
+           http://www.springframework.org/schema/tx/spring-tx.xsd
+           http://www.springframework.org/schema/task
+           http://www.springframework.org/schema/task/spring-task-4.1.xsd 
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://code.alibabatech.com/schema/dubbo  
+           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+	<context:property-placeholder location="classpath:properties/dubbo.properties,classpath:config.properties" />
+	<!-- bean配置 -->
+	<context:component-scan base-package="com.geovis.ai" />
+	
+	<!-- 启动时初始化Spring上下文环境工具类 -->
+	<bean id="springContextUtil" class="com.geovis.ai.util.SpringContextUtil"></bean>
+	
+	<!-- Spring容器初始化完成监听器 -->
+    <bean class="com.geovis.ai.listener.ApplicationContextListener"></bean>
+
+	<import resource="classpath:dubbo-consumer.xml" />
+	<import resource="classpath:spring-shiro.xml" />
+	<import resource="classpath:spring-mvc.xml" />
+</beans>

@@ -1,0 +1,43 @@
+<div class="knowledge-detail" ng-controller="knowledgeDetailController">
+
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li><a ui-sref="knowledgelist">列表页</a></li>
+        <li class="active">详情页</li>
+    </ol>
+
+    <div class="main-content">
+        <h1>{{knowledgeDetail.title}}</h1>
+        <div class="clearfix title">
+            <div class="pull-left">
+                <span>{{knowledgeDetail.user_name}}</span>
+                <span>{{knowledgeDetail.created_at}}发布</span>
+            </div>
+            <div class="pull-right">
+                <!--<span>分享到：</span>-->
+                <!--<a href="">-->
+                    <!--<img src="../../../images/icon/img@1x48.jpg" alt="">-->
+                <!--</a>-->
+                <!--<a href="">-->
+                    <!--<img src="../../../images/icon/img@1x49.jpg" alt="">-->
+                <!--</a>-->
+                <!--<a href="">-->
+                    <!--<img src="../../../images/icon/img@1x50.jpg" alt="">-->
+                <!--</a>-->
+                <div class="jiathis_style_32x32">
+                    <span class="jiathis_txt">分享到：</span>
+                    <a class="jiathis_button_weixin"></a>
+                    <a class="jiathis_button_tsina"></a>
+                </div>
+                <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+            </div>
+        </div>
+        <div class="content">
+            <!--<div class="img">-->
+                <!--<img src="../../../images/1.png" alt="" style="margin-bottom: 15px">-->
+            <!--</div>-->
+            <p class="text" id="content">{{content}}</p>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd ">
+	<!-- 提供方应用信息，用于计算依赖关系 -->
+	<dubbo:application name="ai-service" />
+	
+	<!-- 使用zookeeper注册中心暴露服务地址 -->
+	<dubbo:registry protocol="zookeeper" address="${dubbo.provider.registry.address}" />
+
+	<!-- 用dubbo协议在20880端口暴露服务 -->
+	<dubbo:protocol name="dubbo" port="20880" />
+	
+	<!-- 使用注解方式暴露接口(不建议使用) -->     
+    <!-- <dubbo:annotation package="com.exp.service" />  -->
+    
+    
+    <!-- 要暴露的服务 -->
+
+	<dubbo:service interface="com.geovis.ai.api.service.UsersService" ref="usersService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.ArticlesService" ref="articlesService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.ApplicationsService" ref="applicationsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.AlgorithmsService" ref="algorithmsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.BiddingsService" ref="biddingsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.CommentsService" ref="commentsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.ClassificationsService" ref="classificationsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.DocumentsService" ref="documentsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.DemandsService" ref="demandsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.IntegralRecordingService" ref="integralRecordingService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.IntegralService" ref="integralService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.KnowledgesService" ref="knowledgesService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.LabelsService" ref="labelsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.LabelidsService" ref="labelidsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.MigrationsService" ref="migrationsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.PluginsService" ref="pluginsService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.SamplesService" ref="samplesService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.RotationService" ref="rotationService" timeout="10000"/>
+	<dubbo:service interface="com.geovis.ai.api.service.OrdersService" ref="ordersService" timeout="10000"/>
+
+</beans>

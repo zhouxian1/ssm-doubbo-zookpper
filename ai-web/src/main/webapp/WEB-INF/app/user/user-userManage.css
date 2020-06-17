@@ -1,0 +1,46 @@
+.panel-body .row .widget{
+    min-height:80px;
+}
+.page-content-wrap .panel .panel-body .row .col-sm-2{
+    width:20%;
+}
+.red{
+    color: #943e3c;
+    font-size:2em;
+    font-weight:bold;
+    display:block;
+    /*margin:0 auto;*/
+    text-align:center;
+}
+.panel-body .row .widget h3{
+    margin-left:10px;
+}
+.panel-body .row .widget-danger h3{
+    color:#fff;
+}
+.panel-body .row .widget-danger .red{
+    color:#333;
+}
+.page-content-wrap .row .form-horizontal .panel .form-group{
+    margin-right:0px;
+    margin-left:0px;
+}
+.user-has-balance .balance-input{
+    margin-right:20px;
+}
+.right{
+    float:right;
+    margin-top:-20px;
+    margin-left:20px;
+}
+.table td{
+    text-align:center;
+}
+.table th{
+    text-align:center;
+}
+.table-box{
+    padding:20px;
+    overflow:hidden;
+    padding-top:20px;
+}

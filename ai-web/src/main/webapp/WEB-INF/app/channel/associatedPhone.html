@@ -1,0 +1,215 @@
+
+<div id="content-main" >
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>添加关联号</a>
+    </p>
+    <div class="page-content-wrap">
+        <div class="block row" style="margin-left:10px;">
+            <form name="phoneNumber">
+                <div class="form-horizontal" role="form">
+                <div class="col-xs-8">
+                    <!--选择大客户-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">选择大客户:</label>
+                        <div class="col-md-8">
+                            <!--<select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;" ng-model="paramQueryOrderList.orderStatus">-->
+                                <!--<option selected>全部</option>-->
+                                <!--<option ng-repeat="obj in mod_orderStatusList" value={{obj.status}}>{{obj.text}}</option>-->
+                            <!--</select>-->
+                            <select id="gongying" class="form-control"  style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                                <option selected>全部</option>
+                                <option  ng-repeat="obj in suppList">{{obj.comp_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':phoneNumber.phone.$dirty &&phoneAlert.phone.$invalid }">
+                        <label class="col-md-3 control-label">手机号:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" name="phone" ng-pattern="/1[34578]\d{9}/" ng-maxlength="11" ng-model="paramMobile" placeholder="手机号..."/>
+                            <div ng-show="phoneNumber.phone.$error.pattern || phoneAlert.phone.$error.maxlength" style="color:#ff5436">手机号码必须是数字,并且不能大于11位</div>
+
+                        </div>
+                    </div>
+
+                    <!--&lt;!&ndash;订单状态&ndash;&gt;-->
+                    <!--<div class="form-group">-->
+                    <!--<label class="col-md-3 control-label">订单状态</label>-->
+                    <!--<div class="col-md-8">-->
+                    <!--<select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;" ng-model="paramQueryOrderList.orderStatus">-->
+                    <!--<option selected>全部</option>-->
+                    <!--<option ng-repeat="obj in mod_orderStatusList" value={{obj.status}}>{{obj.text}}</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+            </form>
+            <!--查询or清空查询-->
+            <div class="form-horizontal-footer">
+                <!--<div >-->
+                    <!--<button class="btn btn-primary pull-right" ng-click="fullAll()" style="margin-right:134px;">清空查询</button>-->
+                <!--</div>-->
+                <div class="col-md-offset-6 col-md-3">
+                    <button class="btn btn-primary pull-right" style="background-color:#29343f;" ng-click="queryPhoneList()" >确认查询</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--查询-->
+    <div class="page-content-wrap" >
+        <div class="block row">
+            <!--筛选条件-->
+            <form name="phoneAlert">
+                <div class="form-horizontal"  role="form">
+                <div class="col-xs-8">
+
+                    <!--选择大客户-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">选择大客户:</label>
+                        <div class="col-md-8">
+                            <select  ng-model="suppList.selected" class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                                <option ng-repeat="obj in suppList" value="{{obj.comp_id}}">{{obj.comp_name}}</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':phoneAlert.phoneOne.$dirty &&phoneAlert.phoneOne.$invalid }">
+                        <label class="col-md-3 control-label">手机号1:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-pattern="/1[34578]\d{9}/" ng-model="mod_mobiles" name="phoneOne" ng-maxlength="11"  placeholder="手机号1"/>
+                            <div ng-show="phoneAlert.phoneOne.$error.pattern || phoneAlert.phoneOne.$error.maxlength" style="color:#ff5436">手机号码必须是数字,并且不能大于11位</div>
+                            <!--<div ng-show="phoneAlert.phoneOne.$error.pattern" style="color:#ff5436">必须是数字</div>-->
+                        </div>
+                    </div>
+
+                    <!--用户名-->
+                    <div class="form-group" ng-class="{'has-error':phoneAlert.phoneTwo.$dirty &&phoneAlert.phoneTwo.$invalid }">
+                        <label class="col-md-3 control-label">手机号2:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-pattern="/1[34578]\d{9}/" name="phoneTwo" ng-model="mod_mobilesTwo"  ng-maxlength="11" placeholder="手机号2"/>
+                            <div ng-show="phoneAlert.phoneTwo.$error.pattern || phoneAlert.phoneTwo.$error.maxlength" style="color:#ff5436">手机号码必须是数字,并且不能大于11位</div>
+
+                        </div>
+                    </div>
+                    <div class="form-group" ng-class="{'has-error':phoneAlert.phoneThree.$dirty &&phoneAlert.phoneThree.$invalid }">
+                        <label class="col-md-3 control-label">手机号3:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="mod_mobilesThree" name="phoneThree" ng-pattern="/1[34578]\d{9}/"  ng-maxlength="11" placeholder="手机号3"/>
+                            <div ng-show="phoneAlert.phoneThree.$error.pattern || phoneAlert.phoneThree.$error.maxlength" style="color:#ff5436">手机号码必须是数字,并且不能大于11位</div>
+
+                        </div>
+                    </div>
+                    <!--用户名-->
+                    <div class="form-group" ng-class="{'has-error':phoneAlert.phoneFour.$dirty &&phoneAlert.phoneFour.$invalid }">
+                        <label class="col-md-3 control-label">手机号4:</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="mod_mobilesFour" ng-pattern="/1[34578]\d{9}/" name="phoneFour" ng-maxlength="11" placeholder="手机号4"/>
+                            <div ng-show="phoneAlert.phoneFour.$error.pattern || phoneAlert.phoneFour.$error.maxlength" style="color:#ff5436">手机号码必须是数字,并且不能大于11位</div>
+                        </div>
+                    </div>
+                    <!--选取文件-以后做--->
+                    <div class="form-group" style="display:none">
+                        <label class="col-md-3 control-label">选取文件:</label>
+                        <div class="col-md-8">
+                            <input type="file" class="form-control" ng-model="paramQueryOrderList.userName" placeholder="用户名..."/>
+                        </div>
+                    </div>
+
+                    <!--&lt;!&ndash;订单状态&ndash;&gt;-->
+                    <!--<div class="form-group">-->
+                    <!--<label class="col-md-3 control-label">订单状态</label>-->
+                    <!--<div class="col-md-8">-->
+                    <!--<select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;" ng-model="paramQueryOrderList.orderStatus">-->
+                    <!--<option selected>全部</option>-->
+                    <!--<option ng-repeat="obj in mod_orderStatusList" value={{obj.status}}>{{obj.text}}</option>-->
+                    <!--</select>-->
+                    <!--</div>-->
+                    <!--</div>-->
+
+                </div>
+            </div>
+            </form>
+            <!--查询or清空查询-->
+            <div class="form-horizontal-footer" style="margin-right:215px;">
+                <div style="margin-right:30px;">
+                    <!--<button class="btn btn-primary pull-right" style="width:80px;" ng-click="addPhone()" ng-disabled="!mod_mobilesFour||!mod_mobilesThree||!mod_mobilesTwo||!mod_mobiles">添加</button>-->
+                    <button class="btn btn-primary pull-right site-demo-layer" style="width:80px;" data-type="confirmTrans" ng-click="addPhone()">添加</button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--订单列表-->
+    <div class="page-content-wrap">
+        <div class="form-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span>手机号列表</span>
+                    <button class="btn btn-default right" ng-click="phone_list_delete()">批量删除</button>
+                </h3>
+            </div>
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>
+                        <!--<input type="checkbox" ng-model="selectAll" ng-change="selectAllUser()">-->
+                        <input type="checkbox"  ng-model="selectAll" ng-change="selectAllUser()">
+                        全选
+                    </th>
+                    <th>手机号</th>
+                    <th>关联的大客户</th>
+                    <th>创建时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <!--动态table-->
+                <tbody>
+                <tr ng-repeat="phone in mod_compSalesList">
+                    <td>
+                        <!--<input type="checkbox" ng-model="obj.checked" ng-checked="selectOne()" >-->
+                        <!--<input type="checkbox" ng-checked="selectAll" ng-model="obj.checked" ng-change="selectOne(obj)" >-->
+                        <input type="checkbox" ng-checked="selectAll" ng-model="phone.checked" ng-change="selectOne(phone)">
+                    </td>
+                    <td>
+                        {{phone.mobile}}
+                    </td>
+                    <td>{{phone.compName}}</td>
+                    <td>{{phone.createDate | date:'yyyy/MM/dd HH:mm:ss'}}</td>
+                    <td><button class="btn btn-default" ng-click="phone_list_single()">删除</button></td>
+                </tr>
+                </tbody>
+            </table>
+            <!--分页显示数据-->
+            <div class="pull-right">
+                <button class="btn btn-default" ng-click="previous()">上一页</button>
+                <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                <button class="btn btn-default" ng-click="next()">下一页</button>
+                <input type="number" style="width:30px;" ng-model="changePage">
+                <button class="btn btn-default"  ng-click="goToPage()">Go</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;" ng-show="showPone">添加手机号成功</p>
+        <p class="delete_or_not_title" style="margin-top:46px;" ng-show="showFirst">这已经是第一页</p>
+        <p class="delete_or_not_title" style="margin-top:46px;" ng-show="showLast">这是最后一页</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="know()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+
+
+
+

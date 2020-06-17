@@ -1,0 +1,183 @@
+<!--订单管理模块-->
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>加油卡订单
+    </p>
+    <!--订单查询-->
+    <div class="page-content-wrap">
+        <div class="block row">
+            <div style="margin-bottom:30px;">
+                <span style="font-size:13px;">查询加油卡订单 </span>
+            </div>
+            <!--筛选条件-->
+            <div class="form-horizontal" role="form">
+                <div class="col-xs-6">
+                    <!--订单号-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">订单号</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="paramQueryOrderList.orderNo"
+                                   placeholder="订单号..."/>
+                        </div>
+                    </div>
+
+                    <!--&lt;!&ndash;用户名&ndash;&gt;-->
+                    <!--<div class="form-group">-->
+                        <!--<label class="col-md-3 control-label">用户名</label>-->
+                        <!--<div class="col-md-8">-->
+                            <!--<input type="text" class="form-control" ng-model="paramQueryOrderList.userName"-->
+                                   <!--placeholder="用户名..."/>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
+                    <!--订单状态-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">订单状态</label>
+                        <div class="col-md-8">
+                            <select class="form-control"
+                                    style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                    ng-model="paramQueryOrderList.orderStatus"
+                                    ng-options="value.status as value.text for value in mod_orderStatusList">
+                                <!--<option ng-repeat="obj in mod_orderStatusList" value={{obj.status}}>{{obj.text}}</option>-->
+                                <option value="">全部</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--第三方订单号-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">商品名称</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="paramQueryOrderList.partnerNo"
+                                   placeholder="第三方订单号..."/>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-xs-6">
+
+                    <!--用户名-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">用户名</label>
+                        <div class="col-md-8">
+                            <input type="text" class="form-control" ng-model="paramQueryOrderList.userName"
+                                   placeholder="用户名..."/>
+                        </div>
+                    </div>
+                    <!--订单金额-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">订单金额</label>
+                        <div class="col-md-8 row">
+                            <input type="text" ng-model="paramQueryOrderList.totalMoneyStart"
+                                   class="col-sm-5 col-xs-5 yuan left" placeholder="元">
+                            <span class="col-sm-2 zhi left">至</span>
+                            <input ng-model="paramQueryOrderList.totalMoneyEnd" type="text"
+                                   class="left col-sm-5 col-xs-5 yuan" placeholder="元">
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <script>
+                $("#datepicker").datepicker({
+                    inline: true
+                });
+                $("#datepicker1").datepicker({
+                    inline: true
+                });
+            </script>
+            <!--查询or清空查询-->
+            <div class="form-horizontal-footer">
+                <button class="btn btn-primary pull-right" style="margin-left:20px;" ng-click="fullAll()">清空查询</button>
+                <button class="btn btn-success pull-right" ng-click="confirmQuery()">确认查询</button>
+            </div>
+        </div>
+    </div>
+    <!--订单列表-->
+    <div class="page-content-wrap">
+        <div class="form-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span>加油卡订单列表</span>
+                    <!--订单时间-->
+                    <div class="form-group" style="display:none">
+                        <div class="col-md-5"></div>
+                        <div class="col-md-5 row">
+                            <div class="input-group col-xs-5" style="float:left">
+                                <input type="datetime" ng-model="paramQueryOrderList.startDate" class="form-control "
+                                       id="datepicker"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            <span class="col-xs-2 zhi left" style=" margin-bottom:0;">至</span>
+                            <div class="input-group col-xs-5" style="float:left">
+                                <input ng-model="paramQueryOrderList.endDate" type="datetime" class="form-control"
+                                       id="datepicker1"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                        <button class="btn btn-default">订单导出</button>
+                    </div>
+                </h3>
+            </div>
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>订单编号</th>
+                    <th>用户名称</th>
+                    <th>商品名称</th>
+                    <th>订单时间</th>
+                    <th>订单金额(元)</th>
+                    <!--<th>商品</th>-->
+                    <!--<th>类型</th>-->
+                    <!--<th>运费(元)</th>-->
+                    <!--<th>折扣</th>-->
+                    <!--<th>发票</th>-->
+                    <th>卡号</th>
+                    <th>订单状态</th>
+                    <!--<th>添加人</th>-->
+                </tr>
+                </thead>
+                <!--动态table-->
+                <tbody>
+                <tr ng-repeat="obj in mod_comeOnCardList">
+                    <td>
+                        <a style="color:#4f79e4" href="#/comeOnCardDetail">
+                            {{obj.orderNo}}
+                        </a>
+                    </td>
+                    <td>{{obj.enterUser}}</td>
+                    <td>{{obj.goodsName}}</td>
+                    <td>{{obj.createDate | date:'yyyy/MM/dd HH:mm:ss'}}</td>
+                    <td>{{obj.orderPrice}}</td>
+                    <td><a style="color:#4f79e4" href="#/comeOnCardList">{{obj.orderCard}}</a></td>
+                    <!--<td>{{obj.addressInfo}}</td>-->
+                    <!--<td>{{obj.hasBill == 0?"无":"有"}}</td>-->
+                    <td>{{obj.status == 0?"已支付":"未支付"}}</td>
+                    <!--<td>{{obj.enterUser == null?"系统订单":obj.enterUser}}</td>-->
+                </tr>
+                </tbody>
+            </table>
+            <!--分页显示数据-->
+            <div class="dataTables_info" role="status" aria-live="polite" style="display:none">总共{{totalCount}}条 &nbsp;
+                当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect" ng-options="value.value as value.value for value in pageSizes">
+                </select>条
+            </div>
+            <div class="pull-right" style="display:none">
+                <button class="btn btn-default" ng-click="previous()">上一页</button>
+                <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                <button class="btn btn-default" ng-click="next()">下一页</button>
+                <input type="number" style="width:30px;" ng-model="changePage">
+                <button class="btn btn-default" ng-click="goToPage()">Go</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

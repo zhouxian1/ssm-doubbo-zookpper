@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" class="body-full-height" ng-app="gxMesApp">
+<head>
+    <!-- META SECTION -->
+    <title>公象后台管理系统</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- CSS INCLUDE -->
+    <link rel="stylesheet" type="text/css" id="theme" href="../common/theme-default.css"/>
+    <link rel="stylesheet" href="login.css">
+    <!-- EOF CSS INCLUDE -->
+</head>
+<body>
+
+<div class="login-container">
+
+    <div class="login-box animated fadeInDown" ng-controller="loginCtrl">
+        <div class="login-logo">
+            <h1>公象后台管理系统</h1>
+        </div>
+        <div class="login-body">
+            <div class="login-title"><strong>Welcome</strong>, 请登录</div>
+            <!--<form action="" class="form-horizontal" method="post">-->
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input name="userName" type="text" class="form-control" ng-model="parm.userName" value="13522703252"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <input name="passwd" type="password" class="form-control" ng-model="parm.passwd" value="123456"/>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-md-12">
+                        <!--<a href="../index.html">-->
+                            <button ng-click="login()" class="btn btn-block btn-info">登录</button>
+                        <!--</a>-->
+                    </div>
+                </div>
+            <!--</form>-->
+        </div>
+        <div class="login-footer">
+            <div class="left">
+                &copy; 2016 | <a href="http://www.gxcards.com">公象未来(北京)科技有限公司</a>
+            </div>
+            <div class="right">
+                <a href="#">400-162-0660</a>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="../../component/js/jquery/jquery.min.js"></script>
+<script src="../../component/js/angular/angular.js"></script>
+<!--<script src="../common/js/config.js"></script>-->
+<script src="login.js"></script>
+</body>
+</html>
+
+
+
+
+
+

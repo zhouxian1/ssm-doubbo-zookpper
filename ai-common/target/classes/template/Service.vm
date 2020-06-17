@@ -1,0 +1,13 @@
+package com.${projectName}.${module}.service;
+
+import com.${projectName}.${module}.model.${model};
+import com.${projectName}.${module}.model.${model}Example;
+import com.${projectName}.base.BaseService;
+
+/**
+* ${model}service接口
+* @date ${ctime}.
+*/
+public interface ${model}Service extends BaseService<${model}, ${model}Example> {
+
+}

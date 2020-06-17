@@ -1,0 +1,366 @@
+
+<div class="clearfix index-content">
+
+    <div class="clearfix row">
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+            <div class="clearfix banner">
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column-clear-left">
+                    <!--<div class="swiper-container">-->
+                        <!--<div class="swiper-wrapper">-->
+                            <!--<div class="swiper-slide" ng-repeat="item in rotationList">-->
+                                <!--<a href="{{item.url}}"><img src="{{item.image}}" alt="{{item.name}}"></a>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--&lt;!&ndash; 如果需要分页器 &ndash;&gt;-->
+                        <!--<div class="swiper-pagination"></div>-->
+
+                        <!--&lt;!&ndash; 如果需要导航按钮 &ndash;&gt;-->
+                        <!--<div class="swiper-button-prev"></div>-->
+                        <!--<div class="swiper-button-next"></div>-->
+
+                        <!--&lt;!&ndash; 如果需要滚动条 &ndash;&gt;-->
+                        <!--<div class="swiper-scrollbar"></div>-->
+                    <!--</div>-->
+                    <div  id="myCarousel" class="carousel slide" data-ride="carousel">
+                        <!-- Indicators -->
+                        <ol class="carousel-indicators">
+                            <li data-target="#carousel-generic" data-slide-to="{{key}}"  ng-class="{'active': key==0}" ng-repeat="(key,value) in rotationList"></li>
+                            <!--<li data-target="#carousel-generic" data-slide-to="1"></li>-->
+                            <!--<li data-target="#carousel-generic" data-slide-to="2"></li>-->
+                        </ol>
+
+                        <!-- Wrapper for slides -->
+                        <div class="carousel-inner" role="listbox">
+                            <div class="item" ng-click="rotationClick(value)" ng-repeat="(key,value) in rotationList" ng-class="{'active': key==0}">
+                                <img src="{{value.image}}" alt="{{value.name}}">
+                                <div class="carousel-caption">{{value.name}}</div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Previous</span>
+                        </a>
+                        <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">Next</span>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column-clear-left">
+                    <div class="hot-article">
+                        <h1>
+                            热门资讯
+                            <a href="/article/article?classificationId=8" >更多</a>
+                        </h1>
+                        <ul class="hot-article-list">
+                            <li  ng-repeat="article in hotNews" >
+                                <a href="article/articleDetail?articleId={{article.id}}">{{article.title}}</a>
+                                <p href="article/articleDetail?articleId={{article.id}}" ng-bind-html="article.about + '...' | to_trusted"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advertising">
+                <a href="#">
+                    <img src="../../../images/app/index/24.png" ng-click="goShendu()">
+
+                </a>
+            </div>
+
+            <div class="clearfix sample">
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 column-clear-left">
+                    <div class="sample-list">
+                        <h1>
+                            <span class="vertical-line"></span>样本
+                            <a href="/sample/sample">更多</a>
+                        </h1>
+                        <div class="clearfix content">
+                            <div ng-class="item ==sampleList[0]?'col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left':'col-xs-2 col-sm-2 col-md-2 col-lg-2 column-clear-left'" ng-repeat="item in sampleList">
+                                <a href="/sample/sampleDetail?sampleId={{item.id}}">
+                                    <img src="{{item.cover_url}}">
+                                    <h2>{{item.title}}</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 column-clear-left">
+                    <ul class="sample-article-list">
+                        <li ng-repeat="article in sampleNews">
+                            <a href="article/articleDetail?articleId={{article.id}}">{{article.title}}</a>
+                            <p href="article/articleDetail?articleId={{article.id}}" ng-bind-html="article.about + '...' | to_trusted"></p>
+                            </a>
+                        </li>
+                    </ul>
+                    <div class="more">
+                        <a href="/article/article?classificationId=1">更多</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix algorithm">
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 column-clear-left">
+                    <div class="algorithm-list">
+                        <h1>
+                            <span class="vertical-line"></span>算法
+                            <a href="/article/article?classificationId=2" >更多</a>
+                        </h1>
+                        <ul class="algorithm-article-list">
+                            <li ng-repeat="item in suanfaNews">
+                                <a href="article/articleDetail?articleId={{item.id}}">{{item.title}}</a>
+                                <p>{{item.about}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 column-clear-left">
+                    <div class="algorithm-list">
+                        <h1>
+                            <img src="../../../images/app/index/6.png">新上算法
+                            <a href="/sample/sample">更多</a>
+                        </h1>
+                        <ul class="hot-algorithm">
+                            <li ng-repeat="item in arithmeticList">
+                                <a href="/sample/algorithmDetail?algorithmId={{item.id}}">{{item.title}}</a>
+                                <p>{{item.created_at}}</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advertising">
+                <a href="#" ng-click="goEarth()">
+                    <img src="../../../images/app/index/16.png">
+                </a>
+            </div>
+
+            <div class="clearfix data">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 column-clear-left">
+                    <div class="data-list">
+                        <h1>
+                            <span class="vertical-line"></span>数据
+                            <a href="/data/datalist">更多</a>
+                        </h1>
+                        <div class="clearfix content">
+                            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img class="img-lg" src="../../../images/app/data/1.png">
+                                    <h2>全球中文地名数据</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/2.png">
+                                    <h2>30米DEM</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/3.png">
+                                    <h2>GF1影像</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/4.png">
+                                    <h2>中国矢量数据</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/5.png">
+                                    <h2>气象数据</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/6.png">
+                                    <h2>资源三号</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/7.png">
+                                    <h2>人口密度</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/8.png">
+                                    <h2>倾斜三维模型</h2>
+                                </a>
+                            </div>
+                            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                                <a href="/data/datalist">
+                                    <img src="../../../images/app/data/9.png">
+                                    <h2>全国地名数据</h2>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 column-clear-left">
+                    <ul class="data-article-list">
+                        <li   ng-repeat="article in dataNews">
+                            <a href="article/articleDetail?articleId={{article.id}}">{{article.title}}</a>
+                            <p href="article/articleDetail?articleId={{article.id}}" ng-bind-html="article.about + '...' | to_trusted"></p>
+                        </li>
+                    </ul>
+                    <div class="more">
+                        <a href="/article/article?classificationId=6" >更多</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="advertising">
+                <a href="#">
+                    <img src="../../../images/app/index/Labbanner.png" ng-click="goLab()">
+                </a>
+            </div>
+
+            <div class="clearfix application">
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7 column-clear-left">
+                    <div class="application-list">
+                        <h1>
+                            <span class="vertical-line"></span>应用
+                            <a href="/article/article?classificationId=4" >更多</a>
+                        </h1>
+                        <ul class="application-article-list">
+                            <li ng-repeat="article in applicationNews">
+                                <a href="article/articleDetail?articleId={{article.id}}">{{article.title}}</a>
+                                <p href="article/articleDetail?articleId={{article.id}}" ng-bind-html="article.about + '...' | to_trusted"></p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5 column-clear-left">
+                    <div class="clearfix content">
+                        <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6 column-clear-left" ng-repeat="item in applicationList">
+                            <a href="application/applicationDetail?applicationId={{item.id}}">
+                                <img src="{{item.cover_url}}">
+                                <h2>{{item.title}}</h2>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="more">
+                        <a href="/application/applicationlist">更多</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">
+
+            <div class="download" >
+                <a href="article/articleDetail?articleId=85">
+                    <img src="../../../images/app/index/4.png">
+                </a>
+            </div>
+
+            <div class="clearfix user">
+                <h1>
+                    极客资讯
+                    <a href="/article/article?classificationId=5" >更多</a>
+                </h1>
+                <ul class="user-list">
+                    <li class="clearfix" ng-repeat="item in jikeNews">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 column-clear-left">
+
+                            <a href="article/articleDetail?articleId={{item.id}}">
+                                <h2>{{item.title}}</h2>
+                                <p>{{item.about}}</p>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <!--<div class="download">-->
+            <!--<a href="">-->
+            <!--<img src="../../images/app/index/3.png">-->
+            <!--</a>-->
+            <!--</div>-->
+
+            <div class="clearfix user">
+                <h1>
+                    极客秀
+                    <!--<a href="">更多</a>-->
+                </h1>
+                <ul class="user-list">
+                    <li class="clearfix" ng-repeat="item in userList">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                            <a href="/usercenter/account/userIndex?userId={{item.user_id}}">
+                                <img src="{{item.avatar_url?item.avatar_url:'../../images/icon/icon-user.png'}}">
+                            </a>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 column-clear-left">
+                            <a href="/usercenter/account/userIndex?userId={{item.user_id}}">
+                                <h2>{{item.nickname}}</h2>
+                            </a>
+                            <a href="/usercenter/account/userIndex?userId={{item.user_id}}">
+                                <p>{{item.signature}}</p>
+                            </a>
+                            <!--<p>发布了算法{{item.id}}个</p>-->
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clearfix demand">
+                <h1>
+                    最新需求
+                    <a href="/demand/demandlist">更多</a>
+                </h1>
+                <ul class="demand-list">
+                    <li  ng-repeat="item in hotDemandList">
+
+                        <a href="/demand/demandDetail?demandId={{item.id}}">{{item.title}}</a>
+                        <p href="/demand/demandDetail?demandId={{item.id}}">{{item.introduction}}</p>
+
+                        <div class="clearfix userinfo">
+                            <div class="pull-left">
+                                <a href="">
+                                    <img src="{{item.user.avatar_url}}">
+                                    {{item.user.nickname}}
+                                </a>
+                            </div>
+                            <div class="pull-right">
+                                发布于 {{item.created_at}}
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="clearfix pluginunit">
+                <h1>
+                    插件
+                    <a href="/pluginunit/pluginunitlist">更多</a>
+                </h1>
+                <ul class="pluginunit-list">
+                    <li class="clearfix" ng-repeat="item in pluginunitList">
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                            <a href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                                <img src="{{item.cover_url}}">
+                            </a>
+                        </div>
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 column-clear-left">
+                            <a href="/pluginunit/pluginunitDetail?pluginunitId={{item.id}}">
+                                <h2>{{item.title}}</h2>
+                                <p>{{item.about}}</p>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+</div>
+   
+
+

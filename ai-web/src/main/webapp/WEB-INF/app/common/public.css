@@ -1,0 +1,88 @@
+.error-container .error-code{
+    float: left;
+    width: 100%;
+    font-size: 135px;
+    line-height: 130px;
+    text-align: center;
+    color: #333;
+    font-weight: 300;
+    margin-top:200px;
+}
+.error-container .error-text{
+    float: left;
+    width: 100%;
+    font-size: 38px;
+    line-height: 130px;
+    text-align: center;
+    color: #333;
+    font-weight:100;
+}
+.error-container .error-img{
+    float: left;
+    width: 100%;
+    text-align: center;
+    color: #333;
+}
+
+
+.delete_or_not_instockRecord_warning_bg {
+    display: none;
+    width:100%;
+    height:100%;
+    position:absolute;
+    top:0;
+    z-index:10000;
+}
+.delete_or_not_instockRecord_warning_box {
+    width:300px;
+    height:150px;
+    background-color:rgba(0,0,0,0.6);
+    border:1px solid #fff;
+    border-radius : 10px;
+    box-shadow: 0 0 15px;
+    position:fixed;
+    top:35%;
+    left:39%;
+}
+.delete_or_not_title {
+    text-align:center;
+    color:#fff;
+    font-size:14px;
+    margin-top:20px;
+}
+.delete_or_not_msg {
+    margin-top:20px;
+    color:#fff;
+    text-align:center;
+}
+.delete_or_not_delete {
+    float:left;
+    margin-left:50px;
+    margin-top:20px;
+    font-size:14px;
+    color:#fff;
+    border:1px solid #fff;
+    padding:3px 6px;
+    border-radius:5px;
+}
+.delete_or_not_not {
+    float:right;
+    margin-right:50px;
+    margin-top:20px;
+    font-size:14px;
+    color:lightskyblue;
+    border:1px solid #fff;
+    padding:3px 6px;
+    border-radius:5px;
+}
+.delete_result_msg {
+    text-align: center;
+    color : #fff;
+    line-height : 150px;
+    font-size : 14px;
+}
+#textareaId>textarea{
+    background-color:red;
+    color:red;
+    border:1px solid #ddd;
+}

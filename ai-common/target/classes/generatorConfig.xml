@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <!-- 配置文件 -->
+    <properties resource="generator.properties"></properties>
+
+    <context id="MysqlContext" targetRuntime="MyBatis3" defaultModelType="flat">
+
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!-- 由于beginningDelimiter和endingDelimiter的默认值为双引号(")，在Mysql中不能这么写，所以还要将这两个默认值改为`  -->
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+
+        <!-- 重复生成XML文件时只覆盖 -->
+        <plugin type="com.geovis.ai.plugin.OverIsMergeablePlugin"></plugin>
+        <!-- 生成的pojo，将implements Serializable -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin"></plugin>
+
+        <!-- 注释 -->
+       <!-- <commentGenerator>
+            <property name="suppressAllComments" value="false" />&lt;!&ndash; 是否取消注释 &ndash;&gt;
+            &lt;!&ndash; <property name="suppressDate" value="true" />  是否生成注释代时间戳 &ndash;&gt;
+        </commentGenerator>-->
+        <commentGenerator type="com.geovis.ai.db.MyCommentGenerator">
+            <!-- <property name="suppressDate" value="true"/>
+             &lt;!&ndash; 是否去除自动生成的注释 true：是 ： false:否 &ndash;&gt;
+             <property name="suppressAllComments" value="false"/>-->
+        </commentGenerator>
+
+        <!--<commentGenerator type="com.geovis.ai.plugin.MyCommentGenerator">
+        </commentGenerator>-->
+
+        <!-- 数据库连接 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://127.0.0.1:3306/geovis?characterEncoding=utf-8"
+                        userId="root"
+                        password="root" />
+
+        <!-- model生成 -->
+        <javaModelGenerator targetPackage="com.geovis.ai.model" targetProject="E:/lh/ai/ai-api/src/main/java/" >
+            <property name="enableSubPackages" value="false" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+
+        <!-- MapperXML生成 -->
+        <sqlMapGenerator targetPackage="com.geovis.ai.service" targetProject="E:/lh/ai/ai-service/src/main/java/" >
+            <property name="enableSubPackages" value="false" />
+        </sqlMapGenerator>
+
+        <!-- Mapper接口生成 -->
+        <javaClientGenerator targetPackage="com.geovis.ai.service" targetProject="E:/lh/ai/ai-service/src/main/java/" type="XMLMAPPER">
+            <property name="enableSubPackages" value="false" />
+        </javaClientGenerator>
+        <!-- 列出要生成代码的所有表，这里配置的是不生成Example文件 -->
+        <table tableName="userinfo" domainObjectName="UserInfoPO"
+               enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" selectByExampleQueryId="false" >
+            <property name="useActualColumnNames" value="false"/>
+        </table>
+        <!-- 需要映射的表 -->
+        <!--<table tableName="algorithms" domainObjectName="Algorithms"></table>
+        <table tableName="applications" domainObjectName="Applications"></table>
+        <table tableName="articles" domainObjectName="Articles"></table>
+        <table tableName="biddings" domainObjectName="Biddings"></table>
+         <table tableName="classifications" domainObjectName="Classifications"></table>
+         <table tableName="comments" domainObjectName="Comments"></table>
+         <table tableName="demands" domainObjectName="Demands"></table>
+         <table tableName="documents" domainObjectName="Documents"></table>
+          <table tableName="integral" domainObjectName="Integral"></table>
+          <table tableName="integral_recording" domainObjectName="IntegralRecording"></table>
+          <table tableName="knowledges" domainObjectName="Knowledges"></table>
+          <table tableName="labelids" domainObjectName="Labelids"></table>
+          <table tableName="labels" domainObjectName="Labels"></table>
+              <table tableName="migrations" domainObjectName="Migrations"></table>
+                  <table tableName="orders" domainObjectName="Orders"></table>
+                      <table tableName="plugins" domainObjectName="Plugins"></table>-->
+       <!-- <table tableName="rotation" domainObjectName="Rotation"></table>-->
+        <table tableName="samples" domainObjectName="Samples"></table>
+                                     <table tableName="users" domainObjectName="Users">
+        	<!--<property name="modelOnly" value="true"/>-->
+        </table>
+            </context>
+</generatorConfiguration>

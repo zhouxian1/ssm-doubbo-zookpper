@@ -1,0 +1,14 @@
+.user-logo{
+    width:100px;
+    height:100px;
+}
+.col-md-12 .form-horizontal .panel .form-group{
+    margin-left:0;
+    margin-right:0;
+}
+input.edit_userName {
+    display: none;
+}
+button.save_btn {
+    display : none;
+}

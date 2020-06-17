@@ -1,0 +1,140 @@
+
+<div class="clearfix search-block" ng-controller="searchController">
+
+    <div class="clearfix search-zone">
+        <div class="row">
+            <div class="col-md-7 col-lg-7 col-md-offset-2">
+                <input id="searchBigInput" type="text" class="form-control input-lg" placeholder="search" ng-model="searchStr">
+            </div>
+            <div class="col-md-1 col-lg-1 column-clear-left">
+                <a class="search-btn" href="#" ng-click="refresh()" role="button"><img src="../../../images/icon/search.jpg"></a>
+            </div>
+        </div>
+    </div>
+    <div class="search-menu">
+        <ul class="clearfix">
+            <li>
+                <a ng-class="{active:appState==1}" href="#" ng-click="clickApp(1)">资讯</a>
+            </li>
+            <li>
+                <a ng-class="{active:appState==2}" href="#" ng-click="clickApp(2)">样本</a>
+            </li>
+            <li>
+                <a ng-class="{active:appState==3}" href="#" ng-click="clickApp(3)">算法</a>
+            </li>
+            <li>
+                <a ng-class="{active:appState==4}" href="#" ng-click="clickApp(4)">插件</a>
+            </li>
+            <li>
+                <a ng-class="{active:appState==5}" href="#" ng-click="clickApp(5)">应用</a>
+            </li>
+            <li>
+                <a ng-class="{active:appState==6}" href="#" ng-click="clickApp(6)">数据</a>
+            </li>
+            <li>
+                <a ng-class="{active:appState==7}" href="#" ng-click="clickApp(7)">需求</a>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="appState == 1" class="clearfix search-article">
+        <ul class="content-list">
+            <li ng-if="total" class="row" ng-repeat="item in list">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">
+                    <img src="{{ item.img }}" alt="{{ item.title }}">
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+                    <a href="article/articleDetail">
+                        <h1>{{ item.title }}</h1>
+                    </a>
+                    <p>{{ item.about }}</p>
+                </div>
+            </li>
+            <li ng-if="!total">
+                <p>没有您要搜索的数据！</p>
+            </li>
+        </ul>
+
+    </div>
+
+    <div ng-if="appState == 4 || appState == 5 || appState == 7" class="clearfix search-other">
+        <ul class="content-list">
+            <li ng-if="total" class="row" ng-repeat="item in list">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left">
+                    <img src="{{ item.cover_url }}" alt="{{ item.title }}">
+                </div>
+                <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+                    <div class="clearfix">
+                        <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 column-clear-left">
+                            <p>
+                                <a href="article/articleDetail">
+                                    <h1>{{ item.title }}</h1>
+                                </a>
+                            </p>
+                            <p>
+                                <span class="price">{{ item.price }}个积分</span>
+                                <span>{{ item.buy_count }}人购买</span>
+                            </p>
+                        </div>
+                        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 column-clear-left">
+                            <div class="pull-right">
+                                <div class="starts">
+                                    <span class="glyphicon {{item.star_rating<1?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                    <span class="glyphicon  {{item.star_rating<2?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                    <span class="glyphicon  {{item.star_rating<3?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                    <span class="glyphicon  {{item.star_rating<4?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                    <span class="glyphicon  {{item.star_rating<5?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                </div>
+                                <div class="comments">
+                                    {{ item.comment_count }}条评论
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <p>{{ item.introduction }}</p>
+                </div>
+            </li>
+            <li ng-if="!total">
+                <p>没有您要搜索的数据！</p>
+            </li>
+        </ul>
+    </div>
+
+    <div ng-if="appState == 2 || appState == 3 || appState == 6" class="clearfix search-other">
+        <ul class="content-list">
+            <li>
+                <p>没有您要搜索的数据！</p>
+            </li>
+        </ul>
+    </div>
+
+
+    <!-- 分页开始 -->
+    <div class="page-blcok center-block">
+
+        <uib-pagination
+                force-ellipses="true"
+                boundary-links="true"
+                boundary-link-numbers="true"
+                total-items="total"
+                ng-model="current"
+                max-size="maxSize"
+                ng-change="search(true)"
+                items-per-page="pageTotal||10"
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+        ></uib-pagination>
+        &nbsp;&nbsp;
+        <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="current" ng-keyup="jumpPage($event)" />页</div>
+        &nbsp;&nbsp;
+        <div class="pagination-info" ng-if="total">
+            <span class="ng-binding">共有{{total}}条</span>
+        </div>
+
+    </div>
+    <!-- 分页结束 -->
+
+</div>

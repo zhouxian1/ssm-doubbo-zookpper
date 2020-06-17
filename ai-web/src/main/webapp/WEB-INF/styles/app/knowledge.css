@@ -1,0 +1,66 @@
+
+.content-list{
+    margin: 0;
+    padding: 0 0 0 20px;
+}
+
+.content-list li{
+    border-bottom: 1px solid #e2e2e2;
+    clear: both;
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+}
+
+.content-list img{
+    width: 100%;
+}
+
+.content-list .img-block{
+    height: 180px;
+    overflow: hidden;
+}
+
+.content-list h1{
+    font-size: 18px;
+    font-weight: 600;
+    margin: 12px 0;
+    color: #555;
+}
+
+.content-list a{
+
+}
+
+.content-list p{
+    font-size: 14px;
+    margin: 8px 0;
+    color: #999;
+}
+
+.knowledge-detail{
+
+}
+
+.knowledge-detail h1{
+    text-align: center;
+    font-size: 18px;
+}
+
+.knowledge-detail .title{
+    border-bottom: 1px solid #E2E2E2;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.knowledge-detail .content .img{
+    text-align: center;
+}
+
+.knowledge-detail .title img{
+    height: 30px;
+    margin: 0 6px;
+}
+
+.knowledge-detail .title a{
+    text-decoration: none;
+}

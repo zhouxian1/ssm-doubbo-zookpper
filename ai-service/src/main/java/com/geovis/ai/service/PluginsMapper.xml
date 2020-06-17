@@ -1,0 +1,578 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.geovis.ai.service.PluginsMapper">
+  <resultMap id="BaseResultMap" type="com.geovis.ai.model.Plugins">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="type" jdbcType="TINYINT" property="type" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="version" jdbcType="VARCHAR" property="version" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="download_count" jdbcType="INTEGER" property="downloadCount" />
+    <result column="star_rating" jdbcType="INTEGER" property="starRating" />
+    <result column="comment_count" jdbcType="INTEGER" property="commentCount" />
+    <result column="buy_count" jdbcType="INTEGER" property="buyCount" />
+    <result column="servicebox_status" jdbcType="TINYINT" property="serviceboxStatus" />
+    <result column="is_shelf" jdbcType="TINYINT" property="isShelf" />
+    <result column="pluginsbox_status" jdbcType="TINYINT" property="pluginsboxStatus" />
+    <result column="is_del" jdbcType="TINYINT" property="isDel" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="created_at" jdbcType="TIMESTAMP" property="createdAt" />
+    <result column="updated_at" jdbcType="TIMESTAMP" property="updatedAt" />
+  </resultMap>
+  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.geovis.ai.model.Plugins">
+    <result column="label_ids" jdbcType="LONGVARCHAR" property="labelIds" />
+    <result column="cover_url" jdbcType="LONGVARCHAR" property="coverUrl" />
+    <result column="introduction" jdbcType="LONGVARCHAR" property="introduction" />
+    <result column="image_urls" jdbcType="LONGVARCHAR" property="imageUrls" />
+    <result column="video_url" jdbcType="LONGVARCHAR" property="videoUrl" />
+    <result column="servicebox_url" jdbcType="LONGVARCHAR" property="serviceboxUrl" />
+    <result column="pluginsbox_url" jdbcType="LONGVARCHAR" property="pluginsboxUrl" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, title, type, status, version, user_id, download_count, star_rating, comment_count, 
+    buy_count, servicebox_status, is_shelf, pluginsbox_status, is_del, price, created_at, 
+    updated_at
+  </sql>
+  <sql id="Blob_Column_List">
+    label_ids, cover_url, introduction, image_urls, video_url, servicebox_url, pluginsbox_url
+  </sql>
+  <select id="selectByExampleWithBLOBs" parameterType="com.geovis.ai.model.PluginsExample" resultMap="ResultMapWithBLOBs">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from plugins
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" parameterType="com.geovis.ai.model.PluginsExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from plugins
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+    select 
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from plugins
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from plugins
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.geovis.ai.model.PluginsExample">
+    delete from plugins
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.geovis.ai.model.Plugins">
+    insert into plugins (id, title, type, 
+      status, version, user_id, 
+      download_count, star_rating, comment_count, 
+      buy_count, servicebox_status, is_shelf, 
+      pluginsbox_status, is_del, price, 
+      created_at, updated_at, label_ids, 
+      cover_url, introduction, image_urls, 
+      video_url, servicebox_url, pluginsbox_url
+      )
+    values (#{id,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{type,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{version,jdbcType=VARCHAR}, #{userId,jdbcType=BIGINT}, 
+      #{downloadCount,jdbcType=INTEGER}, #{starRating,jdbcType=INTEGER}, #{commentCount,jdbcType=INTEGER}, 
+      #{buyCount,jdbcType=INTEGER}, #{serviceboxStatus,jdbcType=TINYINT}, #{isShelf,jdbcType=TINYINT}, 
+      #{pluginsboxStatus,jdbcType=TINYINT}, #{isDel,jdbcType=TINYINT}, #{price,jdbcType=INTEGER}, 
+      #{createdAt,jdbcType=TIMESTAMP}, #{updatedAt,jdbcType=TIMESTAMP}, #{labelIds,jdbcType=LONGVARCHAR}, 
+      #{coverUrl,jdbcType=LONGVARCHAR}, #{introduction,jdbcType=LONGVARCHAR}, #{imageUrls,jdbcType=LONGVARCHAR}, 
+      #{videoUrl,jdbcType=LONGVARCHAR}, #{serviceboxUrl,jdbcType=LONGVARCHAR}, #{pluginsboxUrl,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.geovis.ai.model.Plugins">
+    insert into plugins
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="type != null">
+        type,
+      </if>
+      <if test="status != null">
+        status,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="downloadCount != null">
+        download_count,
+      </if>
+      <if test="starRating != null">
+        star_rating,
+      </if>
+      <if test="commentCount != null">
+        comment_count,
+      </if>
+      <if test="buyCount != null">
+        buy_count,
+      </if>
+      <if test="serviceboxStatus != null">
+        servicebox_status,
+      </if>
+      <if test="isShelf != null">
+        is_shelf,
+      </if>
+      <if test="pluginsboxStatus != null">
+        pluginsbox_status,
+      </if>
+      <if test="isDel != null">
+        is_del,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createdAt != null">
+        created_at,
+      </if>
+      <if test="updatedAt != null">
+        updated_at,
+      </if>
+      <if test="labelIds != null">
+        label_ids,
+      </if>
+      <if test="coverUrl != null">
+        cover_url,
+      </if>
+      <if test="introduction != null">
+        introduction,
+      </if>
+      <if test="imageUrls != null">
+        image_urls,
+      </if>
+      <if test="videoUrl != null">
+        video_url,
+      </if>
+      <if test="serviceboxUrl != null">
+        servicebox_url,
+      </if>
+      <if test="pluginsboxUrl != null">
+        pluginsbox_url,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="downloadCount != null">
+        #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="starRating != null">
+        #{starRating,jdbcType=INTEGER},
+      </if>
+      <if test="commentCount != null">
+        #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyCount != null">
+        #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="serviceboxStatus != null">
+        #{serviceboxStatus,jdbcType=TINYINT},
+      </if>
+      <if test="isShelf != null">
+        #{isShelf,jdbcType=TINYINT},
+      </if>
+      <if test="pluginsboxStatus != null">
+        #{pluginsboxStatus,jdbcType=TINYINT},
+      </if>
+      <if test="isDel != null">
+        #{isDel,jdbcType=TINYINT},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="labelIds != null">
+        #{labelIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="coverUrl != null">
+        #{coverUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null">
+        #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imageUrls != null">
+        #{imageUrls,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        #{videoUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="serviceboxUrl != null">
+        #{serviceboxUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pluginsboxUrl != null">
+        #{pluginsboxUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.geovis.ai.model.PluginsExample" resultType="java.lang.Long">
+    select count(*) from plugins
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update plugins
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.title != null">
+        title = #{record.title,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null">
+        type = #{record.type,jdbcType=TINYINT},
+      </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=TINYINT},
+      </if>
+      <if test="record.version != null">
+        version = #{record.version,jdbcType=VARCHAR},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=BIGINT},
+      </if>
+      <if test="record.downloadCount != null">
+        download_count = #{record.downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.starRating != null">
+        star_rating = #{record.starRating,jdbcType=INTEGER},
+      </if>
+      <if test="record.commentCount != null">
+        comment_count = #{record.commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.buyCount != null">
+        buy_count = #{record.buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="record.serviceboxStatus != null">
+        servicebox_status = #{record.serviceboxStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.isShelf != null">
+        is_shelf = #{record.isShelf,jdbcType=TINYINT},
+      </if>
+      <if test="record.pluginsboxStatus != null">
+        pluginsbox_status = #{record.pluginsboxStatus,jdbcType=TINYINT},
+      </if>
+      <if test="record.isDel != null">
+        is_del = #{record.isDel,jdbcType=TINYINT},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=INTEGER},
+      </if>
+      <if test="record.createdAt != null">
+        created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.updatedAt != null">
+        updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.labelIds != null">
+        label_ids = #{record.labelIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.coverUrl != null">
+        cover_url = #{record.coverUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.introduction != null">
+        introduction = #{record.introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.imageUrls != null">
+        image_urls = #{record.imageUrls,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.videoUrl != null">
+        video_url = #{record.videoUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.serviceboxUrl != null">
+        servicebox_url = #{record.serviceboxUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="record.pluginsboxUrl != null">
+        pluginsbox_url = #{record.pluginsboxUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map">
+    update plugins
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=TINYINT},
+      version = #{record.version,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      download_count = #{record.downloadCount,jdbcType=INTEGER},
+      star_rating = #{record.starRating,jdbcType=INTEGER},
+      comment_count = #{record.commentCount,jdbcType=INTEGER},
+      buy_count = #{record.buyCount,jdbcType=INTEGER},
+      servicebox_status = #{record.serviceboxStatus,jdbcType=TINYINT},
+      is_shelf = #{record.isShelf,jdbcType=TINYINT},
+      pluginsbox_status = #{record.pluginsboxStatus,jdbcType=TINYINT},
+      is_del = #{record.isDel,jdbcType=TINYINT},
+      price = #{record.price,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP},
+      label_ids = #{record.labelIds,jdbcType=LONGVARCHAR},
+      cover_url = #{record.coverUrl,jdbcType=LONGVARCHAR},
+      introduction = #{record.introduction,jdbcType=LONGVARCHAR},
+      image_urls = #{record.imageUrls,jdbcType=LONGVARCHAR},
+      video_url = #{record.videoUrl,jdbcType=LONGVARCHAR},
+      servicebox_url = #{record.serviceboxUrl,jdbcType=LONGVARCHAR},
+      pluginsbox_url = #{record.pluginsboxUrl,jdbcType=LONGVARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update plugins
+    set id = #{record.id,jdbcType=INTEGER},
+      title = #{record.title,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=TINYINT},
+      status = #{record.status,jdbcType=TINYINT},
+      version = #{record.version,jdbcType=VARCHAR},
+      user_id = #{record.userId,jdbcType=BIGINT},
+      download_count = #{record.downloadCount,jdbcType=INTEGER},
+      star_rating = #{record.starRating,jdbcType=INTEGER},
+      comment_count = #{record.commentCount,jdbcType=INTEGER},
+      buy_count = #{record.buyCount,jdbcType=INTEGER},
+      servicebox_status = #{record.serviceboxStatus,jdbcType=TINYINT},
+      is_shelf = #{record.isShelf,jdbcType=TINYINT},
+      pluginsbox_status = #{record.pluginsboxStatus,jdbcType=TINYINT},
+      is_del = #{record.isDel,jdbcType=TINYINT},
+      price = #{record.price,jdbcType=INTEGER},
+      created_at = #{record.createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{record.updatedAt,jdbcType=TIMESTAMP}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.geovis.ai.model.Plugins">
+    update plugins
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        type = #{type,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=VARCHAR},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=BIGINT},
+      </if>
+      <if test="downloadCount != null">
+        download_count = #{downloadCount,jdbcType=INTEGER},
+      </if>
+      <if test="starRating != null">
+        star_rating = #{starRating,jdbcType=INTEGER},
+      </if>
+      <if test="commentCount != null">
+        comment_count = #{commentCount,jdbcType=INTEGER},
+      </if>
+      <if test="buyCount != null">
+        buy_count = #{buyCount,jdbcType=INTEGER},
+      </if>
+      <if test="serviceboxStatus != null">
+        servicebox_status = #{serviceboxStatus,jdbcType=TINYINT},
+      </if>
+      <if test="isShelf != null">
+        is_shelf = #{isShelf,jdbcType=TINYINT},
+      </if>
+      <if test="pluginsboxStatus != null">
+        pluginsbox_status = #{pluginsboxStatus,jdbcType=TINYINT},
+      </if>
+      <if test="isDel != null">
+        is_del = #{isDel,jdbcType=TINYINT},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="createdAt != null">
+        created_at = #{createdAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updatedAt != null">
+        updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      </if>
+      <if test="labelIds != null">
+        label_ids = #{labelIds,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="coverUrl != null">
+        cover_url = #{coverUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="introduction != null">
+        introduction = #{introduction,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="imageUrls != null">
+        image_urls = #{imageUrls,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="videoUrl != null">
+        video_url = #{videoUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="serviceboxUrl != null">
+        servicebox_url = #{serviceboxUrl,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="pluginsboxUrl != null">
+        pluginsbox_url = #{pluginsboxUrl,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.geovis.ai.model.Plugins">
+    update plugins
+    set title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      version = #{version,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      download_count = #{downloadCount,jdbcType=INTEGER},
+      star_rating = #{starRating,jdbcType=INTEGER},
+      comment_count = #{commentCount,jdbcType=INTEGER},
+      buy_count = #{buyCount,jdbcType=INTEGER},
+      servicebox_status = #{serviceboxStatus,jdbcType=TINYINT},
+      is_shelf = #{isShelf,jdbcType=TINYINT},
+      pluginsbox_status = #{pluginsboxStatus,jdbcType=TINYINT},
+      is_del = #{isDel,jdbcType=TINYINT},
+      price = #{price,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP},
+      label_ids = #{labelIds,jdbcType=LONGVARCHAR},
+      cover_url = #{coverUrl,jdbcType=LONGVARCHAR},
+      introduction = #{introduction,jdbcType=LONGVARCHAR},
+      image_urls = #{imageUrls,jdbcType=LONGVARCHAR},
+      video_url = #{videoUrl,jdbcType=LONGVARCHAR},
+      servicebox_url = #{serviceboxUrl,jdbcType=LONGVARCHAR},
+      pluginsbox_url = #{pluginsboxUrl,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.geovis.ai.model.Plugins">
+    update plugins
+    set title = #{title,jdbcType=VARCHAR},
+      type = #{type,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      version = #{version,jdbcType=VARCHAR},
+      user_id = #{userId,jdbcType=BIGINT},
+      download_count = #{downloadCount,jdbcType=INTEGER},
+      star_rating = #{starRating,jdbcType=INTEGER},
+      comment_count = #{commentCount,jdbcType=INTEGER},
+      buy_count = #{buyCount,jdbcType=INTEGER},
+      servicebox_status = #{serviceboxStatus,jdbcType=TINYINT},
+      is_shelf = #{isShelf,jdbcType=TINYINT},
+      pluginsbox_status = #{pluginsboxStatus,jdbcType=TINYINT},
+      is_del = #{isDel,jdbcType=TINYINT},
+      price = #{price,jdbcType=INTEGER},
+      created_at = #{createdAt,jdbcType=TIMESTAMP},
+      updated_at = #{updatedAt,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

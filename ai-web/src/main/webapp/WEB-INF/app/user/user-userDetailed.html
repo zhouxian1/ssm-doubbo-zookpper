@@ -1,0 +1,127 @@
+<!--主体内容之 content-main-->
+<!--<div id="content-main">&#45;&#45; -->
+
+<div >
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>用户管理
+    </p>
+    <!--end 标题头-->
+    <!--用户资料-->
+    <div class="page-content-wrap" style="margin-top:3px;">
+        <div class="row">
+            <div class="col-md-12 row">
+                <form class="form-horizontal">
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <span class="goods-count">用户资料</span>
+                        </div>
+                        <div class="panel-body form-group-separated">
+                            <!--&lt;!&ndash;用户头像&ndash;&gt;-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-md-5 col-xs-5 control-label">用户头像:</label>-->
+                                <!--<div class="col-md-6 col-xs-6">-->
+                                    <!--<img class="user-logo" src="http://img.gxcards.com/{{responseData.headUrl}}"  alt="">-->
+                                <!--</div>-->
+                            <!--</div>-->
+                            <!--用户信息 左-->
+                            <div class="col-sm-6 col-xs-12">
+
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">用户昵称 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span class="show_userName">{{user_info.nickname?user_info.nickname:"没有填写"}}</span>
+                                    </div>
+                                </div>
+                                <!--用户id-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">真实姓名 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{user_info.actual_name?user_info.actual_name:"没有填写"}}</span>
+                                    </div>
+                                </div>
+                                <!--用户余额-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">用户类型 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{user_info.type_id == 1?"普通用户":"企业用户"}}</span>
+                                    </div>
+                                </div>
+
+                                <!--&lt;!&ndash;用户备注&ndash;&gt;-->
+                                <!--<div class="form-group">-->
+                                <!--<label class="col-md-3 col-xs-12 control-label">用户备注 : </label>-->
+                                <!--<div class="col-md-6 col-xs-12">-->
+                                <!--<span>无</span>-->
+                                <!--</div>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="col-sm-6 col-xs-12" style="text-align:center;margin:15px;">
+                                <!--<img ng-src="{{user_info.avatar_url}}" alt="用户头像" style="width: 100px;height:100px;padding-bottom:20px;">-->
+                                <img ng-src="{{user_info.avatar_url}}" alt="" style="width: 100px;height:100px;border-style: solid;border-color: rgb(255, 255, 255);border-image: initial;border-radius: 50%;border:1px solid #ddd;">
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+    <!--用户列表-->
+    <div class="page-content-wrap" style="padding:10px; min-height:750px;">
+        <form class="form-horizontal">
+            <div class="panel" >
+                <div class="panel-heading">
+                    <span class="goods-count">扩展信息</span>
+                </div>
+                <div class="panel-body form-group-separated">
+                    <div class="col-sm-6 col-xs-12">
+
+                        <div class="form-group row">
+                            <label class="col-md-3 col-xs-12 control-label">真实姓名 : </label>
+                            <div class="col-md-6 col-xs-12">
+                                <span>{{user_info.actual_name?user_info.actual_name:"没有填写"}}</span>
+                            </div>
+                        </div>
+                        <!--用户id-->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-xs-12 control-label">公司 : </label>
+                            <div class="col-md-6 col-xs-12">
+                                <span>{{user_info.company?user_info.company:"没有填写"}}</span>
+                            </div>
+                        </div>
+
+                        <!--用户性别-->
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">职位 : </label>
+                            <div class="col-md-6 col-xs-12">
+                                <span>{{user_info.position?user_info.position:"没有填写"}}</span>
+                            </div>
+                        </div>
+                        <!--用户余额-->
+                        <div class="form-group row">
+                            <label class="col-md-3 col-xs-12 control-label">身份证号码 : </label>
+                            <div class="col-md-6 col-xs-12">
+
+                                <span>{{user_info.ID_card_num?user_info.ID_card_num:"没有填写"}}</span>
+                            </div>
+                        </div>
+                        <!--累计消费-->
+                        <div class="form-group" >
+                            <label class="col-md-3 col-xs-12 control-label">身份证照片 : </label>
+                            <div class="col-md-6 col-xs-12" >
+                                <!--<span>{{user_info.ID_card_url?user_info.ID_card_url:"没有上传"}}</span>-->
+                                <img ng-src="{{user_info.ID_card_url}}" alt="没有上传" style="width: 200px;height:100px;border-image: initial;">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--<div class="panel-footer">-->
+                    <!--<button class="btn btn-primary pull-right">审核</button>-->
+                <!--</div>-->
+            </div>
+        </form>
+
+    </div>
+</div>

@@ -1,0 +1,188 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>财务管理 /</a>用户提现详情
+    </p>
+    <!--end 标题头-->
+    <!--用户资料-->
+    <!--end 访客量-->
+    <style>
+        .modal_modal{
+            position:fixed;
+            left:0;
+            right:0;
+            top:0;
+            bottom:0;
+            background:rgba(0,0,0,.5);
+            z-index:999;
+
+        }
+        .modal_modal .modal-dialog {
+            width: 400px;
+            margin: 200px auto 0px auto;
+        }
+        .modal-content{
+            background:#fff;
+            border:1px solid #aaa;
+            border-radius:4px;
+            box-shadow:0 0 6px #aaa;
+            padding:20px;
+            height:300px;
+
+        }
+        .modal_modal form input{
+            box-sizing:border-box;
+            display:block;
+            /*width:100%;*/
+            border:1px solid #aaa;
+            border-radius:4px;
+            padding:6px;
+            margin-bottom:12px;
+        }
+
+    </style>
+    <div class="page-content-wrap" style="min-height:1316px;">
+        <div class="row">
+            <div class="col-md-12 row">
+                <form class="form-horizontal">
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <h3 class="goods-count" style="padding-left:0">提现信息</h3>
+                        </div>
+                        <div class="panel-body form-group-separated">
+                            <div class="col-sm-12 col-xs-12">
+                                <!--申请提交人-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">申请提交人: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankName}}</span>
+                                    </div>
+                                </div>
+                                <!--付款单位-->
+                                <div class="form-group row" >
+                                    <label class="col-md-3 col-xs-12 control-label">付款单位:</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.firmName}}</span>
+                                    </div>
+                                </div>
+                                <!--经办部门-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">经办部门:</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.department}}</span>
+                                    </div>
+                                </div>
+                                <!--本单位开户行-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">本单位开户行: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.ourBankName}}</span>
+                                    </div>
+                                </div>
+                                <!--本单位卡号-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">本单位卡号: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.ourBankCardNo}}</span>
+                                    </div>
+                                </div>
+                                <!--付款说明-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">付款说明: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.remark == null?"无":mod_bankTransferInfoList.remark}}</span>
+                                    </div>
+                                </div>
+                                <!--打款状态 可编辑-->
+                                <div class="form-group row" >
+                                    <label class="col-md-3 col-xs-12 control-label">打款状态:</label>
+                                    <div class="col-md-6 col-xs-6">
+                                        <select class="form-control" ng-model="param_updateTransferStatus.status"  ng-change="changeTransferStatus(param_updateTransferStatus.status)" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                                            <option ng-repeat="obj in mod_firmBankTransferStatus" value={{obj.type}} ng-selected="mod_bankTransferInfoList.status == obj.type">{{obj.text}}</option>
+                                        </select>
+                                        <span></span>
+                                    </div>
+                                </div>
+                                <!--收款单位名称-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">收款单位名称 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.userName}}</span>
+                                    </div>
+                                </div>
+                                <!--提现金额-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">提现金额(元) : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.amount}}</span>
+                                    </div>
+                                </div>
+                                <!--收款单位开户行-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">收款单位开户行: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.bankName}}</span>
+                                    </div>
+                                </div>
+                                <!--收款单位卡号-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">收款单位卡号: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.bankCardNo}}</span>
+                                    </div>
+                                </div>
+                                <!--预付申请人-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">预付申请人: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.applicant}}</span>
+                                    </div>
+                                </div>
+                                <!--经办人-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">经办人: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <span>{{mod_bankTransferInfoList.agent}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="modal_modal"  id="showImg" style="display:none;">
+                    <div class="modal-dialog">
+                        <div class="modal-content" style="position:relative;">
+                            <h2 style="margin-bottom:20px;font-size:16px;">备注</h2>
+                            <div class="form-group" style="margin-top:50px;">
+                                <label class="col-md-3" style="font-size:14px;">备注</label>
+                                <textarea name="" id="" cols="30" rows="5" ng-model="mod_remark">备注
+
+                                </textarea>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-5"></div>
+                                <button type="button" class="btn btn-success" ng-click="fire()">确认</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="know()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+
+
+
+
+
+
+
+

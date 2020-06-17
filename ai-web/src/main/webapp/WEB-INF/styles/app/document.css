@@ -1,0 +1,65 @@
+
+.document_list {
+
+}
+
+.document_list > .dev-describe {
+
+}
+
+.document_list .title {
+    background-color: #ececec;
+    height: 50px;
+    line-height: 50px;
+    border: 1px solid #d9d9d9;
+    padding-left: 10px;
+    position: relative;
+}
+
+.document_list .title img {
+    position: absolute;
+    top: 14px;
+}
+
+.document_list .title span {
+    margin-left: 40px;
+}
+
+.document_list .content {
+    margin-top: 32px;
+}
+
+.document_list .text {
+    text-indent: 2em;
+    font-size: 14px;
+    color: #525252;
+    margin: 20px 0;
+}
+
+.article-detail{
+
+}
+
+.article-detail h1{
+    text-align: center;
+    font-size: 18px;
+}
+
+.article-detail .title{
+    border-bottom: 1px solid #E2E2E2;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+}
+
+.article-detail .content .img{
+    text-align: center;
+}
+
+.article-detail .title img{
+    height: 30px;
+    margin: 0 6px;
+}
+
+.article-detail .title a{
+    text-decoration: none;
+}

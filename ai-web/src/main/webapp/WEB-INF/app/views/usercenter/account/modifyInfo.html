@@ -1,0 +1,57 @@
+<div class="usercenter" >
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li><a href="/usercenter/home">用户中心</a></li>
+        <li class="active">修改个人信息</li>
+    </ol>
+    <div class="usercenter-release">
+        <div class="title">
+            <h1>修改个人信息</h1>
+        </div>
+
+        <form class="form-horizontal form-block">
+
+            <div class="form-group">
+                <label for="nickname" class="col-sm-2 control-label">昵称：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="nickname" placeholder="{{userInfo.nickname}}" ng-model="userInfo.nickname" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sex" class="col-sm-2 control-label">性别：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="sex" placeholder="{{userInfo.sex}}" ng-model="userInfo.sex" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="signature" class="col-sm-2 control-label">签名：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="signature" placeholder="{{userInfo.signature}}" ng-model="userInfo.signature" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="company" class="col-sm-2 control-label">所在公司：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="company" placeholder="{{userInfo.company}}" ng-model="userInfo.company" >
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="position" class="col-sm-2 control-label">公司职务：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="position" placeholder="{{userInfo.position}}" ng-model="userInfo.position" >
+                </div>
+            </div>
+        </form>
+
+
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-3">
+                <button type="submit" class="btn btn-success center-block btn-lg" ng-click="save()">提交修改</button>
+            </div>
+            <div class="col-sm-3">
+                <button type="submit" class="btn btn-default center-block btn-lg" ng-click="cancel()">取消</button>
+            </div>
+        </div>
+    </div>
+
+</div>

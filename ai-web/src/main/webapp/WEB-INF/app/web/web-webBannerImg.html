@@ -1,0 +1,66 @@
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>轮播管理</a>&gt;图片轮播管理
+    </p>
+    <div class="page-content-wrap" style="margin-top:5px;padding-bottom:20px;min-height:1000px;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="form-horizontal">
+
+                    <div class="panel panel-default tabs">
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="tab-second">
+                                <!-- START DEFAULT DATATABLE 数据表格 -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">图片轮播列表</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table datatable">
+                                                    <thead>
+                                                    <tr >
+                                                        <th>ID</th>
+                                                        <th>图片</th>
+                                                        <th>位置</th>
+                                                        <th>发布时间</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <!--动态table-->
+                                                    <tbody>
+                                                    <tr ng-repeat="banner in plugins_List">
+                                                        <td>
+                                                            ID:{{banner.id}}
+                                                        </td>
+                                                        <td>
+                                                            <img ng-src="{{banner.image}}" alt="">
+                                                        </td>
+                                                        <td>{{banner.groupid==1?"首页":"无"}}</td>
+                                                        <td>发布时间：{{banner.created_at}}</td>
+                                                        <td>
+                                                            <a style="color:#4f79e4" href="/addBanner/{{banner.id}}">查看</a>
+                                                            <a style="color:#4f79e4"  ng-click="deleteBanner(banner.id)">删除</a>
+                                                        </td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                        </div>
+                                        <!-- END DEFAULT DATATABLE 数据表格 -->
+                                        <!--新增加分页显示数据-->
+                                            <div id="pageBottom" style="margin-top: -25px;">
+                                            </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

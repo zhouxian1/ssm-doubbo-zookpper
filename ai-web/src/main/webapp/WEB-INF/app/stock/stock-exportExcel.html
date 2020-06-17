@@ -1,0 +1,88 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8">
+        <a>导出excel表 </a>
+    </p>
+    <!-- 查询结束 -->
+    <div class="page-content-wrap">
+        <div class="row">
+            <!-- START DEFAULT DATATABLE 数据表格 -->
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">excel表</h3>
+                    </div>
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-second">
+                            <div class="col-md-12">
+                                <div class="form-horizontal">
+                                    <div class="panel panel-default">
+                                        <ul class="nav nav-tabs" role="tablist">
+                                        </ul>
+                                        <div class="panel-body tab-content" style="padding-top:5px;">
+                                            <div class="tab-pane active" id="tab-first" style="margin-top:5px;">
+                                                <!--渠道名称-->
+                                                <div class="form-group">
+                                                    <label class="col-md-3 col-xs-12"
+                                                           style="margin-top:6px;padding-right:0px;">订单号或者批次号</label>
+                                                    <div class="col-md-3 col-xs-12">
+                                                        <input type="text" class="form-control"
+                                                               placeholder="订单号或者批次号"
+                                                               ng-model="paramExcel.orderNo"/>
+                                                    </div>
+                                                    <div class="col-md-6 col-xs-12">
+                                                        <button class="btn btn-success pull-right"
+                                                                ng-click="queryCardList()"
+                                                                style="padding-left:10px">查&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;询
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="panel-body">
+                                <table class="table table-striped simple datatable">
+                                    <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>操作人姓名</th>
+                                        <th>订单号</th>
+                                        <th>下载地址</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr ng-repeat="excel in mod_excelsList">
+                                        <td>{{excel.id}}</td>
+                                        <td>{{excel.operateName == null?excel.operateName="":excel.operateName}}</td>
+                                        <td>{{excel.name}}</td>
+                                        <td ng-show="excel.url != null"><a href="http://img.gxcards.com/{{excel.url}}"
+                                                                           style="color:blue;text-decoration: underline">下载excel表</a>
+                                        </td>
+                                        <td ng-show="excel.url == null">生成中</td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--分页显示数据-->
+        <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCountTwo}}条 &nbsp;
+            当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect"
+                        ng-options="value.value as value.value for value in pageSizes">
+            </select>条
+        </div>
+        <div class="pull-right">
+            <button class="btn btn-default" ng-click="previousTwo()">上一页</button>
+            <span>第 {{pageNumTwo}} 页/共 {{totalPageCountTwo}} 页</span>
+            <button class="btn btn-default" ng-click="nextTwo()">下一页</button>
+            <input type="number" style="width:45px;margin-left:10px;margin-right:7px;border-radius:9px;"
+                   ng-model="changePageTwo">
+            <button class="btn btn-default" ng-click="goToPageTwo()">Go</button>
+        </div>
+    </div>
+</div>

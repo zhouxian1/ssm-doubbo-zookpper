@@ -1,0 +1,7 @@
+.pagination-info, .pagination-sm {
+    display: inline-block;
+    vertical-align: middle;
+}
+.pagination-sm {
+    margin: 0;
+}

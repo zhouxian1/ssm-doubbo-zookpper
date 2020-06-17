@@ -1,0 +1,77 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 </a>/ 知识 / 添加资讯
+    </p>
+    <!--end 标题头-->
+
+    <!--新增订单-->
+    <div class="page-content-wrap" style="min-height:1500px;">
+        <div class="row">
+            <div class="col-md-12">
+                <form class="form-horizontal">
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <p class="goods-count" style="padding-left:0">添加资讯</p>
+                        </div>
+                        <div class="panel-body form-group-separated">
+                            <!--用户名称-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">名称</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                         <span class="input-group-addon"><span class="glyphicon glyphicon-flag"></span>
+                                         </span>
+                                        <input type="text" name="text_0" class="form-control" ng-model="mod_title" placeholder="请输入名称"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--付款方式-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">分类</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<select id="shop_time_select"  ng-model="mod_classification_id" class="form-control"-->
+                                            <!--style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"-->
+                                            <!--ng-options="value.id as value.title for value in mod_selectList"-->
+                                    <!--&gt;-->
+                                    <!--</select>-->
+                                    <select id="shop_time_select"  ng-model="mod_classification_id" class="form-control"
+                                            style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                            ng-options="value.id as value.title for value in mod_selectList"
+                                    >
+                                    </select>
+                                </div>
+                            </div>
+                            <script>
+                                $("#datepicker").datepicker({
+                                    inline:true
+                                });
+
+                            </script>
+                            <!--订单描述-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">详情</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div  id="ueditorCotent"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="panel-footer">
+                            <!--<button class="btn btn-default">清空查询</button>-->
+                            <button ng-click="addKnowledge()" class="btn btn-danger pull-right">立即添加</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!--end 新增订单-->
+</div>
+
+
+
+
+
+
+
+

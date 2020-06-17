@@ -1,0 +1,58 @@
+/* 插件列表 */
+.pluginunit-list .left-content {
+    width: 302px;
+    float: left;
+
+}
+.pluginunit-list .tips {
+    margin-top: 17px;
+    min-height: 300px;
+}
+
+.pluginunit-list .tip {
+    display: block;
+    float: left;
+    width: 80px;
+    height: 33px;
+    line-height: 33px;
+    text-align: center;
+    color: #656565;
+    background-color: #f2f2f2;
+    border: 1px solid #d2d2d2;
+    border-radius: 100px;
+    margin: 7px 5px;
+}
+
+.pluginunit-list .tip.active {
+    color: #299dd6;
+}
+
+.pluginunit-list .li2 .img {
+    display: block;
+    height: 40px;
+    line-height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    vertical-align: middle;
+    float: left;
+    position: absolute;
+    left: 10px;
+    bottom: 4px;
+}
+.pluginunit-list span.f-left {
+    margin-left: 40px;
+}
+.pluginunit-list span.f-right {
+    margin-right: 10px;
+}
+
+.pluginunit-list .right-content {
+    width: 856px;
+    float: right;
+    height: 200px;
+    background-color: red;
+}
+
+
+
+/* 插件详情 */

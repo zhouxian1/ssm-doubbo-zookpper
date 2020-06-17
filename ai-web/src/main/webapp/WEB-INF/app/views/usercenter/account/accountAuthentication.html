@@ -1,0 +1,133 @@
+
+<div class="usercenter">
+
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li><a ui-sref="usercenter.home">用户中心</a></li>
+        <li class="active">账号认证</li>
+    </ol>
+
+
+    <div class="usercenter-release">
+
+        <div class="title">
+            <h1>账号认证</h1>
+        </div>
+
+        <form class="form-horizontal form-block">
+
+            <div class="form-group">
+                <label for="type" class="col-sm-2 control-label">用户类型：</label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="type" id="type" ng-model="data.type_id" ng-options="list.type as list.name for list in accountType">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.type_id===1">
+                <label for="name" class="col-sm-2 control-label">真实姓名：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="name" placeholder="真实姓名" ng-model="data.actual_name">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.type_id===1">
+                <label for="ID_card_num" class="col-sm-2 control-label">身份证号码：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="ID_card_num" placeholder="身份证号码" ng-model="data.ID_card_num">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.type_id===1">
+                <label class="col-sm-2 control-label">身份证图片：</label>
+                <div class="col-sm-10 form-image">
+                    <div style="position: relative; padding-left: 10px; margin-bottom: 10px;">
+                        <button style="width: 200px; height: 40px;margin: 0;" class="btn btn-default">选择图片</button>
+                        <input style="width: 200px; position: absolute; top: -40px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; " class="btn btn-default" type="file" nv-file-select uploader="uploader_data_card" />
+                    </div>
+                    <ul style="padding: 0; margin: 0; clear: both; overflow: hidden;">
+                        <li ng-repeat="item in uploader_data_card.queue" style="margin: 10px; width: 250px; padding: 0; float: left; list-style: none">
+                            <div>
+                                <!--<span>文件名:</span>-->
+                                <!--<span ng-bind="item.file.name"></span>-->
+                                <div ng-show="uploader_data_card.isHTML5" ng-thumb="{ file: item._file, width: 250, height: 220 }"></div>
+                            </div>
+                            <div style="margin-bottom: 10px; width: 100%; height: 20px">
+                                <span ng-bind="item.isSuccess ? data_card_msg : ''"></span>
+                            </div>
+                            <div>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-success" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> 上传
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-warning" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-danger" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> 删除
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            
+
+            <div class="form-group" ng-if="data.type_id===2">
+                <label for="enterprise" class="col-sm-2 control-label">企业名称：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="enterprise" placeholder="企业名称" ng-model="data.business_name">
+                </div>
+            </div>
+
+            <div class="form-group" ng-if="data.type_id===2">
+                <label for="business_license_num" class="col-sm-2 control-label">营业执照号码：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="business_license_num" placeholder="营业执照号码" ng-model="data.business_license_num">
+                </div>
+            </div>
+
+
+            <div class="form-group" ng-if="data.type_id===2">
+                <label class="col-sm-2 control-label">营业执照图片：</label>
+                <div class="col-sm-10 form-image">
+                    <div style="position: relative; padding-left: 10px; margin-bottom: 10px;">
+                        <button style="width: 200px; height: 40px;margin: 0;" class="btn btn-default">选择图片</button>
+                        <input style="width: 200px; position: absolute; top: -40px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; " class="btn btn-default" type="file" nv-file-select uploader="uploader_data_business" />
+                    </div>
+                    <ul style="padding: 0; margin: 0; clear: both; overflow: hidden;">
+                        <li ng-repeat="item in uploader_data_business.queue" style="margin: 10px; width: 250px; padding: 0; float: left; list-style: none">
+                            <div>
+                                <!--<span>文件名:</span>-->
+                                <!--<span ng-bind="item.file.name"></span>-->
+                                <div ng-show="uploader_data_business.isHTML5" ng-thumb="{ file: item._file, width: 250, height: 220 }"></div>
+                            </div>
+                            <div style="margin-bottom: 10px; width: 100%; height: 20px">
+                                <span ng-bind="item.isSuccess ? data_business_msg : ''"></span>
+                            </div>
+                            <div>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-success" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> 上传
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-warning" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-danger" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> 删除
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-success center-block btn-lg" ng-click="save()">提交认证</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

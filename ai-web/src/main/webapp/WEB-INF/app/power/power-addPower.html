@@ -1,0 +1,105 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>权限管理 </a>&gt;添加管理
+    </p>
+    <!--end 标题头-->
+
+    <!----------详情信息-------->
+
+    <div class="page-content-wrap" style="margin-top:5px;min-height:1500px;">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="panel panel-default">
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-first">
+                            <!--添加管理员-->
+                            <div class="sr-item-title">添加管理员</div>
+                            <!--当前头像-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 当前头像</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input id="disappear" type="file" multiple class="file"  ng-model="parm.headUrl" custom-on-change="uploadFile" ng-click="disappear()"/>
+                                    <img src="http://img.gxcards.com/{{addImgUrl}}" alt="">
+                                </div>
+                            </div>
+                            <!--管理员姓名-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">管理员姓名</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="parm.name">
+
+                                </div>
+                            </div>
+                            <!--管理员电话-->
+                            <div class="form-group">
+                                <label class="col-md-3 control-label">管理员电话</label>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" ng-model="parm.mobile">
+
+                                </div>
+                            </div>
+                            <!--邮箱-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="email" class="form-control" ng-model="parm.email"/>
+                                </div>
+                            </div>
+                            <!--权限-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:7px;" >权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.u"/>权限管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.company"/>渠道管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.order"/>订单管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.finance"/>财务管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.card"/>入库管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.goods"/>商品管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.website"/>网站管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.user"/>用户管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.sms"/>线下发货管理
+                                    </label>
+                                </div>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div style="text-align:center">
+                        <a class="btn btn-default" style="background-color:#33414e;color:#fff;margin-bottom:10px;" ng-click="addPowerManager()">保存</a>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+    </div>
+    <!--------------发行商信息结束---------------->
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;">添加管理员成功!</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+

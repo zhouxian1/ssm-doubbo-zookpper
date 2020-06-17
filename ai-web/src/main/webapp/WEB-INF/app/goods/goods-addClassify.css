@@ -1,0 +1,44 @@
+.content-frame .content-frame-left .form-group{
+    overflow: hidden;
+}
+.content-frame .content-frame-left .form-group h3{
+    margin-top:20px;
+}
+.tasks .close{
+    text-align:center;
+    line-height:18px;
+    font-size:10px;
+    float:right;
+    position:relative;
+    top:-7px;
+    right:12px;
+}
+.tasks li{
+    margin-bottom:5px;
+}
+@media only screen and (max-width: 1024px) {
+    #add-classify {
+        padding:10px 5px;
+        display: block;
+    }
+}
+/*.page-content-wrap {*/
+    /*min-height: 1100px;*/
+/*}*/
+div .exist{
+    overflow:hidden;
+    margin-top:20px;
+}
+span.close.glyphicon.glyphicon-remove{
+    position: relative;
+    top: -6px;
+    left: -14px;
+    font-size: 14px;
+}
+.form-group .exist .tasks li a{
+    line-height:30px;
+    padding:0 15px;
+}
+div.page-content-wrap.row{
+    padding-top:0;
+}

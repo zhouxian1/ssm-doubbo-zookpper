@@ -1,0 +1,275 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>
+        <a href="order-orderManage.html">订单管理</a> / 订单详情
+    </p>
+    <!--end 标题头-->
+    <!--订单状态-->
+    <div class="page-content-wrap row" style="margin-top:3px;">
+        <div class="panel panel-default col-sm-12">
+            <div class="panel-heading" style="background-color:#fff;border:none;">
+                <h3 class="panel-title">订单状态</h3>
+            </div>
+            <div class="panel-body">
+                <span class="order-success">
+                    <span class="glyphicon glyphicon-ok-sign "></span>
+                </span>
+                <span class="status-title">{{orderStatusText}}</span>
+            </div>
+        </div>
+    </div>
+
+    <!--订单信息-->
+    <div class="page-content-wrap row">
+        <div class="panel col-sm-12">
+            <div class="panel-heading" style="background-color:#fff;border:none;">
+                <h3 class="panel-title" >订单信息</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row" style="padding:14px;">
+                    <!--<div style="clear:both"></div>-->
+                    <div class="col-sm-2">订单状态 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.status == null?"无":orderStatusText}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">收货人 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.name == null?"无":mod_orderDetailList.name}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">收货人电话:</div>
+                    <div class="col-sm-10">{{mod_orderDetailList.mobile == null?"无":mod_orderDetailList.mobile}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">收货人地址:</div>
+                    <div class="col-sm-10">{{mod_orderDetailList.address ==null?"无":mod_orderDetailList.address}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">订单编号 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.orderNo == null?"无":mod_orderDetailList.orderNo}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">付款方式 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.payType == null?"无":mod_orderDetailList.payType}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">备注 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.orderRemark == null?"无":mod_orderDetailList.orderRemark}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">异常信息 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.errMsg == null?"无":mod_orderDetailList.errMsg}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">交易时间 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.createDate == null?"无":mod_orderDetailList.createDate | date:"yyyy/MM/dd  HH:mm:ss"}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">用户名 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.buyName == null?"无":mod_orderDetailList.buyName}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">用户ID : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.userId == null?"无":mod_orderDetailList.userId}}</div>
+                </div>
+                <div class="row" style="padding:14px;">
+                    <div class="col-sm-2">用户电话 : </div>
+                    <div class="col-sm-10">{{mod_orderDetailList.phoneNo == null?"无":mod_orderDetailList.phoneNo}}</div>
+                </div>
+                <div class="button-right" ng-show="mod_showOutStockAgain">
+                    <button  class="btn btn-danger right" ng-click="sendMessageOrStock(0)"> 二次出库</button>
+                </div>
+                <div class="button-right" ng-show="mod_showOutStockAgain">
+                    <button  class="btn btn-danger right" ng-click="sendMessageOrStock(1)"> 发送充值短信</button>
+                </div>
+                <div class="button-right" ng-show="mod_showOutStockAgain">
+                    <button  class="btn btn-success right" ng-click="confirmTopMoney()">确认成功</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--二次出库的模态框-->
+    <div class="modal fade" tabindex="-1" id="myModel" role="dialog" aria-labelledby="gridSystemModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="gridSystemModalLabel">二次出库</h4>
+                </div>
+                <div class="modal-body" >
+                    <div style="text-align:center">
+                        <div>是否二次出库</div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary" ng-click="confirmStock()">确认</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+
+    <!--物流信息-->
+    <!--&lt;!&ndash;物流信息&ndash;&gt;-->
+            <!--<div class="page-content-wrap row">-->
+                <!--<div class="panel panel-warning col-sm-12">-->
+                    <!--<div class="panel-heading" style="background-color:#fff;border:none;">-->
+                        <!--<h3 class="panel-title">物流信息</h3>-->
+                        <!--&lt;!&ndash;<ul class="panel-controls">&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#" class="panel-fullscreen"><span class="fa fa-expand"></span></a></li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li class="dropdown">&ndash;&gt;-->
+                                <!--&lt;!&ndash;<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-cog"></span></a>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<ul class="dropdown-menu">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span> Collapse</a></li>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span> Refresh</a></li>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                            <!--&lt;!&ndash;</li>&ndash;&gt;-->
+                            <!--&lt;!&ndash;<li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>&ndash;&gt;-->
+                        <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--</div>-->
+                    <!--<div class="panel-body row">-->
+                        <!--&lt;!&ndash;<span class="col-sm-2">物流信息 : </span>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<span class="col-sm-10">顺丰快递</span>&ndash;&gt;-->
+                        <!--<span class="col-sm-2">物流单号 : </span>-->
+                        <!--<span class="col-sm-10">17777779900-->
+                            <!--<button class="btn btn-info">复制</button>-->
+                        <!--</span>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+    <!--商品信息-->
+    <div class="page-content-wrap row">
+                <div class="panel col-sm-12">
+                    <div class="panel-heading" style="background-color:#fff;border:none;">
+                        <h3 class="panel-title">商品信息</h3>
+                    </div>
+                    <div class="panel-body row">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>商品ID</th>
+                                    <th>商品名称</th>
+                                    <th>单价(元)</th>
+                                    <th>数量</th>
+                                    <!--<th>付款方式</th>-->
+                                    <!--<th>订单状态</th>-->
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="obj in mod_orderGoodsList">
+                                    <td class="textAlign">{{obj.goodsId}}</td>
+                                    <td>
+                                        <img src="http://img.gxcards.com/{{obj.goodsPic}}" alt="">
+                                        <span>{{obj.goodsName}}</span>
+                                    </td>
+                                    <td class="textAlign">{{obj.price}}</td>
+                                    <td class="textAlign">{{obj.count}}</td>
+                                    <!--<td>支付宝支付</td>-->
+                                    <!--<td>已完成</td>-->
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+    <!--付款信息-->
+    <div class="page-content-wrap row">
+                <div class="panel col-sm-12">
+                    <div class="panel-heading" style="background-color:#fff;border:none;">
+                        <h3 class="panel-title">付款信息</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row" ng-show="mod_orderDetailList.orderType != '线下订单'">
+                            <label class="col-sm-2 control-label">修改订单状态 : </label>
+                            <div class="col-sm-4">
+                                <select ng-model="param_changeOrderStatus.status" class="form-control select" >
+                                    <option ng-repeat="obj in mod_orderStatusList" value="{{obj.status}}" ng-selected="mod_orderDetailList.status == obj.status">{{obj.text}}</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4" style="margin-top:15px;float:right">
+                                <!--<button class="btn btn-primary right" data-toggle="modal" data-target="#myModelApply">申请退款</button>-->
+                                <button class="btn  btn-danger right" ng-click="confirmReturnMoneny()">申请退款</button>
+                            </div>
+                        </div>
+                        <div class="row" ng-show="mod_orderDetailList.orderType == '线下订单'">
+                            <label class="col-sm-2 control-label">订单状态 : </label>
+                            <div class="col-sm-4" style="margin-top:7px;">
+                                <span>{{mod_orderDetailList.orderType}}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <span class="col-sm-2">实际付款 : </span>
+                            <span class="col-sm-8">&yen; {{mod_orderDetailList.totalPrice}} (元) </span>
+                        </div>
+                        <div class="row">
+                            <button class="btn btn-primary right" ng-click="changeOrderstatus()">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!---申请模态退款框-->
+            <div class="modal fade" tabindex="-1" id="myModelApply" role="dialog" aria-labelledby="gridSystemModalLabelApply">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="gridSystemModalLabelApply">申请退款</h4>
+                        </div>
+                        <div class="modal-body" >
+                            <div style="text-align:center">
+                                <div>是否申请退款</div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                            <button type="button" class="btn btn-primary" ng-click="confirmReturnMoneny()">确认</button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal-dialog -->
+            </div><!-- /.modal -->
+
+    <!--修改订单记录-->
+    <div class="page-content-wrap row">
+        <div class="panel col-sm-12">
+            <div class="panel-heading" style="background-color:#fff;border:none;">
+                <h3 class="panel-title">修改订单记录</h3>
+            </div>
+            <div class="panel-body row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>修改时间</th>
+                        <th>修改人</th>
+                        <th>修改状态</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="obj in mod_orderLogs">
+                        <td>{{obj.operateDate | date:"yyyy/MM/dd HH:mm:ss" }}</td>
+                        <td>{{obj.operateUserName}}</td>
+                        <td>{{obj.statusText}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="know()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,54 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>用户管理 / 列表页
+    </p>
+    <!--end 标题头-->
+    <!--用户查询-->
+
+    <!--用户列表-->
+    <div class="page-content-wrap" style="min-height:1500px;">
+        <div class="form-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span class="left">用户列表</span>
+                </h3>
+            </div>
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>用户信息</th>
+                    <th>发布时间</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="users in usersList ">
+                    <td>
+                        <a href="/userDetailed/{{users.user_id}}">
+                           ID:{{users.user_id}}
+                        </a>
+                        <a href="/userDetailed/{{users.user_id}}">
+                            用户名:{{users.nickname}}
+                        </a>
+                    </td>
+                    <td>
+                        {{users.created_at}}
+                    </td>
+                    <td>{{users.status ==0?"未认证":"已认证"}}</td>
+                    <td>
+                        <a href="" ng-click="checkoutUser(users.user_id,users.status,users.type_id)">审核</a>
+                        <!--<a href="">禁用</a>-->
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--新增加分页显示数据-->
+        <div id="pageBottom" style="margin-top: -25px;">
+        </div>
+    </div>
+</div>

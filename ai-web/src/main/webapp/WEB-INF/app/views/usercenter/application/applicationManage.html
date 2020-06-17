@@ -1,0 +1,91 @@
+<div ng-controller="applicationManagerController">
+    <div class="usercenter-title">
+        <h1>
+            应用管理
+        </h1>
+    </div>
+    <div class="sorting">
+        <span><a ng-class="{active:appState==1}" ng-click="clickapp(1)">我购买的应用</a></span>
+        <span><a ng-class="{active:appState==2}" ng-click="clickapp(2)">我发布的应用</a></span>
+    </div>
+    <table class="table usercenter-table">
+        <tr>
+            <th>应用信息</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-if="appState==1" ng-repeat="item in application">
+            <td class="clearfix" >
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="/application/applicationDetail?applicationId={{item.applications_detail.id}}">
+                        <img src="{{item.applications_detail.cover_url}}">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h1>{{item.applications_detail.title}}</h1>
+                    <p>发布日期：{{item.applications_detail.created_at}}</p>
+                    <p>购买次数：{{item.applications_detail.buy_count}}</p>
+                </div>
+            </td>
+            <td class="status">
+                <p>{{item.applications_detail.version}}{{item.applications_detail.statusstr}}</p>
+            </td>
+            <td class="handle" ng-if="">
+                <p><a class="btn btn-default btn-sm" href="/editeApplication?applicationId={{item.applications_detail.id}}" role="button">修改信息</a></p>
+                <p><a class="btn btn-default btn-sm" href="#" role="button">更新版本</a></p>
+                <p><a class="btn btn-default btn-sm" href="#" role="button" ng-click="updateApplication(item.applications_detail)">{{item.applications_detail.is_shelf==1?'插件下架':'插件上架'}}</a></p>
+            </td>
+        </tr>
+
+        <tr ng-if="appState==2" ng-repeat="item in application">
+            <td class="clearfix" >
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="/application/applicationDetail?applicationId={{item.id}}">
+                        <img src="{{item.cover_url}}">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h1>{{item.title}}</h1>
+                    <p>发布日期：{{item.created_at}}</p>
+                    <p>购买次数：{{item.buy_count}}</p>
+                </div>
+            </td>
+            <td class="status">
+                <p>{{item.version}}{{item.statusstr}}</p>
+            </td>
+            <td class="handle" ng-if="appState==2">
+                <p><a class="btn btn-default btn-sm" href="/editeApplication?applicationId={{item.id}}" role="button">修改信息</a></p>
+                <p><a class="btn btn-default btn-sm" href="#" role="button">更新版本</a></p>
+                <p><a class="btn btn-default btn-sm" href="#" role="button"  ng-click="deleteApplication(item)">删除应用</a></p>
+                <p><a class="btn btn-default btn-sm" href="#" role="button" ng-click="updateApplication(item)">{{item.is_shelf==1?'插件下架':'插件上架'}}</a></p>
+            </td>
+        </tr>
+
+    </table>
+    <!-- 分页开始 -->
+    <div class="page-blcok center-block">
+        <uib-pagination
+                force-ellipses="true"
+                boundary-links="true"
+                boundary-link-numbers="true"
+                total-items="total"
+                ng-model="current"
+                max-size="maxSize"
+                ng-change="search(true)"
+                items-per-page="pageTotal||10"
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+        ></uib-pagination>
+        &nbsp;&nbsp;
+        <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+        &nbsp;&nbsp;
+        <div class="pagination-info">
+            <span class="ng-binding">共有{{total}}条</span>
+        </div>
+
+    </div>
+    <!-- 分页结束 -->
+</div>

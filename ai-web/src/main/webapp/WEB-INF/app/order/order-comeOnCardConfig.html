@@ -1,0 +1,144 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>订单管理/ </a>配置充值商品
+    </p>
+    <!--end 标题头-->
+    <!-- 搜索商品名称 -->
+    <div class="page-content-wrap" style="margin-top:3px;" >
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel-default">
+                    <div class="panel-body">
+                        <div class="form-group">
+                            <label class="col-md-3 col-xs-12 control-label">配置充值商品</label>
+                            <div class="col-md-3 col-xs-3">
+                                <select class="form-control"
+                                        style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                        ng-model="mod_selectGoods"
+                                        ng-options="value.status as value.text for value in mod_selectList"
+                                        ng-change="selectOrderType()"
+                                >
+                                    <option value="">请选择</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 col-xs-3">
+                                <label style="margin-top:7px;margin-left:50px">充值类型 : {{mod_selectGoods}}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="pull-right">
+                                <input type="button" class="btn btn-primary pull-right" ng-click="selectModel()" value="选择">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="col-md-1"></div>
+                <div class="col-md-8" style="margin-left:calc((100% - 789px)/2);">
+                    <div>商品列表:</div>
+                    <table class="table table-bordered" id="first">
+                        <thead>
+                        <tr >
+                            <th>商品名称</th>
+                            <th>商品ID</th>
+                            <th>商品面值</th>
+                            <th>删除</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="goods in mod_configList ">
+                            <td>{{goods.goodsName}}</td>
+                            <td>{{goods.goodsId}}</td>
+                            <td>{{goods.amount}}</td>
+                            <td><button  class="btn  btn-primary"  ng-click="selectDelect($index)">删除</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <button class=" btn btn-primary pull-right" style="margin-right:24px;" ng-click="saveGoodsId()">保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal_a" id="buyComeOnCardGood" style="display:none;">
+    <div class=modal_dialog>
+        <div class="modal_content" style="width:522px;">
+            <div class="row" style="margin-top:10px;">
+                <div class="col-md-10">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="请输入要搜索的商品名称" ng-model="paramGoodsPage.goodsName">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="searchGoods()">搜索</button>
+                        </span>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div style="border:1px solid #ddd;height:25px;width:25px;border-radius:50%;text-align:center;position:absolute;left:45px;top:-6px;padding-top:4px;cursor:pointer;" ng-click="fadeModel()">x</div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4 block" style=" margin-top:10px;width:33%">
+                    <h3>商品名称</h3>
+                </div>
+                <div class="col-md-3 block" style=" margin-top:10px;width:33%">
+                    <h3>商品ID</h3>
+                </div>
+                <div class="col-md-3 block" style=" margin-top:10px;width:33%">
+                    <h3>商品面值</h3>
+                </div>
+            </div>
+            <div class="row" ng-repeat="model in goodsList">
+                <div class="col-md-4" style="margin-top:5px">
+                    <!--<input type="checkbox" ng-model="model.checked">-->
+                    {{model.goodsName}}
+                    <!--<input type="checkbox" ng-model="model.checked">{{model.goodsName}}-->
+
+                </div>
+                <div class="col-md-3"  style="margin-top:5px">
+                    <!--<input type="checkbox" ng-model="model.checked">-->
+                    {{model.goodsId}}
+                    <!--<input type="checkbox" ng-model="model.checked">{{model.goodsName}}-->
+
+                </div>
+                <div class="col-md-3"  style="margin-top:5px;margin-left:40px;">
+                    <!--<input type="checkbox" ng-model="model.checked">-->
+                    {{model.amount}}
+                    <!--<input type="checkbox" ng-model="model.checked">{{model.goodsName}}-->
+
+                </div>
+                <div style="float:right;margin-top:-12px;margin-right:5px;margin-bottom:5px;">
+                    <button type="button" class="btn btn-default"  ng-click="selectOne(model)" >选择</button>
+                </div>
+            </div>
+            <!--分页显示数据-->
+            <!--分页显示数据-->
+            <div class="dataTables_info" role="status" aria-live="polite" style="margin-left: 10px;">总共{{totalCountTwo}}条 &nbsp;</div>
+            <div class="pull-right">
+                <button class="btn btn-default" ng-click="previousTwo()">上一页</button>
+                <span>第 {{pageNumTwo}} 页/共 {{totalPageCountTwo}} 页</span>
+                <button class="btn btn-default" ng-click="nextTwo()">下一页</button>
+                <input type="number" style="width:45px;margin-left:10px;margin-right:7px;border-radius:9px;"   ng-model="changePageTwo">
+                <button class="btn btn-default" ng-click="goToPageTwo()">Go</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,111 @@
+
+
+<div class="application-list">
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li class="active">列表页</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+            <div class="label-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x_2.png"> 应用标签
+                </h1>
+                <ul class="clearfix">
+                    <li  ><a href="" ng-class="active:labId=='0'" ng-click="labsClick(0)">所有应用</a></li>
+
+                    <li ng-class="active:labId==lab.id" ng-repeat="lab in labels" ><a href="" ng-click="labsClick(lab.id)">{{lab.title}}</a></li>
+                </ul>
+            </div>
+            <div class="user-container">
+                <h1>
+                    <img src="../../../../images/icon/img@1x_1.png"> 热门应用发布者
+                </h1>
+                <ul class="clearfix">
+                    <li ng-repeat="item in hotApplication">
+                        <div class="pull-left">
+
+                            <a href="/usercenter/account/userIndex?userId={{item.user.user_id}}">
+                                <img class="avatar" src="{{item.user.avatar_url?item.user.avatar_url:'../../images/icon/icon-user'}}"> {{item.user.nickname}}
+                            </a>
+
+                        </div>
+                        <div class="pull-right">
+                            发布应用{{item.applicationtotal}}个
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-xs-9 col-sm-9 col-md-9 col-lg-9 column-clear-left">
+            <div class="sorting">
+          <!--//      最多购买 buy_count|desc   最新发布id|desc   评论最多comment_count|desc   price|desc 开价最高   star_rating|desc 评分最高-->
+                <!--<span ng-repeat="list in order"><a ng-class="{'active': list.active}" href="javascript:void(0)" ng-click="ckOrder(list, $index)">{{list.name}}</a></span>-->
+                <span><a href="" ng-click="ordersClick('buy_count|desc')" ng-class="{active:order=='buy_count|desc'}">最多购买</a></span>
+                <span><a href="" ng-click="ordersClick('id|desc')" ng-class="{active:order=='id|desc'}">最新发布</a></span>
+                <span><a href="" ng-click="ordersClick('comment_count|desc')" ng-class="{active:order=='comment_count|desc'}">评论最多</a></span>
+                <span><a href="" ng-click="ordersClick('star_rating|desc')" ng-class="{active:order=='star_rating|desc'}">评分最高</a></span>
+            </div>
+            <div class="row content-block">
+                <div class="col-xs-3 col-sm-3 col-md-3 col-lg-3 column-clear-left" ng-repeat="list in application">
+                    <a class="img-block" href="application/applicationDetail?applicationId={{list.id}}&user_id={{list.user.user_id}}">
+                        <img src="{{list.cover_url}}">
+                    </a>
+                    <div class="clearfix content-row">
+                        <div class="pull-left price">
+                            {{list.price?'￥'+list.price:'免费'}}
+                        </div>
+                        <div class="pull-right number">
+                            {{list.buy_count}}人购买
+                        </div>
+                    </div>
+                    <a href="application/applicationDetail?applicationId={{list.id}}">
+                        <h1>{{list.title}}</h1>
+                    </a>
+                    <div class="clearfix content-row">
+                        <div class="pull-left starts">
+                            <span class="glyphicon {{list.comment_count<1?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{list.comment_count<2?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{list.comment_count<3?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{list.comment_count<4?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                            <span class="glyphicon  {{list.comment_count<5?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        </div>
+                        <div class="pull-right comments">
+                            {{list.comment_count}}条评论
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页开始 -->
+            <div class="page-blcok center-block">
+
+                <uib-pagination
+                        force-ellipses="true"
+                        boundary-links="true"
+                        boundary-link-numbers="true"
+                        total-items="total"
+                        ng-model="current"
+                        max-size="maxSize"
+                        ng-change="search(true)"
+                        items-per-page="pageTotal||10"
+                        class="pagination-sm"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        first-text="&laquo;"
+                        last-text="&raquo;"
+                ></uib-pagination>
+                &nbsp;&nbsp;
+                <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+                &nbsp;&nbsp;
+                <div class="pagination-info">
+                    <span class="ng-binding">共有{{total}}条</span>
+                </div>
+
+            </div>
+            <!-- 分页结束 -->
+        </div>
+    </div>
+</div>
+

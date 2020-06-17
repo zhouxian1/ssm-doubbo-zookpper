@@ -1,0 +1,104 @@
+<div ng-controller="demandManagerController">
+    <div class="usercenter-title">
+        <h1>
+            需求管理
+        </h1>
+    </div>
+    <div class="sorting">
+        <span><a ng-class="{active:state==1}" ng-click="clickState(1)">我发布的需求</a></span>
+        <span><a ng-class="{active:state==2}" ng-click="clickState(2)">我投标的需求</a></span>
+        <span><a ng-class="{active:state==3}" ng-click="clickState(3)">我中标的需求</a></span>
+
+    </div>
+    <table class="table usercenter-table">
+        <tr>
+            <th>数据信息</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-if="state==1"  ng-repeat="item in demandList">
+            <td class="clearfix">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="/demand/demandDetail?demandId={{item.id}}">
+                        <img src="{{item.cover_url}}">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h1>{{item.title}}</h1>
+                    <p>投标人数：{{item.title}}</p>
+                    <p>发布日期：{{item.created_at}}</p>
+                </div>
+            </td>
+            <td class="status">开放投标</td>
+            <td class="handle">
+                <p><a class="btn btn-default" href="/editedemand?did={{item.id}}" role="button">编辑需求</a></p>
+                <p><a class="btn btn-default" href="/applyManage?demandId={{item.id}}" role="button">查看列表</a></p>
+            </td>
+        </tr>
+        <tr ng-if="state==2"  ng-repeat="item in demandList">
+            <td class="clearfix">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="/demand/demandDetail?demandId={{item.demand_detail.id}}">
+                        <img src="{{item.demand_detail.cover_url}}">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h1>{{item.demand_detail.title}}</h1>
+                    <p>投标人数：{{item.demand_detail.title}}</p>
+                    <p>发布日期：{{item.demand_detail.created_at}}</p>
+                </div>
+            </td>
+            <td class="status">开放投标</td>
+            <td class="handle">
+                <p><a class="btn btn-default" href="/demand/scheduleDetail?demandId={{item.id}}" role="button">更新标书</a></p>
+                <p><a class="btn btn-default" href="#" role="button" ng-click="abandon(item.id)">放弃投标</a></p>
+            </td>
+        </tr>
+        <tr ng-if="state==3"  ng-repeat="item in demandList">
+            <td class="clearfix">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a href="/demand/demandDetail?demandId={{item.demand_detail.id}}">
+                        <img src="{{item.demand_detail.cover_url}}">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <h1>{{item.demand_detail.title}}</h1>
+                    <p>投标人数：{{item.demand_detail.title}}</p>
+                    <p>发布日期：{{item.demand_detail.created_at}}</p>
+                </div>
+            </td>
+            <td class="status">开放投标</td>
+            <td class="handle" ng-if="state==1">
+                <p><a class="btn btn-default" href="/deliverdemand?d_id={{item.id}}" role="button">提交成果物</a></p>
+                <p><a class="btn btn-default" href="#" role="button">查看联系方式</a></p>
+            </td>
+        </tr>
+    </table>
+    <!-- 分页开始 -->
+    <div class="page-blcok center-block">
+
+        <uib-pagination
+                force-ellipses="true"
+                boundary-links="true"
+                boundary-link-numbers="true"
+                total-items="total"
+                ng-model="current"
+                max-size="maxSize"
+                ng-change="search(true)"
+                items-per-page="pageTotal||10"
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+        ></uib-pagination>
+        &nbsp;&nbsp;
+        <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+        &nbsp;&nbsp;
+        <div class="pagination-info">
+            <span class="ng-binding">共有{{total}}条</span>
+        </div>
+
+    </div>
+    <!-- 分页结束 -->
+</div>

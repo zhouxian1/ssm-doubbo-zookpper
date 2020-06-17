@@ -1,0 +1,158 @@
+
+<div class="usercenter">
+
+    <div class="usercenter-release">
+
+        <div class="title">
+            <h1>基本信息</h1>
+        </div>
+        <div class="user-block">
+            <h1>
+               <span>基本信息</span>
+               <a    ui-sref="usercenter.modifyInfo">修改</a>
+           </h1>
+            <div class="clearfix row">
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <div class="baseinfo">
+                        <p>
+                            用户名：{{userInfo.nickname}}
+                            <a class="btn btn-success pull-right" href="#" role="button">{{userInfo.type_id==2?'企业用户':'个人用户'}}</a>
+                        </p>
+                        <p>用户id：{{userInfo.user_id}}</p>
+                        <p>性别：男</p>
+                        <p>手机号码：{{userInfo.phone}}</p>
+                        <p>昵称：{{userInfo.business_name}}</p>
+                        <p>所在公司：{{userInfo.company}}</p>
+                        <p>公司职位：{{userInfo.position}}</p>
+                        <p>签名：{{userInfo.signature}}</p>
+                    </div>
+
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <div class="head_portrait">
+                        <p>
+                            <img class="center-block" src="{{userInfo.avatar_url?userInfo.avatar_url:'../../images/icon/icon-user.png'}}">
+                        </p>
+                        <p>
+                            <a class="btn btn-primary center-block" href="" role="button" data-toggle="modal" data-target="#myModal">修改头像</a>
+                        </p>
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="modal fade bs-example-modal-sm" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    <h4 class="modal-title" id="myModalLabel">修改用户头像</h4>
+                                </div>
+                                <div class="modal-body">
+                                    <div style="position: relative; padding-left: 10px; margin-bottom: 10px;">
+                                        <button style="width: 200px; height: 40px;margin: 0;" class="btn btn-default">选择图片</button>
+                                        <input style="width: 200px; position: absolute; top: 0px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; " class="btn btn-default" type="file" nv-file-select uploader="uploader" multiple />
+                                    </div>
+                                    <ul style="padding: 0; margin: 0; clear: both; overflow: hidden;">
+                                        <li ng-repeat="item in uploader.queue" style="margin: 10px; width: 250px; padding: 0; float: left; list-style: none">
+                                            <div>
+                                                <!--<span>文件名:</span>-->
+                                                <!--<span ng-bind="item.file.name"></span>-->
+                                                <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, width: 200, height: 200}"></div>
+                                            </div>
+                                            <div style="margin-bottom: 10px; width: 100%; height: 20px">
+                                                <span ng-bind="item.isSuccess ? data_cover_msg : ''"></span>
+                                            </div>
+                                            <div>
+                                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-success" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                    <span class="glyphicon glyphicon-upload"></span> 上传
+                                                </button>
+                                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-warning" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                    <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                                </button>
+                                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-danger" ng-click="item.remove()">
+                                                    <span class="glyphicon glyphicon-trash"></span> 删除
+                                                </button>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                    <button type="button" class="btn btn-primary" ng-click="saveImg()">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="user-block">
+
+            <h1>
+                <span>扩展信息</span>
+            </h1>
+
+            <div class="baseinfo" ng-if="userInfo.type_id != 2">
+                <p>真实姓名：{{userInfo.actual_name}}</p>
+                <p>身份证号码：{{userInfo.ID_card_num}}</p>
+                <p>
+                    身份证照片：
+                    <img src="{{userInfo.ID_card_url}}">
+                </p>
+            </div>
+
+            <div class="baseinfo" ng-if="userInfo.type_id == 2">
+                <p>营业执照号码：{{userInfo.business_license_num}}</p>
+                <p>
+                    营业执照照片：
+                    <img src="{{userInfo.business_license_url}}">
+                </p>
+            </div>
+        </div>
+
+        <div class="user-block">
+
+            <h1>
+                <span>认证信息</span>
+            </h1>
+
+            <ul class="certificate">
+                <li class="clearfix">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <img src="../../../../../images/icon/img@1x45.png"> 邮箱认证
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        邮箱认证后，可使用邮箱直接登录，找回密码...
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <a class="btn btn-success" href="" role="button">认证通过</a>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <img src="../../../../../images/icon/img@1x45.png"> 手机认证
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        手机认证后，可使用手机直接登录，找回密码...
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <a class="btn btn-success" href="" role="button">认证通过</a>
+                    </div>
+                </li>
+                <li class="clearfix">
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <img src="../../../../../images/icon/img@1x46.png"> 身份认证
+                    </div>
+                    <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                        身份认证后，可拥有开发者，或者企业用户权限...
+                    </div>
+                    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        <a class="btn btn-danger" href="/accountAuthentication" role="button">立即认证</a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+
+</div>

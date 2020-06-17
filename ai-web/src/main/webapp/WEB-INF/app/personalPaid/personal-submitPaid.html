@@ -1,0 +1,130 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>提交打款</a>
+    </p>
+    <div class="page-content-wrap" style="min-height:1316px;">
+        <div class="row">
+            <div class="col-md-12 row">
+                <form class="form-horizontal">
+                    <div class="panel" >
+                        <div class="panel-heading">
+                            <h3 class="goods-count" style="padding-left:0">提交信息</h3>
+                        </div>
+                        <div class="panel-body form-group-separated">
+                            <div class="col-sm-12 col-xs-12">
+                                <!--付款单位-->
+                                <div class="form-group row" >
+                                    <label class="col-md-3 col-xs-12 control-label">付款单位:</label>
+                                    <div class="col-md-6 col-xs-6">
+                                        <select class="form-control" ng-model="param_addbankTransfer.firmName"  style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                                            <option ng-repeat="obj in mod_firmNameList" value="{{obj.dicName}}">{{obj.dicName}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <!--经办部门-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">经办部门:</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.department" placeholder="财务部"  class="form-control">
+                                    </div>
+                                </div>
+                                <!--本单位开户行-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">本单位开户行: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.ourBankName"  placeholder="北京银行安贞分行" class="form-control">
+                                    </div>
+                                </div>
+                                <!--本单位卡号-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">本单位卡号: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.ourBankCardNo" placeholder="621722028181288122" class="form-control">
+                                    </div>
+                                </div>
+                                <!--付款说明-->
+                                <div class="form-group row">
+                                    <label class="col-md-3 col-xs-12 control-label">付款说明: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <textarea name="" ng-model="param_addbankTransfer.remark" id="" cols="30" rows="5" class="form-control"> 打款 打款 打款 打款 打款 打款
+                                        </textarea>
+                                    </div>
+                                </div>
+                                <!--收款单位名称-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">收款单位名称 : </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.userName"  placeholder="收款单位名称" class="form-control">
+                                    </div>
+                                </div>
+                                <!--收款开户行-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">收款单位开户行: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.bankName" class="form-control" placeholder="收款单位开户行">
+                                    </div>
+                                </div>
+                                <!--收款单位卡号-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">收款单位卡号: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.bankCardNo" class="form-control" placeholder="收款单位卡号">
+                                    </div>
+                                </div>
+                                <!--转账金额-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">提款金额(元): </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.amount" class="form-control" placeholder="提款金额">
+                                    </div>
+                                </div>
+                                <!--预付申请人-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">预付申请人: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.applicant" class="form-control" placeholder="程丽丽">
+                                    </div>
+                                </div>
+                                <!--经办人-->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">经办人: </label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <input type="text" ng-model="param_addbankTransfer.agent" class="form-control" placeholder="程丽丽">
+                                    </div>
+                                </div>
+                                <div class="form-horizontal-footer" >
+                                    <div>
+                                        <button class="btn btn-primary pull-right" ng-click="submitTransfer()" style="margin-top:20px;margin-bottom:20px;margin-right:30px;">提交打款</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;">恭喜您,提交打款成功!</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_error()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+      
+
+
+
+
+
+

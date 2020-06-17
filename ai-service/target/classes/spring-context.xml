@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+            http://www.springframework.org/schema/beans/spring-beans.xsd  
+            http://www.springframework.org/schema/aop
+            http://www.springframework.org/schema/aop/spring-aop-4.1.xsd  
+           http://www.springframework.org/schema/tx  
+           http://www.springframework.org/schema/tx/spring-tx-4.1.xsd   
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://code.alibabatech.com/schema/dubbo  
+           http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+
+
+	<context:property-placeholder location="classpath:properties/jdbc.properties,properties/dubbo.properties" />
+	<!-- bean配置 -->
+	<context:component-scan base-package="com.geovis.ai.service" />
+	
+	<!-- 启动时初始化Spring上下文环境工具类 -->
+	<bean id="springContextUtil" class="com.geovis.ai.util.SpringContextUtil"></bean>
+	
+	<!-- Spring容器初始化完成监听器 -->
+    <bean class="com.geovis.ai.listener.ApplicationContextListener"></bean>
+
+	<import resource="classpath:dubbo-provider.xml" />
+	<import resource="classpath:spring-mybatis.xml" />
+	
+	<!-- 定义文件解释器 -->  
+ 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+	    <!--设置默认编码  -->
+	    <property name="defaultEncoding" value="utf-8"></property>  
+	    <!--上传图片最大大小5M   -->
+	    <property name="maxUploadSize" value="5242440"></property>    
+	</bean>
+	
+	<!-- 启用aspectj自动注入 -->
+	<aop:aspectj-autoproxy proxy-target-class="true">
+		<aop:include name="dataSoureceAop" />
+	</aop:aspectj-autoproxy>
+	<bean id="dataSoureceAop" class="com.geovis.ai.db.DataSoureceAop"></bean>
+</beans>

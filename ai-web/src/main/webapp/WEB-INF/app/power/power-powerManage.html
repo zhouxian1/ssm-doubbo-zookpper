@@ -1,0 +1,48 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>权限管理 </a>
+    </p>
+    <!--end 标题头-->
+    <!----------------权限管理员-------------------->
+    <div class="page-content-wrap" style="margin-top:5px;min-height:1500px;;">
+        <div class="row">
+            <div class="col-md-12">
+
+                <!-- START TIMELINE FILTER -->
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <div class="col-md-3" ng-repeat="manager in responseData" >
+
+                            <!-- START WIDGET REGISTRED -->
+
+                            <div class="widget widget-default widget-item-icon" id="deleteElement">
+                                <a href="#/powerDetailed/{{manager.userId}}"  >
+                                    <div class="widget-item-left" style="padding:5px;padding-top:9px;margin-left:5px;border:none;">
+                                        <span><img src="http://img.gxcards.com/{{manager.headUrl}}" style="width:70px;" alt=""></span>
+                                    </div>
+                                    <div class="widget-data">
+                                        <div class="widget-int num-count">管理员</div>
+                                        <div class="widget-title">{{manager.name}}</div>
+                                        <div class="widget-subtitle"></div>
+                                    </div>
+                                </a>
+                                <div class="widget-controls">
+                                    <b  class="widget-control-right widget-remove" ng-click="deleteCell($index)"  title="Remove Widget" style="color:#434a54;border-color:#434a54"><span class="glyphicon glyphicon-remove"></span></b>
+                                </div>
+                            </div>
+                            <!-- END WIDGET REGISTRED -->
+                        </div>
+                    </div>
+                    <div >
+                        <a href="#/addPower" class="btn btn-primary pull-right" style="margin-bottom:10px;margin-left:10px;">添加管理</a>
+                    </div>
+                </div>
+                <!-- END TIMELINE FILTER -->
+
+            </div>
+
+        </div>
+    </div>
+    <!----------------权限管理员结束----------------------------->
+</div>

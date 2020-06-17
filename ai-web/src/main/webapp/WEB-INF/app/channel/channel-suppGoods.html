@@ -1,0 +1,65 @@
+<div id="content-main">
+    <div style="margin-top:10px;">
+        <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+            <a>渠道管理</a>
+            &gt;渠道详情&gt;查看上游商品
+        </p>
+    </div>
+    <div class="page-content-wrap" style="margin-top:3px;">
+        <div class="page-content-wrap">
+            <div class="row ">
+                <div class="sr-item-title">渠道名称:{{channelName}}</div>
+                <div class="panel-body">
+                    <!--<div class="col-md-12  logo-icon-box">-->
+                    <label class="col-md-1 col-xs-12" style="height:30px;line-height:30px;font-size:13px;"> 商品名称 : </label>
+                    <div class="col-md-3 col-xs-12">
+                        <input type="text" class="form-control"  placeholder="输入商品名称查询" ng-model="mod_queryGoodsName">
+                    </div>
+                    <div class="btn btn-default pull-left" style="background-color:#29343f;color:#fff" ng-click="query_goods_suppGoodsList_buyGoodsName()">查询</div>
+                    <div class="btn btn-default pull-right" style="background-color:#29343f;color:#fff" ng-click="query_goods_synchronousSuppGoods()">同步上游商品</div>
+                </div>
+            </div>
+        </div>
+        <div class="page-content-wrap">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="panel panel-default tabs" style="margin-top:0px;">
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="tab-second">
+                                <div class="row">
+                                    <div class="panel panel-default">
+                                        <table class="table datatable">
+                                            <thead>
+                                            <tr>
+                                                <th>商品名称</th>
+                                                <th>商品ID</th>
+                                                <th>进货价格(元)</th>
+                                                <th>面值(元)</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="suppGood in mod_suppGoodsList">
+                                                <td>{{suppGood.suppGoodsName}}</td>
+                                                <td>{{suppGood.suppGoodsId}}</td>
+                                                <td>{{suppGood.suppInPrice}}</td>
+                                                <td>{{suppGood.suppAmount}}</td>
+                                            </tr>
+                                                </tbody>
+                                        </table>
+                                    </div>
+                                    <!--新增加分页显示数据-->
+                                    <div class="pull-right">
+                                        <button ng-click="previous()">上一页</button>
+                                        <span>第 {{mod_currentPage}} 页/共 {{mod_totalPage}} 页</span>
+                                        <button ng-click="next()">下一页</button>
+                                        <input type="number" style="width:30px;" ng-model="changePage">
+                                        <button  ng-click="goToPage()">Go</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+             </div>
+        </div>
+    </div>
+</div>

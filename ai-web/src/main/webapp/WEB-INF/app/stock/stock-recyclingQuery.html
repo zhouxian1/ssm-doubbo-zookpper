@@ -1,0 +1,262 @@
+<div id="content-main">
+    <!--添加余额列表-->
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-second">
+                            <!-- START DEFAULT DATATABLE 数据表格 -->
+                            <div class="row">
+                                <div class="col-md-12" >
+                                    <div class="panel-body">
+                                        <ul class="nav nav-tabs" role="tablist" id="myTabs">
+                                            <li role="presentation" class="active"><a href="#have_been_sold" aria-controls="have_been_sold" role="tab" data-toggle="tab"> 已售出 </a></li>
+                                            <li role="presentation"><a href="#not_been_sold" role="tab" aria-controls="not_been_sold" data-toggle="tab"> 未售出 </a></li>
+                                            <li role="presentation"><a href="#have_been_lock" role="tab" aria-controls="have_been_lock" data-toggle="tab"> 已锁定 </a></li>
+                                            <li role="presentation"><a href="#have_been_detail" role="tab" aria-controls="have_been_detail" data-toggle="tab"> 申请人详情 </a></li>
+                                        </ul>
+                                        <div class="tab-content" style="padding:5px;">
+                                            <div  class="tab-pane active" id="have_been_sold">
+                                                <table class="table table-responsive">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>批次号</th>
+                                                        <th>商品ID</th>
+                                                        <th>商品名称</th>
+                                                        <th>商品面值</th>
+                                                        <th>卡号</th>
+                                                        <th>状态</th>
+                                                        <th>订单号</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat = "mod_card in mod_recycleQueryByStatusList">
+                                                        <td style="line-height:20px;">{{mod_card.suppOrderNo}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.goodsId}}</td>
+                                                        <td style="line-height:20px;">{{goodsName}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.amount}} ( 元 )</td>
+                                                        <td style="line-height:20px;">{{mod_card.cardNo}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.statusS}}</td>
+                                                        <td style="line-height:20px;"><a>{{mod_card.buyOrderNo}}</a></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--&lt;!&ndash;分页显示数据&ndash;&gt;-->
+                                                <!--<div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;-->
+                                                    <!--当前展示<select ng-change="confirmQuery(1)" ng-model="pageSizeSelect"-->
+                                                                <!--ng-options="value.value as value.value for value in pageSizes">-->
+                                                    <!--</select>条-->
+                                                <!--</div>-->
+                                                <div class="pull-right">
+                                                    <button class="btn btn-default" ng-click="previous()">上一页</button>
+                                                    <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                                                    <button class="btn btn-default" ng-click="next()">下一页</button>
+                                                    <input type="number" style="width:30px;" ng-model="changePage">
+                                                    <button class="btn btn-default" ng-click="goToPage()">Go</button>
+                                                </div>
+                                            </div>
+                                            <div  class="tab-pane" id="not_been_sold">
+                                                <table class="table table-responsive">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>批次号</th>
+                                                        <th>商品ID</th>
+                                                        <th>商品名称</th>
+                                                        <th>商品面值</th>
+                                                        <th>卡号</th>
+                                                        <th>状态</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat = "mod_card in mod_recycleQueryByStatusListWei">
+                                                        <td style="line-height:20px;">{{mod_card.suppOrderNo}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.goodsId}}</td>
+                                                        <td style="line-height:20px;">{{goodsName}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.amount}} ( 元 )</td>
+                                                        <td style="line-height:20px;">{{mod_card.cardNo}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.statusS}}</td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--分页显示数据-->
+                                                <!--<div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;-->
+                                                    <!--当前展示<select ng-change="confirmQuery(2)" ng-model="pageSizeSelect"-->
+                                                                <!--ng-options="value.value as value.value for value in pageSizes">-->
+                                                    <!--</select>条-->
+                                                <!--</div>-->
+                                                <div class="pull-right">
+                                                    <button class="btn btn-default" ng-click="previous()">上一页</button>
+                                                    <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                                                    <button class="btn btn-default" ng-click="next()">下一页</button>
+                                                    <input type="number" style="width:30px;" ng-model="changePage">
+                                                    <button class="btn btn-default" ng-click="goToPage()">Go</button>
+                                                </div>
+                                            </div>
+                                            <div  class="tab-pane" id="have_been_lock">
+                                                <table class="table table-responsive">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>批次号</th>
+                                                        <th>商品ID</th>
+                                                        <th>商品名称</th>
+                                                        <th>商品面值</th>
+                                                        <th>卡号</th>
+                                                        <th>状态</th>
+                                                        <th>订单号</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    <tr ng-repeat = "mod_card in mod_recycleQueryByStatusListLock">
+                                                        <td style="line-height:20px;">{{mod_card.suppOrderNo}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.goodsId}}</td>
+                                                        <td style="line-height:20px;">{{goodsName}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.amount}} ( 元 )</td>
+                                                        <td style="line-height:20px;">{{mod_card.cardNo}}</td>
+                                                        <td style="line-height:20px;">{{mod_card.statusS}}</td>
+                                                        <td style="line-height:20px;"><a>{{mod_card.buyOrderNo}}</a></td>
+                                                    </tr>
+                                                    </tbody>
+                                                </table>
+                                                <!--分页显示数据-->
+                                                <!--<div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;-->
+                                                    <!--当前展示<select ng-change="confirmQuery(3)" ng-model="pageSizeSelect"-->
+                                                                <!--ng-options="value.value as value.value for value in pageSizes">-->
+                                                    <!--</select>条-->
+                                                <!--</div>-->
+                                                <div class="pull-right">
+                                                    <button class="btn btn-default" ng-click="previous()">上一页</button>
+                                                    <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                                                    <button class="btn btn-default" ng-click="next()">下一页</button>
+                                                    <input type="number" style="width:30px;" ng-model="changePage">
+                                                    <button class="btn btn-default" ng-click="goToPage()">Go</button>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane" id="have_been_detail">
+
+                                                <div class="row">
+                                                    <div class="col-md-12 row">
+                                                        <form class="form-horizontal">
+                                                            <div class="panel" >
+                                                                <div class="panel-heading">
+                                                                    <h3 class="goods-count" style="padding-left:0">申款人详情</h3>
+                                                                </div>
+                                                                <div class="panel-body form-group-separated">
+                                                                    <!--用户头像-->
+                                                                    <!--<div class="form-group row">-->
+                                                                    <!--<label class="col-md-3 col-xs-12 control-label">用户头像:</label>-->
+                                                                    <!--<div class="col-md-6 col-xs-6">-->
+                                                                    <!--<img class="user-logo" src="common/img/logo.png" alt="">-->
+                                                                    <!--</div>-->
+                                                                    <!--</div>-->
+                                                                    <!--用户信息 左-->
+                                                                    <div class="col-sm-12 col-xs-12">
+
+                                                                        <!--用户id-->
+                                                                        <div class="form-group row">
+                                                                            <label class="col-md-3 col-xs-12 control-label">收款单位开户行:</label>
+                                                                            <div class="col-md-6 col-xs-12">
+                                                                                <span>{{mod_recycleDetail.bankName}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--用户名称-->
+                                                                        <div class="form-group row">
+                                                                            <label class="col-md-3 col-xs-12 control-label">收款单位名称:</label>
+                                                                            <div class="col-md-6 col-xs-12">
+                                                                                <span>{{mod_recycleDetail.userName}}</span>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 col-xs-12 control-label">收款单位卡号: </label>
+                                                                            <div class="col-md-6 col-xs-12">
+                                                                            <span>{{mod_recycleDetail.bankNo}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--前端职位-----------暂时注释------------->
+                                                                        <div class="form-group">
+                                                                            <label class="col-md-3 col-xs-12 control-label">面值: </label>
+                                                                            <div class="col-md-6 col-xs-12">
+                                                                            <span>{{mod_recycleDetail.amount}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--用户头像-->
+                                                                        <div class="form-group row" >
+                                                                            <label class="col-md-3 col-xs-12 control-label">数量:</label>
+                                                                            <div class="col-md-6 col-xs-12">
+                                                                                <span>{{mod_recycleDetail.count}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--用户头像-->
+                                                                        <div class="form-group row" >
+                                                                            <label class="col-md-3 col-xs-12 control-label">商品名称:</label>
+                                                                            <div class="col-md-6 col-xs-12">
+                                                                                <span>{{mod_recycleDetail.goodsName}}</span>
+                                                                            </div>
+                                                                        </div>
+                                                                        <!--&lt;!&ndash;用户备注&ndash;&gt;-->
+                                                                        <!--<div class="form-group">-->
+                                                                        <!--<label class="col-md-3 col-xs-12 control-label">用户备注 : </label>-->
+                                                                        <!--<div class="col-md-6 col-xs-12">-->
+                                                                        <!--<span>无</span>-->
+                                                                        <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--<div class="col-sm-12 col-xs-12">-->
+                                                                        <!--用户余额-->
+                                                                        <!--<div class="form-group row">-->
+                                                                            <!--<label class="col-md-3 col-xs-12 control-label">员工电话 : </label>-->
+                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                <!--<span>{{personalList.mobile}}</span>-->
+                                                                            <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--累计消费-->
+                                                                        <!--<div class="form-group">-->
+                                                                        <!--<label class="col-md-3 col-xs-12 control-label">入职时间: </label>-->
+                                                                        <!--<div class="col-md-6 col-xs-12">-->
+                                                                        <!--<span>2016/03/12</span>-->
+                                                                        <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--注册时间-->
+                                                                        <!--<div class="form-group">-->
+                                                                            <!--<label class="col-md-3 col-xs-12 control-label">出生日期 : </label>-->
+                                                                            <!--<div class="col-md-6 col-xs-12">-->
+                                                                                <!--<span>{{personalList.createDate | date:"yyyy/MM/dd"}}</span>-->
+                                                                            <!--</div>-->
+                                                                        <!--</div>-->
+                                                                        <!--重置密码-->
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        <div class="col-md-12">
+                                                            <button class="btn btn-success" ng-click="addbankTransfer()">生成提现记录</button>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- END DEFAULT DATATABLE 数据表格 -->
+                            </div>
+                        </div>
+                        <!--分页显示数据-->
+                        <!--<div class="pull-right" style="margin-right:30px;">-->
+                            <!--<button class="btn btn-default" ng-click="previous()">上一页</button>-->
+                            <!--<span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>-->
+                            <!--<button class="btn btn-default" ng-click="next()">下一页</button>-->
+                            <!--<input type="number" style="width:30px;"   ng-model="changePage">-->
+                            <!--<button class="btn btn-default" ng-click="goToPage()">Go</button>-->
+                        <!--</div>-->
+
+                        <!--</div>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>

@@ -1,0 +1,268 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>线下发货管理
+    </p>
+
+    <div class="page-content-wrap" style="min-height:1500px;margin-top:3px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <!-- 发送内容设置 -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <p class="goods-count" style="padding-left:0px;">发送内容设置</p>
+                            <!--<p style="float:right;" ng-click="displaySet()"><span class="glyphicon glyphicon-asterisk"></span></p>-->
+                            <div style="float:right;"><button type="button" data-toggle="modal" data-target="#myModal" ng-click="myModal()"><span class="glyphicon glyphicon-asterisk"></span></button></div>
+                        </div>
+                        <!--modal模态框-->
+                        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                        <h4 class="modal-title" id="myModalLabel">短信渠道设置</h4>
+                                    </div>
+                                    <div class="modal-body" style="text-align:center;">
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div>
+                                            <label class="col-md-3">短信渠道</label>
+                                            <div class="col-md-3">
+                                                <select id="shop_time_select" class="form-control"
+                                                        style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;" ng-options="value.code as value.text for value in mod_GetMessage" ng-model="mod_GetMessageSelect" ng-change="linkage()">
+                                                </select>
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="col-md-3"></div>
+                                            <label class="col-md-3">设置每日短信上线</label>
+                                            <div class="col-md-3">
+                                                <input type="number" class="form-control" ng-model="sendMessageMaxLimit">
+                                            </div>
+                                            <div class="col-md-3"></div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                                        <button type="button" class="btn btn-primary" ng-click="confirmMessage()">确认</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="form-group">
+
+                                <!-- 请输入需要发送的手机号 -->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">发送手机</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-phone"></span>
+                                            </span>
+                                            <input type="text" class="form-control" placeholder="请输入需要发送的手机号" ng-model="paramQuerySendMessage.mobile"/>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- 请输入需要发送的内容 -->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">发送内容</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <div class="input-group" style="width:100%;">
+                                            <textarea maxlength="600" rows="6" placeholder="请输入需要发送的内容" class="form-control offline-textarea" ng-model="paramQuerySendMessage.content" ng-keydown="keydownChangeValue($event)" ng-paste="copyChangeValue()" ng-keyup="keyupChangeValue($event)"></textarea>
+                                        </div>
+                                        <span style="color:red">还可输入{{allowContentLength}}字符</span>
+                                    </div>
+                                </div>
+
+                                <!-- 请选择发送的渠道 -->
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">发送渠道</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;" ng-model="sendMessageChannel" ng-change="selectSendChannel()">
+                                            <option ng-repeat="obj in sendChannels">{{obj.text}}</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <!-- 立即发送 -->
+                                <div class="panel-footer" style="background:#ffffff;border:none;">
+                                    <button class="btn btn-success" ng-click="sendRightNow()">立即发送</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 发送查询搜索 -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <p class="goods-count" style="padding-left:0px;">发送记录查询</p>
+                        </div>
+
+                        <div class="panel-body">
+                            <!-- 搜索手机号 -->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">发送手机号</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-phone"></span>
+                                            </span>
+                                        <input type="text" class="form-control" placeholder="请输入搜索的手机号" ng-model="paramQuerySendList.phoneNo"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 搜索发送内容 -->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">发送内容</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-phone"></span>
+                                            </span>
+                                        <input type="text" class="form-control" placeholder="请输入搜索的内容" ng-model="paramQuerySendList.wordKey"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 操作人 -->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">操作人</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <span class="glyphicon glyphicon-user"></span>
+                                            </span>
+                                        <input type="text" class="form-control" placeholder="请输入操作人" ng-model="paramQuerySendList.userName"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- 搜索发送时间 -->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">发送时间</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group row">
+                                        <div class="input-group col-md-5" style="float:left">
+                                            <input type="datetime" class="form-control " id="datepicker" ng-model="startDate"/>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                        <span class="col-md-2 offline-delivery-zhi">至</span>
+                                        <div class="input-group col-md-5" style="float:left">
+                                            <input type="datetime"  class="form-control" id="datepicker1" ng-model="endDate"/>
+                                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="panel-footer" style="background:#ffffff;border:none;">
+                            <div class="row">
+                                <div class="col-md-offset-1 col-md-4">
+                                    <button class="btn btn-default pull-right" style="width:150px;" ng-click="clear_search_pageList()">清空查询</button>
+                                </div>
+                                <div class="col-md-4">
+                                    <button class="btn btn-primary pull-right" style="width:150px;" ng-click="search_pageList()">查询</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 发送记录列表 -->
+                    <div class="panel">
+                        <div class="panel-heading">
+                            <p class="goods-count" style="padding-left:0px;">发送记录列表</p>
+                        </div>
+
+                        <table class="table datatable">
+                            <thead>
+                                <tr>
+                                    <th>接收人</th>
+                                    <th>发送时间</th>
+                                    <th>操作人</th>
+                                </tr>
+                                </thead>
+                            <tbody style="text-align:center;">
+                            <tr ng-repeat="sendObj in pageList">
+                                <td ng-click="show_delivery_alert(sendObj.logId,sendObj.typeS)">{{sendObj.phoneNum}}</td>
+                                <td>{{sendObj.date | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                                <td>{{sendObj.userName}}</td>
+                            </tr>
+                            </tbody>
+                        </table>
+
+                        <div class="panel-footer" style="background:#ffffff;border:none;margin-bottom:0px;">
+                            <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;
+                                当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect" ng-options="value.value as value.value for value in pageSizes">
+                                </select>条
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-default" ng-click="previous()">上一页</button>
+                                <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                                <button class="btn btn-default" ng-click="next()">下一页</button>
+                                <input type="number" style="width:30px;" ng-model="changePage">
+                                <button class="btn btn-default" ng-click="goToPage()">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 弹框显示发送详情 -->
+    <div class="offline-delivery-bg" id="delivery_alert">
+        <div class="offline-delivery-alert-content">
+            <div class="offline-delivery-delete" ng-click="cancel_delivery_alert()">&times;</div>
+            <p class="offline-p-margin">
+                <span class="offline-lf">接&nbsp;&nbsp;收&nbsp;&nbsp;人 : {{deliveryDetail.phoneNum}}</span>
+            </p>
+            <p class="offline-p-margin">
+                <span class="offline-lf">操&nbsp;&nbsp;作&nbsp;&nbsp;人 : {{deliveryDetail.userName}}</span>
+            </p>
+            <p class="offline-p-margin">
+                <span class="offline-lf">发送渠道 : {{deliveryDetail.typeS}}</span>
+            </p>
+            <p class="offline-p-margin">
+                <span class="offline-lf">发送时间 : {{deliveryDetail.date | date:'yyyy-MM-dd HH:mm:ss'}}</span>
+            </p>
+            <p class="offline-p-margin">
+                <span class="offline-lf">发送内容 : </span>
+            </p>
+            <p class="offline-p-margin offline-p-detail">
+                {{deliveryDetail.content}}
+            </p>
+        </div>
+    </div>
+
+    <!-- 弹框显示发送短信成功或失败 -->
+    <div class="offline-delivery-bg" id="send_message_alert">
+        <div class="offline-delivery-alert">
+            <div class="offline-delivery-delete" ng-click="cancel_send_message_alert()">&times;</div>
+            <p class="offline-p-margin" style="text-align:center;">
+                {{send_message_status}}
+            </p>
+        </div>
+    </div>
+    <!--&lt;!&ndash; 弹出短信设置 &ndash;&gt;-->
+    <!--<div class="delete_or_not_instockRecord_warning_bg" >-->
+        <!--<div style="width:0px;min-width:300px;background-color:#fff" class="delete_or_not_instockRecord_warning_box" >-->
+            <!--<div class="offline-delivery-delete"  ng-click="send_message_alert()">&times;</div>-->
+            <!--<p class="delete_or_not_title" style="float:left;color:black;">短信渠道设置</p>-->
+            <!--<div class="form-group">-->
+                <!--<div class="col-md-6">-->
+                    <!--&lt;!&ndash;<select id="shop_time_select" class="form-control"&ndash;&gt;-->
+                            <!--&lt;!&ndash;style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;background-color:#fff;margin-top:16px;" ng-options="value.code as value.text for value in mod_GetMessage" ng-model="mod_GetMessageSelect" >&ndash;&gt;-->
+                    <!--&lt;!&ndash;</select>&ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<p class="delete_or_not_delete" style="margin-right:10px;cursor:pointer;margin-top:68px;padding:0 14px;float:right" ><button class="btn btn-primary" ng-click="confirmMessage()">确认</button></p>-->
+        <!--</div>-->
+    <!--</div>-->
+</div>

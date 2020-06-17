@@ -1,0 +1,60 @@
+<!--订单管理模块-->
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>异常订单卡号</a>
+    </p>
+    <!--订单列表-->
+    <div class="page-content-wrap">
+        <div class="form-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span>异常订单卡号列表</span>
+                </h3>
+            </div>
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>商品名称</th>
+                    <th>商品ID</th>
+                    <th>卡号</th>
+                    <th>卡密</th>
+                    <th>订单号</th>
+                </tr>
+                </thead>
+                <!--动态table-->
+                <tbody>
+                <tr ng-repeat="list in mod_reportedList">
+                    <td>
+                        {{list.goodsName}}
+                    </td>
+                    <td>{{list.goodsId}}</td>
+                    <td>{{list.cardId}}</td>
+                    <td>{{list.cardPwd}}</td>
+                    <td>{{list.buyOrderNo}}</td>
+                </tr>
+
+                </tbody>
+            </table>
+            <!--分页显示数据-->
+            <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCountTwo}}条 &nbsp;
+                当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect" ng-options="value.value as value.value for value in pageSizes">
+                </select>条
+            </div>
+            <div class="pull-right">
+                <button class="btn btn-default" ng-click="previousTwo()">上一页</button>
+                <span>第 {{pageNumTwo}} 页/共 {{totalPageCountTwo}} 页</span>
+                <button class="btn btn-default" ng-click="nextTwo()">下一页</button>
+                <input type="number" style="width:45px;margin-left:10px;margin-right:7px;border-radius:9px;"   ng-model="changePageTwo">
+                <button class="btn btn-default" ng-click="goToPageTwo()">Go</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

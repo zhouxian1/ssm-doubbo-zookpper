@@ -1,0 +1,29 @@
+.edit{
+    display:none;
+}
+input:disabled{
+    color:#333;
+    font-size:13px;
+    background-color:#33ff33;
+
+}
+.panel-footer{
+    text-align:center;
+    /*margin-top:10px;*/
+    padding:20px;
+    margin-bottom:20px;
+}
+.panel-footer .btn-danger{
+    margin:0 auto;
+}
+.form-group .ok .ok-span{
+    display:inline-block;
+    margin-top: 6px;
+}
+.right{
+    float:right;
+}
+.sys-label{
+    display:inline-block;
+    margin-top:7px;
+}

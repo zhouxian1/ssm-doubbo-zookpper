@@ -1,0 +1,65 @@
+<div>
+	<div class="usercenter-title">
+        <h1>
+            训练模型
+        </h1>
+    </div>
+    <div class="train_tab">
+        <span><a ng-class="{'active':0 == currentTabId}" ng-click="tabSwitch(0)">训练新算法</a></span>
+        <span><a ng-class="{'active':1 == currentTabId}" ng-click="tabSwitch(1)">训练已有算法</a></span>
+    </div>
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+        	<div class="algoTrainPanel preTestContent">
+        		<div class="inputGroup">
+                    <span class="ig_label">算法名称：</span>
+                    <input type="text" class="value" />
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">算法描述：</span>
+                    <textarea rows="4" cols="35"></textarea>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">样本集：</span>
+                    <div class="wide_box"></div>
+                    <button class="btn btn-default">选择样本集</button>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">已有算法：</span>
+                    <div class="value"></div>
+                    <button class="btn btn-default">选择算法</button>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">网络选择：</span>
+                    <select>
+                    	<option>NET 1</option>
+                    	<option>NET 2</option>
+                    	<option>NET 3</option>
+                    </select>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">网络：</span>
+                    <select>
+                    	<option>NET 1</option>
+                    	<option>NET 2</option>
+                    	<option>NET 3</option>
+                    </select>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">框架：</span>
+                    <div class="value fixed">Caffe</div>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">图像大小：</span>
+                    <div class="value fixed">256 × 256</div>
+                </div>
+                <div class="inputGroup">
+                    <span class="ig_label">使用GPU型号：</span>
+                    <div class="wide_box"></div>
+                    <button class="btn btn-default">选择CPU</button>
+                </div>
+                <button class="beginTest btn btn-primary">开始测试</button>
+        	</div>
+        </div>
+    </div>
+</div>

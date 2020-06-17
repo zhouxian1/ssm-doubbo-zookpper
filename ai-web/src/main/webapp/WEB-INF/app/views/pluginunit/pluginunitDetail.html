@@ -1,0 +1,168 @@
+
+<div class="pluginunit-detail">
+
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a ui-sref="index">首页</a></li>
+        <li><a ui-sref="pluginunit">列表页</a></li>
+        <li class="active">详情页</li>
+    </ol>
+
+    <div class="row">
+        <div class="col-xs-9 col-sm-9 col-md-8 col-lg-8">
+            <div class="clearfix content-base">
+                <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                    <h1>{{pluginunitDetail.title}}</h1>
+                    <p>版本号：{{pluginunitDetail.version}}</p>
+                    <p>发布日期：{{pluginunitDetail.created_at}}</p>
+                    <p>发布者：{{pluginunitDetail.user.nickname}}</p>
+                    <p>购买次数：{{pluginunitDetail.buy_count}}</p>
+                    <p>评分：
+                        <span class="glyphicon {{pluginunitDetail.comment_count<1?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{pluginunitDetail.comment_count<2?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{pluginunitDetail.comment_count<3?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{pluginunitDetail.comment_count<4?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                        <span class="glyphicon  {{pluginunitDetail.comment_count<5?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                    </p>
+                    <p>{{pluginunitDetail.introduction}}</p>
+                    <table class="content-label">
+                        <tr>
+                            <td width="50" valign="top" style="padding-top: 10px">标签：</td>
+                            <td>
+                                <span ng-repeat="item in pluginunitDetail.labels">{{item.title}}</span>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <img src={{pluginunitDetail.cover_url}}>
+                    <a class="btn btn-primary center-block content-btn" href="#" ng-click="payOrder()">{{pluginunitDetail.isPay==1?"使用":"购买"}}</a>
+                    <p class="integral" ng-if="pluginunitDetail.price!=0">消耗{{pluginunitDetail.price}}个积分</p>
+                    <p class="integral" ng-if="pluginunitDetail.price==0">免费</p>
+                    <p class="share">
+                        <!--<span>分享到：</span>-->
+                        <!--<a href="">-->
+                            <!--<img src="../../../images/icon/img@1x48.jpg" alt="">-->
+                        <!--</a>-->
+                        <!--<a href="">-->
+                            <!--<img src="../../../images/icon/img@1x49.jpg" alt="">-->
+                        <!--</a>-->
+                        <!--<a href="">-->
+                            <!--<img src="../../../images/icon/img@1x50.jpg" alt="">-->
+                        <!--</a>-->
+                    <div class="jiathis_style_32x32">
+                    <span class="jiathis_txt">分享到：</span>
+                    <a class="jiathis_button_weixin"></a>
+                        <a class="jiathis_button_tsina"></a>
+                    </div>
+                    <script type="text/javascript" src="http://v3.jiathis.com/code/jia.js" charset="utf-8"></script>
+                    </p>
+                </div>
+            </div>
+            <div class="clearfix content-detail">
+                <h1>
+                    <img src="../../../../images/app/1.jpg"> 插件详情
+                </h1>
+                <div class="content-description">
+                    <p class="text">{{pluginunitDetail.introduction}}</p>
+                    <br>
+                    <div class="img"  ng-repeat="item in pluginunitDetail.image_urls">
+                        <img src="{{item}}" alt="" style="margin-bottom: 15px">
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-comment">
+                <div class="title">评论&nbsp;<span>({{pluginunitDetail.comment_count}}条)</span></div>
+                <div class="clearfix release">
+                    <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 avatar-block">
+                        <img class="center-block" src="{{userAvatar_url?userAvatar_url:'../../images/icon/icon-user.png'}}" alt="">
+                    </div>
+                    <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                        <textarea ng-model="mod_text" class="form-control" rows="10" placeholder="请输入评论" ></textarea>
+                        <div class="comment-star">
+                            <span class="glyphicon {{myStar_rating<1?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(1)"></span>
+                            <span class="glyphicon  {{myStar_rating<2?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(2)"></span>
+                            <span class="glyphicon  {{myStar_rating<3?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(3)"></span>
+                            <span class="glyphicon  {{myStar_rating<4?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(4)"></span>
+                            <span class="glyphicon  {{myStar_rating<5?'glyphicon-star-empty':'glyphicon-star'}}" ng-click="commentStart(5)"></span>
+                        </div>
+                    </div>
+                    <a class="btn btn-primary comment-btn" href="#" ng-click="faBiao()">发表评论</a>
+                </div>
+                <ul class="list">
+                    <li class="clearfix" ng-repeat="comment in commentList">
+                        <div class="col-xs-1 col-sm-1 col-md-1 col-lg-1 avatar-block">
+                            <img class="center-block" src="{{comment.user.avatar_url?comment.user.avatar_url:'../../images/icon/icon-user.png'}}" alt="">
+                        </div>
+                        <div class="col-xs-11 col-sm-11 col-md-11 col-lg-11">
+                            <p>
+                                <span class="nickname">{{comment.user.nickname}}&nbsp;&nbsp;</span>
+                                <span class="glyphicon {{comment.star_rating<1?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                <span class="glyphicon  {{comment.star_rating<2?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                <span class="glyphicon  {{comment.star_rating<3?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                <span class="glyphicon  {{comment.star_rating<4?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                <span class="glyphicon  {{comment.star_rating<5?'glyphicon-star-empty':'glyphicon-star'}}"></span>
+                                <span class="pull-right text-time">{{comment.created_at}}</span>
+                            </p>
+                            <p>{{comment.content}}</p>
+                        </div>
+                    </li>
+                </ul>
+                <div class="page-blcok center-block">
+
+                    <uib-pagination
+                            force-ellipses="true"
+                            boundary-links="true"
+                            boundary-link-numbers="true"
+                            total-items="total"
+                            ng-model="current"
+                            max-size="maxSize"
+                            ng-change="search(true)"
+                            items-per-page="pageTotal||10"
+                            class="pagination-sm"
+                            previous-text="&lsaquo;"
+                            next-text="&rsaquo;"
+                            first-text="&laquo;"
+                            last-text="&raquo;"
+                    ></uib-pagination>
+                    &nbsp;&nbsp;
+                    <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+                    &nbsp;&nbsp;
+                    <div class="pagination-info">
+                        <span class="ng-binding">共有{{total}}条</span>
+                    </div>
+
+                </div>
+                <!-- 分页结束 -->
+            </div>
+        </div>
+        <div class="col-xs-3 col-sm-3 col-md-4 col-lg-4 column-clear-left">
+            <div class="content-userinfo">
+                <a href="/usercenter/account/userIndex?userId={{pluginunitDetail.user.user_id}}">
+                    <img class="center-block avatar" src="{{pluginunitDetail.user.avatar_url}}" alt="">
+                    <p class="text-center nickname">{{pluginunitDetail.user.nickname}}</p>
+                    <p>签名：{{pluginunitDetail.user.signature}}</p>
+                </a>
+
+            </div>
+            <div class="content-app-list">
+                <h1><img src="../../../../images/icon/img@1x_2.png"> 他发布的插件</h1>
+                <ul>
+                    <li class="clearfix"  ng-repeat=" item in pluginunitList">
+                        <div class="app-avatar" ng-click= "refresh(item.id)">
+                            <img src="{{item.cover_url}}">
+                        </div>
+                        <div class="app-info">
+                            <h2 ng-click= "refresh(item.id)">{{item.title}}</h2>
+                            <p>下载次数：{{item.download_count}}</p>
+                        </div>
+                        <!--<div class="app-btn">-->
+                            <!--<a class="btn btn-primary text-right" href="#">下载</a>-->
+                        <!--</div>-->
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>

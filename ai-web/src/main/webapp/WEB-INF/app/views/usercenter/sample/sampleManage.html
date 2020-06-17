@@ -1,0 +1,66 @@
+<div ng-controller="userSampleManageController">
+    <div class="usercenter-title">
+        <h1>
+            样本管理
+        </h1>
+    </div>
+    <div class="sorting">
+        <span><a class="active" href="#">我购买的样本</a></span>
+        <!--<span><a class="" href="javescript:void(0)">我训练的算法</a></span>-->
+        <!--<span><a class="" href="javescript:void(0)">我发布的算法</a></span>-->
+    </div>
+    <table class="table usercenter-table">
+        <tr>
+            <th>样本信息</th>
+            <th>状态</th>
+            <th>操作</th>
+        </tr>
+        <tr ng-repeat="item in orderSampleList">
+            <td class="clearfix">
+                <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                    <a  href="/sample/sampleDetail?sampleId={{item.id}}">
+                        <img href="/sample/sampleDetail?sampleId={{item.id}}" src="{{baseImgUrl+item.cover_url}}">
+                    </a>
+                </div>
+                <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                    <a href="/sample/sampleDetail?sampleId={{item.id}}">
+                        <h1 >{{item.title}}</h1>
+                    </a>
+                    <p>数据来源：{{item.data_source}}</p>
+                    <p>发布者：航天星图</p>
+                    <p>购买日期：20170501</p>
+                </div>
+            </td>
+            <td class="status">已购买</td>
+            <td class="handle">
+                <a class="btn btn-default" href="" ng-click="download(item)" role="button">下载</a>
+            </td>
+        </tr>
+    </table>
+    <!-- 分页开始 -->
+    <div class="page-blcok center-block">
+        <uib-pagination
+                force-ellipses="true"
+                boundary-links="true"
+                boundary-link-numbers="true"
+                total-items="total"
+                ng-model="current"
+                max-size="maxSize"
+                ng-change="search(true)"
+                items-per-page="pageTotal||10"
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+        ></uib-pagination>
+        &nbsp;&nbsp;
+        <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+        &nbsp;&nbsp;
+        <div class="pagination-info">
+            <span class="ng-binding">共有{{total}}条</span>
+        </div>
+
+    </div>
+    <!-- 分页结束 -->
+</div>

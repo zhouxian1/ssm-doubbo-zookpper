@@ -1,0 +1,60 @@
+{
+  "status": 200,
+  "statusText": "success",
+  "data": {
+    "channelCode": "test",
+    "orderType": "接口订单",
+    "enterUser":"张三",
+    "userId":"1",
+    "phoneNo":"1562231332141",
+    "goods": [
+      {
+        "goodsId": 1,
+        "price": 50,
+        "orderNo": "GXS20160831T002",
+        "count": 5,
+        "goodsName": "测试商品",
+        "detailId": 1
+      },
+      {
+        "goodsId": 1,
+        "price": 50,
+        "orderNo": "GXS20160831T002",
+        "count": 5,
+        "goodsName": "测试商品",
+        "detailId": 2
+      }
+
+    ],
+    "postcode": "100000",
+    "orderRemark": null,
+    "updateDate": 1472562026000,
+    "orderLogs": [
+      {
+        "id": 1,
+        "orderNo": "GXS20160831T002",
+        "operateUserName": "许崇高",
+        "operateDate": 1474368164000,
+        "statusText": "交易成功-->交易失败"
+      },
+      {
+        "id": 3,
+        "orderNo": "GXS20160831T002",
+        "operateUserName": "xuchg",
+        "operateDate": 1474369047000,
+        "statusText": "已退回-->已关闭"
+      }
+    ],
+    "id": 5,
+    "logisticsNo": "dsdd",
+    "orderNo": "GXS20160831T002",
+    "address": "天畅园1208",
+    "name": "许崇高",
+    "payType": "账户余额支付",
+    "createDate": 1472562026000,
+    "buyName": null,
+    "mobile": "15501234088",
+    "totalPrice": 353,
+    "status":6
+  }
+}

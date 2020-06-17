@@ -1,0 +1,204 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>网站管理</a>&gt;图片轮播管理
+    </p>
+    <!--end 标题头-->
+
+    <!--销售额统计-->
+    <div class="page-content-wrap" style="margin-top:5px;">
+        <div class="row">
+            <!-- START 上周商品销售额 -->
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日访客</div>
+                        <div class="widget-title">199.23</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- END 总交易额 -->
+
+            <!-- START 餐饮美食 -->
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-user"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">访客转化率</div>
+                        <div class="widget-title">72%</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- END 订单数 -->
+
+            <!-- START 出游旅行 -->
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日PV</div>
+                        <div class="widget-title">19992</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="widget widget-default widget-item-icon">
+                    <div class="widget-item-left">
+                        <span class="glyphicon glyphicon-list-alt"></span>
+                    </div>
+                    <div class="widget-data">
+                        <div class="widget-int num-count">今日UA</div>
+                        <div class="widget-title">8866</div>
+                        <div class="widget-subtitle"></div>
+                    </div>
+                </div>
+            </div>
+            <!-- END 总用户个数 -->
+        </div>
+    </div>
+    <!--end 销售额统计-->
+
+    <!--商品查询-->
+    <div class="page-content-wrap">
+        <div style="position:relative;min-height:1500px;">
+            <!-- form形式上传文件 -->
+            <div  style="margin-top:0px;background-color:#fff;">
+                <div class="row">
+                    <form name="sendMessage" ng-submit="submitForm()" novalidate style="height:53px;">
+                        <label class="col-md-2" style="margin-top:15px;font-size:13px;">上传图片:</label>
+                        <button type="button" style="margin-top:15px;background-color:#333;color:#fff;"  class="col-md-1 btn btn-default">第一步</button>
+                        <input type="file" custom-on-change="uploadFile" class="col-md-3" style="margin-top:15px;" value="第一步">
+
+                        <br>
+                        <button type="submit" class="col-md-2 btn btn-primary">第二步点击上传图片</button>
+                        <button type="button"  style="margin-left:20px;" class="col-md-2 btn btn-primary" ng-click="fireAll()">第三步确认上传</button>
+                        <button type="button" style="margin-left:10px;" class="col-md-1 btn btn-primary" ng-click="editDelete()">删除</button>
+                    </form>
+                </div>
+            </div>
+            <div style="position:absolute;">
+                <ul>
+                <li ng-repeat="imgPlay in imgPlayList" style="border:none;float:left;list-style-type:none;padding:5px;">
+                    <span  class="close glyphicon glyphicon-remove ok" style="left:0px;font-size:16px;display:none;" ng-click="deleteCell($index)" ></span>
+                    <a style="position:relative;border:none" href="">
+                    <img ng-src="http://img.gxcards.com/{{imgPlay.imgUrl}}" style="width:250px;height:250px"/></a>
+                </li>
+               <!--<li style="float:left;list-style-type:none;padding:5px;">
+                    <span  class="close glyphicon glyphicon-remove ok" style="left:0px;font-size:16px;display:none;"></span>
+                    <a style="position:relative;" href=""><img ng-src="{{addImgUrl}}" style="width:250px;height:250px"/></a>
+                </li>--->
+                </ul>
+            </div>
+        </div>
+        <style>
+            .modal_modal{
+                position:fixed;
+                left:0;
+                right:0;
+                top:0;
+                bottom:0;
+                background:rgba(0,0,0,.5);
+                z-index:999;
+
+            }
+            .modal_modal .modal-dialog {
+                width: 400px;
+                margin: 200px auto 0px auto;
+            }
+            .modal-content{
+                background:#fff;
+                border:1px solid #aaa;
+                border-radius:4px;
+                box-shadow:0 0 6px #aaa;
+                padding:20px;
+                height:300px;
+
+            }
+            .modal_modal form input{
+                box-sizing:border-box;
+                display:block;
+                /*width:100%;*/
+                border:1px solid #aaa;
+                border-radius:4px;
+                padding:6px;
+                margin-bottom:12px;
+            }
+
+            .modal_modal form .submit{
+                background:#333;
+                color:#fff;
+                outline:none;
+                cursor: pointer;
+                border-radius:4px;
+            }
+            .modal_modal form .submit:active{
+                background:#d03030;
+            }
+        </style>
+
+         <div class="modal_modal" style="display:none;" id="show">
+             <div class="modal-dialog">
+                 <div class="modal-content">
+                     <h2 style="margin-bottom:20px;font-size:16px;">商品信息</h2>
+                     <form id="login-form">
+                         <div class="form-group">
+                                <label class="col-md-3">商品分类</label>
+                                <input type="text" class="col-md-8" ng-model="parmImg.classifi" placeholder="商品分类">
+                         </div>
+                         <div class="form-group">
+                                <label class="col-md-3">活动地址</label>
+                                <input type="text" class="col-md-8" ng-model="parmImg.eventUrl" placeholder="http://youku.com">
+                         </div>
+                         <div class="form-group">
+                                <label class="col-md-3">图片地址</label>
+                                <input type="text" class="col-md-8" ng-model="addImgUrl" placeholder="图片地址">
+                         </div>
+                         <!--<div class="form-group">-->
+                             <!--<label class="col-md-3">楼层编号</label>-->
+                             <!--<input type="text" class="col-md-8" ng-model="parmImg.floorId" placeholder="楼层编号">-->
+                         <!--</div>-->
+                         <div class="form-group">
+                             <label class="col-md-3" >是否上架</label>
+                             <div  class="col-md-8">
+                                 <label class="radio-inline">
+                                     <input type="radio" ng-model="parmImg.isGrounding"  value="1"> 是
+                                 </label>
+                                 <label class="radio-inline">
+                                     <input type="radio" ng-model="parmImg.isGrounding"  value="0"> 否
+                                 </label>
+                             </div>
+
+                         </div>
+                         <div class="form-group">
+                                <div class="col-md-5"></div>
+                                <input type="submit" style="margin-top:20px;" class="submit col-md-4" value="确认上传" ng-click="fireImg()" placeholder="确认上传">
+                         </div>
+
+                     </form>
+                  </div>
+                 </div>
+             </div>
+         </div>
+    </div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;" ng-show="show">请选择需要上传的文件</p>
+        <p class="delete_or_not_title" style="margin-top:46px;" ng-show="showFade">请求上传文件接口成功</p>
+        <p class="delete_or_not_title" style="margin-top:46px;" ng-show="showImage">上传图片成功</p>
+
+
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>

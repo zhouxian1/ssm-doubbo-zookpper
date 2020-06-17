@@ -1,0 +1,90 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <div style="margin-top:10px;">
+        <p class="page-title" style="font-size:13px;background:#e8e8e8;padding-top:10px;padding-bottom:10px;">
+            <a>首页 / </a>
+            标签管理
+        </p>
+    </div>
+    <!-- PAGE CONTENT WRAPPER -->
+    <div class="page-content-wrap">
+
+        <div class="row">
+            <div class="col-md-12">
+
+                <div class="form-horizontal">
+
+                    <div class="panel panel-default tabs">
+                        <div class="panel-body tab-content">
+                            <div class="tab-pane active" id="tab-second">
+                                <!-- START DEFAULT DATATABLE 数据表格 -->
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="panel panel-default">
+                                            <div class="panel-heading">
+                                                <h3 class="panel-title">标签列表</h3>
+                                            </div>
+                                            <div class="panel-body">
+                                                <table class="table datatable">
+                                                    <thead>
+                                                    <tr>
+                                                        <th>标签信息</th>
+                                                        <th>发布时间</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                    </thead>
+                                                    <!--动态table-->
+                                                    <tbody>
+                                                    <tr ng-repeat="labels in apiUrl_labels_List">
+                                                        <td>
+                                                            <a>
+                                                                ID:{{labels.id}}
+                                                            </a>
+                                                            <a>
+                                                                标签名称:{{labels.title}}
+                                                            </a>
+                                                            <a>
+                                                                标签分类:{{labels.type}}
+                                                            </a>
+                                                        </td>
+                                                        <td>发布时间：{{labels.created_at}}</td>
+                                                        <td>
+                                                            <a style="color:#4f79e4" href="/addChannel/{{labels.id}}">编辑</a>
+                                                            <a style="color:#4f79e4"  ng-click="delete(labels.id)">删除</a>
+                                                        </td>
+
+                                                        <!--<td>{{obj.enterUser == null?"系统订单":obj.enterUser}}</td>-->
+                                                    </tr>
+                                                    </tbody>
+                                                </table>                                            </div>
+                                        </div>
+                                        <div id="pageBottom" style="margin-top: -25px;">
+                                        </div>
+                                        <!-- END DEFAULT DATATABLE 数据表格 -->
+                                        <!--新增加分页显示数据-->
+                                        <!--<div class="dataTables_info" role="status" aria-live="polite">总共123条 &nbsp;-->
+                                            <!--&lt;!&ndash;当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect" ng-options="value.value as value.value for value in pageSizes">&ndash;&gt;-->
+                                            <!--&lt;!&ndash;&lt;!&ndash;</select>条&ndash;&gt;&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<span ng-show="mod_otherParam" style="margin-right:30px;margin-left:30px;">总共可用余额:￥{{mod_allBalance}}</span>&ndash;&gt;-->
+                                            <!--&lt;!&ndash;<span ng-show="mod_otherParam">总冻结金额:￥{{mod_freezeAllBalance}}</span>&ndash;&gt;-->
+                                        <!--</div>-->
+                                        <!--<div class="pull-right">-->
+                                            <!--<button >上一页</button>-->
+                                            <!--<span>第 1 页/共 23页</span>-->
+                                            <!--<button >下一页</button>-->
+                                            <!--<input type="number" style="width:30px;" >-->
+                                            <!--<button >Go</button>-->
+                                        <!--</div>-->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>
+

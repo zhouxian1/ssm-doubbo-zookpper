@@ -1,0 +1,46 @@
+
+.content-block{
+    margin: 15px 0;
+}
+
+.content-block .img-block{
+    display: block;
+    overflow: hidden;
+    height: 160px;
+}
+
+.content-block img{
+    width: 100%;
+}
+
+.content-row{
+    margin: 8px 0;
+}
+
+.content-block .price{
+    font-size: 16px;
+    font-weight: 600;
+    color: #ff0000;
+}
+
+.content-block .number{
+    font-size: 14px;
+    color: #888;
+}
+
+.content-block h1{
+    font-size: 16px;
+    font-weight: 400;
+    margin: 8px 0;
+    color: #555;
+}
+
+.content-block .starts{
+    font-size: 14px;
+    color: #888;
+}
+
+.content-block .comments{
+    font-size: 14px;
+    color: #888;
+}

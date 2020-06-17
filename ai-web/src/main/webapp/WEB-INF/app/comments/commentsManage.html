@@ -1,0 +1,52 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <p class="page-title">
+        <a>评论列表 </a>
+    </p>
+
+    <!--添加余额列表-->
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-heading">
+                        <p class="panel-title">评论列表</p>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th>数据信息</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <!--动态table-->
+                            <tbody>
+                            <tr ng-repeat="apply in applicationList">
+                                <td width="80%">
+                                    <p>ID:{{apply.id}}</p>
+                                    <p>评论内容:{{apply.content}}</p>
+                                    <p>发布日期:{{apply.created_at}}</p>
+                                    <p>评分:❤️{{apply.star_rating}}</p>
+                                </td>
+                                <td width="10%">{{ apply.status == 1 ? "已审核" : "未审核" }}</td>
+                                <td width="10%">
+                                    <a href="" ng-click="checkoutContent(apply.id,apply.status)">审核</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页显示数据-->
+                        <div id="pageBottom" style="margin-top: -25px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

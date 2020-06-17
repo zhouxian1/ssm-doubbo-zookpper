@@ -1,0 +1,149 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:16px;">
+        <a>权限管理 </a>&gt;管理详情
+    </p>
+    <!--end 标题头-->
+    <!----------详情信息-------->
+    <div class="page-content-wrap" style="margin-top:5px;min-height:1500px;">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="panel panel-default">
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-first">
+                            <!--渠道名称-->
+                            <div class="sr-item-title">查看管理员详情</div>
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label " style="padding-top:0px;"> 当前头像</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="file" multiple class="file" disabled  value="{{mod_Uupdate.headUrl}}" style="background-color:#fff;"/>
+                                </div>
+                            </div>
+                            <div class="form-group  edit" style="display:none;">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 当前头像</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="file" multiple class="file" ng-model="mod_Uupdate.headUrl"/>
+                                </div>
+                            </div>
+                            <!--渠道ID-->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label " style="padding-top:0px;">管理员姓名</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" class="form-control" disabled  value="{{mod_Uupdate.name}}">
+                                </div>
+                            </div>
+                            <!--渠道ID-->
+                            <div class="form-group edit" style="display:none;">
+                                <label class="col-md-3 col-xs-12 control-label " style="padding-top:0px;">管理员姓名</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="mod_Uupdate.name">
+                                </div>
+                            </div>
+                            <div class="form-group ok">
+                                <label class="col-md-3 control-label ok">管理员电话</label>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" disabled value="{{mod_Uupdate.mobile}}">
+
+                                </div>
+                            </div>
+                            <div class="form-group edit" style="display:none;">
+                                <label class="col-md-3 control-label " >管理员电话</label>
+                                <div class="col-md-6">
+                                    <input type="tel" class="form-control" ng-model="mod_Uupdate.mobile">
+
+                                </div>
+                            </div>
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label " style="padding-top:0px;">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="email" class="form-control" disabled value="{{mod_Uupdate.email}}"/>
+                                </div>
+                            </div>
+                            <div class="form-group edit" style="display:none;">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">邮&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;箱</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="email" class="form-control" ng-model="mod_Uupdate.email"/>
+                                </div>
+                            </div>
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:7px;">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="uPower" disabled/>权限管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="company" disabled/>渠道管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="order" disabled />订单管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="finance" disabled/>财务管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="card" disabled/>入库管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="goods" disabled/>商品管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="website" disabled/>网站管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="user" disabled/>用户管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" ng-checked="sms" disabled/>线下发货管理
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="form-group edit" style="display:none;">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:7px;">权&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;限</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles"  ng-model="power.u"  />权限管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles"  ng-model="power.company" />渠道管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles"  ng-model="power.order" />订单管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles"   ng-model="power.finance" />财务管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles"  ng-model="power.card" />入库管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles"  ng-model="power.goods" />商品管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.website" />网站管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.user" />用户管理
+                                    </label>
+                                    <label class="checkbox-inline">
+                                        <input type="checkbox" name="parm.roles" ng-model="power.sms" />线下发货管理
+                                    </label>
+                                </div>
+                            </div>
+                            <div>
+                                <a  class="btn btn-primary pull-right ok" style="margin-bottom:10px;margin-left:10px;" ng-click="addEdit()">编辑</a>
+                                <a  class="btn btn-danger pull-right edit" style="margin-bottom:10px;margin-left:10px;" ng-click="saveEdit()">完成</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;">保存修改管理员成功!</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>

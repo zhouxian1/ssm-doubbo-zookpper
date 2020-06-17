@@ -1,0 +1,186 @@
+<!--主体内容之 content-main-->
+<!--<div id="content-main">-->
+    <!--标题头-->
+    <!--<p class="page-title" style="font-size:13px;background:#e8e8e8">-->
+        <!--<a>渠道管理</a>添加配置-->
+    <!--</p>-->
+    <!--&lt;!&ndash;end 标题头&ndash;&gt;-->
+    <!--&lt;!&ndash; 搜索商品名称 &ndash;&gt;-->
+    <!--<div class="page-content-wrap" style="margin-top:3px;" >-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+                <!--<div class="panel-default">-->
+                    <!--<div class="panel-body">-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-md-3 col-xs-12 control-label">搜索可配商品</label>-->
+                            <!--<div class="col-md-9 col-xs-12">-->
+                                <!--<div class="input-group" style="margin-bottom:10px;">-->
+                                    <!--<span class="input-group-addon">-->
+                                        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                    <!--</span>-->
+                                    <!--<input type="text" class="form-control" placeholder="请输入商品名称" ng-model="configGoodsName"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-12">-->
+                            <!--<div class="pull-right">-->
+                                <!--<input type="button" class="btn btn-primary pull-right" ng-click="queryAllConfigGoods(1,configGoodsName)" value="搜索">-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+
+    <!--&lt;!&ndash;-主体头部&ndash;&gt;-->
+    <!--<div class="page-content-wrap" style="margin-top:3px;" >-->
+        <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+                <!--<div class="panel-default">-->
+                    <!--<div class="panel-body">-->
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-md-3 col-xs-12 control-label">渠道ID</label>-->
+                            <!--<div class="col-md-9 col-xs-12">-->
+                                <!--<div class="input-group" style="margin-bottom:20px;">-->
+                                                <!--<span class="input-group-addon">-->
+                                                    <!--<span class="glyphicon glyphicon-usd"></span>-->
+                                                <!--</span>-->
+                                    <!--&lt;!&ndash;<input ng-model="mod_ChannelAddConfig.id" type="text" placeholder="请输入渠道ID" class="form-control" disabled={{mod_ChannelAddConfig.id.canEdit}}/>&ndash;&gt;-->
+                                    <!--<input ng-model="mod_ChannelAddConfig.id" type="text" placeholder="请输入渠道ID" class="form-control"/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-md-3 col-xs-12 control-label">渠道名称</label>-->
+                            <!--<div class="col-md-9 col-xs-12">-->
+                                <!--<div class="input-group" style="margin-bottom:20px;">-->
+                                    <!--<span class="input-group-addon">-->
+                                        <!--<span class="glyphicon glyphicon-pencil"></span>-->
+                                    <!--</span>-->
+                                    <!--<input ng-model="mod_ChannelAddConfig.name" type="text" class="form-control" disabled={{mod_ChannelAddConfig.name.canEdit}}/>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="form-group">-->
+                            <!--<label class="col-md-3 col-xs-12 control-label">供应商or大客户</label>-->
+                            <!--<div class="col-md-9 col-xs-12">-->
+                                <!--<div class="input-group">-->
+                                    <!--<span class="input-group-addon">-->
+                                        <!--<span class="glyphicon glyphicon-usd"></span>-->
+                                    <!--</span>-->
+                                    <!--<input ng-model="mod_ChannelAddConfig.category" type="text" class="form-control" disabled={{mod_ChannelAddConfig.category.canEdit}} />-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-12">-->
+                        <!--<div class="pull-right" style="margin-top:10px;">-->
+                            <!--<input type="button" class="btn btn-primary pull-right" ng-click="getChannelInfo()" value="查询">-->
+                        <!--</div>-->
+                    <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
+    <!--</div>-->
+
+
+    <!--&lt;!&ndash;主体尾部&ndash;&gt;-->
+    <!--<div class="page-content-wrap" style="min-height:1000px;">-->
+        <!--<div class="row">-->
+
+            <!--<div class="col-md-12">-->
+                <!--<div class="col-md-4">-->
+                    <!--<div>可配商品列表:</div>-->
+                    <!--<table class="table table-bordered" id="first">-->
+                        <!--<thead>-->
+                        <!--<tr >-->
+                            <!--<th>全选&nbsp;<input type="checkbox" ng-model="left_select_all" ng-change="leftSelectAll()"></th>-->
+                            <!--<th>商品名称</th>-->
+                            <!--<th>面值</th>-->
+                            <!--&lt;!&ndash;<th>操作</th>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                        <!--<tr ng-repeat="goods in mod_ChannelAddConfig.allGoodsList">-->
+                            <!--<td><input type="checkbox" ng-model="goods.checked" ng-change="selectOne(goods)"></td>-->
+                            <!--<td>{{goods.goodsName}}</td>-->
+                            <!--<td>{{goods.amount}}</td>-->
+                            <!--&lt;!&ndash;<td></td>&ndash;&gt;-->
+                        <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+                    <!--&lt;!&ndash; 分页显示可配商品列表 &ndash;&gt;-->
+                    <!--<div class="pull-right">-->
+                        <!--<button class="btn btn-default" ng-click="previous()">上一页</button>-->
+                        <!--<span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>-->
+                        <!--<button class="btn btn-default" ng-click="next()">下一页</button>-->
+                        <!--<input type="number" style="width:30px;"   ng-model="changePage">-->
+                        <!--<button class="btn btn-default" ng-click="goToPage()">Go</button>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div class="col-md-2 row" style="margin-top:300px;margin-left:75px;margin-right:75px;" id="add">-->
+                    <!--<button class="btn btn-default btn-success col-xs-12" style="margin-bottom:10px;" ng-click="addConfigGoods()"><span class="glyphicon glyphicon-chevron-right"></span></button>-->
+                    <!--<button class="btn btn-default btn-success col-xs-12" ng-click="removeGoodsFromConfig()"><span class="glyphicon glyphicon-chevron-left"></span></button>-->
+                <!--</div>-->
+                <!--<div class="col-md-4">-->
+                    <!--<div>{{mod_ChannelAddConfig.name}}已配商品列表:</div>-->
+                    <!--<table class="table table-bordered" id="first1">-->
+                        <!--<thead>-->
+                        <!--<tr>-->
+                            <!--<th>全选&nbsp;<input type="checkbox" ng-model="right_select_all" ng-change="rightSelectAll()"></th>-->
+                            <!--<th>商品名称</th>-->
+                            <!--<th>面值</th>-->
+                            <!--<th>功能</th>-->
+                        <!--</tr>-->
+                        <!--</thead>-->
+                        <!--<tbody>-->
+                            <!--<tr ng-repeat="obj in mod_ChannelAddConfig.configedList">-->
+                                <!--<td><input type="checkbox" ng-model="obj.isChecked"  ng-change="selectRightOne(obj)"></td>-->
+                                <!--<td>{{obj.goodsName}}</td>-->
+                                <!--<td>{{obj.amount}}</td>-->
+                                <!--<td><span class="btn btn-danger" ng-click="deleteGoodsPool(obj.poolId,$index)">删除</span></td>-->
+                            <!--</tr>-->
+                        <!--</tbody>-->
+                    <!--</table>-->
+
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-12">-->
+                <!--<button class=" btn btn-primary pull-right"  ng-click="saveConfigedList()">完成</button>-->
+            <!--</div>-->
+        <!--</div>-->
+
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">-->
+    <!--<div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >-->
+        <!--<p class="delete_or_not_title" style="margin-top:46px;">保存商品池配置成功!</p>-->
+        <!--<p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>-->
+        <!--&lt;!&ndash;<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="delete_or_not_instockRecord_warning_bg" id="error">-->
+    <!--<div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box" >-->
+        <!--<p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>-->
+        <!--<p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="know()">知道啦</p>-->
+        <!--&lt;!&ndash;<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+<!--<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_delete">-->
+    <!--<div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >-->
+        <!--<p class="delete_or_not_title" style="margin-top:46px;">删除一配商品成功!</p>-->
+        <!--<p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>-->
+        <!--&lt;!&ndash;<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>&ndash;&gt;-->
+    <!--</div>-->
+<!--</div>-->
+
+
+
+
+
+
+

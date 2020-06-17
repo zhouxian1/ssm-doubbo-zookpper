@@ -1,0 +1,394 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a href="../../index.html">首页/ </a>财务管理
+    </p>
+    <!--end 标题头-->
+    <!--添加余额-->
+    <div class="page-content-wrap" style="margin-top:3px;">
+        <div class="row">
+            <div class="col-md-3" style="margin-left:59px;">
+                <label>用户ID<span style="color:#e4393c">*</span></label>
+                <input type="text" class="form-control" style="display:inline;width:70%" placeholder="请输入ID..."
+                       ng-model="param_addBalance.compId" ng-blur="getInfo()"/>
+            </div>
+            <div class="col-md-2" style="margin-top:7px;">
+                <label>用户名</label>
+                <span style="color:#e4393c;">{{param_addBalance.userName}}</span>
+            </div>
+
+            <div class="col-md-2" style="margin-top:7px;">
+                <label>用户类型 </label>
+                <span style="color:#e4393c;">{{mod_getAccountType}}</span>
+            </div>
+            <div class="col-md-2" style="margin-top:7px;">
+                <label>可用余额(元)</label>
+                <span style="color:#e4393c;">{{mod_addbalance}}元</span>
+
+            </div>
+            <div class="col-md-2" style="margin-top:7px;">
+                <label>冻结余额(元)</label>
+                <span style="color:#e4393c;">{{mod_freezeBalance}}元</span>
+            </div>
+
+        </div>
+        <div class="block row">
+            <div class="form-horizontal" role="form" style="clear:both">
+                <div class="col-xs-4">
+                    <!--添加余额-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">添加可用余额<span style="color:#e4393c">*</span></label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" placeholder="添加到可用余额"
+                                   ng-model="param_addBalance.balance"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <!--添加备注-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">余额备注<span style="color:#e4393c">*</span></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="余额备注"
+                                   ng-model="param_addBalance.balanceRemark">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-5">
+                    <!--是否有冻结余额-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">是否添加冻结余额</label>
+                        <div class="col-md-8" style="margin-top:7px;">
+                            <input type="checkbox" ng-change="selectChecked(mod_checkedMoney)"
+                                   ng-model="mod_checkedMoney"/>&nbsp;是
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" style="clear:both;margin-top:10px;" ng-show="mod_freeze">
+                    <!--添加冻结余额-->
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">添加冻结余额<span style="color:#e4393c">*</span></label>
+                        <div class="col-md-6">
+                            <input type="number" class="form-control" placeholder="输入冻结余额"
+                                   ng-model="mod_addFreezeBalance">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3" ng-show="mod_freeze">
+                    <!--添加备注-->
+                    <div class="form-group" style="margin-top:10px;">
+                        <label class="col-md-4 control-label">冻结备注<span style="color:#e4393c">*</span></label>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control" placeholder="冻结备注... ..."
+                                   ng-model="mod_freezeRemark">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5" ng-show="mod_freeze" style="margin-top:10px;">
+                    <!--解冻日期-->
+                    <div class="form-group">
+                        <label class="col-md-3 control-label">解冻时间<span style="color:#e4393c">*</span></label>
+                        <div class="col-md-6">
+                            <div class="input-group">
+                                <input type="datetime" ng-model="mod_unFreezeTime" id="freezeTime" class="form-control"
+                                       readonly="readonly"/>
+                                <span class="input-group-addon"><span
+                                        class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--查询or清空查询-->
+            <div class="form-horizontal-footer">
+                <button class="btn btn-success" style="float:right;margin-right:20px;" ng-click="addBalances()">添加余额
+                </button>
+            </div>
+            <script>
+                $("#datepicker").datepicker({
+                    inline: true
+                });
+                $("#datepicker2").datepicker({
+                    inline: true
+                });
+                $("#datepickerFreeze").datepicker({
+                    inline: true
+                });
+                $("#startTime").datepicker({
+                    inline: true
+                });
+                $("#endTime").datepicker({
+                    inline: true
+                });
+                $("#freezeStartTime").datepicker({
+                    inline: true
+                });
+                $("#freezeEndTime").datepicker({
+                    inline: true
+                });
+                //解冻时间
+                $("#freezeTime").datetimepicker({
+
+                    format: 'yyyy/mm/dd hh:ii', autoclose: true, language: 'zh-CN', startDate: new Date()
+
+                });
+                $("#startTimeFreeze").datepicker({
+
+                    inline: true
+                });
+                $("#endTimeFreeze").datepicker({
+                    inline: true
+                });
+
+
+            </script>
+        </div>
+    </div>
+    <div class="page-content-wrap">
+        <ul class="nav nav-tabs" role="tablist" id="myTabs" style="margin-top:0px;">
+            <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">添加记录</a>
+            </li>
+            <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">冻结记录</a>
+            </li>
+        </ul>
+        <!--添加记录订单列表-->
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+                <div class="block row">
+                    <!--筛选条件-->
+                    <div class="form-horizontal" role="form">
+                        <!--订单类型-->
+                        <div class="form-group  col-md-4">
+                            <label class="col-md-3 control-label">用户类型</label>
+                            <div class="col-md-8">
+                                <select class="form-control"
+                                        style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                        ng-model="param_balanceList.userType"
+                                        ng-options="value.userType as value.text for value in mod_userTypeList">
+                                    <option value="">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-4">
+                            <label class="col-md-3 control-label">用户ID</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="请输入用户ID..."
+                                       ng-model="param_balanceList.compId"/>
+                            </div>
+                        </div>
+                        <!--用户名-->
+                        <div class="form-group  col-md-4">
+                            <label class="col-md-3 control-label">用户名</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="用户名..."
+                                       ng-model="param_balanceList.userName"/>
+                            </div>
+                        </div>
+
+                        <!--订单时间-->
+                        <div class="form-group  col-md-8" >
+                            <label class="col-md-2 control-label">添加时间</label>
+                            <div class="col-md-10 row">
+                                <div class="input-group col-xs-5" style="float:left">
+                                    <input type="datetime" ng-model="param_balanceList.startDate" id="datepicker"
+                                           class="form-control"/>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                                <span class="col-xs-2 zhi left" style="margin-top:10px;">至</span>
+                                <div class="input-group col-xs-5" style="float:left">
+                                    <input type="datetime" id="datepicker2" ng-model="param_balanceList.endDate"
+                                           class="form-control"/>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--查询or清空查询-->
+                        <div class="form-group col-md-4">
+                            <button class="btn btn-danger pull-right" ng-click="fullAll()">清空查询</button>
+                            <button class="btn btn-success" style="float:right;margin-right:20px;"
+                                    ng-click="queryBalanceLogInfo()">确认查询
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <table class="table datatable">
+                        <thead>
+                        <tr>
+                            <th>用户ID</th>
+                            <th>用户名</th>
+                            <th>添加金额(元)</th>
+                            <th>操作后金额(元)</th>
+                            <th>时间</th>
+                            <th>添加余额人员</th>
+                            <th>备注</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="balanceRecord in addBalanceLogInfo">
+                            <td>{{balanceRecord.compId}}</td>
+                            <td>{{balanceRecord.userName}}</td>
+                            <td>{{balanceRecord.addAmount}}</td>
+                            <td>{{balanceRecord.balance}}</td>
+                            <td>{{balanceRecord.createTime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                            <td>{{balanceRecord.operator==null?"无":balanceRecord.operator}}</td>
+                            <td>{{balanceRecord.remark==null?"无":balanceRecord.remark}}</td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--新增加分页显示数据-->
+                    <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;
+                        当前展示<select ng-change="confirmQuery(1)" ng-model="pageSizeSelect"
+                                    ng-options="value.value as value.value for value in pageSizes">
+                        </select>条
+                    </div>
+                    <div class="pull-right">
+                        <button ng-click="previous()">上一页</button>
+                        <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                        <button ng-click="next()">下一页</button>
+                        <input type="number" style="width:30px;" ng-model="changePage">
+                        <button ng-click="goToPage()">Go</button>
+                    </div>
+                </div>
+            </div>
+            <!--冻结余额记录-->
+            <div class="tab-pane" id="profile">
+                <div class="block row">
+                    <!--筛选条件-->
+                    <div class="form-horizontal" role="form">
+                        <!--用户ID-->
+                        <div class="form-group col-md-3">
+                            <label class="col-md-4 control-label">用户ID</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="请输入用户ID..."
+                                       ng-model="param_query_freeze.userId"/>
+                            </div>
+                        </div>
+                        <!--用户名-->
+                        <div class="form-group col-md-3">
+                            <label class="col-md-4 control-label">用户名</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="用户名..."
+                                       ng-model="param_query_freeze.userName"/>
+                            </div>
+                        </div>
+                        <!--记录ID-->
+                        <div class="form-group col-md-3">
+                            <label class="col-md-4 control-label">记录ID</label>
+                            <div class="col-md-8">
+                                <input type="text" class="form-control" placeholder="记录ID..."
+                                       ng-model="param_query_freeze.freezeId">
+                            </div>
+                        </div>
+                        <!--冻结状态-->
+                        <div class="form-group  col-md-3">
+                            <label class="col-md-4 control-label">冻结状态</label>
+                            <div class="col-md-8">
+                                <select class="form-control"
+                                        style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                        ng-model="param_query_freeze.status"
+                                        ng-options="value.status as value.text for value in mod_statusList">
+                                    <option value="">全部</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--解冻时间-->
+                        <div class="form-group col-md-8">
+                            <label class="col-md-2 control-label">添加时间</label>
+                            <div class="col-md-10 row">
+                                <div class="input-group col-xs-5" style="float:left">
+                                    <input type="datetime" ng-model="param_query_freeze.startDate"
+                                           id="startTimeFreeze" class="form-control"/>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                                <span class="col-xs-2 zhi left">至</span>
+                                <div class="input-group col-xs-5" style="float:left">
+                                    <input type="datetime" id="endTimeFreeze" ng-model="param_query_freeze.endDate"
+                                           class="form-control"/>
+                                    <span class="input-group-addon"><span
+                                            class="glyphicon glyphicon-calendar"></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <!--记录ID-->
+                        <div class="form-group col-md-4">
+                            <button class="btn btn-danger pull-right"
+                                    ng-click="fullAllFreeze()">清空查询
+                            </button>
+                            <button class="btn btn-success" style="float:right;margin-right:20px;"
+                                    ng-click="queryFreezeList()">确认查询
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="form-horizontal">
+                    <table class="table datatable">
+                        <thead>
+                        <tr>
+                            <th>记录ID</th>
+                            <th>用户ID</th>
+                            <th>用户名</th>
+                            <th>冻结余额(元)</th>
+                            <th>添加时间</th>
+                            <th>解冻时间</th>
+                            <th>操作人</th>
+                            <th>备注</th>
+                            <th>状态</th>
+                            <th>操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="freezeList in mod_getFreezeList">
+                            <td>{{freezeList.id}}</td>
+                            <td>{{freezeList.userId}}</td>
+                            <td>{{freezeList.userName}}</td>
+                            <td>{{freezeList.amount}}</td>
+                            <td>{{freezeList.createDate | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                            <td>{{freezeList.unFreezeTime | date:"yyyy/MM/dd HH:mm:ss"}}</td>
+                            <td>{{freezeList.operateName}}</td>
+                            <td>{{freezeList.remark}}</td>
+                            <td><span class="btn-xs"
+                                      ng-class="{'btn-default':freezeList.statusS=='已解冻','btn-warning':freezeList.statusS!='已解冻'}">{{freezeList.statusS}}</span>
+                            </td>
+                            <td>
+                                <button class="btn-xs btn-success" ng-hide="freezeList.statusS =='已解冻'"
+                                        ng-click="thaw(freezeList.id)"><a href="" style="color:#fff">解冻</a></button>
+                                <button class="btn-xs btn-danger" ng-hide="freezeList.statusS =='已解冻'"
+                                        ng-click="deleteThrow($index)"><a href="" style="color:#fff">删除</a></button>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <!--新增加分页显示数据-->
+                    <!--分页显示数据-->
+                    <div role="status" aria-live="polite">总共{{totalCountFreeze}}条 &nbsp;
+                        当前展示<select ng-change="confirmQuery(2)" ng-model="pageSizeSelect"
+                                    ng-options="value.value as value.value for value in pageSizes">
+                        </select>条
+                        <div class="pull-right">
+                            <button class="btn btn-default" ng-click="previousFreeze()">上一页</button>
+                            <span>第 {{pageNumFreeze}} 页/共 {{totalPageCountFreeze}} 页</span>
+                            <button class="btn btn-default" ng-click="nextFreeze()">下一页</button>
+                            <input type="number" style="width:45px;margin-left:10px;margin-right:7px;border-radius:9px;"
+                                   ng-model="changePageFreeze">
+                            <button class="btn btn-default" ng-click="goToPageFreeze()">Go</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $("#datepicker").datepicker({
+                    inline: true
+                });
+                $("#datepicker2").datepicker({
+                    inline: true
+                })
+            </script>
+        </div>
+    </div>
+</div>

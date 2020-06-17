@@ -1,0 +1,439 @@
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>渠道管理 </a>&gt;渠道详情
+    </p>
+    <!--end 标题头-->
+
+    <!----------详情信息-------->
+    <div class="page-content-wrap" style="margin-top:5px;">
+        <div class="col-md-12">
+            <div class="form-horizontal">
+                <div class="panel panel-default">
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-first">
+
+                            <div class="sr-item-title">渠道信息</div>
+
+                            <a class="btn btn-default pull-right look_supp_goods"
+                               style="background-color:#29343f;color:#fff"
+                               href="#/suppGoods/{{mod_compId}}/{{mod_compName}}">查看上游商品</a>
+
+                            <!-- 渠道头像 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道头像</label>
+                                <div class="col-md-1 col-xs-12">
+                                    <img ng-src="http://img.gxcards.com/{{mod_logo}}" alt="">
+                                </div>
+                                <!--<div class="col-md-5" style="margin-left:30px;">-->
+                                <!--<button type="button" class="btn btn-default pull-left" style="background-color: #33414e;color:#fff;" ng-click="channelEdit()">更改头像</button>-->
+                                <!--</div>-->
+                            </div>
+                            <div class="form-group edit" style="display:none;">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道头像</label>
+                                <div class="col-md-7 col-xs-12">
+                                    <input type="file" custom-on-change="uploadImg"/>
+                                </div>
+                            </div>
+
+
+                            <!-- 渠道名称 -->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道名称</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text" ng-model="mod_compName" disabled style="outline:none;border:none;background-color:#fff;">-->
+                                    {{mod_compName}}
+                                </div>
+                            </div>
+
+                            <!-- 账户余额 -->
+                            <div class="form-group" ng-show="mod_show">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 账户余额</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text" ng-model="mod_balance" disabled style="outline:none;border:none;background-color:#fff;">-->
+                                    {{mod_balance}} 元
+                                </div>
+                            </div>
+                            <div class="form-group" ng-show="mod_hide">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 账户余额</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text" ng-model="mod_balance" disabled style="outline:none;border:none;background-color:#fff;">-->
+                                    <span>{{mod_balanceText}}</span>
+                                </div>
+                            </div>
+
+
+                            <!-- 渠道ID -->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道ID</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text"  ng-model="mod_compId" disabled style="width:300px;outline:none;border:none;background-color:#fff;" >-->
+                                    {{mod_compId}}
+                                </div>
+                            </div>
+
+
+                            <!-- 发行商 -->
+                            <div class="form-group ok publisher">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 发行商</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_pubIdsText" disabled
+                                           style="outline:none;border:none;background-color:#fff;width:300px;">
+                                </div>
+                            </div>
+                            <!--<div class="form-group edit publisher">-->
+                            <!--<label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 发行商</label>-->
+                            <!--<div class="col-md-6 col-xs-12">-->
+                            <!--<input type="text" ng-model="mod_pubIdsText" style="outline:none;background-color:#fff;">-->
+                            <!--</div>-->
+                            <!--</div>-->
+
+                            <div class="form-group edit publisher">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 发行商</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text" ng-model="mod_pubIdsText" disabled style="outline:none;border:none;background-color:#fff;width:300px;">-->
+                                    <select multiple>
+                                        <option value="publisher.pubId" ng-repeat="publisher in publisherList"
+                                                ng-selected="publisher.selected"
+                                                ng-click="changeSelectStatus(publisher.selected,publisher)">
+                                            {{publisher.pubName}}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!-- 渠道类型 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道类型</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text"  ng-model="mod_channelTypeText" disabled style="outline:none;border:none;background-color:#fff;" >-->
+                                    <select ng-model="mod_channelTypeText" disabled>
+                                        <option value="0">线上渠道</option>
+                                        <option value="1">线下渠道</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道类型</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text"  ng-model="mod_channelTypeText" style="outline:none;background-color:#fff;" >-->
+                                    <select ng-model="mod_channelTypeText">
+                                        <option value="0">线上渠道</option>
+                                        <option value="1">线下渠道</option>
+                                    </select>
+                                </div>
+                            </div>
+
+
+                            <!-- 渠道状态 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道状态</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text" ng-model="mod_statusText"  disabled style="outline:none;border:none;background-color:#fff;">-->
+                                    <!--<a class="btn btn-default" style="background-color:#33414e;color:#fff;" ng-click="channelEdit2()">修改</a>-->
+                                    <select ng-model="mod_statusText" disabled>
+                                        <option value="0">暂停</option>
+                                        <option value="1">正常</option>
+                                        <option value="-1">异常</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道状态</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="text"  ng-model="mod_statusText" style="outline:none;border:none;background-color:#fff;">-->
+                                    <!--<button  class="btn btn-default" style="background-color:#33414e;color:#fff;">修改</button>-->
+                                    <select ng-model="mod_statusText">
+                                        <option value="0">暂停</option>
+                                        <option value="1">正常</option>
+                                        <option value="-1">异常</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- 渠道接口人 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道接口人</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_linkMan" disabled
+                                           style="outline:none;border:none;background-color:#fff;">
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 渠道接口人</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_linkMan"
+                                           style="outline:none;background-color:#fff;">
+                                </div>
+                            </div>
+                            <!-- 渠道接口人电话 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">
+                                    渠道接口人电话</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_linkMobile" disabled
+                                           style="outline:none;border:none;background-color:#fff;">
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">
+                                    渠道接口人电话</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_linkMobile"
+                                           style="outline:none;background-color:#fff;">
+                                </div>
+                            </div>
+                            <!-- 电子合同 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 电子合同</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <!--<input type="file" style="outline:none;border:none;background-color:#fff;" custom-on-change="uploadFile"/>-->
+                                    <input type="text" class="mod_econtractOne" ng-model="mod_econtract"
+                                           style="outline:none;border:none;background-color:#fff;width:100%;">
+                                    <input type="text" class="mod_econtractTwo" ng-model='mod_econtractText'
+                                           style="outline:none;border:none;background-color:#fff;width:100%;">
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;"> 电子合同</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="file" style="outline:none;border:none;background-color:#fff;"
+                                           custom-on-change="uploadFile"/>
+                                </div>
+                            </div>
+                            <!-- APPKey生成器 -->
+                            <div class="form-group ok appKey">
+                                <label class="col-md-3 col-xs-12 control-label"
+                                       style="padding-top:0px;">APPkey生成器</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_appKey" disabled
+                                           style="outline:none;border:none;width:200px;background-color:#fff;">
+                                    <!--<a class="btn btn-default" style="background-color:#33414e;color:#fff;" ng-click="generateAPPKey()">生成</a>-->
+                                </div>
+                            </div>
+                            <div class="form-group edit appKey">
+                                <label class="col-md-3 col-xs-12 control-label"
+                                       style="padding-top:0px;">APPkey生成器</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_appKey"
+                                           style="outline:none;border:none;width:200px;background-color:#fff;">
+                                    <a class="btn btn-default" style="background-color:#33414e;color:#fff;"
+                                       ng-click="generateAPPKey()">生成</a>
+                                </div>
+                            </div>
+                            <!-- rsa公钥 -->
+                            <div class="form-group ok rsaPub">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">RSA公钥</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_rsaPub" disabled
+                                           style="outline:none;border:none;width:133px;background-color:#fff;">
+                                </div>
+                            </div>
+                            <div class="form-group edit rsaPub">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">RSA公钥</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" ng-model="mod_rsaPub"
+                                           style="outline:none;width:133px;background-color:#fff;">
+                                </div>
+                            </div>
+                            <!-- 白名单 -->
+                            <div class="form-group ok whiteNameList">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">白名单</label>
+                                <div class="col-md-8 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="mod_accessHostsOne" disabled
+                                           style="outline:none;background-color:#fff;"><br/><br/>
+                                    <input type="text" class="form-control" ng-model="mod_accessHostsTwo" disabled
+                                           style="outline:none;background-color:#fff;">
+                                </div>
+                            </div>
+                            <div class="form-group edit whiteNameList">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">白名单</label>
+                                <div class="col-md-8 col-xs-12">
+                                    <input type="text" ng-model="mod_accessHostsOne"
+                                           style="width:170px;outline:none;background-color:#fff;"><br/><br/>
+                                    <input type="text" ng-model="mod_accessHostsTwo"
+                                           style="width:170px;outline:none;background-color:#fff;">
+                                </div>
+                            </div>
+                            <!-- 渠道描述 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">渠道描述</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <textarea cols="63" rows="10" ng-model="mod_compDesc" disabled
+                                              style="background-color:#fff;">
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label" style="padding-top:0px;">渠道描述</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <textarea cols="63" rows="10" ng-model="mod_compDesc"
+                                              style="background-color:#fff;">
+                                    </textarea>
+                                </div>
+                            </div>
+
+
+                            <!-- 渠道备注 -->
+                            <div class="form-group ok">
+                                <label class="col-md-3 col-xs-12 control-label">渠道备注</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <textarea cols="63" rows="10" ng-model="mod_remark" disabled
+                                              style="background-color:#fff;">备注
+                                    </textarea>
+                                </div>
+                            </div>
+                            <div class="form-group edit">
+                                <label class="col-md-3 col-xs-12 control-label">渠道备注</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <textarea cols="63" rows="10" ng-model="mod_remark" style="background-color:#fff;">备注
+                                    </textarea>
+                                </div>
+                            </div>
+
+
+                            <button class="btn btn-default pull-right" style="background-color:#29343f;color:#fff"
+                                    ng-click="saveChannelChange()">保存修改
+                            </button>
+                            <button class="btn btn-default pull-right" style="background-color:#29343f;color:#fff"
+                                    ng-click="editChannelDetail()">编辑
+                            </button>
+                            <!--<button class="btn btn-primary pull-right" ng-click="saveChannelChange()">保存</button>-->
+                            <!--<button class="btn btn-primary pull-right" ng-click="editChannelDetail()">编辑</button>-->
+                        </div>
+                    </div>
+
+                    <!-- 普通商品配置 -->
+                    <div class="panel-footer">
+                        <p>普通商品配置</p>
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <th>商品名称</th>
+                            <th>面值</th>
+                            <th>加价方式</th>
+                            <th>加价金额</th>
+                            <th>售价</th>
+                            <th>回收折扣</th>
+                            <th>数量</th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="normalConfigedGood in NormalConfigedGoods">
+                                <td>{{normalConfigedGood.goodsName}}</td>
+                                <td>{{normalConfigedGood.amount}}元</td>
+                                <td class="ok3">
+                                    <select disabled>
+                                        <option ng-repeat="NormalDiscountType in NormalConfigedGoodsDiscountTypeList"
+                                                ng-selected="normalConfigedGood.discountType==NormalDiscountType.code">
+                                            {{NormalDiscountType.desc}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td class="edit3" style="display:none;">
+                                    <select ng-model="normalConfigedGood.desc">
+                                        <option ng-repeat="NormalDiscountType in NormalConfigedGoodsDiscountTypeList"
+                                                ng-selected="normalConfigedGood.discountType==NormalDiscountType.code">
+                                            {{NormalDiscountType.desc}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="normalConfigedGood.discountDetail">
+                                    <span ng-show="normalConfigedGood.desc=='百分比'">%</span>
+                                </td>
+                                <td>{{normalConfigedGood.outPrice}}</td>
+                                <td><input type="text" ng-model="normalConfigedGood.recycleDiscount"></td>
+                                <td class="ok3"><input type="number" ng-model="normalConfigedGood.limitCount" disabled style="background-color:#fff;"></td>
+                                <td class="edit3" style="display:none;"><input type="number" ng-model="normalConfigedGood.limitCount" style="background-color:#fff;"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-default pull-right" style="background-color:#29343f;color:#fff"
+                                ng-click="saveNormalConfigedGoodChange()">保存修改
+                        </button>
+                        <button class="btn btn-default pull-right" style="background-color:#29343f;color:#fff"
+                                ng-click="editTable()">编辑
+                        </button>
+                    </div>
+
+                    <!-- 充值商品配置 -->
+                    <div class="panel-footer">
+                        <p>充值商品配置</p>
+                        <table class="table table-bordered table-responsive">
+                            <thead>
+                            <th>商品名称</th>
+                            <th>面值</th>
+                            <th>加价方式</th>
+                            <th>加价金额</th>
+                            <th>售价</th>
+                            <th>限购金额</th>
+                            </thead>
+                            <tbody>
+                            <tr ng-repeat="topupConfigedGood in TopupConfigedGoods">
+                                <td>{{topupConfigedGood.goodsName}}</td>
+                                <td>{{topupConfigedGood.amount}}元</td>
+                                <td class="ok4">
+                                    <select disabled>
+                                        <option ng-repeat="TopupDiscountType in TopupConfigedGoodsDiscountTypeList"
+                                                ng-selected="topupConfigedGood.discountType==TopupDiscountType.code">
+                                            {{TopupDiscountType.desc}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td class="edit4" style="display:none;">
+                                    <select ng-model="topupConfigedGood.desc">
+                                        <option ng-repeat="TopupDiscountType in TopupConfigedGoodsDiscountTypeList"
+                                                ng-selected="topupConfigedGood.discountType==TopupDiscountType.code">
+                                            {{TopupDiscountType.desc}}
+                                        </option>
+                                    </select>
+                                </td>
+                                <td>
+                                    <input type="text" ng-model="topupConfigedGood.discountDetail">
+                                    <span ng-show="topupConfigedGood.desc=='百分比'">%</span>
+                                </td>
+                                <td>{{topupConfigedGood.outPrice}}</td>
+                                <td class="ok4"><input type="number" ng-model="topupConfigedGood.limitCount" disabled
+                                                       style="background-color:#fff;"></td>
+                                <td class="edit4" style="display:none;"><input type="number"
+                                                                               ng-model="topupConfigedGood.limitCount"
+                                                                               style="background-color:#fff;"></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <button class="btn btn-default pull-right" style="background-color:#29343f;color:#fff"
+                                ng-click="saveTopupConfigedGoodChange()">保存修改
+                        </button>
+                        <button class="btn btn-default pull-right" style="background-color:#29343f;color:#fff"
+                                ng-click="editTable2()">编辑
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--------------发行商信息结束---------------->
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box">
+        <p class="delete_or_not_title" ng-show="fadeOne" style="margin-top:46px;">普通商品保存修改成功!</p>
+        <p class="delete_or_not_title" ng-show="fade" style="margin-top:46px;">充值商品保存修改成功!</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer"
+           ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box">
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer"
+           ng-click="know()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://code.alibabatech.com/schema/dubbo"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://code.alibabatech.com/schema/dubbo
+        http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
+        
+	<!-- 消费方应用名，用于计算依赖关系，不是匹配条件，不要与提供方一样 -->
+	<dubbo:application name="${dubbo.consumer.applicationName}" />
+
+	<dubbo:consumer retries="0" timeout="12000" check="false" />
+	<!-- 使用zookeeper注册中心暴露发现服务地址 -->
+	<dubbo:registry protocol="${dubbo.consumer.registry.protocol}" address="${dubbo.consumer.registry.address}" />
+	
+	
+	<!-- service -->
+	<dubbo:reference interface="com.geovis.ai.api.service.UsersService" id="usersService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.AlgorithmsService" id="algorithmsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.ApplicationsService" id="applicationsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.ArticlesService" id="articlesService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.BiddingsService" id="biddingsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.ClassificationsService" id="classificationsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.CommentsService" id="commentsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.DemandsService" id="demandsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.DocumentsService" id="documentsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.IntegralService" id="integralService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.IntegralRecordingService" id="integralRecordingService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.MigrationsService" id="migrationsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.OrdersService" id="ordersService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.PluginsService" id="pluginsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.RotationService" id="rotationService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.LabelidsService" id="labelidsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.LabelsService" id="labelsService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.KnowledgesService" id="knowledgesService" timeout="10000" mock="true"/>
+	<dubbo:reference interface="com.geovis.ai.api.service.SamplesService" id="samplesService" timeout="10000" mock="true"/>
+
+</beans>

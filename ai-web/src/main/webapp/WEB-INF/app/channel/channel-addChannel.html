@@ -1,0 +1,98 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <div style="margin-top:10px;">
+        <p class="page-title" style="font-size:13px;padding-top:10px;padding-bottom:10px;background:#e8e8e8;">
+            <a>管理渠道</a>&gt;添加标签
+        </p>
+    </div>
+ <div class="page-content-wrap" style="min-height:1500px;margin-top:3px;">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <!-- START TIMELINE FILTER -->
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <form class="form-horizontal" role="form">
+                        <div class="form-group">
+                            <!--渠道名称-->
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <!--<b style="vertical-align: middle">渠道名称</b>-->
+                                    <label class="col-md-3 col-xs-12 control-label">名称
+                                    </label>
+                                    <div class="col-md-6 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="mod_title" placeholder="请输入标签名称"/>
+                                     </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+
+                            <!--渠道类型-->
+                            <div class="col-md-12" style="margin-top:15px;">
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">类型
+                                    </label>
+                                    <div class="col-md-6 col-xs-12">
+                                    <!--<select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;" ng-model="param.channelType">-->
+                                    <!--<option value="0" selected>线上渠道</option>-->
+                                    <!--<option value="1">线下渠道</option>-->
+                                    <!--</select>-->
+                                        <!--<select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"  ng-model="type" >-->
+                                            <!--<option value="1">资讯</option>-->
+                                            <!--<option value="2">样本</option>-->
+                                            <!--<option value="3">需求</option>-->
+                                            <!--<option value="4">知识</option>-->
+                                            <!--<option value="5">文档</option>-->
+                                        <!--</select>-->
+                                        <select id="shop_time_select"  ng-model="mod_classification_id" class="form-control"
+                                                style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                                ng-options="value.id as value.text for value in mod_selectList"
+                                        >
+                                        </select>
+                                   </div>
+                                </div>
+                            </div>
+                            <!--渠道描述-->
+                            <div class="col-md-12" style="margin-top:20px;">
+                                <div class="form-group">
+                                    <label class="col-md-3 col-xs-12 control-label">详情</label>
+                                    <div class="col-md-6 col-xs-12">
+                                        <textarea class="form-control" rows="3" ng-model="mod_introduction">输入基本内容
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--保存-->
+                        <div class="form-group">
+                            <div class="col-md-6"></div>
+                            <div class="col-md-5">
+                                <button class="btn btn-success"  ng-click="addlabe()"> 提交</button>
+                            </div>
+                        </div>
+                        <!--</div>-->
+                    </form>
+                </div>
+            </div>
+            <!-- END TIMELINE FILTER -->
+        </div>
+    </div>
+ </div>
+ </div>
+<div class="delete_or_not_instockRecord_warning_bg" id="delete_or_not_box">
+    <div style="width:0px;min-width:226px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:46px;">添加渠道成功</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="sure_delete_or_not()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>
+<div class="delete_or_not_instockRecord_warning_bg" id="error">
+    <div style="width:0px;min-width:221px;height:112px;" class="delete_or_not_instockRecord_warning_box" >
+        <p class="delete_or_not_title" style="margin-top:20px;">{{statustext}}</p>
+        <p class="delete_or_not_delete" style="margin-left:148px;margin-right:10px;color:#2e8ded;cursor:pointer" ng-click="know()">知道啦</p>
+        <!--<p class="delete_or_not_not" ng-click="cancel_delete_or_not()">取消</p>-->
+    </div>
+</div>

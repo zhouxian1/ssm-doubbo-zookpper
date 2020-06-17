@@ -1,0 +1,50 @@
+<div ng-controller="integralManageController">
+    <div class="usercenter-title">
+        <h1>
+            积分管理
+        </h1>
+    </div>
+    <table class="table usercenter-table">
+        <tr>
+            <th>ID</th>
+            <th>收支类型</th>
+            <th>积分值</th>
+            <th>原因</th>
+            <th>时间</th>
+        </tr>
+        <tr ng-repeat="item in integralList">
+            <td>ID：{{item.id}}</td>
+            <td>{{item.pay_type==0?'支出':'收入'}}</td>
+            <td>{{item.price}}</td>
+            <td>{{item.reason}}</td>
+            <td>{{item.created_at}}</td>
+        </tr>
+    </table>
+    <!-- 分页开始 -->
+    <div class="page-blcok center-block">
+
+        <uib-pagination
+                force-ellipses="true"
+                boundary-links="true"
+                boundary-link-numbers="true"
+                total-items="total"
+                ng-model="current"
+                max-size="maxSize"
+                ng-change="search(true)"
+                items-per-page="pageTotal||10"
+                class="pagination-sm"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+        ></uib-pagination>
+        &nbsp;&nbsp;
+        <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+        &nbsp;&nbsp;
+        <div class="pagination-info">
+            <span class="ng-binding">共有{{total}}条</span>
+        </div>
+
+    </div>
+    <!-- 分页结束 -->
+</div>

@@ -1,0 +1,124 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>回收入库日志 </a>
+    </p>
+    <!--&lt;!&ndash;查询&ndash;&gt;-->
+    <!--<div class="page-content-wrap">-->
+        <!--<div class="col-md-12">-->
+            <!--<h3>回收入库查询</h3>-->
+            <!--<div class="form-horizontal">-->
+                <!--<div class="panel panel-default tabs">-->
+                    <!--&lt;!&ndash;<ul class="nav nav-tabs" role="tablist">&ndash;&gt;-->
+                    <!--&lt;!&ndash;</ul>&ndash;&gt;-->
+                    <!--<div class="panel-body tab-content" style="padding-top:5px;">-->
+                        <!--<div class="tab-pane active" style="margin-top:5px;">-->
+                            <!--<div class="sr-item-title"></div>-->
+                            <!--&lt;!&ndash;渠道名称&ndash;&gt;-->
+                            <!--<div class="form-group">-->
+                                <!--<label class="col-md-1 col-xs-12 control-label">批次号</label>-->
+                                <!--<div class="col-md-3 col-xs-12">-->
+                                    <!--<input type="text" class="form-control" placeholder="输入卡批次查询"-->
+                                           <!--ng-model="param_query_stock.suppOrderNo"/>-->
+
+                                <!--</div>-->
+                                <!--<label class="col-md-2 col-xs-12 control-label">商品名称</label>-->
+                                <!--<div class="col-md-3 col-xs-12">-->
+                                    <!--<input type="text" class="form-control" placeholder="输入商品名称查询"-->
+                                           <!--ng-model="param_query_stock.goodsName"/>-->
+                                <!--</div>-->
+                                <!--<label class="col-md-3 ">-->
+                                    <!--<button class="btn btn-success" ng-click="queryRecycleStockLogPageList()">查询</button>-->
+                                    <!--<a ng-click="allFull()" style="text-decoration:none;padding-left:10px;" class="btn btn-danger">清空查询</a>-->
+                                <!--</label>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--回收列表-->
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-second">
+                            <!-- START DEFAULT DATATABLE 数据表格 -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <!--<div class="panel-heading">-->
+                                            <!--<h3 class="panel-title">回收入库日志</h3>-->
+                                        <!--</div>-->
+                                        <div class="panel-body">
+                                            <!--<table class="table table-responsive">-->
+                                            <table class="table table-overflow">
+                                                <thead>
+                                                <tr class="recycling-in-tr">
+                                                    <th>回收时间</th>
+                                                    <th>商品ID</th>
+                                                    <th>商品名称</th>
+                                                    <th>商品总价(元)</th>
+                                                    <th>回收折扣</th>
+                                                    <th>批次数量</th>
+                                                    <th>剩余数量</th>
+                                                    <th>付款状态</th>
+                                                    <th>收款人</th>
+                                                    <th>收款银行卡号</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="recycling in mod_stockList"  class="recycling-in-body">
+                                                    <td>{{recycling.createDate | date:"yyyy/MM/dd hh:mm:ss"}}</td>
+                                                    <td>{{recycling.goodsId}}</td>
+                                                    <td>{{recycling.goodsName}}</td>
+                                                    <td>{{recycling.recyclePrice}}</td>
+                                                    <td>{{recycling.discount}}</td>
+                                                    <td>{{recycling.totalCount}}</td>
+                                                    <td>{{recycling.remainCount}}</td>
+                                                    <td>{{recycling.payStatus == "00"?"受理成功":"受理失败"}}</td>
+                                                    <td>{{recycling.userName}}</td>
+                                                    <td>{{recycling.bankNo}}</td>
+                                                    <!--<td>{{recycling.suppOrderNo}}</td>-->
+                                                    <!--<td>{{recycling.createDate | date:"yyyy/MM/dd"}}</td>-->
+                                                    <!--<td>{{recycling.goodsName}}</td>-->
+                                                    <!--<td>{{recycling.unitPrice}}</td>-->
+                                                    <!--<td>{{(recycling.unitPrice/recycling.amount).toFixed(4)}}</td>-->
+                                                    <!--<td>{{(recycling.unitPrice/recycling.amount).toFixed(4)}}</td>-->
+                                                    <!--<td>{{(recycling.unitPrice/recycling.amount).toFixed(4)}}</td>-->
+                                                    <!--<td>{{(recycling.unitPrice/recycling.amount).toFixed(4)}}</td>-->
+                                                    <!--<td>{{(recycling.unitPrice/recycling.amount).toFixed(4)}}</td>-->
+                                                    <!--<td>-->
+                                                        <!--<a href="#/recyclingQuery/{{recycling.logId}}/{{recycling.goodsName}}" style="text-decoration:underline;color:blue">{{recycling.count}}</a>-->
+                                                    <!--</td>-->
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <!-- END DEFAULT DATATABLE 数据表格 -->
+                                </div>
+                            </div>
+                            <!--分页显示数据-->
+                            <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;当前展示
+                                <select ng-change="confirmQuery()" ng-model="pageSizeSelect" ng-options="value.value as value.value for value in pageSizes"></select>条
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-default" ng-click="previous()">上一页</button>
+                                <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                                <button class="btn btn-default" ng-click="next()">下一页</button>
+                                <input type="number" style="width:30px;" ng-model="changePage">
+                                <button class="btn btn-default" ng-click="goToPage()">Go</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

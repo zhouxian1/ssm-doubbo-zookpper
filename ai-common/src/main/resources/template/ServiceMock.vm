@@ -1,0 +1,14 @@
+package com.${projectName}.${module}.service;
+
+import com.${projectName}.${module}.model.${model};
+import com.${projectName}.${module}.model.${model}Example;
+import com.${projectName}.${module}.service.${model}Service;
+import com.${projectName}.base.BaseServiceMock;
+
+/**
+* 降级实现${model}Service
+* @date ${ctime}.
+*/
+public class ${model}ServiceMock extends BaseServiceMock<${model}, ${model}Example> implements ${model}Service {
+
+}

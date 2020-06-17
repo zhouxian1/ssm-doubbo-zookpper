@@ -1,0 +1,122 @@
+<div id="content-main">
+    <!--标题头---->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>财务管理 / </a>提现记录
+    </p>
+    <!--添加/查询提现记录-->
+    <div class="page-content-wrap" style="margin-top:3px;">
+        <div class="form-horizontal" role="form">
+            <div class="col-xs-6">
+                <!--用户名-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label">用户名</label>
+                    <div class="col-md-8">
+                        <input type="text" ng-model="param_transferList.userName" class="form-control"  placeholder="用户名..."/>
+                    </div>
+                </div>
+                <!--用户id-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label">用户ID</label>
+                    <div class="col-md-8">
+                        <input type="text" ng-model="param_transferList.channelCode" class="form-control"  placeholder="用户ID..."/>
+                    </div>
+                </div>
+                <!--提现状态-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label">提现状态</label>
+                    <div class="col-md-8">
+                        <select class="form-control" ng-model="param_transferList.status"   style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;">
+                            <option  ng-repeat="withdraw in mod_firmBankTransferStatusList" value="{{withdraw.type}}">{{withdraw.text}}</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <script>
+                $("#datepicker").datepicker({
+                    inline:true
+                });
+                $("#datepicker1").datepicker({
+                    inline:true
+                });
+            </script>
+            <div class="col-xs-6">
+                <!--用户类型-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label">用户类型</label>
+                    <div class="col-md-8">
+                        <select class="form-control" style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;" ng-model="param_transferList.userType">
+                            <option value="0">普通用户</option>
+                            <option value="1">大客户</option>
+                        </select>
+                    </div>
+                </div>
+                <!--提现时间-->
+                <div class="form-group">
+                    <label class="col-md-3 control-label">提现时间</label>
+                    <div class="col-md-8 row">
+                        <div class="input-group col-xs-5" style="float:left">
+                            <input type="datetime" ng-model="param_transferList.satartDate"  class="form-control " id="datepicker"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                        <span class="col-xs-2 zhi left" style="margin-top:10px;">至</span>
+                        <div class="input-group col-xs-5" style="float:left">
+                            <input ng-model="param_transferList.endDate" type="datetime"  class="form-control" id="datepicker1"/>
+                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-horizontal-footer" >
+            <div>
+                <button class="btn btn-primary pull-right" style="margin-top:20px;margin-bottom:20px;margin-right:30px;" ng-click="confireQuery()">确认查询</button>
+                <a href="#/financeManage" style="margin-top:20px;margin-bottom:20px;margin-right:30px;" class="right btn btn-danger pull-right">添加记录</a>
+                <a  style="margin-top:20px;margin-bottom:20px;margin-right:30px;" class="right btn btn-success pull-right" ng-click="emptyQuery()">清空查询条件</a>
+            </div>
+        </div>
+    </div>
+    <!--提现列表-->
+    <div class="page-content-wrap" style="min-height:1500px;">
+        <div class="form-horizontal" style="padding:10px;">
+            <div class="pannel-heading">
+                <h3 class="pannel-title">
+                    <span>提现记录列表</span>
+                </h3>
+            </div>
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>订单ID</th>
+                    <th>收款单位</th>
+                    <th>提现金额(元)</th>
+                    <th>提现时间</th>
+                    <th>状态</th>
+                    <th>备注</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="obj in mod_transferList">
+                        <td><a href="#/withdrawDetailed/{{obj.orderNo}}">{{obj.orderNo}}</a></td>
+                        <td>{{obj.userName}}</td>
+                        <td>{{obj.amount}}</td>
+                        <td>{{obj.createDate | date:'yyyy/MM/dd HH:mm:ss'}}</td>
+                        <td>{{obj.status}}</td>
+                        <td>{{obj.remark}}</td>
+                    </tr>
+                </tbody>
+            </table>
+            <!--新增加分页显示数据-->
+            <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;
+                当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect" ng-options="value.value as value.value for value in pageSizes">
+                </select>条
+            </div>
+            <div class="pull-right">
+                <button ng-click="previous()">上一页</button>
+                <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                <button ng-click="next()">下一页</button>
+                <input type="number" style="width:30px;" ng-model="changePage">
+                <button  ng-click="goToPage()">Go</button>
+            </div>
+        </div>
+    </div>
+</div>

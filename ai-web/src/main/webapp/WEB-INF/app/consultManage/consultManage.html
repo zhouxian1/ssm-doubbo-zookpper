@@ -1,0 +1,59 @@
+<!--订单管理模块-->
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>资讯管理
+    </p>
+    <!--订单列表-->
+    <div class="page-content-wrap">
+        <div class="form-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <span>资讯管理</span>
+                    <!--<button class="btn btn-default right">订单导出</button>-->
+                </h3>
+            </div>
+            <table class="table datatable">
+                <thead>
+                <tr>
+                    <th>资讯信息</th>
+                    <th>分类</th>
+                    <th>发布时间</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <!--动态table-->
+                <tbody>
+                <tr ng-repeat="knowledge in apiUrl_knowledges_List">
+                    <td>
+                        <a>
+                            ID:{{knowledge.id}}
+                        </a>
+                        <a>
+                            资讯名称:{{knowledge.title}}
+                        </a>
+                    </td>
+                    <td>分类:{{knowledge.classification_id}}</td>
+                    <td>发布时间：{{knowledge.updated_at}}</td>
+                    <td>
+                        <a style="color:#4f79e4" href="/addConsult/{{knowledge.id}}">编辑</a>
+                        <a style="color:#4f79e4" ng-click="delete(knowledge.id)">删除</a>
+                    </td>
+
+                    <!--<td>{{obj.enterUser == null?"系统订单":obj.enterUser}}</td>-->
+                </tr>
+                </tbody>
+            </table>
+            <!--分页显示数据-->
+            <div id="pageBottom" style="margin-top: -25px;">
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+

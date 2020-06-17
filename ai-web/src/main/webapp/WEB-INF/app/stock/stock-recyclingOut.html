@@ -1,0 +1,192 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>回收出库 </a>
+    </p>
+    <!--查询-->
+    <div class="page-content-wrap">
+        <div class="col-md-12">
+            <h3>回收商品出库</h3>
+            <div class="form-horizontal">
+                <div class="panel panel-default tabs">
+                    <!--<ul class="nav nav-tabs" role="tablist">-->
+                    <!--</ul>-->
+                    <div class="panel-body tab-content" style="padding-top:5px;">
+                        <div class="tab-pane active" style="margin-top:5px;">
+                            <div class="sr-item-title"></div>
+                            <!--渠道名称-->
+                            <div class="form-group row">
+                                <label class="col-md-2 col-xs-12 control-label">商品ID</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="商品ID" ng-model="param_creat_order.goodsId" ng-click="chooseGoodId()" />
+                                </div>
+                                <label class="col-md-2 col-xs-12 control-label">商品名称</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="商品名称" ng-model="param_creat_order.goodsName" disabled/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-xs-12 control-label">出库数量</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="出库数量" ng-model="param_creat_order.count"/>
+                                </div>
+                                <label class="col-md-2 col-xs-12 control-label">出库单价(元)</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="出库单价" ng-model="param_creat_order.price"/>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label class="col-md-2 col-xs-12 control-label">收货邮箱</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="收货邮箱" ng-model="param_creat_order.email"/>
+                                </div>
+                                <label class="col-md-offset-4 col-md-2">
+                                    <button class="btn btn-success" ng-click="creatOrder()">发送</button>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--回收列表-->
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="panel-body tab-content">
+                        <div class="tab-pane active" id="tab-second">
+                            <!-- START DEFAULT DATATABLE 数据表格 -->
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <h3 class="panel-title">回收出库日志</h3>
+                                        </div>
+                                        <div class="panel-body">
+                                            <!--<table class="table table-responsive">-->
+                                            <table class="table table-overflow">
+                                                <thead>
+                                                <tr class="recycling-in-tr">
+                                                    <th>出库时间</th>
+                                                    <th>商品ID</th>
+                                                    <th>商品名称</th>
+                                                    <th>出库总价(元)</th>
+                                                    <th>出库折扣</th>
+                                                    <th>出库数量</th>
+                                                    <th>出库商品 zip</th>
+                                                    <th>压缩密码</th>
+                                                    <th>收货邮箱</th>
+                                                    <th>操作人</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                <tr ng-repeat="recycling in mod_stockList"  class="recycling-in-body">
+                                                    <td>{{recycling.createDate | date:"yyyy/MM/dd hh:ss:mm"}}</td>
+                                                    <td>{{recycling.goodsId}}</td>
+                                                    <td>{{recycling.goodsName}}</td>
+                                                    <td>{{recycling.totalPrice}}</td>
+                                                    <td>{{recycling.discount}}</td>
+                                                    <td>{{recycling.count}}</td>
+                                                    <td><a href="{{recycling.zipFile}}">下载压缩包</a></td>
+                                                    <td>{{recycling.fetchPwd}}</td>
+                                                    <td>{{recycling.email}}</td>
+                                                    <td>{{recycling.userName}}</td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+
+                                    </div>
+                                    <!-- END DEFAULT DATATABLE 数据表格 -->
+                                </div>
+                            </div>
+                            <!--分页显示数据-->
+                            <!--分页显示数据-->
+                            <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;
+                                当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect"
+                                            ng-options="value.value as value.value for value in pageSizes">
+                                </select>条
+                            </div>
+                            <div class="pull-right">
+                                <button class="btn btn-default" ng-click="previous()">上一页</button>
+                                <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                                <button class="btn btn-default" ng-click="next()">下一页</button>
+                                <input type="number" style="width:30px;" ng-model="changePage">
+                                <button class="btn btn-default" ng-click="goToPage()">Go</button>
+                            </div>
+
+                        </div>
+                    </div>
+                    <!--<div class="panel-footer" style="background-color:#fff;display:none;">-->
+                    <!--&lt;!&ndash;<button class="btn btn-warning pull-right">确定</button>&ndash;&gt;-->
+                    <!--&lt;!&ndash;&lt;!&ndash;<button class="btn btn-danger pull-right" style="margin-right:20px;">批量导入</button>&ndash;&gt;&ndash;&gt;-->
+                    <!--&lt;!&ndash;<a href="javascript:;" class="a-upload">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<input type="file" custom-on-change="uploadFile" multiple>批量导入&ndash;&gt;-->
+                    <!--&lt;!&ndash;</a>&ndash;&gt;-->
+                    <!--</div>-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--模态框-->
+    <div class="modal_a" id="buyComeOnCardGood" style="display: block" ng-show="displayIdList">
+        <div class=modal_dialog>
+            <div class="modal_content" style="width:600px;">
+                <div class="row" style="margin-top:10px;">
+                    <div class="col-md-10">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="请输入要搜索的商品名称" ng-model="paramGoodsPage.goodsName">
+                            <span class="input-group-btn">
+                            <button class="btn btn-default" type="button" ng-click="searchGoods()">搜索</button>
+                        </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div style="border:1px solid #ddd;height:25px;width:25px;border-radius:50%;text-align:center;position:absolute;right:0;top:-10px;padding-top:4px;cursor:pointer;" ng-click="fadeModel()">x</div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 block" style=" margin-top:10px;width:33%">
+                        <h3>商品名称</h3>
+                    </div>
+                    <div class="col-md-3 block" style=" margin-top:10px;width:33%">
+                        <h3>商品ID</h3>
+                    </div>
+                    <div class="col-md-3 block" style=" margin-top:10px;width:33%">
+                        <h3>商品面值</h3>
+                    </div>
+                </div>
+                <div class="row" ng-repeat="good in goodsList">
+                    <div class="col-md-4" style="margin-top:5px">
+                        {{good.goodsName}}
+
+                    </div>
+                    <div class="col-md-3"  style="margin-top:5px">
+                        {{good.goodsId}}
+
+                    </div>
+                    <div class="col-md-3"  style="margin-top:5px;margin-left:40px;">
+                        {{good.amount}}
+                    </div>
+                    <div style="float:right;margin-top:-12px;margin-right:5px;margin-bottom:5px;">
+                        <button type="button" class="btn btn-default"  ng-click="selectedGood(good)" >选择</button>
+                    </div>
+                </div>
+                <!--分页显示数据-->
+                <!--分页显示数据-->
+                <div class="dataTables_info" role="status" aria-live="polite" style="margin-left: 10px;">总共{{totalCountTwo}}条</div>
+                <div class="pull-right">
+                    <button class="btn btn-default" ng-click="previousTwo()">上一页</button>
+                    <span>第 {{pageNumTwo}} 页/共 {{totalPageCountTwo}} 页</span>
+                    <button class="btn btn-default" ng-click="nextTwo()">下一页</button>
+                    <input type="number" style="width:45px;margin-left:10px;margin-right:7px;border-radius:9px;"   ng-model="changePageTwo">
+                    <button class="btn btn-default" ng-click="goToPageTwo()">Go</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+

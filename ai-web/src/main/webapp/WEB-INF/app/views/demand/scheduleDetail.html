@@ -1,0 +1,108 @@
+<div class="schedule-detail" xmlns="http://www.w3.org/1999/html">
+
+    <!-- 面包屑 -->
+    <ol class="breadcrumb">
+        <li><a href="#">首页</a></li>
+        <li><a href="#">列表页</a></li>
+        <li class="active">详情页</li>
+    </ol>
+
+    <div class="clearfix content-detail">
+        <h1>
+            <img src="../../../../images/icon/img@1x_15.png"> 投标
+        </h1>
+        <div class="clearfix content-base" style="border: 0">
+            <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
+                <h2>{{demandDetail.title}}</h2>
+                <p>发布日期：{{demandDetail.created_at}}</p>
+                <p>发布者：{{demandDetail.user.nikename}}</p>
+                <p>竞标 ：{{demandDetail.biddingtotal}}人</p>
+                <p>需求类型 ：{{demandDetail.class.title}}</p>
+                <p>竞标周期：{{demandDetail.bidding_cycle}}天</p>
+                <p>投标截止日期：{{demandDetail.bidding_time}}</p>
+                <p>成果生产周期：{{demandDetail.deliver_cycle}}天</p>
+                <p>成果交付日期：{{demandDetail.deliver_time}}</p>
+            </div>
+            <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+                <img src="{{demandDetail.cover_url}}">
+                <p class="integral" style="margin-top: 15px">赚取{{demandDetail.price}}个积分</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-schedule">
+        <div class="description">
+            <h1>投标文件要求</h1>
+            <p>{{demandDetail.bidding_intro}}</p>
+            <!--<p>技能要求 : 拥有淘宝API,京东API (供参考)，或者在淘宝服务市场有（淘宝商品复制到京东）这种功能的应用</p>-->
+            <!--<p>倾向的接包方 : 不限</p>-->
+            <!--<p>我要将淘宝里一个商品链接复制30次上传到京东， 前端由我们自己负责，接单方负责后端就</p>-->
+        </div>
+
+        <form class="form-horizontal content-form">
+            <div class="form-group">
+                <label for="quotes" class="col-sm-2 control-label">我的报价：</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="quotes" ng-model="data.price">
+                </div>
+                <div class="col-sm-1">积分</div>
+            </div>
+            <div class="form-group">
+                <label for="cycle" class="col-sm-2 control-label">生产周期：</label>
+                <div class="col-sm-6">
+                    <input type="number" class="form-control" id="cycle" ng-model="data.deliver_cycle">
+                </div>
+                <div class="col-sm-1">天</div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">投标文件：</label>
+                <div class="col-sm-10 form-image">
+                    <div style="position: relative; padding-left: 10px; margin-bottom: 10px;">
+                        <button style="width: 200px; height: 40px;margin: 0;" class="btn btn-default">选择文件</button>
+                        <input style="width: 200px; position: absolute; top: 0px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; " class="btn btn-default" type="file" nv-file-select uploader="uploader_deliver_file" />
+                    </div>
+                    <ul style="padding: 0; margin: 0; clear: both; overflow: hidden;">
+                        <li ng-repeat="item in uploader_deliver_file.queue" style="margin: 10px; width: 250px; padding: 0; float: left; list-style: none">
+                            <div>
+                                <span>文件名:</span>
+                                <span ng-bind="item.file.name"></span>
+                                <!-- <div ng-show="uploader_data1_pluginsbox.isHTML5" ng-thumb="{ file: item._file, width: 240, height: 180 }"></div> -->
+                                <img src="../../../../images/app/4.png" ng-if="!deliver_loading">
+                                <img width="200" height="200" src="../../../../images/icon/timg.gif" ng-if="deliver_loading">
+                            </div>
+                            <div style="margin-bottom: 10px; width: 100%; height: 20px">
+                                <span ng-bind="item.isSuccess ? deliver_msg : ''"></span>
+                            </div>
+                            <div>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-success" ng-click="item.upload();loading();" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> 上传
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-warning" ng-click="item.cancel();item.remove();" ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-danger" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> 删除
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox" ng-model="bool"> 同意《GEOVIS.AI网站竞标协议》
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-danger" ng-click="save()">确认投标</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

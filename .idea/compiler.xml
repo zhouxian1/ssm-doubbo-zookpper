@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="ai-api" />
+        <module name="ai-common" />
+        <module name="ai-service" />
+        <module name="ai-web" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="ai" target="1.7" />
+      <module name="ai-api" target="1.7" />
+      <module name="ai-common" target="1.7" />
+      <module name="ai-service" target="1.7" />
+      <module name="ai-web" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

@@ -1,0 +1,145 @@
+
+<div class="usercenter">
+
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li><a href="/usercenter/home">用户中心</a></li>
+        <li class="active">需求发布</li>
+    </ol>
+
+
+    <div class="usercenter-release">
+
+        <div class="title">
+            <h1>需求发布</h1>
+        </div>
+
+        <form class="form-horizontal form-block">
+
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">名称：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="name" placeholder="名称" ng-model="data.title" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="integral" class="col-sm-2 control-label">积分：</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="integral" placeholder="积分" ng-model="data.price">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-2 control-label">封面：</label>
+                <div class="col-sm-10 form-image">
+                    <div style="position: relative; padding-left: 10px; margin-bottom: 10px;">
+                        <button style="width: 200px; height: 40px;margin: 0;" class="btn btn-default">选择图片</button>
+                        <input style="width: 200px; position: absolute; top: -40px; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; " class="btn btn-default" type="file" nv-file-select uploader="uploader_data_cover" multiple/>
+                    </div>
+                    <ul style="padding: 0; margin: 0; clear: both; overflow: hidden;">
+                        <li ng-repeat="item in uploader_data_cover.queue" style="margin: 10px; width: 250px; padding: 0; float: left; list-style: none">
+                            <div>
+                                <!--<span>文件名:</span>-->
+                                <!--<span ng-bind="item.file.name"></span>-->
+                                <div ng-show="uploader_data_cover.isHTML5" ng-thumb="{ file: item._file, width: 240, height: 180 }"></div>
+                            </div>
+                            <div style="margin-bottom: 10px; width: 100%; height: 20px">
+                                <span ng-bind="item.isSuccess ? data_cover_msg : ''"></span>
+                            </div>
+                            <div>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-success" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                    <span class="glyphicon glyphicon-upload"></span> 上传
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-warning" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                    <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                </button>
+                                <button style="margin: 0;padding: 10px;" type="button" class="btn btn-danger" ng-click="item.remove()">
+                                    <span class="glyphicon glyphicon-trash"></span> 删除
+                                </button>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="tender" class="col-sm-2 control-label">投标截止日期：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" date ng-model="data.bidding_time" readonly placeholder="点击选择时间" id="bidding">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="tender_cycle" class="col-sm-2 control-label">竞标周期：</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="tender_cycle" placeholder="竞标周期" ng-model="data.bidding_cycle">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="deliver" class="col-sm-2 control-label">成果交付时间：</label>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" date ng-model="data.deliver_time" readonly placeholder="点击选择时间" id="deliver">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="deliver_cycle" class="col-sm-2 control-label">交付周期：</label>
+                <div class="col-sm-4">
+                    <input type="number" class="form-control" id="deliver_cycle" placeholder="交付周期" ng-model="data.deliver_cycle">
+                </div>
+            </div>
+
+            <!--<div class="form-group">-->
+                <!--<label for="type" class="col-sm-2 control-label">需求分类：</label>-->
+                <!--<div class="col-sm-4">-->
+                    <!--<select class="form-control" name="classificationId" id="classification" ng-model="data.type" ng-options="list.type as list.name for list in demandType">-->
+                    <!--</select>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <div class="form-group">
+                <label for="type" class="col-sm-2 control-label">需求类型：</label>
+                <div class="col-sm-4">
+                    <select class="form-control" name="classid" id="type" ng-model="data.classid" ng-options="list.type as list.name for list in demandType">
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">需求描述：</label>
+                <div class="col-sm-6">
+                    <textarea class="form-control" rows="5" id="description" name="description" ng-model="data.introduction"></textarea>
+                </div>
+            </div>
+
+            <!--<div class="form-group">-->
+                <!--<label for="description" class="col-sm-2 control-label">成果要求：</label>-->
+                <!--<div class="col-sm-6">-->
+                    <!--<textarea class="form-control" rows="5" id="description" name="description" ng-model="data.content"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            <!--<div class="form-group">-->
+                <!--<label for="description" class="col-sm-2 control-label">投标文件要求：</label>-->
+                <!--<div class="col-sm-6">-->
+                    <!--<textarea class="form-control" rows="5" id="description" name="description" ng-model="data.bidding_intro"></textarea>-->
+                <!--</div>-->
+            <!--</div>-->
+
+            
+            
+
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-danger center-block btn-lg" ng-click="save()">发布需求</button>
+                </div>
+            </div>
+
+
+
+        </form>
+    </div>
+
+</div>

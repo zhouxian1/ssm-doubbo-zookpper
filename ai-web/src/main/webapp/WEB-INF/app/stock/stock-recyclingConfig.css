@@ -1,0 +1,22 @@
+.table-overflow .recycling-in-tr th{
+    max-width:100px;
+    overflow-x: auto;
+    white-space:nowrap;
+}
+.table-overflow .recycling-in-tr th::-webkit-scrollbar{
+    height:2px;
+    background-color: red;
+}
+.table-overflow .recycling-in-body td{
+     max-width:100px;
+     overflow-x: auto;
+     white-space:nowrap;
+     line-height:30px;
+ }
+.table-overflow .recycling-in-body td::-webkit-scrollbar{
+    height:2px;
+    background-color: red;
+}
+.table-overflow .recycling-in-body td::-webkit-scrollbar-track{
+    background: #ffffff;
+}

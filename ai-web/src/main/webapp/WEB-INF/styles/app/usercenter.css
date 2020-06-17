@@ -1,0 +1,229 @@
+/* 用户中心 */
+
+.usercenter .title {
+    font-size: 16px;
+}
+
+.usercenter .describe {
+    font-size: 14px;
+}
+
+.usercenter .img {
+    padding: 20px;
+}
+.usercenter .user-content {
+    padding: 15px 30px;
+}
+
+.usercenter .userid {
+    position: relative;
+}
+
+.usercenter .edite {
+    width: 82px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 5px;
+    background-color: #DBDADA;
+    position: absolute;
+    top: -5px;
+    right: 20px;
+
+}
+
+.usercenter .edite a{
+    color: #555555;
+    text-decoration: none;
+}
+
+.usercenter .authentication {
+    cursor: pointer;
+    color: #fff;
+    background-color: #1BA1E1;
+    width: 82px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 5px;
+    position: absolute;
+    top: -5px;
+    right: 120px;
+}
+
+.usercenter-title{
+
+}
+
+.usercenter-title h1{
+    border-bottom: 2px solid red;
+    padding: 8px;
+    margin-bottom: 15px;
+    font-size: 18px;
+    width: 100px;
+    text-align: center;
+}
+
+.usercenter-table{
+    margin: 15px auto;
+}
+.usercenter-table tr{
+    padding: 15px 0;
+}
+
+.usercenter-table img{
+    max-width: 100%;
+}
+
+.usercenter-table h1{
+    font-size: 16px;
+    padding: 0;
+    margin: 5px 0;
+}
+
+.usercenter-table a{
+    text-decoration: none;
+}
+
+.usercenter-table .status, .usercenter-table .handle, .usercenter-table .other{
+    vertical-align: middle;
+}
+
+.usercenter-release{
+    /*background: #cccc77;*/
+    margin: 25px auto;
+}
+
+.usercenter-release .title{
+    width: 100%;
+    border-bottom: 1px solid #CCCCCC;
+}
+
+.usercenter-release .title h1{
+    margin: 0;
+    font-size: 20px;
+    display: inline-block;
+    border-bottom: 2px solid #e51c23;
+    padding-bottom: 8px;
+}
+
+.form-block{
+    margin: 80px 50px;
+}
+
+.form-image{
+    position: relative;
+}
+
+.form-image a{
+    position: absolute;
+    bottom: 0;
+}
+
+.form-image .img-list{
+    height: 150px;
+    margin-right: 5px;
+}
+
+.form-block .btn{
+    margin-top: 50px;
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.usercenter-nav{
+    margin: 15px auto;
+}
+
+.usercenter-nav a{
+    display: inline-block;
+    padding: 15px 100px;
+    color: #3a3a3a;
+    background: #c2c2c2;
+    text-decoration: none;
+}
+
+.usercenter-nav .active, .usercenter-nav a:hover{
+    background: #3a3a3a;
+    color: #ffffff;
+}
+
+.form-text{
+    height: 36px;
+    line-height: 36px;
+    color: #3a3a3a;
+}
+
+.form-label{
+    margin: 5px auto;
+}
+
+.form-label a{
+    display: inline-block;
+    color: #3a3a3a;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+    margin: 5px 5px 10px 0;
+    border-radius: 25px;
+}
+
+.user-block{
+    margin: 15px auto;
+    padding: 0;
+    border: 1px solid #c2c2c2;
+}
+
+.user-block h1{
+    font-size: 16px;
+    padding: 15px;
+    margin: 0;
+    background: #e0e0e0;
+    border-bottom: 1px solid #c2c2c2;
+}
+
+.user-block h1 span{
+    display: inline-block;
+    padding-bottom: 5px;
+    border-bottom: 4px solid #FF0000;
+}
+
+.user-block h1 a{
+    color: #FF0000;
+    float: right;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.baseinfo, .head_portrait{
+    padding: 20px;
+}
+
+.head_portrait a{
+    margin-top: 15px;
+    width: 100px;
+}
+
+.head_portrait img{
+    width: 100px;
+}
+
+.certificate{
+    margin: 0;
+    padding: 0;
+}
+
+.certificate li{
+    padding: 10px 0;
+    border-bottom: 1px dashed #c2c2c2;
+    height: 56px;
+    line-height: 36px;
+}
+
+.certificate li:last-child{
+    border-bottom: 0;
+}
+
+.usercenter .labels.active {
+    background-color: #337ab7;
+    color: #fff;
+}

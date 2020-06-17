@@ -1,0 +1,178 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8">
+        <a>入库管理 </a>
+    </p>
+    <div class="page-content-wrap">
+        <div class="col-md-12">
+            <h3>卡片验证</h3>
+            <div class="form-horizontal">
+                <div class="panel panel-default tabs">
+                    <ul class="nav nav-tabs" role="tablist">
+                    </ul>
+                    <div class="panel-body tab-content" style="padding-top:5px;">
+
+                        <div class="tab-pane active" style="margin-top:5px;">
+                            <!--渠道名称-->
+                            <div class="form-group">
+                                <label class="col-md-1" style="margin-top:6px;padding-right:0px;">商品名称</label>
+                                <div class="col-md-3 ">
+                                    <input type="text" class="form-control" placeholder="输入商品名称"
+                                           ng-model="parm1.goodsName"/>
+                                </div>
+                                <label class="col-md-1 control-label"> 卡号</label>
+                                <div class="col-md-3 ">
+                                    <input type="text" class="form-control" placeholder="输入卡号验证"
+                                           ng-model="parm1.cardNo"/>
+                                </div>
+                                <label class="col-md-1 control-label"> 卡密</label>
+                                <div class="col-md-3">
+                                    <input type="text" class="form-control" placeholder="输入卡密验证"
+                                           ng-model="parm1.cardPwd"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-primary pull-right" ng-click="checkCard()"
+                                style="margin-bottom:10px;margin-right:10px;">验证
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查询结束 -->
+    <div class="page-content-wrap">
+
+        <div class="row">
+                <!-- START DEFAULT DATATABLE 数据表格 -->
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h3 class="panel-title">库存卡片</h3>
+                            </div>
+                            <div class="panel-body tab-content">
+                                <div class="tab-pane active" id="tab-second">
+                                    <div class="col-md-12">
+                                        <div class="form-horizontal">
+                                            <div class="panel panel-default">
+                                                <ul class="nav nav-tabs" role="tablist">
+                                                </ul>
+                                                <div class="panel-body tab-content" style="padding-top:5px;">
+                                                    <div class="tab-pane active" id="tab-first" style="margin-top:5px;">
+                                                        <!--渠道名称-->
+                                                        <div class="form-group">
+                                                            <label class="col-md-1 col-xs-12"
+                                                                   style="margin-top:6px;padding-right:0px;">商品ID</label>
+                                                            <div class="col-md-3 col-xs-12">
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="商品ID 多个id请用,分割"
+                                                                       ng-model="parm2.goodsIds"/>
+                                                            </div>
+                                                            <label class="col-md-1 col-xs-12 control-label"> 卡号</label>
+                                                            <div class="col-md-3 col-xs-12">
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="输入卡号查询" ng-model="parm2.cardNo"/>
+                                                            </div>
+                                                            <label class="col-md-1 col-xs-12 control-label"> 面值</label>
+                                                            <div class="col-md-3 col-xs-12">
+                                                                <input type="text" class="form-control"
+                                                                       placeholder="输入面值查询" ng-model="parm2.amount"/>
+                                                            </div>
+                                                        </div>
+                                                        <div class="form-group">
+                                                            <label class="col-md-1 col-xs-12"
+                                                                   style="margin-top:6px;padding-right:0px;">销售状态</label>
+                                                            <div class="col-md-3">
+                                                                <select ng-model="mod_status" class="form-control"
+                                                                        style="background: url('http://ourjs.github.io/static/2015/arrow.png') no-repeat scroll right center transparent;padding-right: 14px;"
+                                                                        ng-options="value.status as value.text for value in statusList"
+                                                                        ng-change="status()"
+                                                                >
+                                                                    <option value="" selected>全部</option>
+                                                                </select>
+                                                            </div>
+                                                            <div class="col-md-2 col-xs-12" style="margin-left:16px;">
+                                                                <label data-toggle="tooltip" data-placement="top"
+                                                                       data-original-title="耗时过长,请耐心等候">
+                                                                    <input type="checkbox" ng-model="mod_checkedMoney">&nbsp;是否计算金额
+                                                                </label>
+                                                            </div>
+                                                            <div class="col-md-5 col-xs-12">
+                                                                <button class="btn btn-success pull-right"
+                                                                        ng-click="queryCardList()"
+                                                                        style="padding-left:10px">查&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;询
+                                                                </button>
+                                                                <a class="btn btn-default pull-right"
+                                                                   ng-click="allFull()"
+                                                                style="text-decoration:none;margin-right:6px;">清空查询</a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="panel-body">
+                                        <table class="table table-striped simple datatable">
+                                            <thead>
+                                            <tr>
+                                                <th>卡号</th>
+                                                <th>出库单号</th>
+                                                <th>批次号</th>
+                                                <th>商品名称</th>
+                                                <th>面值(元)</th>
+                                                <th>进价(元)</th>
+                                                <th>商品折扣</th>
+                                                <th>状态</th>
+                                                <th>有效期</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            <tr ng-repeat="card in cardList" style="">
+                                                <td>{{card.cardNo}}</td>
+                                                <td>
+                                                    <a href="#/orderDetailed/{{card.buyOrderNo}}">{{card.buyOrderNo}}</a>
+                                                </td>
+                                                <td>{{card.suppOrderNo==null?"-":card.suppOrderNo}}</td>
+                                                <td>{{card.goodsName}}</td>
+                                                <td>{{card.amount}}</td>
+                                                <td>{{card.in_price}}</td>
+                                                <!--<td>{{card.attributes==null?"无":"有"}}</td>-->
+                                                <td>{{(card.in_price/card.amount).toFixed(4)}}</td>
+                                                <td>{{card.status}}</td>
+                                                <td>
+                                                    {{card.expiredDate==null?"-":(card.expiredDate|date:"yyyy/MM/dd")}}
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!--新增加分页显示数据-->
+                <div class="dataTables_info" role="status" aria-live="polite">总共{{totalCount}}条 &nbsp;
+                    当前展示<select ng-change="confirmQuery()" ng-model="pageSizeSelect"
+                                ng-options="value.value as value.value for value in pageSizes">
+                    </select>条
+                    <span ng-show="mod_checkedMoney"
+                          style="margin-left:80px;font-size:15px">当前状态库存总金额:{{totalPrice}}元</span>
+                </div>
+                <div class="pull-right">
+                    <button ng-click="previous()">上一页</button>
+                    <span>第 {{pageNum}} 页/共 {{totalPageCount}} 页</span>
+                    <button ng-click="next()">下一页</button>
+                    <input type="number" style="width:30px;" ng-model="changePage">
+                    <button ng-click="goToPage()">Go</button>
+                </div>
+
+
+    </div>
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>

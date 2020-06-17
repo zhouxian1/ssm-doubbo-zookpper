@@ -1,0 +1,957 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="c1c0da94-899d-447b-b116-ad7df3114658" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/target/" />
+    <ignored path="$PROJECT_DIR$/ai-web/target/" />
+    <ignored path="$PROJECT_DIR$/ai-api/target/" />
+    <ignored path="$PROJECT_DIR$/ai-service/target/" />
+    <ignored path="$PROJECT_DIR$/ai-common/target/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ai-web/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/pom.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-779">
+              <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="FxmlFile" />
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>headService</find>
+      <find>首页</find>
+      <find>list.name</find>
+      <find>geovis</find>
+      <find>main</find>
+      <find>indexService</find>
+      <find>G</find>
+      <find>GE</find>
+      <find>GEO</find>
+      <find>GEOV</find>
+      <find>GEOVI</find>
+      <find>GEOVIS</find>
+      <find>GEOVIS-</find>
+      <find>GEOVIS-ADMIN</find>
+      <find>GEOVIS-ADMI</find>
+      <find>GEOVIS-ADM</find>
+      <find>GEOVIS-AD</find>
+      <find>GEOVIS-A</find>
+      <find>g</find>
+      <find>gx</find>
+      <find>gxC</find>
+      <find>gxCm</find>
+      <find>gxCmsa</find>
+      <find>gxCms</find>
+      <find>index</find>
+      <find>DispatcherServlet</find>
+      <find>InternalResourceViewResolver</find>
+      <find>CharacterEncodingFilter</find>
+      <find>jetbrick</find>
+      <find>aspectj</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>com.geovis.ai</replace>
+      <replace>com.geovis.ai.api.model</replace>
+      <replace>..</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>E:\lh\ai</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/IntegralRecordingController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/KnowledgesController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/LabelidsController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/LabelsController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/MigrationsController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/OrdersController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/PluginsController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/SamplesController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/sso/SSOController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/util/BaseController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/resources/dubbo-consumer.xml" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/resources/dubbo-provider.xml" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/AlgorithmsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/ApplicationsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/ArticlesServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/UsersServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/SamplesServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/RotationServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/PluginsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/OrdersServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/MigrationsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/LabelsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/LabelidsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/KnowledgesServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-api/src/main/java/com/geovis/ai/api/model/Algorithms.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/BiddingsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/ClassificationsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/CommentsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/DemandsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/DocumentsServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/IntegralRecordingServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/Impl/IntegralServiceImpl.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/static/scripts/services/services.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/static/app/controllers/main/headerController.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/static/scripts/main.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/scripts/services/services.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/controllers/main/headerController.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/scripts/main.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/app/views/data/dataList.html" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/index.html" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/channel/associatedPhone.js" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/index.html" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/index.html" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/UsersController.java" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/resources/spring-context.xml" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/ai-web/src/main/resources/spring-mvc.xml" />
+        <option value="$PROJECT_DIR$/ai-common/src/main/java/com/geovis/ai/util/DESUtil.java" />
+        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/ai-common/src/main/java/com/geovis/ai/db/MyCommentGenerator.java" />
+        <option value="$PROJECT_DIR$/ai-common/src/main/resources/generatorConfig.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="LogFilters">
+    <option name="FILTER_ERRORS" value="false" />
+    <option name="FILTER_WARNINGS" value="false" />
+    <option name="FILTER_INFO" value="true" />
+    <option name="FILTER_DEBUG" value="true" />
+    <option name="CUSTOM_FILTER" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="localRepository" value="E:\ruiyou\repository" />
+        <option name="mavenHome" value="E:/龙湖地产/apache-maven-3.3.9" />
+        <option name="userSettingsFile" value="E:\龙湖地产\apache-maven-3.3.9\conf\settings.xml" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="MavenProjectNavigator">
+    <treeState>
+      <PATH>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
+        </PATH_ELEMENT>
+        <PATH_ELEMENT>
+          <option name="myItemId" value="ai" />
+          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
+        </PATH_ELEMENT>
+      </PATH>
+    </treeState>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="-12" />
+    <option name="y" value="-12" />
+    <option name="width" value="1944" />
+    <option name="height" value="1044" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ai" type="b2602c69:ProjectViewProjectNode" />
+              <item name="ai" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.33696562" />
+    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\lh\ai\ai-common\src\main\java\com\geovis\ai\db" />
+      <recent name="E:\lh\ai\ai-web\src\main\webapp\WEB-INF\app" />
+      <recent name="E:\lh\ai\ai-web\src\main\webapp\WEB-INF" />
+      <recent name="E:\lh\ai\ai-web\src\main\webapp\WEB-INF\users" />
+      <recent name="E:\lh\ai\ai-web\src\main\webapp" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\lh\ai\ai-web\src\main\webapp\WEB-INF" />
+      <recent name="E:\lh\ai\ai-web\src\main\webapp\WEB-INF\images" />
+      <recent name="E:\lh\ai\ai-web\src\main\webapp\WEB-INF\app" />
+      <recent name="E:\lh\ai\ai-service\src\main\java\com\geovis\ai\service\dao" />
+      <recent name="E:\lh\ai\ai-service\src\main\java\com\geovis\ai\service\user\dao" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.StartUp">
+    <configuration default="true" type="Applet">
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Provider" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geovis.ai.run.Provider" />
+      <module name="ai-service" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geovis.ai.run.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="StartUp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geovis.ai.run.StartUp" />
+      <module name="ai-service" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geovis.ai.run.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="ArquillianTestNG" factoryName="">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
+      <setting name="vmparams" value="" />
+      <setting name="cmdLine" value="run-app" />
+      <setting name="passParentEnv" value="true" />
+      <setting name="launchBrowser" value="true" />
+      <setting name="launchBrowserUrl" value="" />
+      <setting name="depsClasspath" value="false" />
+      <method v="2" />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="TEST_OBJECT" value="class" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType" factoryName="Kotlin script">
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <module name="" />
+      <option name="filePath" />
+      <option name="vmParameters" />
+      <option name="alternativeJrePath" />
+      <option name="programParameters" />
+      <option name="passParentEnvs" value="true" />
+      <option name="workingDirectory" />
+      <option name="isAlternativeJrePathEnabled" value="false" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="WORKING_DIRECTORY" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="TestNG">
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Unnamed" type="#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory" factoryName="Local" APPLICATION_SERVER_NAME="Tomcat 8.0.30" ALTERNATIVE_JRE_ENABLED="false">
+      <option name="UPDATE_ON_FRAME_DEACTIVATION" value="true" />
+      <option name="UPDATE_CLASSES_ON_FRAME_DEACTIVATION" value="true" />
+      <deployment>
+        <artifact name="ai-web:war exploded">
+          <settings>
+            <option name="CONTEXT_PATH" value="/" />
+          </settings>
+        </artifact>
+      </deployment>
+      <server-settings>
+        <option name="BASE_DIRECTORY_NAME" value="Unnamed_ai" />
+      </server-settings>
+      <predefined_log_file enabled="true" id="Tomcat" />
+      <predefined_log_file enabled="true" id="Tomcat Catalina" />
+      <predefined_log_file id="Tomcat Manager" />
+      <predefined_log_file id="Tomcat Host Manager" />
+      <predefined_log_file id="Tomcat Localhost Access" />
+      <RunnerSettings RunnerId="Debug">
+        <option name="DEBUG_PORT" value="59412" />
+      </RunnerSettings>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Cover">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Debug">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <ConfigurationWrapper VM_VAR="JAVA_OPTS" RunnerId="Run">
+        <option name="USE_ENV_VARIABLES" value="true" />
+        <STARTUP>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </STARTUP>
+        <SHUTDOWN>
+          <option name="USE_DEFAULT" value="true" />
+          <option name="SCRIPT" value="" />
+          <option name="VM_PARAMETERS" value="" />
+          <option name="PROGRAM_PARAMETERS" value="" />
+        </SHUTDOWN>
+      </ConfigurationWrapper>
+      <method v="2">
+        <option name="Make" enabled="true" />
+        <option name="BuildArtifacts" enabled="true">
+          <artifact name="ai-web:war exploded" />
+        </option>
+      </method>
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file enabled="true" id="idea.log" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="js.build_tools.gulp">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Application.Provider" />
+      <item itemvalue="Application.StartUp" />
+      <item itemvalue="Tomcat Server.Unnamed" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.StartUp" />
+        <item itemvalue="Application.Provider" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="c1c0da94-899d-447b-b116-ad7df3114658" name="Default" comment="" />
+      <created>1522988605881</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1522988605881</updated>
+      <workItem from="1522988609744" duration="15000" />
+      <workItem from="1522988775590" duration="11301000" />
+      <workItem from="1523078439025" duration="10510000" />
+      <workItem from="1523147532797" duration="575000" />
+      <workItem from="1523148180795" duration="8603000" />
+      <workItem from="1523156916638" duration="11604000" />
+      <workItem from="1523235143420" duration="22922000" />
+      <workItem from="1523262228062" duration="4145000" />
+      <workItem from="1523266591117" duration="1890000" />
+      <workItem from="1523367432974" duration="734000" />
+      <workItem from="1523539150854" duration="3114000" />
+      <workItem from="1523608749956" duration="200000" />
+      <workItem from="1523859981669" duration="3974000" />
+      <workItem from="1542981581080" duration="701000" />
+      <workItem from="1544537344324" duration="3848000" />
+      <workItem from="1544773640083" duration="2310000" />
+      <workItem from="1544782398398" duration="1521000" />
+      <workItem from="1560439013596" duration="869000" />
+      <workItem from="1560477003769" duration="1105000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="89941000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1296" height="696" extended-state="0" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.30775446" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="UI Designer" order="4" />
+      <window_info id="Capture Tool" order="5" />
+      <window_info id="Favorites" order="6" side_tool="true" />
+      <window_info id="Nl-Palette" order="7" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329849" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.45278725" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45296168" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Terminal" order="7" />
+      <window_info anchor="bottom" id="Event Log" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Application Servers" order="10" weight="0.329849" />
+      <window_info anchor="bottom" id="Spring" order="11" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.329849" />
+      <window_info anchor="bottom" id="Java Enterprise" order="13" weight="0.329849" />
+      <window_info anchor="bottom" id="Docker" order="14" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="15" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Properties" order="4" />
+      <window_info anchor="right" id="Capture Analysis" order="5" />
+      <window_info anchor="right" id="Maven Projects" order="6" visible="true" weight="0.28125" />
+      <window_info anchor="right" id="Database" order="7" />
+      <window_info anchor="right" id="Palette&#9;" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="CDI" order="10" />
+      <window_info anchor="right" id="Maven" order="11" />
+    </layout>
+    <layout-to-restore>
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2774755" />
+      <window_info id="Structure" order="1" weight="0.25" />
+      <window_info id="Nl-Palette" order="2" />
+      <window_info id="Capture Tool" order="3" />
+      <window_info id="Designer" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Image Layers" order="6" />
+      <window_info id="Favorites" order="7" side_tool="true" />
+      <window_info id="Web" order="8" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.329849" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.45296168" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.45296168" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Application Servers" order="10" weight="0.329849" />
+      <window_info anchor="bottom" id="Messages" order="11" weight="0.329849" />
+      <window_info anchor="bottom" id="Java Enterprise" order="12" weight="0.329849" />
+      <window_info anchor="bottom" id="Spring" order="13" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.3297062" />
+      <window_info anchor="right" id="Properties" order="5" />
+      <window_info anchor="right" id="Database" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="Capture Analysis" order="8" />
+      <window_info anchor="right" id="Theme Preview" order="9" />
+      <window_info anchor="right" id="CDI" order="10" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/static/scripts/main.js" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/scripts/services/http.js" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/controllers/usercenter/account/userIndexController.js" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/scripts/main.js" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/scripts/services/services.js" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/controllers/main/headerController.js" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/images/common/m.geovis.ai.png" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/views/data/dataList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-988">
+          <caret line="7" lean-forward="true" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/views/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9292" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/templates/base/base.html" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/templates/base/header.html" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/templates/base/list.html" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/channel/associatedPhone.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="103" column="51" selection-start-line="103" selection-start-column="46" selection-end-line="103" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/users/index.html" />
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/common/public.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/channel/channel-addconfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="114" column="54" selection-start-line="114" selection-start-column="49" selection-end-line="114" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/plugins/angular/angular-1.5.8/angular.min.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/META-INF/MANIFEST.MF">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/httl.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="70">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/404.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-78" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/java/com/geovis/ai/web/controller/UsersController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="8" column="3" lean-forward="true" selection-start-line="8" selection-start-column="3" selection-end-line="8" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/app/channel/angluar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1370" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1170">
+          <caret line="45" column="33" selection-start-line="45" selection-start-column="33" selection-end-line="45" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="165" column="13" selection-start-line="165" selection-start-column="13" selection-end-line="165" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/resources/spring-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="346">
+          <caret line="22" column="59" lean-forward="true" selection-start-line="22" selection-start-column="59" selection-end-line="22" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/resources/mybatis-config.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-348" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/resources/spring-mybatis.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="123" column="33" selection-start-line="123" selection-start-column="26" selection-end-line="123" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/resources/spring-context.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="424">
+          <caret line="35" column="70" lean-forward="true" selection-start-line="35" selection-start-column="70" selection-end-line="35" selection-end-column="70" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-common/src/main/java/com/geovis/ai/util/DESUtil.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="12" column="2" selection-start-line="12" selection-end-line="12" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-common/src/main/java/com/geovis/ai/util/RSAUtils.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/resources/spring-mvc.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1664">
+          <caret line="64" column="68" selection-start-line="64" selection-start-column="68" selection-end-line="64" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" column="22" selection-start-line="10" selection-start-column="22" selection-end-line="10" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/dao/RotationMapper.xml" />
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/RotationMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="26">
+          <caret line="7" column="17" selection-start-line="7" selection-start-column="17" selection-end-line="7" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/RotationMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="14" column="59" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-api/src/main/java/com/geovis/ai/api/model/Algorithms.java" />
+    <entry file="file://$PROJECT_DIR$/ai-api/src/main/java/com/geovis/ai/api/model/Users.java" />
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/AlgorithmsMapper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="5" column="35" lean-forward="true" selection-start-line="5" selection-start-column="35" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-common/src/main/java/com/geovis/ai/db/MyCommentGenerator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="15" column="59" selection-start-line="15" selection-start-column="59" selection-end-line="15" selection-end-column="59" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-api/src/main/java/com/geovis/ai/model/Algorithms.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3094">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/ApplicationsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="756">
+          <caret line="28" column="78" selection-start-line="22" selection-start-column="4" selection-end-line="28" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/DemandsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="13" column="76" selection-start-line="13" selection-start-column="76" selection-end-line="13" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-common/src/main/resources/generatorConfig.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="466">
+          <caret line="78" column="79" selection-start-line="78" selection-start-column="79" selection-end-line="78" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/run/StartUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-54">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/run/Provider.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/src/main/resources/config.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/UsersMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="7" column="23" selection-start-line="7" selection-start-column="23" selection-end-line="7" selection-end-column="23" />
+          <folding>
+            <marker date="1536233243418" expanded="true" signature="5545:5693" ph="select , fro... " />
+            <marker date="1536233243418" expanded="true" signature="5779:5834" ph="delete from " />
+            <marker date="1536233243418" expanded="true" signature="5932:5949" ph="delete from " />
+            <marker date="1536233243418" expanded="true" signature="6123:7130" ph="insert into users... " />
+            <marker date="1536233243418" expanded="true" signature="10705:10731" ph="select count... users" />
+            <marker date="1536233243418" expanded="true" signature="13471:14657" ph="update users... " />
+            <marker date="1536233243418" expanded="true" signature="14828:15954" ph="update users... " />
+            <marker date="1536233243418" expanded="true" signature="16159:18215" ph="update users... " />
+            <marker date="1536233243418" expanded="true" signature="18318:19360" ph="update users... " />
+            <marker date="1536233243418" expanded="true" signature="19454:20443" ph="update users... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-service/src/main/java/com/geovis/ai/service/AlgorithmsMapper.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="12" column="63" selection-start-line="12" selection-start-column="63" selection-end-line="12" selection-end-column="63" />
+          <folding>
+            <marker date="1536233243089" expanded="true" signature="5932:6085" ph="select , fro... " />
+            <marker date="1536233243089" expanded="true" signature="6171:6231" ph="delete from " />
+            <marker date="1536233243089" expanded="true" signature="6334:6356" ph="delete from " />
+            <marker date="1536233243089" expanded="true" signature="6535:7745" ph="insert into algorithms... " />
+            <marker date="1536233243089" expanded="true" signature="11959:11990" ph="select count... algorithms" />
+            <marker date="1536233243089" expanded="true" signature="15199:16630" ph="update algor... " />
+            <marker date="1536233243089" expanded="true" signature="16801:17797" ph="update algor... " />
+            <marker date="1536233243089" expanded="true" signature="18007:20476" ph="update algor... " />
+            <marker date="1536233243089" expanded="true" signature="20584:21843" ph="update algor... " />
+            <marker date="1536233243089" expanded="true" signature="21942:22815" ph="update algor... " />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ai-web/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="13" selection-start-line="13" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-779">
+          <caret line="17" column="26" selection-start-line="17" selection-start-column="26" selection-end-line="17" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <last-edited>ai-web:war</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.5758592" />
+                <option value="0.5" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Spring</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.5758592" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>ai</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.33696562" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.5758592" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ai-service</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.33696562" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Maven: javax.inject:javax.inject:1</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.33696562" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

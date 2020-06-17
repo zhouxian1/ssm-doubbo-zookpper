@@ -1,0 +1,138 @@
+
+<div class="usercenter">
+
+    <ol class="breadcrumb">
+        <li><a href="/">首页</a></li>
+        <li><a href="#">用户中心</a></li>
+        <li class="active">投标管理</li>
+    </ol>
+
+    <div ng-controller="userSampleManageController">
+        <div class="usercenter-title">
+            <h1>
+                投标管理
+            </h1>
+        </div>
+        <table class="table usercenter-table">
+            <tr>
+                <th>ID</th>
+                <th>用户</th>
+                <th>状态</th>
+                <th>报价</th>
+                <th>生产周期</th>
+                <th>操作</th>
+            </tr>
+            <tr  ng-repeat="item in userList">
+                <td class="other">ID:{{item.id}}</td>
+                <td class="other">
+                    <a href="#">
+                        <img src="{{item.user.avatar_url}}">
+                    </a>
+                </td>
+                <td ng-if="item.demand_detail.schedule==0"  class="other">发布需求</td>
+                <td ng-if="item.demand_detail.schedule==1"  class="other">开放投标</td>
+                <td ng-if="item.demand_detail.schedule==2"  class="other">发布者选择</td>
+                <td ng-if="item.demand_detail.schedule==3"  class="other">成果制作</td>
+                <td ng-if="item.demand_detail.schedule==4"  class="other">成果交付</td>
+                <td ng-if="item.demand_detail.schedule==5"  class="other">交易完成</td>
+
+                <td class="other">{{item.demand_detail.price}}个积分</td>
+                <td class="other">{{item.demand_detail.deliver_cycle}}天</td>
+                <td class="handle">
+                    <p><a class="btn btn-default" href="#" role="button">下载投标文件</a></p>
+                    <p><a class="btn btn-default" href="#" role="button">确认中标</a></p>
+                </td>
+            </tr>
+            <!--<tr>-->
+                <!--<td class="other">ID：1000000211515</td>-->
+                <!--<td class="other">-->
+                    <!--<a href="#">-->
+                        <!--<img src="../../../../images/icon/img@1x_43.png">-->
+                    <!--</a>-->
+                <!--</td>-->
+                <!--<td class="other">已投标</td>-->
+                <!--<td class="other">45个积分</td>-->
+                <!--<td class="other">30天</td>-->
+                <!--<td class="handle">-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">提交成果物</a></p>-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">查看联系方式</a></p>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="other">ID：1000000211515</td>-->
+                <!--<td class="other">-->
+                    <!--<a href="#">-->
+                        <!--<img src="../../../../images/icon/img@1x_43.png">-->
+                    <!--</a>-->
+                <!--</td>-->
+                <!--<td class="other">已投标</td>-->
+                <!--<td class="other">45个积分</td>-->
+                <!--<td class="other">30天</td>-->
+                <!--<td class="handle">-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">提交成果物</a></p>-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">查看联系方式</a></p>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="other">ID：1000000211515</td>-->
+                <!--<td class="other">-->
+                    <!--<a href="#">-->
+                        <!--<img src="../../../../images/icon/img@1x_43.png">-->
+                    <!--</a>-->
+                <!--</td>-->
+                <!--<td class="other">已投标</td>-->
+                <!--<td class="other">45个积分</td>-->
+                <!--<td class="other">30天</td>-->
+                <!--<td class="handle">-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">提交成果物</a></p>-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">查看联系方式</a></p>-->
+                <!--</td>-->
+            <!--</tr>-->
+            <!--<tr>-->
+                <!--<td class="other">ID：1000000211515</td>-->
+                <!--<td class="other">-->
+                    <!--<a href="#">-->
+                        <!--<img src="../../../../images/icon/img@1x_43.png">-->
+                    <!--</a>-->
+                <!--</td>-->
+                <!--<td class="other">已投标</td>-->
+                <!--<td class="other">45个积分</td>-->
+                <!--<td class="other">30天</td>-->
+                <!--<td class="handle">-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">提交成果物</a></p>-->
+                    <!--<p><a class="btn btn-default" href="#" role="button">查看联系方式</a></p>-->
+                <!--</td>-->
+            <!--</tr>-->
+        </table>
+
+        <!-- 分页开始 -->
+        <div class="page-blcok center-block">
+
+            <uib-pagination
+                    force-ellipses="true"
+                    boundary-links="true"
+                    boundary-link-numbers="true"
+                    total-items="total"
+                    ng-model="current"
+                    max-size="maxSize"
+                    ng-change="search(true)"
+                    items-per-page="pageTotal||10"
+                    class="pagination-sm"
+                    previous-text="&lsaquo;"
+                    next-text="&rsaquo;"
+                    first-text="&laquo;"
+                    last-text="&raquo;"
+            ></uib-pagination>
+            &nbsp;&nbsp;
+            <div class="pagination-info form-group-sm">跳至<input style="width: 36px" type="text" class="input-group-sm" ng-model="search_current" ng-keyup="jumpPage($event)" />页</div>
+            &nbsp;&nbsp;
+            <div class="pagination-info">
+                <span class="ng-binding">共有{{total}}条</span>
+            </div>
+
+        </div>
+        <!-- 分页结束 -->
+    </div>
+
+</div>
+

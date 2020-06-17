@@ -1,0 +1,107 @@
+.page-content-wrap{
+    border-top:2px solid #95b75d;
+    background-color: #fff;
+    margin: 0px 8px;
+    margin-bottom: 20px;
+    width: 98%;
+    border-radius: 4px;
+    padding-right: 10px;
+}
+.goods-count{
+    padding:0 20px;
+    color:rgb(155,187,103);
+    font-size:14px;
+}
+.panel-defailt{
+    border-top-color:#eaeaea;
+ }ß
+.tr-back{
+    background-color: #f5f5f5;
+    color:#566885;
+    text-align:left;
+}
+.datatable>thead>tr>th{
+    text-align:center;
+}
+.form-group-separated .form-group{
+    margin-right:0;
+    margin-left:0;
+}
+.select * {
+    margin: 0;
+    padding: 0;
+}
+.select {
+    border:1px solid #cccccc;
+    float: left;
+    display: inline;
+}
+.select div {
+    border:1px solid #f9f9f9;
+    float: left;
+}
+/* 子选择器，在FF等非IE浏览器中识别 */
+.select>div {
+    width:120px;
+    height: 17px;
+    overflow:hidden;
+}
+
+/* 通配选择符，只在IE浏览器中识别 */
+* html .select div select {
+    display:block;
+    float: left;
+    margin: -2px;
+}
+.select div>select {
+    display:block;
+    width:124px;
+    float:none;
+    margin: -2px;
+    padding: 0px;
+}
+.select:hover {
+    border:1px solid #666666; //鼠标移上的效果
+}
+.select select>option {
+    text-indent: 2px; //option在FF等非IE浏览器缩进2px
+}
+.select * {
+    margin: 0;
+    padding: 0;
+                                                    }
+.select {
+    border:1px solid #cccccc;
+    float: left;
+    display: inline;
+}
+.select div {
+    border:1px solid #f9f9f9;
+    float: left;
+}
+/* 子选择器，在FF等非IE浏览器中识别 */
+.select>div {
+    width:120px;
+    height: 17px;
+    overflow:hidden;
+}
+
+/* 通配选择符，只在IE浏览器中识别 */
+* html .select div select {
+    display:block;
+    float: left;
+    margin: -2px;
+}
+.select div>select {
+    display:block;
+    width:124px;
+    float:none;
+    margin: -2px;
+    padding: 0px;
+}
+.select:hover {
+    border:1px solid #666666; //鼠标移上的效果
+}
+.select select>option {
+    text-indent: 2px; //option在FF等非IE浏览器缩进2px
+}

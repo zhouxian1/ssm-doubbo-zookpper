@@ -1,0 +1,95 @@
+
+/* 头部样式 */
+
+.header {
+    height: 50px;
+    width: 100%;
+    background-color: #344040;
+}
+
+.header > .main-header {
+    width: 1200px;
+    /*height: 50px;*/
+    margin: 0 auto;
+}
+
+
+.header ul{
+    padding: 0;
+}
+
+.header li {
+    height: 48px;
+    line-height: 48px;
+    float: left;
+    color: #FAFBFA;
+    border-top: 2px solid transparent;
+}
+
+.header li.active {
+    border-top: 2px solid #FAFBFA;
+}
+
+.header li a {
+    color: #FAFBFA;
+    height: 50px;
+    display: block;
+    padding: 0 20px;
+}
+
+.main-header .user {
+    height: 50px;
+    line-height: 50px;
+    margin-right: 50px;
+    color: #fff;
+}
+
+.main-header .user a {
+    color: #fff;
+}
+
+.logo-container {
+    height: 120px;
+    padding-top: 45px;
+    width: 100%;
+    background: #171F43 url("../../images/app/index/banner.jpg") no-repeat center;
+}
+
+.main-header > .main-logo {
+
+}
+
+.main-header > .main-logo img {
+    height: 30px;
+}
+
+.main-header .search {
+    position: relative;
+    top: 11px;
+    left: 20px;
+}
+
+.main-header .search input{
+    border-radius: 24px;
+    padding: 4px 8px;
+    cursor: pointer;
+    border: 0;
+}
+
+.main-header .search .glyphicon-search {
+    position: absolute;
+    right: 7px;
+    top: 7px;
+    cursor: pointer;
+}
+
+.main-header .search a {
+    text-decoration: none;
+    color: #888888;
+}
+
+@media screen and (max-width:1200px){
+    .header, .logo-container, .footer-container, .bottom-container {
+        width: 1200px!important;
+    }
+}

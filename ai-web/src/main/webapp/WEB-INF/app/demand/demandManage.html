@@ -1,0 +1,102 @@
+<!--主体内容之 section-->
+<div id="content-main">
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>需求列表 </a>
+    </p>
+    <!--查询-->
+    <div class="page-content-wrap" style="display:none">
+        <div class="col-md-12">
+            <h3>回收查询</h3>
+            <div class="form-horizontal">
+                <div class="panel panel-default tabs">
+                    <!--<ul class="nav nav-tabs" role="tablist">-->
+                    <!--</ul>-->
+                    <div class="panel-body tab-content" style="padding-top:5px;">
+                        <div class="tab-pane active" style="margin-top:5px;">
+                            <div class="sr-item-title"></div>
+                            <!--渠道名称-->
+                            <div class="form-group">
+                                <label class="col-md-2 col-xs-12 control-label">批次号</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="输入卡批次查询" ng-model="param_query_stock.suppOrderNo"/>
+                                </div>
+                                <label class="col-md-2 col-xs-12 control-label">商品名称</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <input type="text" class="form-control" placeholder="输入商品名称查询" ng-model="param_query_stock.goodsName"/>
+                                </div>
+                                <label class="col-md-2 ">
+                                    <button class="btn btn-success" ng-click="queryRecycleStockLogPageList()">查询</button>
+                                    <a ng-click="allFull()" style="text-decoration:none;padding-left:10px;float:right;" class="btn btn-danger">清空查询</a>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 查询结束 -->
+    <!--添加余额列表-->
+    <div class="page-content-wrap">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel" >
+                    <div class="panel-heading">
+                        <p class="panel-title" style="padding:0;color:rgb(155,187,103)">需求管理</p>
+                    </div>
+                    <div class="panel-body"  style="min-height:500px;">
+                        <table class="table datatable">
+                            <thead>
+                            <tr>
+                                <th>需求信息</th>
+                                <th>状态</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <!--动态table-->
+                            <tbody>
+                            <tr ng-repeat="demand in demandsList">
+                                <td>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <img ng-src="{{demand.cover_url}}" alt="" style="width:100px;height:100px;">
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div>
+                                                <span>需求名称:{{demand.title}}</span>
+                                            </div>
+                                            <div>
+                                                <span>发布日期:{{demand.created_at}}</span>
+                                            </div>
+                                            <div>
+                                                <span>购买次数:{{demand.comment_count}}次</span>
+                                            </div>
+                                            <div>
+                                                <span>ID:{{demand.id}}</span>
+                                            </div>
+                                            <div>
+                                                <span>评分:{{demand.deliver_time}}分</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{demand.mod_statusText}}</td>
+                                <td>
+                                    <a style="color:#4f79e4" ng-click="checkout(demand.id)">审核</a>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                        <!--分页显示数据-->
+                        <div id="pageBottom" style="margin-top: -25px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+

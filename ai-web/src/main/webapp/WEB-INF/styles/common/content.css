@@ -1,0 +1,319 @@
+
+.content-base{
+    border: 1px solid #d2d2d2;
+    padding: 20px 15px;
+}
+
+.content-base h1{
+    color: #b70a0e;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0 16px 16px 0;
+}
+
+.content-base h2{
+    color: #b70a0e;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 0;
+    padding: 0 16px 16px 0;
+}
+
+.content-label span{
+    display: inline-block;
+    cursor: pointer;
+    margin: 5px;
+    padding: 5px 10px;
+    background: #f2f2f2;
+    border: 1px solid #d2d2d2;
+    border-radius: 24px;
+}
+
+.content-base img{
+    width: 100%;
+}
+
+.content-base .integral{
+    color: #b70a0e;
+    text-align: center;
+}
+
+.content-base .content-btn{
+    width: 120px;
+    margin: 15px auto;
+}
+
+.content-base .share{
+    margin-top: 24px;
+}
+
+.content-base .share img{
+    width: 36px;
+    margin: 5px;
+}
+
+.content-base .share a{
+    text-decoration: none;
+}
+
+.content-detail{
+    border: 1px solid #d2d2d2;
+    margin: 12px 0;
+}
+
+.content-detail h1{
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 18px;
+    margin: 0;
+    padding: 12px;
+}
+
+.content-detail .content-description{
+    padding: 12px;
+}
+
+.content-detail .content-description img{
+    max-width: 100%;
+}
+
+.content-app-list{
+    border: 1px solid #d2d2d2;
+    margin: 12px 0;
+}
+
+.content-app-list h1{
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 18px;
+    margin: 0;
+    padding: 12px;
+}
+
+.content-app-list > ul{
+    padding: 0;
+}
+
+.content-app-list > ul li{
+    padding: 8px;
+    border-bottom: 1px dashed #E2E2E2;
+}
+
+.content-app-list > ul .app-avatar{
+    width: 20%;
+    float: left;
+}
+
+.content-app-list > ul img{
+    max-width: 100%;
+    margin: 2px;
+}
+
+.content-app-list > ul .app-info{
+    width: 60%;
+    padding-left: 8px;
+    padding-right: 8px;
+    float: left;
+}
+
+.content-app-list > ul .app-info h2{
+    margin: 6px 0;
+    font-size: 14px;
+}
+
+.content-app-list > ul .app-info p{
+    margin: 0;
+    font-size: 12px;
+    color: #b70a0e;
+}
+
+.content-app-list > ul .app-btn{
+    width: 20%;
+    float: left;
+    padding-top: 10px;
+}
+
+.content-images{
+    padding: 5px;
+}
+
+.content-images > div{
+    margin: 0;
+    padding: 5px;
+}
+
+.content-images img{
+    width: 100%;
+}
+
+.content-images-btn{
+    float: right;
+    margin: 10px;
+}
+
+.content-text-list{
+    border: 1px solid #d2d2d2;
+    margin: 12px 0;
+}
+
+.content-text-list h1{
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 18px;
+    margin: 0;
+    padding: 12px;
+}
+
+.content-text-list > ul{
+    padding: 0;
+}
+
+.content-text-list > ul li{
+    padding: 8px;
+    border-bottom: 1px dashed #E2E2E2;
+}
+
+.content-text-list > ul li h2{
+    font-size: 14px;
+    font-weight: 400;
+    color: #202020;
+}
+
+.content-detail .content-description p{
+    display: inline-block;
+    height: 34px;
+    line-height: 34px;
+}
+
+.content-detail .content-description span{
+    color: #b70a0e;
+}
+
+.content-detail .content-description h3{
+    font-size: 14px;
+    font-weight: 600;
+    color: #b70a0e;
+}
+
+.content-tender{
+    border: 1px solid #d2d2d2;
+    margin: 12px 0;
+}
+
+.content-tender h1{
+    border-bottom: 1px solid #d2d2d2;
+    font-size: 18px;
+    margin: 0;
+    padding: 12px;
+}
+
+.content-tender .tender-list{
+    margin: 0;
+    padding: 20px;
+}
+
+.content-tender .tender-list img{
+    margin: 5px;
+    width: 60px;
+}
+
+.content-tender .tender-list a{
+    text-decoration: none;
+}
+
+.content-tender .tender-btn{
+    margin: 15px auto;
+}
+
+.content-tender .comment-btn{
+    width: 120px;
+}
+
+.schedule{
+    margin: 30px auto 0;
+    height: 80px;
+}
+
+.schedule .title{
+    width: 10%;
+    position: relative;
+    top: -68px;
+    display: inline-block;
+}
+
+.schedule .list{
+    width: 88%;
+    height: 80px;
+    display: inline-block;
+    position: relative;
+}
+
+.schedule .list .line{
+    background: #a0a0a0;
+    width: 100%;
+    height: 2px;
+    position: absolute;
+    top: 7px;
+}
+
+.schedule .list ul{
+    padding: 0;
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.schedule .list ul li{
+    float: left;
+    width: 16%;
+}
+
+.schedule .list ul h4{
+    font-size: 14px;
+    text-align: center;
+    margin: 0;
+    padding: 12px;
+}
+
+.schedule .list ul .point{
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #fff0f0;
+    border: 4px solid #a0a0a0;
+}
+
+.schedule .list .active{
+    color: #4caf50;
+}
+
+.schedule .list ul .active .point{
+    border: 4px solid #4caf50;
+}
+
+.content-schedule{
+    padding: 12px 30px;
+    border: 1px solid #d2d2d2;
+    margin-bottom: 15px;
+}
+
+.content-schedule .description{
+    color: #b70a0e;
+}
+
+.content-schedule .description h1{
+    font-size: 16px;
+    margin: 15px auto;
+}
+
+.content-form{
+    margin: 50px auto;
+}
+
+.content-file{
+    position: relative;
+}
+
+.content-file .btn{
+    position: absolute;
+    bottom: 0;
+    left: 108px;
+}

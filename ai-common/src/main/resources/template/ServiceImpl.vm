@@ -1,0 +1,27 @@
+package com.${projectName}.${module}.impl;
+
+import com.${projectName}.${module}.dao.${model}Mapper;
+import com.${projectName}.${module}.model.${model};
+import com.${projectName}.${module}.model.${model}Example;
+import com.${projectName}.${module}.service.${model}Service;
+import com.${projectName}.base.BaseServiceImpl;
+import com.exp.annotation.BaseService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+/**
+* ${model}service实现
+* @date ${ctime}.
+*/
+@Service("${mapper}Service")
+@BaseService
+public class ${model}ServiceImpl extends BaseServiceImpl<${model}Mapper, ${model}, ${model}Example> implements ${model}Service {
+
+	private static Logger log = LoggerFactory.getLogger(${model}ServiceImpl.class);
+
+	@Autowired
+    ${model}Mapper ${mapper}Mapper;
+
+}

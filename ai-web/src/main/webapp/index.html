@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GEOVIS.AI</title>
+
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "https://hm.baidu.com/hm.js?24d0ed3707b815a19d4ecc610d7914e1";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+
+    <script>
+        function browserRedirect() {
+            var sUserAgent = navigator.userAgent.toLowerCase();
+            var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+            var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+            var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+            var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+            var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+            var bIsAndroid = sUserAgent.match(/android/i) == "android";
+            var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+            var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+//                if ((bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)){
+//                    window.location.href="http://m.geovis.ai/";
+//                }
+
+            if ((bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM)){
+                window.location.href="http://m.geovis.ai/";
+            }
+        }
+        browserRedirect();
+    </script>
+
+    <link href="https://cdn.bootcss.com/normalize/7.0.0/normalize.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/Swiper/3.4.2/css/swiper.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <!--[if (gte IE 9)|!(IE)]><!-->
+    <script src="https://cdn.bootcss.com/jquery/3.2.0/jquery.min.js"></script>
+    <!--<![endif]-->
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script type="text/javascript" src="https://cdn.bootcss.com/require.js/2.3.5/require.min.js" data-main="/scripts/main.js" defer async="true"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!--<script type="text/javascript" src="https://cdn.bootcss.com/Swiper/3.4.2/js/swiper.min.js"></script>-->
+
+</head>
+
+<body ng-cloak>
+<div class="header" ng-controller="headerController">
+    <div class="main-header clearfix">
+        <ul class="pull-left" sideBar>
+            <li ui-sref-active="active" ng-repeat="list in lists">
+                <a ui-sref="{{list.sref}}" ng-href="{{list.href}}" target="{{list.target}}">{{list.name}}</a>
+            </li>
+        </ul>
+        <div class="am-form-group pull-left search">
+            <input id="searchInput" type="text" class="am-form-field am-round" ng-model="searchStr" placeholder="请输入你要搜索的内容" ng-keyup="searchClick($event)">
+            <a class="glyphicon glyphicon-search" onclick="searchClick()"></a>
+        </div>
+        <div class="user pull-right">
+            <a ui-sref="usercenter.home">{{user.user_name}}</a>
+            <a  ng-click="loginClick()">{{user.user_id?" | 退出":"登录"}}</a>
+            <a  ng-click="register()">{{user.user_id?"":" | 注册"}}</a>
+
+        </div>
+    </div>
+</div>
+<div class="logo-container">
+    <div class="main-content">
+        <div class="main-logo pull-left">
+            <!--<img src="images/common/logo.png" alt="">-->
+        </div>
+        <div class="pull-right"></div>
+    </div>
+</div>
+<div class="main-content" style="min-height: 450px">
+    <!-- <div ui-view="index"></div> -->
+    <ui-view></ui-view>
+</div>
+
+<div class="footer-container">
+    <div class="footer-main am-nbfc">
+        <div class="row">
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <ul class="footer-text">
+                    <li><h4> GEOVIS.AI</h4></li>
+
+                    <li><a href="/article/article">资讯</a></li>
+                    <li><a href="/sample/sample">样本</a></li>
+                    <li><a href="/pluginunit/pluginunitlist">插件</a></li>
+                    <li><a href="/application/applicationlist">应用</a></li>
+                </ul>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <ul class="footer-text">
+                    <li><h4> GEOVIS.AI</h4></li>
+                    <li><a href="/demand/demandlist">需求</a></li>
+                    <li><a href="/knowledge/knowledgelist">知识</a></li>
+                    <li><a href="/document">文档</a></li>
+                    <li><a href="http://bbs.geovis.ai/">论坛</a></li>
+                </ul>
+            </div>
+            <!--<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <ul class="footer-text">
+                    &lt;!&ndash;<li><h4>内容</h4></li>&ndash;&gt;
+                    &lt;!&ndash;<li><a href="javescript:void(0)">码云</a></li>&ndash;&gt;
+                    &lt;!&ndash;<li><a href="javescript:void(0)">码云马云</a></li>&ndash;&gt;
+                    &lt;!&ndash;<li><a href="javescript:void(0)">码云淘吧</a></li>&ndash;&gt;
+                    &lt;!&ndash;<li><a href="javescript:void(0)">码云5555552</a></li>&ndash;&gt;
+                </ul>
+            </div>-->
+           <!-- <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <ul class="footer-text">
+                </ul>
+            </div>-->
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div class="footer-img">
+                    <img class="am-center" src="images/common/m.geovis.ai.png">
+                </div>
+                <p>访问手机版网站</p>
+            </div>
+            <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                <div class="footer-img">
+                    <img class="am-center" src="images/common/weixin.png">
+                </div>
+                <p>关注微信公众号</p>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+<div class="bottom-container">
+    <p>版权所有© 2016-2017 西安中科星图空间数据技术有限公司 <a href="http://www.miitbeian.gov.cn/">陕ICP备17014623号-1</a></p>
+</div>
+<!--<script type="text/javascript" src="scripts/vendor/require.min.js" data-main="scripts/main.js" defer async="true"></script>-->
+<script type="text/javascript">
+
+    $('.carousel').carousel({
+        interval: 2000,
+        wrap: true
+    });
+
+    function setIframeHeight(iframe) {
+        if (iframe) {
+            var iframeWin = iframe.contentWindow || iframe.contentDocument.parentWindow;
+            console.log(iframeWin.document);
+            if (iframeWin.document.body) {
+                iframe.height = iframeWin.document.documentElement.scrollHeight || iframeWin.document.body.scrollHeight;
+            }
+        }
+    };
+
+    window.onload = function () {
+        setIframeHeight(document.getElementById('external-frame'));
+    };
+
+    var searchClick = function () {
+        var search = document.getElementById("searchInput").value;
+        if (search){
+            window.location.href = '/search?search=' + search;
+        }
+    }
+</script>
+</body>
+<!--<script>-->
+<!--window.onload = function() {-->
+<!--var mySwiper = new Swiper ('.swiper-container', {-->
+<!--direction: 'vertical',-->
+<!--loop: true,-->
+
+<!--// 如果需要分页器-->
+<!--pagination: '.swiper-pagination',-->
+
+<!--// 如果需要前进后退按钮-->
+<!--nextButton: '.swiper-button-next',-->
+<!--prevButton: '.swiper-button-prev',-->
+
+<!--// 如果需要滚动条-->
+<!--scrollbar: '.swiper-scrollbar',-->
+<!--});-->
+<!--};-->
+<!--</script>-->
+</body>
+</html>

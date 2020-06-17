@@ -1,0 +1,91 @@
+<!--主体内容之 content-main-->
+<div id="content-main">
+    <!--标题头-->
+    <p class="page-title" style="font-size:13px;background:#e8e8e8;">
+        <a>首页 / </a>添加轮播图
+    </p>
+    <!--end 标题头-->
+    <!--添加商品-->
+    <div class="page-content-wrap" style="min-height:1500px;margin-top:3px;">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">添加轮播图</h3>
+                            <div style="clear:both;"></div>
+                        </div>
+                        <div class="panel-body">
+                            <!--商品名称-->
+                            <div class="form-group">
+                                <label class="col-md-3 col-xs-12 control-label">名称</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <div class="input-group">
+                                                <span class="input-group-addon">
+                                                    <span class="glyphicon glyphicon-user"></span>
+                                                </span>
+                                        <input type="text" class="form-control" ng-model="mod_name" placeholder="请输入名称"/>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!--商品描述-->
+                            <div class="form-group" >
+                                <label class="col-md-3 col-xs-12 control-label">链接</label>
+                                <div class="col-md-6 col-xs-12">
+                                    <input type="text" class="form-control" ng-model="mod_url" placeholder="请输入链接"/>
+                                </div>
+                            </div>
+                            <div class="form-group" >
+                                <label class="col-md-3 col-xs-12 control-label">展示图片</label>
+                                <div class="col-md-3 col-xs-12">
+                                    <img ng-src="{{mod_image}}" alt="">
+                                </div>
+                            </div>
+                            <!--添加图片测试-->
+                            <div style="float:left;margin-left:163px;margin-right:21px;">图片</div>
+                            <div class="form-group">
+                                <div style="position: relative; padding-left: 10px; margin-bottom: 10px">
+                                    <button style="width: 200px; height: 40px;" class="btn btn-default">浏览图片</button>
+                                    <input style="left:188px; position: absolute; top: 0; filter:alpha(opacity=0); -moz-opacity:0; -khtml-opacity: 0; opacity: 0; " class="btn btn-default" type="file" nv-file-select uploader="uploader"/>
+                                </div>
+                                <ul style="padding: 0; margin: 0; clear: both; overflow: hidden">
+                                    <li ng-repeat="item in uploader.queue" style="margin: 10px; width: 250px; padding: 0; float: left; list-style: none;margin-left:222px;">
+                                        <div>
+                                            <!--<span>文件名:</span>-->
+                                            <!--<span ng-bind="item.file.name"></span>-->
+                                            <div ng-show="uploader.isHTML5" ng-thumb="{ file: item._file, width: 240, height: 180 }"></div>
+                                        </div>
+                                        <div style="margin-bottom: 10px; width: 100%; height: 20px">
+                                            <span ng-bind="item.isSuccess ? '上传成功' : ''"></span>
+                                        </div>
+                                        <div>
+                                            <button type="button" class="btn btn-success" ng-click="item.upload()" ng-disabled="item.isReady || item.isUploading || item.isSuccess">
+                                                <span class="glyphicon glyphicon-upload"></span> 上传
+                                            </button>
+                                            <button type="button" class="btn btn-warning" ng-click="item.cancel()" ng-disabled="!item.isUploading">
+                                                <span class="glyphicon glyphicon-ban-circle"></span> 取消
+                                            </button>
+                                            <button type="button" class="btn btn-danger" ng-click="item.remove()">
+                                                <span class="glyphicon glyphicon-trash"></span> 删除
+                                            </button>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+
+
+                        </div>
+                        <div class="panel-footer" style="background-color:#fff;border:none;">
+                            <button ng-click="addBanner()" class="btn btn-success">提交</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    <!--end 添加商品-->
+    <!-- END PAGE CONTENT WRAPPER -->
+</div>

@@ -1,0 +1,54 @@
+.order-success{
+    display:inline-block;
+    text-align:center;
+    /*line-height:120px;*/
+    vertical-align: middle;
+    line-height:85px;
+    font-size:60px;
+    color:rgb(0,108,204);
+    margin-right:20px;
+}
+.status-title{
+    font-size:30px;
+}
+.panel-body>span{
+    margin-bottom:15px;
+    line-height:30px;
+}
+.panel-body .col-sm-2{
+    text-align:right;
+}
+.panel-body>span>button{
+    margin-left:20px;
+}
+.panel-body .table th{
+    text-align:center;
+}
+.panel-body .table td{
+    padding:10px;
+    text-align:left;
+    vertical-align: middle;
+}
+.panel-body .table td img{
+    margin-right:20px;
+    width:100px;
+    height:60px;
+    vertical-align: middle;
+}
+.panel-body>.row>label{
+    line-height:30px;
+}
+.right{
+    float:right;
+}
+.row>span{
+    /*margin-top:35px;*/
+    margin-bottom : 35px;
+}
+.page-content-wrap .panel .panel-body .row .col-sm-10{
+    width:80%;
+}
+/*.textAlign{*/
+    /*text-align:center;*/
+    /*line-height:*/
+/*}*/
