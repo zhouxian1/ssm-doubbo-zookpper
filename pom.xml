@@ -19,7 +19,7 @@
     <properties>
         <project-version>1.0.0</project-version>
         <!-- spring版本号 -->
-        <spring.version>4.2.5.RELEASE</spring.version>
+        <spring.version>5.2.20.RELEASE</spring.version>
         <!-- mybatis版本号 -->
         <mybatis.version>3.4.0</mybatis.version>
         <!-- log -->
